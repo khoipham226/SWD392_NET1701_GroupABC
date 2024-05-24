@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="UnitOfWork\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>
