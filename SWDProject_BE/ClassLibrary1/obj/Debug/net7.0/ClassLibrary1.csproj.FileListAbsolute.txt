@@ -1,0 +1,14 @@
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\bin\Debug\net7.0\ClassLibrary1.deps.json
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\bin\Debug\net7.0\ClassLibrary1.dll
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\bin\Debug\net7.0\ClassLibrary1.pdb
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ClassLibrary1.GeneratedMSBuildEditorConfig.editorconfig
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ClassLibrary1.AssemblyInfoInputs.cache
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ClassLibrary1.AssemblyInfo.cs
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ClassLibrary1.csproj.CoreCompileInputs.cache
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ClassLibrary1.dll
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\refint\ClassLibrary1.dll
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ClassLibrary1.pdb
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ref\ClassLibrary1.dll
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\bin\Debug\net7.0\ClassLibrary1.runtimeconfig.json
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ClassLibrary1.csproj.AssemblyReference.cache
+E:\CN7\SWD392\PROJECT\SWD392_NET1701_GroupABC\SWDProject_BE\ClassLibrary1\obj\Debug\net7.0\ClassLibrary1.genruntimeconfig.cache
