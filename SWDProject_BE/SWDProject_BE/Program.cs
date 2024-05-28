@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
 builder.Services.AddControllers();
 
 // Install AutoMapper
@@ -20,7 +21,7 @@ builder.Services.AddSwaggerGen(c =>
 {
 	var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 	var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-	c.IncludeXmlComments(xmlPath);
+	c.IncludeXmlComments("E:\\CN7\\SWD392\\PROJECT\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.xml");
 });
 // Add CORS
 builder.Services.AddCors(options =>
