@@ -9,9 +9,12 @@
   <ItemGroup>
     <Folder Include="Mapper\" />
     <Folder Include="Utils\" />
-    <Folder Include="Services\" />
     <Folder Include="ResponseModels\" />
     <Folder Include="RequestModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
   </ItemGroup>
 
 </Project>
