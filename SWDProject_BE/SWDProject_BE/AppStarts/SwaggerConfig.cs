@@ -48,7 +48,7 @@ namespace SWDProject_BE.AppStarts
 						new List<string>()
 					}
 				});
-				var filePath = Path.Combine(System.AppContext.BaseDirectory, "E:\\CN7\\SWD392\\PROJECT\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.xml");
+				var filePath = Path.Combine(System.AppContext.BaseDirectory, "F:\\SU24\\SWD392\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.xml");
 				c.IncludeXmlComments(filePath);
 			});
 			services.AddVersionedApiExplorer(setup =>

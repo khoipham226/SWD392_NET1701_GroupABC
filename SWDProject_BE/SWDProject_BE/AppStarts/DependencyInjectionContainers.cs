@@ -1,4 +1,10 @@
-﻿namespace SWDProject_BE.AppStarts
+﻿using BusinessLayer.Services;
+using DataLayer.DBContext;
+using DataLayer.Repository;
+using DataLayer.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
+
+namespace SWDProject_BE.AppStarts
 {
 	public static class DependencyInjectionContainers
 	{
@@ -9,13 +15,19 @@
 				options.LowercaseUrls = true; ;
 				options.LowercaseQueryStrings = true;
 			});
-			//services.AddDbContext<StarasContext>(options =>
-			//{
-			//	options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-			//});
+			//Add DBContext
+			services.AddDbContext<MyDbContext>(options =>
+			{
+				options.UseSqlServer(configuration.GetConnectionString("local"));
+			});
 
-			//services.AddScoped<IUnitOfWork, UnitOfWork>();
-			
+			//MapData
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            //MapService
+            services.AddScoped<IProductService, ProductService>();
+				
 			//services.AddScoped<IJwtService, JwtService>();
 			
 		}
