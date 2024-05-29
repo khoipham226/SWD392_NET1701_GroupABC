@@ -189,6 +189,9 @@
             "projectReferences": {
               "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {
                 "projectPath": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj"
+              },
+              "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj"
               }
             }
           }
@@ -219,9 +222,27 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
             "Microsoft.Extensions.Configuration.UserSecrets": {
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

@@ -9,3 +9,6 @@ C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\DataL
 C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\DataLayer\obj\Debug\net6.0\refint\DataLayer.dll
 C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\DataLayer\obj\Debug\net6.0\DataLayer.pdb
 C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\DataLayer\obj\Debug\net6.0\ref\DataLayer.dll
+C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\DataLayer\bin\Debug\net6.0\DataLayer.runtimeconfig.json
+C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\DataLayer\obj\Debug\net6.0\DataLayer.csproj.AssemblyReference.cache
+C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\DataLayer\obj\Debug\net6.0\DataLayer.genruntimeconfig.cache
