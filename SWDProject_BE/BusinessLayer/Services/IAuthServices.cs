@@ -9,6 +9,6 @@ namespace BusinessLayer.Services
 	public interface IAuthServices
 	{
 		Task<string> AuthenticateAsync(string username, string password);
-		string GenerateJwtToken(string username, int roleId);
+		string GenerateJwtToken(string username, int roleId, int userId);
 	}
 }

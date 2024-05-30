@@ -25,6 +25,7 @@ namespace SWDProject_BE.AppStarts
 			//services.AddScoped<IJwtService, JwtService>();
 			services.AddScoped<IAuthServices, AuthServices>();
 			services.AddScoped<IUsersService, UsersServices>();
+			services.AddScoped<IPostService, PostService>();
 			
 		}
 	}

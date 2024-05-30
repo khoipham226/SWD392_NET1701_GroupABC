@@ -30,12 +30,12 @@ namespace BusinessLayer.Services.Implements
 			var user = await _userService.GetUserByUsernameAsync(username);
 			if (user != null && user.Password == password)
 			{
-				return GenerateJwtToken(username, user.RoleId);
+				return GenerateJwtToken(username, user.RoleId, user.Id);
 			}
 			return null;
 		}
 
-		public string GenerateJwtToken(string username, int roleId)
+		public string GenerateJwtToken(string username, int roleId, int userId)
 		{
 			var tokenHandler = new JwtSecurityTokenHandler();
 			var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
@@ -45,7 +45,8 @@ namespace BusinessLayer.Services.Implements
 				Subject = new ClaimsIdentity(new[]
 				{
 					new Claim(ClaimTypes.Name, username),
-					new Claim(ClaimTypes.Role, roleId.ToString()) // Thêm vai trò của người dùng vào token
+					new Claim(ClaimTypes.Role, roleId.ToString()), // Thêm vai trò của người dùng vào token
+					new Claim(ClaimTypes.NameIdentifier, userId.ToString())
 				}),
 				Expires = DateTime.UtcNow.AddHours(1),
 				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
