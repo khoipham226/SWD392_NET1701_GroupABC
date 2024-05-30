@@ -70,6 +70,7 @@ namespace DataLayer.Repository
         public void Insert(T entity)
         {
             Table.Add(entity);
+            Context.SaveChanges();
         }
 
         public async Task UpdateGuid(T entity, Guid Id)

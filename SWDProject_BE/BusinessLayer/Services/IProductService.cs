@@ -1,4 +1,4 @@
-﻿using DataLayer.Dto;
+﻿using DataLayer.Dto.Product;
 using DataLayer.Models;
 using DataLayer.Repository;
 using System;
@@ -13,6 +13,8 @@ namespace BusinessLayer.Services
     {
 
         public List<Product> GetAllProducts();
+        public String addProduct(AddProductDto dto);
+
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Services;
 using DataLayer.DBContext;
+using DataLayer.Dto.Product;
 using DataLayer.Models;
 using DataLayer.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,23 @@ namespace SWDProject_BE.Controllers
                 return BadRequest(ex.Message);
             }
             
+        }
+
+        [HttpPost]
+        [Route("AddProduct")]
+        public IActionResult AddProduct(AddProductDto dto)
+        {
+            try
+            {
+                String message = ProductService.addProduct(dto);
+                return Ok(message);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
     }
 }
