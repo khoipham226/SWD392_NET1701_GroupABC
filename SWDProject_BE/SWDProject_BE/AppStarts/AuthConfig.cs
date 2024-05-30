@@ -16,18 +16,17 @@ namespace SWDProject_BE.AppStarts
 				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
 				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 				options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+			}).AddJwtBearer(o =>
+			{
+				o.TokenValidationParameters = new TokenValidationParameters
+				{
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secrectKey)),
+					ValidateIssuer = false,
+					ValidateAudience = false,
+					ValidateLifetime = true,
+					ValidateIssuerSigningKey = true
+				};
 			});
-			//	.AddJwtBearer(o =>
-			//{
-			//	o.TokenValidationParameters = new TokenValidationParameters
-			//	{
-			//		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secrectKey)),
-			//		ValidateIssuer = false,
-			//		ValidateAudience = false,
-			//		ValidateLifetime = true,
-			//		ValidateIssuerSigningKey = true
-			//	};
-			//});
 			services.AddAuthorization();
 		}
 	}

@@ -8,7 +8,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using DataLayer.Model;
 
 namespace DataLayer.Repository
 {
@@ -22,7 +21,7 @@ namespace DataLayer.Repository
 
 		DbSet<TEntity> GetAll();
 		IQueryable<TEntity> GetAllApart();
-        IQueryable<User> GetWhere(Expression<Func<TEntity, bool>> predicate);
+		Task<IEnumerable<TEntity>> GetWhere(Expression<Func<TEntity, bool>> predicate);
 
 		IQueryable<TEntity> FindAll(Func<TEntity, bool> predicate);
 

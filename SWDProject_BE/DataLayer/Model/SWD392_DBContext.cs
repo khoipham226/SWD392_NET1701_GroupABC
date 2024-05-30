@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace DataLayer.Model
 {
@@ -31,16 +32,18 @@ namespace DataLayer.Model
         public virtual DbSet<TransactionType> TransactionTypes { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server =(local); database = SWD392_DB;uid=sa;pwd=12345;");
-            }
-        }
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+			var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
+				.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+			IConfigurationRoot configuration = builder.Build();
+			optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+		}
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BannedAccount>(entity =>
             {
@@ -54,7 +57,7 @@ namespace DataLayer.Model
                     .WithMany(p => p.BannedAccounts)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Banned_Ac__User___412EB0B6");
+                    .HasConstraintName("FK__Banned_Ac__User___2E1BDC42");
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -80,13 +83,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Disputes)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Dispute__Order_I__59FA5E80");
+                    .HasConstraintName("FK__Dispute__Order_I__46E78A0C");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Disputes)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Dispute__User_Id__59063A47");
+                    .HasConstraintName("FK__Dispute__User_Id__45F365D3");
             });
 
             modelBuilder.Entity<Exchanged>(entity =>
@@ -107,19 +110,19 @@ namespace DataLayer.Model
                     .WithMany(p => p.Exchangeds)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__Order__5EBF139D");
+                    .HasConstraintName("FK__Exchanged__Order__4BAC3F29");
 
                 entity.HasOne(d => d.Post)
                     .WithMany(p => p.Exchangeds)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__Post___5DCAEF64");
+                    .HasConstraintName("FK__Exchanged__Post___4AB81AF0");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Exchangeds)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__User___5CD6CB2B");
+                    .HasConstraintName("FK__Exchanged__User___49C3F6B7");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -140,19 +143,19 @@ namespace DataLayer.Model
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.PaymentId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__Payment_I__5629CD9C");
+                    .HasConstraintName("FK__Order__Payment_I__4316F928");
 
                 entity.HasOne(d => d.Post)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__Post_Id__5535A963");
+                    .HasConstraintName("FK__Order__Post_Id__4222D4EF");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__User_Id__5441852A");
+                    .HasConstraintName("FK__Order__User_Id__412EB0B6");
             });
 
             modelBuilder.Entity<Payment>(entity =>
@@ -182,19 +185,19 @@ namespace DataLayer.Model
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Post__Product_Id__4D94879B");
+                    .HasConstraintName("FK__Post__Product_Id__3A81B327");
 
                 entity.HasOne(d => d.TransactionType)
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.TransactionTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Post__Transactio__4CA06362");
+                    .HasConstraintName("FK__Post__Transactio__398D8EEE");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Post__User_Id__4BAC3F29");
+                    .HasConstraintName("FK__Post__User_Id__38996AB5");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -215,13 +218,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Product__Categor__48CFD27E");
+                    .HasConstraintName("FK__Product__Categor__35BCFE0A");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Product__User_Id__47DBAE45");
+                    .HasConstraintName("FK__Product__User_Id__34C8D9D1");
             });
 
             modelBuilder.Entity<Rating>(entity =>
@@ -240,13 +243,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.ExchangeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__Exchange__628FA481");
+                    .HasConstraintName("FK__Rating__Exchange__4F7CD00D");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__User_Id__619B8048");
+                    .HasConstraintName("FK__Rating__User_Id__4E88ABD4");
             });
 
             modelBuilder.Entity<Report>(entity =>
@@ -263,13 +266,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Reports)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Report__Post_Id__5165187F");
+                    .HasConstraintName("FK__Report__Post_Id__3E52440B");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reports)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Report__User_Id__5070F446");
+                    .HasConstraintName("FK__Report__User_Id__3D5E1FD2");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -291,7 +294,7 @@ namespace DataLayer.Model
                     .WithMany(p => p.Tokens)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Token__User_Id__3C69FB99");
+                    .HasConstraintName("FK__Token__User_Id__29572725");
             });
 
             modelBuilder.Entity<TransactionType>(entity =>
@@ -339,7 +342,7 @@ namespace DataLayer.Model
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__Role_Id__398D8EEE");
+                    .HasConstraintName("FK__User__Role_Id__267ABA7A");
             });
 
             OnModelCreatingPartial(modelBuilder);

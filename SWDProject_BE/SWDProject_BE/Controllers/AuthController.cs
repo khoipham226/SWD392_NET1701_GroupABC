@@ -1,53 +1,42 @@
-﻿using BusinessLayer.Services;
+﻿using BusinessLayer.RequestModels;
+using BusinessLayer.Services;
+using BusinessLayer.Services.Implements;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SWDProject_BE.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
-    {
-        private readonly IAuthService _authService;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class LoginController : ControllerBase
+	{
+		private readonly IAuthServices _authService;
 
-        public AuthController(IAuthService authService)
-        {
-            _authService = authService;
-        }
+		public LoginController(IAuthServices authServices)
+		{
+			_authService = authServices;
+		}
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+		[HttpPost("login")]
+		public IActionResult Login(LoginModel model)
+		{
+			var token = _authService.AuthenticateAsync(model.Username, model.Password);
+			if (token == null)
+			{
+				return Unauthorized();
+			}
 
-            var result = await _authService.Register(model.Username, model.Password, model.Email);
-            if (!result)
-                return Conflict(new { message = "Username already exists" });
+			return Ok(new { Token = token });
+		}
 
-            return Ok(new { message = "Registration successful" });
-        }
+		[HttpPost("register")]
+		public IActionResult Register(RegisterModel model)
+		{
+			// Implement user registration logic here
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
-        {
-            var user = await _authService.Login(model.Username, model.Password);
-            if (user == null)
-                return Unauthorized(new { message = "Invalid username or password" });
-
-            return Ok(new { message = "Login successful", user });
-        }
-    }
-
-    public class RegisterModel
-    {
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-    }
-
-    public class LoginModel
-    {
-        public string Username { get; set; }
-        public string Password { get; set; }
-    }
+			// Once the user is registered, generate JWT token
+			var token = _authService.GenerateJwtToken(model.Username, model.RoleId);
+			return Ok(new { Token = token });
+		}
+	}
 }
