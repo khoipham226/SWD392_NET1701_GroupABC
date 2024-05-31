@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen(c =>
 {
 	var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 	var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-	c.IncludeXmlComments("F:\\SU24\\SWD392\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.xml");
+	c.IncludeXmlComments("E:\\CN7\\SWD392\\PROJECT\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.xml");
 });
 // Add CORS
 builder.Services.AddCors(options =>
