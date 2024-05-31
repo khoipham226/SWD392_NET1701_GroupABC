@@ -241,7 +241,9 @@ INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('trao doi',
 INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('mua',null,1)
 INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('ban',null,1)
 
-
+/*Insert User*/
+INSERT INTO [User](UserName,[Password],[Email],DOB,[Address],[Phone_Number],Role_Id,Created_Date,[Status])
+VALUES ('admin','12345','admin@gmail.com','2002/05/31','186 le van viet','0889339769',1,'2024-05-31',1)
 
 
 
