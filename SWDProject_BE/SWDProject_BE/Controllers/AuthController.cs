@@ -35,7 +35,7 @@ namespace SWDProject_BE.Controllers
 			// Implement user registration logic here
 
 			// Once the user is registered, generate JWT token
-			var token = _authService.GenerateJwtToken(model.Username, model.RoleId);
+			var token = _authService.GenerateJwtToken(model.Username, model.RoleId, model.UserId);
 			return Ok(new { Token = token });
 		}
 	}
