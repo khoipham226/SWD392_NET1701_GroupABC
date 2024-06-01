@@ -17,7 +17,7 @@ namespace SWDProject_BE.AppStarts
 			});
 			services.AddDbContext<SWD392_DBContext>(options =>
 			{
-				options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+				options.UseSqlServer(configuration.GetConnectionString("local"));
 			});
 
 			services.AddScoped<IUnitOfWork, UnitOfWork>();

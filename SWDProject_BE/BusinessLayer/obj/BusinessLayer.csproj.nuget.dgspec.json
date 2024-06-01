@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {}
+    "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {
+    "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\obj\\",
+        "projectPath": "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,15 +22,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj"
+              "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj"
               }
             }
           }
@@ -68,21 +63,17 @@
         }
       }
     },
-    "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
+    "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\source\\repos\\Workspace\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\obj\\",
+        "projectPath": "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "E:\\CN7\\SWD392\\New\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -90,7 +81,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
