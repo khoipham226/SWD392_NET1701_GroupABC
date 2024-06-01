@@ -36,7 +36,7 @@ namespace DataLayer.Model
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server=localhost;database=SWD392_DB;User Id=sa;password=12345;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=True;");
+                optionsBuilder.UseSqlServer("server =DUMBDESK\\DUY_THUAN; database = SWD392_DB;uid=sa;pwd=12345;Trusted_Connection=True;TrustServerCertificate=True");
             }
         }
 
@@ -126,7 +126,7 @@ namespace DataLayer.Model
             {
                 entity.ToTable("Order");
 
-                entity.HasIndex(e => e.PaymentId, "UQ__Order__DA6C7FC0607771D0")
+                entity.HasIndex(e => e.PaymentId, "UQ__Order__DA6C7FC079BEFD73")
                     .IsUnique();
 
                 entity.Property(e => e.Date).HasColumnType("date");
