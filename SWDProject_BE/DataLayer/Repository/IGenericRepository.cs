@@ -23,7 +23,7 @@ namespace DataLayer.Repository
 		IQueryable<TEntity> GetAllApart();
 		Task<IEnumerable<TEntity>> GetWhere(Expression<Func<TEntity, bool>> predicate);
 
-		IQueryable<TEntity> FindAll(Func<TEntity, bool> predicate);
+		IQueryable<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate);
 
 		IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 		Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> predicate);
