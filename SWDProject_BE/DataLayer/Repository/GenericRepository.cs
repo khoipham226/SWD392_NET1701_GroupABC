@@ -33,7 +33,7 @@ namespace DataLayer.Repository
 				await Table.SingleOrDefaultAsync(predicate);
 		}
 
-		public IQueryable<T> FindAll(Func<T, bool> predicate)
+		public IQueryable<T> FindAll(Expression<Func<T, bool>> predicate)
 		{
 			return Table.Where(predicate).AsQueryable();
 		}
@@ -69,6 +69,7 @@ namespace DataLayer.Repository
 		public void Insert(T entity)
 		{
 			Table.Add(entity);
+			Context.SaveChanges();
 		}
 
 		public async Task UpdateGuid(T entity, Guid Id)
