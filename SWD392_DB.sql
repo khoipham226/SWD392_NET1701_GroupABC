@@ -16,16 +16,17 @@ GO
 CREATE TABLE [Role] 
 (
     Id INT IDENTITY(1,1) NOT NULL,
-	[Name] NVARCHAR(100)NOT NULL,
+    [Name] NVARCHAR(50) NOT NULL,
+	[Status] BIT NOT NULL,
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )ON [PRIMARY];
 GO
 
+
 CREATE TABLE [User] 
 (
     Id INT IDENTITY(1,1) NOT NULL,
-	Field NVARCHAR(50) NOT NULL,
     UserName NVARCHAR(50) NOT NULL,
 	[Password] NVARCHAR(100) NOT NULL,
     Email NVARCHAR(100) NOT NULL,
@@ -61,6 +62,7 @@ CREATE TABLE [Payment]
     [Date] NVARCHAR(MAX) NOT NULL,
 	[Amount] FLOAT NOT NULL,
 	[Method] NVARCHAR(50) NOT NULL, 
+	[Description] NVARCHAR(MAX) NULL, 
 	[Status] BIT NOT NULL, 
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -160,7 +162,7 @@ CREATE TABLE [Order]
     Id INT IDENTITY(1,1) NOT NULL,
 	[User_Id] INT NOT NULL,
 	[Post_Id] INT NOT NULL,
-	[Payment_Id] INT NOT NULL,
+	[Payment_Id] INT UNIQUE NULL,
 	[Quantity] INT NOT NULL,
 	[Total_Price] FLOAT NOT NULL,
 	[Date] DATE NOT NULL,
@@ -219,8 +221,29 @@ FOREIGN KEY ([Exchange_Id]) REFERENCES [Exchanged] ([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )ON [PRIMARY];
-GO
 
+
+
+/*Insert Role*/
+INSERT INTO [Role]([Name],[Status])VALUES ('admin',1)
+INSERT INTO [Role]([Name],[Status])VALUES ('user',1)
+INSERT INTO [Role]([Name],[Status])VALUES ('staff',1)
+
+/*Insert Category*/
+INSERT INTO [Category]([Name],[Description],[Status])VALUES ('may tinh sach tay',null,1)
+INSERT INTO [Category]([Name],[Description],[Status])VALUES ('chuot',null,1)
+INSERT INTO [Category]([Name],[Description],[Status])VALUES ('ban phim',null,1)
+INSERT INTO [Category]([Name],[Description],[Status])VALUES ('sach',null,1)
+INSERT INTO [Category]([Name],[Description],[Status])VALUES ('tai nghe',null,1)
+
+/*Insert Transaction_Type*/
+INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('trao doi',null,1)
+INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('mua',null,1)
+INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('ban',null,1)
+
+/*Insert User*/
+INSERT INTO [User](UserName,[Password],[Email],DOB,[Address],[Phone_Number],Role_Id,Created_Date,[Status])
+VALUES ('admin','12345','admin@gmail.com','2002/05/31','186 le van viet','0889339769',1,'2024-05-31',1)
 
 
 

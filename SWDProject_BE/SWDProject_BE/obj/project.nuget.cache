@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SvZhXk+3ggOPk9JTgx7+a2mAzT8CHEZwVIAk2kKu+Z068zqYrzYTRbSYhkPowElrqR4V9eV/BvOgBAnvib4sgw==",
+  "dgSpecHash": "Gbx6F4bsXJCvtD9KPDcUC0k1NRUohW9AWo4Illc0Lw9Tg0ybaHlhfEqxi6nW9fuZBkDxFd9sJ6I+G2QLVFxXYQ==",
   "success": true,
   "projectFilePath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.csproj",
   "expectedPackageFiles": [
@@ -162,6 +162,8 @@
     "C:\\Users\\laptoptk\\.nuget\\packages\\nuget.projectmodel\\6.6.1\\nuget.projectmodel.6.6.1.nupkg.sha512",
     "C:\\Users\\laptoptk\\.nuget\\packages\\nuget.protocol\\6.6.1\\nuget.protocol.6.6.1.nupkg.sha512",
     "C:\\Users\\laptoptk\\.nuget\\packages\\nuget.versioning\\6.6.1\\nuget.versioning.6.6.1.nupkg.sha512",
+    "C:\\Users\\laptoptk\\.nuget\\packages\\paypalcheckoutsdk\\1.0.4\\paypalcheckoutsdk.1.0.4.nupkg.sha512",
+    "C:\\Users\\laptoptk\\.nuget\\packages\\paypalhttp\\1.0.1\\paypalhttp.1.0.1.nupkg.sha512",
     "C:\\Users\\laptoptk\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\laptoptk\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\laptoptk\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

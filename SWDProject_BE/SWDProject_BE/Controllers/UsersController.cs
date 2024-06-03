@@ -59,7 +59,6 @@ namespace SWDProject_BE.Controllers
 			}
 
 			// Map properties from userModel to user entity
-			user.Field = userModel.Field;
 			user.UserName = userModel.UserName;
 			user.Password = userModel.Password;
 			user.Email = userModel.Email;
@@ -98,7 +97,6 @@ namespace SWDProject_BE.Controllers
 			// Map properties from userModel to create a new user entity
 			var user = new User
 			{
-				Field = userModel.Field,
 				UserName = userModel.UserName,
 				Password = userModel.Password,
 				Email = userModel.Email,

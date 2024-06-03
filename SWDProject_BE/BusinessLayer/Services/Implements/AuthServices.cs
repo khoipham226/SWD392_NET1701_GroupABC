@@ -22,7 +22,7 @@ namespace BusinessLayer.Services.Implements
 			_userService = userService;
 		}
 
-		
+
 		public async Task<string> AuthenticateAsync(string username, string password)
 		{
 			// Implement authentication logic here

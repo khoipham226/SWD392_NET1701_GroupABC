@@ -17,16 +17,17 @@ namespace SWDProject_BE.AppStarts
 			});
 			services.AddDbContext<SWD392_DBContext>(options =>
 			{
-				options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+				options.UseSqlServer(configuration.GetConnectionString("local"));
 			});
 
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			
 			//services.AddScoped<IJwtService, JwtService>();
 			services.AddScoped<IAuthServices, AuthServices>();
-			services.AddScoped<IUsersService, UsersServices>();
 			services.AddScoped<IPostService, PostService>();
-			
-		}
+			services.AddScoped<IUsersService, UsersServices>();
+            services.AddTransient<IPaymentService, PaymentService>();
+
+        }
 	}
 }

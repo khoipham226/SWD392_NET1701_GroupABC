@@ -693,6 +693,27 @@
           }
         }
       },
+      "PayPalCheckoutSdk/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "PayPalHttp": "1.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/PayPalCheckoutSdk.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PayPalCheckoutSdk.dll": {}
+        }
+      },
+      "PayPalHttp/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/PayPalHttp-Dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PayPalHttp-Dotnet.dll": {}
+        }
+      },
       "System.Collections.Immutable/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -2052,6 +2073,30 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "PayPalCheckoutSdk/1.0.4": {
+      "sha512": "4fsOPj6SOJurbVf5ANg7NQ5TNvSYmtngf3dpJN11xEk6BP+5Rn6OcaaTbUx+bVnnYmgaoe5LbRZe52QpAjuwqg==",
+      "type": "package",
+      "path": "paypalcheckoutsdk/1.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/PayPalCheckoutSdk.dll",
+        "paypalcheckoutsdk.1.0.4.nupkg.sha512",
+        "paypalcheckoutsdk.nuspec"
+      ]
+    },
+    "PayPalHttp/1.0.1": {
+      "sha512": "Jlg8e9Egwxk+sfkIoGIkjQS+uxGNIOnY6NbUkWXKJiEGGqryeV9bIRNtSfjSgs/g02JcIQbKRFQW+8amtSo3ig==",
+      "type": "package",
+      "path": "paypalhttp/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/PayPalHttp-Dotnet.dll",
+        "paypalhttp.1.0.1.nupkg.sha512",
+        "paypalhttp.nuspec"
+      ]
+    },
     "System.Collections.Immutable/6.0.0": {
       "sha512": "l4zZJ1WU2hqpQQHXz1rvC3etVZN+2DLmQMO79FhOTZHMn8tDRr+WU287sbomD0BETlmKDn0ygUgVy9k5xkkJdA==",
       "type": "package",
@@ -2901,7 +2946,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "DataLayer >= 1.0.0"
+      "DataLayer >= 1.0.0",
+      "PayPalCheckoutSdk >= 1.0.4"
     ]
   },
   "packageFolders": {
@@ -2951,6 +2997,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "PayPalCheckoutSdk": {
+            "target": "Package",
+            "version": "[1.0.4, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

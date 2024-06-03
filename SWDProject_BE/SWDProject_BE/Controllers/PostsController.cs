@@ -20,81 +20,160 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
-            var posts = await _postService.GetAllPostsAsync();
-            return Ok(posts);
+            try
+            {
+                var posts = await _postService.GetAllPostsAsync();
+                return Ok(posts);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+            }
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
-            var post = await _postService.GetPostByIdAsync(id);
-            if (post == null)
+            try
             {
-                return NotFound();
+                var post = await _postService.GetPostByIdAsync(id);
+                if (post == null)
+                {
+                    return NotFound();
+                }
+                return Ok(post);
             }
-            return Ok(post);
+            catch (Exception ex)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+            }
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "admin,user")]
         public async Task<ActionResult> CreatePost([FromBody] PostRequestModel createPostRequest)
         {
-            //Take the user id from jwt
-            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
+            try
             {
-                return Unauthorized();
-            }
-            var userId = int.Parse(userIdClaim.Value);
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
 
-            var post = new Post
+                // Create a new post
+                var post = new Post
+                {
+                    UserId = userId,
+                    TransactionTypeId = createPostRequest.TransactionTypeId,
+                    ProductId = (int)createPostRequest.ProductId,
+                    Title = createPostRequest.Title,
+                    Description = createPostRequest.Description,
+                    Img = createPostRequest.Img,
+                    Price = createPostRequest.Price,
+                    Date = createPostRequest.Date,
+                    Status = createPostRequest.Status
+                };
+
+                // Add the post using the post service
+                await _postService.AddPostAsync(post);
+
+                // Return the created post
+                return CreatedAtAction(nameof(GetPost), new { id = post.Id }, post);
+            }
+            catch (Exception ex)
             {
-                UserId = userId,
-                TransactionTypeId = createPostRequest.TransactionTypeId,
-                ProductId = createPostRequest.ProductId,
-                Title = createPostRequest.Title,
-                Description = createPostRequest.Description,
-                Img = createPostRequest.Img,
-                Price = createPostRequest.Price,
-                Date = createPostRequest.Date,
-                Status = createPostRequest.Status
-            };
-            await _postService.AddPostAsync(post);
-            return CreatedAtAction(nameof(GetPost), new { id = post.Id }, post);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+            }
         }
 
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "admin,user")]
         public async Task<ActionResult> UpdatePost(int id, PostRequestModel updatePostRequest)
         {
-            var existingPost = await _postService.GetPostByIdAsync(id);
-            if (existingPost == null)
+            try
             {
-                return NotFound();
+                var existingPost = await _postService.GetPostByIdAsync(id);
+                if (existingPost == null)
+                {
+                    return NotFound();
+                }
+
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                // Ensure that only the owner or an admin
+                if (existingPost.UserId != userId && !User.IsInRole("Admin"))
+                {
+                    return Forbid();
+                }
+
+                // Update the post properties
+                existingPost.TransactionTypeId = updatePostRequest.TransactionTypeId;
+                existingPost.ProductId = (int)updatePostRequest.ProductId;
+                existingPost.Title = updatePostRequest.Title;
+                existingPost.Description = updatePostRequest.Description;
+                existingPost.Img = updatePostRequest.Img;
+                existingPost.Price = updatePostRequest.Price;
+                existingPost.Date = updatePostRequest.Date;
+                existingPost.Status = updatePostRequest.Status;
+
+                await _postService.UpdatePostAsync(existingPost);
+                return Ok("Post updated successfully.");
             }
-
-            // Update the post properties
-            existingPost.TransactionTypeId = updatePostRequest.TransactionTypeId;
-            existingPost.ProductId = updatePostRequest.ProductId;
-            existingPost.Title = updatePostRequest.Title;
-            existingPost.Description = updatePostRequest.Description;
-            existingPost.Img = updatePostRequest.Img;
-            existingPost.Price = updatePostRequest.Price;
-            existingPost.Date = updatePostRequest.Date;
-            existingPost.Status = updatePostRequest.Status;
-
-            await _postService.UpdatePostAsync(existingPost);
-            return Ok("Post updated successfully.");
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+            }
         }
+
 
         [HttpDelete("{id}")]
-        [Authorize]
+        [Authorize(Roles = "admin,user")]
         public async Task<ActionResult> DeletePost(int id)
         {
-            await _postService.DeletePostAsync(id);
-            return Ok("Post deleted successfully.");
+            try
+            {
+                var existingPost = await _postService.GetPostByIdAsync(id);
+                if (existingPost == null)
+                {
+                    return NotFound();
+                }
+
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                // Ensure that only the owner or an admin
+                if (existingPost.UserId != userId && !User.IsInRole("Admin"))
+                {
+                    return Forbid();
+                }
+
+                await _postService.DeletePostAsync(id);
+                return Ok("Post deleted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+            }
         }
+
     }
 }
