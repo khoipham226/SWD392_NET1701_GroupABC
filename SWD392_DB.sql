@@ -162,7 +162,7 @@ CREATE TABLE [Order]
     Id INT IDENTITY(1,1) NOT NULL,
 	[User_Id] INT NOT NULL,
 	[Post_Id] INT NOT NULL,
-	[Payment_Id] INT UNIQUE NULL,
+	[Payment_Id] INT NULL,
 	[Quantity] INT NOT NULL,
 	[Total_Price] FLOAT NOT NULL,
 	[Date] DATE NOT NULL,
@@ -244,6 +244,34 @@ INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('ban',null,
 /*Insert User*/
 INSERT INTO [User](UserName,[Password],[Email],DOB,[Address],[Phone_Number],Role_Id,Created_Date,[Status])
 VALUES ('admin','12345','admin@gmail.com','2002/05/31','186 le van viet','0889339769',1,'2024-05-31',1)
+INSERT INTO [User](UserName,[Password],[Email],DOB,[Address],[Phone_Number],Role_Id,Created_Date,[Status])
+VALUES ('user','12345','user@gmail.com','2002/05/31','186 le van viet','0889339769',2,'2024-05-31',1)
+INSERT INTO [User](UserName,[Password],[Email],DOB,[Address],[Phone_Number],Role_Id,Created_Date,[Status])
+VALUES ('user1','12345','admin@gmail.com','2002/05/31','186 le van viet','0889339769',2,'2024-05-31',1)
+
+/*Insert Product*/
+INSERT INTO [Product]([User_Id],[Category_Id],[Name],[Description],[Url_IMG],Stock_Quantity,[Status])
+VALUES (3,1,'may tinh asus',null,null,2,1)
+INSERT INTO [Product]([User_Id],[Category_Id],[Name],[Description],[Url_IMG],Stock_Quantity,[Status])
+VALUES (3,1,'may tinh acer',null,null,2,1)
+INSERT INTO [Product]([User_Id],[Category_Id],[Name],[Description],[Url_IMG],Stock_Quantity,[Status])
+VALUES (3,1,'may tinh dell',null,null,2,1)
+
+/*Insert Post*/
+INSERT INTO [Post]([User_Id],[TransactionType_Id],[Product_Id],Title,[Description],[IMG],Price,[Date],[Status])
+VALUES (2,1,1,'ban',null,null,100000,'2024-05-31',1)
+INSERT INTO [Post]([User_Id],[TransactionType_Id],[Product_Id],Title,[Description],[IMG],Price,[Date],[Status])
+VALUES (2,3,2,'ban',null,null,200000,'2024-05-31',1)
+INSERT INTO [Post]([User_Id],[TransactionType_Id],[Product_Id],Title,[Description],[IMG],Price,[Date],[Status])
+VALUES (2,3,3,'ban',null,null,300000,'2024-05-31',1)
+
+/*Insert Order*/
+INSERT INTO [Order]([User_Id],[Post_Id],[Payment_Id],Quantity,[Total_Price],[Date],[Status])
+VALUES (3,2,NULL,1,100000,'2024-05-31',1)
+INSERT INTO [Order]([User_Id],[Post_Id],[Payment_Id],Quantity,[Total_Price],[Date],[Status])
+VALUES (3,3,NULL,1,200000,'2024-05-31',1)
+INSERT INTO [Order]([User_Id],[Post_Id],[Payment_Id],Quantity,[Total_Price],[Date],[Status])
+VALUES (3,1,NULL,1,300000,'2024-05-31',1)
 
 
 

@@ -28,7 +28,7 @@ namespace SWDProject_BE.AppStarts
             services.AddScoped<IAuthServices, AuthServices>();
 			services.AddScoped<IUsersService, UsersServices>();
             services.AddScoped<IProductService, ProductService>();
-
+            services.AddScoped<IOrderService, OrderService>();
         }
 	}
 }
