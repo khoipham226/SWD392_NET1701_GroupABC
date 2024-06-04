@@ -20,13 +20,14 @@ namespace SWDProject_BE.AppStarts
 				options.UseSqlServer(configuration.GetConnectionString("local"));
 			});
 
-			services.AddScoped<IUnitOfWork, UnitOfWork>();
-			
-			//services.AddScoped<IJwtService, JwtService>();
-			services.AddScoped<IAuthServices, AuthServices>();
-			services.AddScoped<IPostService, PostService>();
-			services.AddScoped<IUsersService, UsersServices>();
-            services.AddTransient<IPaymentService, PaymentService>();
+
+            //services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); // Scoped lifecycle for UnitOfWork
+            services.AddScoped<IAuthServices, AuthServices>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IUsersService, UsersServices>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<PayPalService>();
 
         }
 	}
