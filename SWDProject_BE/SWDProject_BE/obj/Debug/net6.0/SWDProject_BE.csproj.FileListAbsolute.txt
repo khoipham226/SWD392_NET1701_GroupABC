@@ -912,3 +912,4 @@ F:\SU24\SWD392\New\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\obj\Debug
 F:\SU24\SWD392\New\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\obj\Debug\net6.0\SWDProject_BE.csproj.CopyComplete
 F:\SU24\SWD392\New\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\obj\Debug\net6.0\SWDProject_BE.genruntimeconfig.cache
 F:\SU24\SWD392\New\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\obj\Debug\net6.0\ref\SWDProject_BE.dll
+F:\SU24\SWD392\New\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

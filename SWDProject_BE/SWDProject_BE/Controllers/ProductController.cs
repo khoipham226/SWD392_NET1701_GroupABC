@@ -23,12 +23,12 @@ namespace SWDProject_BE.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public IActionResult GetAllProduct()
+        public async Task<IActionResult> GetAllProduct()
         {
             try 
             {
-               List<Product> list = ProductService.GetAllProducts();
-                return Ok(list);
+               var product = await ProductService.GetAllProducts();
+                return Ok(product);
 
             }
             catch (Exception ex)
@@ -37,6 +37,29 @@ namespace SWDProject_BE.Controllers
             }
             
         }
+
+        [HttpGet]
+        [Route("getProductDetails/{id}")]
+        public async Task<IActionResult> GetProductDetails(int id)
+        {
+            try
+            {
+                var producmodel = await ProductService.GetProductDetailsResponseModel(id);
+                if (producmodel != null)
+                {
+                    return Ok(producmodel);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [HttpPost]
         [Route("AddProduct")]

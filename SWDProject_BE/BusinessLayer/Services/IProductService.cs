@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.RequestModels.Product;
+using BusinessLayer.ResponseModels.Product;
 using DataLayer.Dto.Product;
 using DataLayer.Model;
 using DataLayer.Repository;
@@ -13,12 +14,14 @@ namespace BusinessLayer.Services
     public interface IProductService
     {
 
-        List<Product> GetAllProducts();
+        Task<List<GetAllProductResponseModel>> GetAllProducts();
         Task<String> addProduct(AddProductDto dto);
 
         Task<String> updateProduct(int id, UpdateProductDto dto);
 
         Task<String> deleteProduct(int id);
+
+        Task<GetAllProductResponseModel> GetProductDetailsResponseModel(int id);
 
     }
 }

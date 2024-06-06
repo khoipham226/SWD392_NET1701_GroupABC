@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLayer.UnitOfWork;
 using BusinessLayer.RequestModels.Product;
+using BusinessLayer.ResponseModels.Product;
+using AutoMapper;
 
 namespace BusinessLayer.Services
 {
@@ -17,11 +19,13 @@ namespace BusinessLayer.Services
     {
         private IUnitOfWork unitOfWork;
         private SWD392_DBContext context;
+        public IMapper _mapper;
 
-        public ProductService(IUnitOfWork unitOfWork, SWD392_DBContext context)
+        public ProductService(IUnitOfWork unitOfWork, SWD392_DBContext context, IMapper _mapper)
         {
             this.unitOfWork = unitOfWork;
             this.context = context;
+            this._mapper = _mapper;
         }
 
         public async Task<String> addProduct(AddProductDto dto)
@@ -70,9 +74,22 @@ namespace BusinessLayer.Services
             }
         }
 
-        public List<Product> GetAllProducts()
+        public async Task<List<GetAllProductResponseModel>> GetAllProducts()
         {
-            return unitOfWork.Repository<Product>().FindAll(p => p.Status == true).ToList();
+            
+            var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status ==true).ToList();
+            List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
+            foreach (var product in Product)
+            {
+                var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
+                var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
+                GetAllProductResponseModel result = new GetAllProductResponseModel();
+                result = product.MapToGetAllProduct(_mapper);
+                result.UserName = user.UserName;
+                result.CategoryName = category.Name;
+                Final.Add(result);
+            }
+            return Final;
 
         }
 
@@ -126,6 +143,19 @@ namespace BusinessLayer.Services
             }    
         }
 
+        public async Task<GetAllProductResponseModel> GetProductDetailsResponseModel(int id)
+        {
+            var product = await unitOfWork.Repository<Product>().GetById(id);
+            if(product != null)
+            {
+                var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
+                var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
 
+                GetAllProductResponseModel model = new GetAllProductResponseModel();
+                model = product.MapToGetAllProduct(_mapper);
+                return model;
+            }
+            return null;
+        }
     }
 }
