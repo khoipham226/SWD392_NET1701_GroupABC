@@ -14,6 +14,10 @@ namespace BusinessLayer.ResponseModels.Product
         public string UserName { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public int SubcategoryId { get; set; }
+        public string SubcategoryName { get; set; }
+        public string? Condition { get; set; }
+        public string? Location { get; set; }
         public string? Description { get; set; }
         public string? UrlImg { get; set; }
         public int StockQuantity { get; set; }

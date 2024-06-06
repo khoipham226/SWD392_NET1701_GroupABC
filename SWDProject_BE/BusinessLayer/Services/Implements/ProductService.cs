@@ -12,6 +12,7 @@ using DataLayer.UnitOfWork;
 using BusinessLayer.RequestModels.Product;
 using BusinessLayer.ResponseModels.Product;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BusinessLayer.Services
 {
@@ -83,10 +84,12 @@ namespace BusinessLayer.Services
             {
                 var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
                 var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
+                var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
                 GetAllProductResponseModel result = new GetAllProductResponseModel();
                 result = product.MapToGetAllProduct(_mapper);
                 result.UserName = user.UserName;
                 result.CategoryName = category.Name;
+                result.SubcategoryName = Subcategory.Name;
                 Final.Add(result);
             }
             return Final;
@@ -150,9 +153,10 @@ namespace BusinessLayer.Services
             {
                 var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
                 var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-
+                var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
                 GetAllProductResponseModel model = new GetAllProductResponseModel();
                 model = product.MapToGetAllProduct(_mapper);
+                model.UserName = user.UserName;
                 return model;
             }
             return null;
