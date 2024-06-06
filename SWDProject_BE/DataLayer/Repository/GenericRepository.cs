@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repository
 {
-	public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
 	{
 		private static SWD392_DBContext Context;
 		private static DbSet<T> Table { get; set; }

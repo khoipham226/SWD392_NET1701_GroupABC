@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.UnitOfWork
 {
-	public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
 	{
 		private readonly SWD392_DBContext _context;
 
