@@ -302,3 +302,6 @@ C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\SWDPr
 C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\PayPalCheckoutSdk.dll
+C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\PayPalCoreSDK.dll
+C:\Users\Dell\source\repos\Workspace\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\PayPalHttp-Dotnet.dll

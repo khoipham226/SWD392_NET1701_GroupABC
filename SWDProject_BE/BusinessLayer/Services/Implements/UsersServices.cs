@@ -1,11 +1,6 @@
 ﻿using DataLayer.Model;
 using DataLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Services.Implements
 {
@@ -21,6 +16,7 @@ namespace BusinessLayer.Services.Implements
 		public IEnumerable<User> GetUsers()
 		{
 			return _unitOfWork.Repository<User>().GetAll();
+
 		}
 
 		public async Task<User> GetUserByIdAsync(int id)

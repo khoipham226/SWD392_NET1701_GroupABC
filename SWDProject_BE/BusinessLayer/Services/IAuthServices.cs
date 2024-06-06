@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BusinessLayer.RequestModels;
+using BusinessLayer.ResponseModels;
+using DataLayer.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +11,9 @@ namespace BusinessLayer.Services
 {
 	public interface IAuthServices
 	{
-		Task<string> AuthenticateAsync(string username, string password);
+		Task<BaseResponse<LoginResponseModel>> AuthenticateAsync(string username, string password);
 		string GenerateJwtToken(string username, int roleId, int userId);
+
+		Task<BaseResponse<TokenModel>> RegisterAsync(RegisterModel user);
 	}
 }
