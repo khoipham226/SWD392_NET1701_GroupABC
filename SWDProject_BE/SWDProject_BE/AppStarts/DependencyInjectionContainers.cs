@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Services;
 using BusinessLayer.Services.Implements;
 using DataLayer.Model;
+using DataLayer.Repository;
 using DataLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,11 +22,14 @@ namespace SWDProject_BE.AppStarts
 			});
 
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
-			
-			//services.AddScoped<IJwtService, JwtService>();
-			services.AddScoped<IAuthServices, AuthServices>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            //services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IAuthServices, AuthServices>();
 			services.AddScoped<IUsersService, UsersServices>();
-			
-		}
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderService, OrderService>();
+
+        }
 	}
 }

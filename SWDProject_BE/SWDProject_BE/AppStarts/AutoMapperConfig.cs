@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Reflection;
 
 namespace SWDProject_BE.AppStarts
 {
@@ -8,8 +9,9 @@ namespace SWDProject_BE.AppStarts
 		{
 			MapperConfiguration mapperConfiguration = new MapperConfiguration(mc =>
 			{
-				//mc.ConfigStoreModule();
-			});
+                //mc.ConfigStoreModule();
+                mc.AddMaps(Assembly.GetExecutingAssembly());
+            });
 			IMapper mapper = mapperConfiguration.CreateMapper();
 			services.AddSingleton(mapper);
 		}
