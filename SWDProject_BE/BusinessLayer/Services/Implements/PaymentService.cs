@@ -59,7 +59,6 @@ namespace BusinessLayer.Services.Implements
                 Method = "PayPal",
                 Status = true,
                 Description = paymentId,
-                Order = order
             };
 
             await _paymentRepository.InsertAsync(payment);
@@ -83,9 +82,6 @@ namespace BusinessLayer.Services.Implements
             _paymentRepository.Update(payment, payment.Id);
             await _unitOfWork.CommitAsync();
 
-            var order = payment.Order;
-            order.Status = false;
-            _orderRepository.Update(order, order.Id);
             await _unitOfWork.CommitAsync();
 
             return refund;

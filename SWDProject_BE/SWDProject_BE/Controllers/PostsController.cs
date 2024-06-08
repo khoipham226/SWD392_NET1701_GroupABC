@@ -76,8 +76,6 @@ namespace SWDProject_BE.Controllers
                     ProductId = (int)createPostRequest.ProductId,
                     Title = createPostRequest.Title,
                     Description = createPostRequest.Description,
-                    Img = createPostRequest.Img,
-                    Price = createPostRequest.Price,
                     Date = createPostRequest.Date,
                     Status = createPostRequest.Status
                 };
@@ -125,8 +123,6 @@ namespace SWDProject_BE.Controllers
                 existingPost.ProductId = (int)updatePostRequest.ProductId;
                 existingPost.Title = updatePostRequest.Title;
                 existingPost.Description = updatePostRequest.Description;
-                existingPost.Img = updatePostRequest.Img;
-                existingPost.Price = updatePostRequest.Price;
                 existingPost.Date = updatePostRequest.Date;
                 existingPost.Status = updatePostRequest.Status;
 
