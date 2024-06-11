@@ -20,7 +20,6 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet]
-        [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
             try
@@ -55,7 +54,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "admin,user")]
+        [Authorize]
         public async Task<ActionResult> CreatePost([FromBody] PostRequestModel createPostRequest)
         {
             try
@@ -93,7 +92,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "admin,user")]
+        [Authorize]
         public async Task<ActionResult> UpdatePost(int id, PostRequestModel updatePostRequest)
         {
             try
@@ -137,7 +136,7 @@ namespace SWDProject_BE.Controllers
 
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "admin,user")]
+        [Authorize]
         public async Task<ActionResult> DeletePost(int id)
         {
             try
