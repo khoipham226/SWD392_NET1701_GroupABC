@@ -50,7 +50,6 @@ public class PaymentService : IPaymentService
             Method = "PayPal",
             Status = true,
             Description = paymentId,
-            Order = order
         };
 
         await _paymentRepository.InsertAsync(payment);
@@ -72,11 +71,6 @@ public class PaymentService : IPaymentService
 
         payment.Status = false;
         _paymentRepository.Update(payment, payment.Id);
-        await _unitOfWork.CommitAsync();
-
-        var order = payment.Order;
-        order.Status = false;
-        _orderRepository.Update(order, order.Id);
         await _unitOfWork.CommitAsync();
 
         return refund;

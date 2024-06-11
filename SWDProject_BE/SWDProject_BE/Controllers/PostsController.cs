@@ -20,7 +20,6 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet]
-        [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
             try
@@ -55,7 +54,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "admin,user")]
+        [Authorize]
         public async Task<ActionResult> CreatePost([FromBody] PostRequestModel createPostRequest)
         {
             try
@@ -76,8 +75,6 @@ namespace SWDProject_BE.Controllers
                     ProductId = (int)createPostRequest.ProductId,
                     Title = createPostRequest.Title,
                     Description = createPostRequest.Description,
-                    Img = createPostRequest.Img,
-                    Price = createPostRequest.Price,
                     Date = createPostRequest.Date,
                     Status = createPostRequest.Status
                 };
@@ -95,7 +92,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "admin,user")]
+        [Authorize]
         public async Task<ActionResult> UpdatePost(int id, PostRequestModel updatePostRequest)
         {
             try
@@ -125,8 +122,6 @@ namespace SWDProject_BE.Controllers
                 existingPost.ProductId = (int)updatePostRequest.ProductId;
                 existingPost.Title = updatePostRequest.Title;
                 existingPost.Description = updatePostRequest.Description;
-                existingPost.Img = updatePostRequest.Img;
-                existingPost.Price = updatePostRequest.Price;
                 existingPost.Date = updatePostRequest.Date;
                 existingPost.Status = updatePostRequest.Status;
 
@@ -141,7 +136,7 @@ namespace SWDProject_BE.Controllers
 
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "admin,user")]
+        [Authorize]
         public async Task<ActionResult> DeletePost(int id)
         {
             try

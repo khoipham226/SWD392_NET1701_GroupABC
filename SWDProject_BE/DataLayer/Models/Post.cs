@@ -18,8 +18,6 @@ namespace DataLayer.Model
         public int ProductId { get; set; }
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
-        public string? Img { get; set; }
-        public double Price { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
 
