@@ -6,9 +6,6 @@
 *.userosscache
 *.sln.docstates
 
-# Ignore .vs directory and contents
-SWDProject_BE/.vs/
-
 # Ignore specific .vs files
 SWDProject_BE/.vs/SWDProject_BE/v17/.suo
 SWDProject_BE/.vs/SWDProject_BE/v17/DocumentLayout.json
@@ -24,11 +21,11 @@ Release/
 *.json
 
 # Ignore specific bin and obj directories
-SWDProject_BE/BusinessLayer/bin/
-SWDProject_BE/BusinessLayer/obj/
-SWDProject_BE/DataLayer/obj/
-SWDProject_BE/SWDProject_BE/bin/
-SWDProject_BE/SWDProject_BE/obj/
+SWDProject_BE/BusinessLayer/bin/Debug/
+SWDProject_BE/BusinessLayer/obj/Debug/
+SWDProject_BE/DataLayer/obj/Debug/
+SWDProject_BE/SWDProject_BE/bin/Debug/
+SWDProject_BE/SWDProject_BE/obj/Debug/
 
 # Ignore AssemblyInfo and related cache files
 *.AssemblyInfo.cs
@@ -36,6 +33,12 @@ SWDProject_BE/SWDProject_BE/obj/
 *.assets.cache
 *.csproj.AssemblyReference.cache
 *.sourcelink.json
+
+# Ignore specific ref and refint directories
+SWDProject_BE/BusinessLayer/obj/Debug/net6.0/ref/
+SWDProject_BE/BusinessLayer/obj/Debug/net6.0/refint/
+SWDProject_BE/SWDProject_BE/obj/Debug/net6.0/ref/
+SWDProject_BE/SWDProject_BE/obj/Debug/net6.0/refint/
 
 # Ignore various Visual Studio files
 .vs/
