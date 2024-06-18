@@ -8,8 +8,6 @@ namespace BusinessLayer.RequestModels
 {
     public class PostRequestModel
     {
-        public int TransactionTypeId { get; set; }
-
         public int? ProductId { get; set; }
 
         public string Title { get; set; } = null!;

@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen(c =>
 	//c.OperationFilter<SnakecasingParameOperationFilter>();
 	c.SwaggerDoc("v1", new OpenApiInfo
 	{
-		Title = "Tour Booking API",
+		Title = "FUES API",
 		Version = "v1"
 	});
 	c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());

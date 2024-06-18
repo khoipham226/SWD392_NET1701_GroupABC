@@ -32,9 +32,7 @@ public class PaymentService : IPaymentService
         var order = new DataLayer.Model.Order
         {
             UserId = 1, // default
-            PostId = 3, // default
             PaymentId = null,
-            Quantity = 1, // default
             TotalPrice = 100, // default
             Date = DateTime.Now,
             Status = true

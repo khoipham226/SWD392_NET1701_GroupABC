@@ -71,7 +71,6 @@ namespace SWDProject_BE.Controllers
                 var post = new Post
                 {
                     UserId = userId,
-                    TransactionTypeId = createPostRequest.TransactionTypeId,
                     ProductId = (int)createPostRequest.ProductId,
                     Title = createPostRequest.Title,
                     Description = createPostRequest.Description,
@@ -118,7 +117,6 @@ namespace SWDProject_BE.Controllers
                 }
 
                 // Update the post properties
-                existingPost.TransactionTypeId = updatePostRequest.TransactionTypeId;
                 existingPost.ProductId = (int)updatePostRequest.ProductId;
                 existingPost.Title = updatePostRequest.Title;
                 existingPost.Description = updatePostRequest.Description;
