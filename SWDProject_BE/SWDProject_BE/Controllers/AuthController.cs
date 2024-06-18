@@ -1,18 +1,17 @@
 ﻿using BusinessLayer.RequestModels;
 using BusinessLayer.Services;
-using BusinessLayer.Services.Implements;
-using Microsoft.AspNetCore.Http;
+using DataLayer.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SWDProject_BE.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class LoginController : ControllerBase
+	public class AuthController : ControllerBase
 	{
 		private readonly IAuthServices _authService;
 
-		public LoginController(IAuthServices authServices)
+		public AuthController(IAuthServices authServices)
 		{
 			_authService = authServices;
 		}
@@ -20,13 +19,9 @@ namespace SWDProject_BE.Controllers
 		[HttpPost("login")]
 		public IActionResult Login(LoginModel model)
 		{
-			var token = _authService.AuthenticateAsync(model.Username, model.Password);
-			if (token == null)
-			{
-				return Unauthorized();
-			}
+			var result = _authService.AuthenticateAsync(model.Username, model.Password).Result;
 
-			return Ok(new { Token = token });
+			return StatusCode((int)result.Code, result);
 		}
 
 		[HttpPost("register")]
@@ -35,8 +30,9 @@ namespace SWDProject_BE.Controllers
 			// Implement user registration logic here
 
 			// Once the user is registered, generate JWT token
-			var token = _authService.GenerateJwtToken(model.Username, model.RoleId, model.UserId);
-			return Ok(new { Token = token });
+			//return Ok(_authService.RegisterAsync(model).Result);
+			var result = _authService.RegisterAsync(model).Result;
+			return StatusCode((int) result.Code, result);
 		}
 	}
 }

@@ -4,6 +4,8 @@ GO
 IF DB_ID('SWD392_DB') IS NOT NULL
 BEGIN
     DROP DATABASE [SWD392_DB]
+	--ALTER DATABASE [SWD392_DB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+	--DROP DATABASE [SWD392_DB];
 END
 GO
 
@@ -34,6 +36,8 @@ CREATE TABLE [User]
 	[Address] NVARCHAR(100) NOT NULL,
 	Phone_Number NVARCHAR(50) NOT NULL,
 	[Role_Id] INT NOT NULL,
+	[Gender] NVARCHAR(50) NOT NULL,
+	[ImgURL] NVARCHAR(MAX) NOT NULL,
 	Created_Date DATE NOT NULL,
 	Modified_Date DATE NULL,
 	[Rating_Count] INT NULL,
@@ -94,27 +98,35 @@ WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW
 )ON [PRIMARY];
 GO
 
-CREATE TABLE [Transaction_Type] 
+CREATE TABLE [SubCategory] 
 (
     Id INT IDENTITY(1,1) NOT NULL,
-	[Name] NVARCHAR(50) NOT NULL,
+	[Category_Id] INT NOT NULL,
+    [Name] NVARCHAR(100) NOT NULL,
 	[Description] NVARCHAR(MAX) NULL,
 	[Status] BIT NOT NULL, 
+FOREIGN KEY ([Category_Id]) REFERENCES [Category]([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )ON [PRIMARY];
 GO
+
 
 CREATE TABLE [Product] 
 (
     Id INT IDENTITY(1,1) NOT NULL,
 	[User_Id] INT NOT NULL,
 	[Category_Id] INT NOT NULL,
+	[Subcategory_Id] INT NOT NULL,
     [Name] NVARCHAR(100) NOT NULL,
+	[Price] FLOAT NOT NULL,
 	[Description] NVARCHAR(MAX) NULL,
+	[Condition] NVARCHAR(50) NULL,
+	[Location] NVARCHAR(100) NULL,
 	[Url_IMG] NVARCHAR(MAX) NULL, 
 	[Stock_Quantity] INT NOT NULL,
 	[Status] BIT NOT NULL, 
+FOREIGN KEY ([Subcategory_Id]) REFERENCES [Subcategory] ([Id]),
 FOREIGN KEY ([User_Id]) REFERENCES [User] ([Id]),
 FOREIGN KEY ([Category_Id]) REFERENCES [Category]([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
@@ -126,16 +138,12 @@ CREATE TABLE [Post]
 (
     Id INT IDENTITY(1,1) NOT NULL,
 	[User_Id] INT NOT NULL,
-	[TransactionType_Id] INT NOT NULL,
 	[Product_Id] INT NOT NULL,
     [Title] NVARCHAR(100) NOT NULL,
 	[Description] NVARCHAR(MAX) NULL,
-	[IMG] NVARCHAR(MAX) NULL, 
-	[Price] FLOAT NOT NULL,
 	[Date] DATE NOT NULL,
 	[Status] BIT NOT NULL, 
 FOREIGN KEY ([User_Id]) REFERENCES [User] ([Id]),
-FOREIGN KEY ([TransactionType_Id]) REFERENCES [Transaction_Type]([Id]),
 FOREIGN KEY ([Product_Id]) REFERENCES [Product]([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -157,51 +165,46 @@ WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW
 )ON [PRIMARY];
 GO
 
+
 CREATE TABLE [Order] 
 (
     Id INT IDENTITY(1,1) NOT NULL,
 	[User_Id] INT NOT NULL,
-	[Post_Id] INT NOT NULL,
-	[Payment_Id] INT UNIQUE NULL,
-	[Quantity] INT NOT NULL,
-	[Total_Price] FLOAT NOT NULL,
+	[Payment_Id] INT NULL,
+	[Total_Price] FLOAT NULL,
 	[Date] DATE NOT NULL,
 	[Status] BIT NOT NULL,
 FOREIGN KEY ([User_Id]) REFERENCES [User] ([Id]),
-FOREIGN KEY ([Post_Id]) REFERENCES [Post]([Id]),
 FOREIGN KEY ([Payment_Id]) REFERENCES [Payment]([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )ON [PRIMARY];
 GO
 
-CREATE TABLE [Dispute] 
+CREATE TABLE [OrderDetails] 
 (
     Id INT IDENTITY(1,1) NOT NULL,
-	[User_Id] INT NOT NULL,
 	[Order_Id] INT NOT NULL,
-	[Description] NVARCHAR(MAX) NULL,
-	[DATE] DATETIME NOT NULL,
-	[Status] BIT NOT NULL, 
-FOREIGN KEY ([User_Id]) REFERENCES [User] ([Id]),
-FOREIGN KEY ([Order_Id]) REFERENCES [Order]([Id]),
+	[Product_Id] INT NOT NULL,
+	[Quantity] INT NOT NULL,
+    TotalPrice FLOAT NOT NULL,
+	[Status] BIT NOT NULL,
+FOREIGN KEY ([Product_Id]) REFERENCES [Product] ([Id]),
+FOREIGN KEY ([Order_Id]) REFERENCES [Order] ([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )ON [PRIMARY];
-GO
 
 CREATE TABLE [Exchanged] 
 (
     Id INT IDENTITY(1,1) NOT NULL,
 	[User_Id] INT NOT NULL,
 	[Post_Id] INT NOT NULL,
-	[Order_Id] INT NOT NULL,
 	[Description] NVARCHAR(MAX) NULL,
 	[DATE] DATETIME NOT NULL,
 	[Status] BIT NOT NULL, 
 FOREIGN KEY ([User_Id]) REFERENCES [User] ([Id]),
 FOREIGN KEY ([Post_Id]) REFERENCES [Post] ([Id]),
-FOREIGN KEY ([Order_Id]) REFERENCES [Order]([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )ON [PRIMARY];
@@ -230,20 +233,25 @@ INSERT INTO [Role]([Name],[Status])VALUES ('user',1)
 INSERT INTO [Role]([Name],[Status])VALUES ('staff',1)
 
 /*Insert Category*/
-INSERT INTO [Category]([Name],[Description],[Status])VALUES ('may tinh sach tay',null,1)
-INSERT INTO [Category]([Name],[Description],[Status])VALUES ('chuot',null,1)
-INSERT INTO [Category]([Name],[Description],[Status])VALUES ('ban phim',null,1)
-INSERT INTO [Category]([Name],[Description],[Status])VALUES ('sach',null,1)
-INSERT INTO [Category]([Name],[Description],[Status])VALUES ('tai nghe',null,1)
+INSERT INTO [Category]([Name],[Description],[Status])VALUES ('Do dien tu',null,1)
+INSERT INTO [Category]([Name],[Description],[Status])VALUES ('do gia dung',null,1)
+INSERT INTO [Category]([Name],[Description],[Status])VALUES ('quan ao',null,1)
 
-/*Insert Transaction_Type*/
-INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('trao doi',null,1)
-INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('mua',null,1)
-INSERT INTO [Transaction_Type]([Name],[Description],[Status])VALUES ('ban',null,1)
+/*Insert SubCategory*/
+INSERT INTO [SubCategory](Category_Id,[Name],[Description],[Status])VALUES ('1','may tinh',null,1)
+INSERT INTO [SubCategory](Category_Id,[Name],[Description],[Status])VALUES ('1','chuot',null,1)
+INSERT INTO [SubCategory](Category_Id,[Name],[Description],[Status])VALUES ('1','ban phim',null,1)
 
-/*Insert User*/
-INSERT INTO [User](UserName,[Password],[Email],DOB,[Address],[Phone_Number],Role_Id,Created_Date,[Status])
-VALUES ('admin','12345','admin@gmail.com','2002/05/31','186 le van viet','0889339769',1,'2024-05-31',1)
+/*Insert Product*/
+INSERT INTO [Product]([User_Id],[Category_Id],Subcategory_Id,[Name],[Price],[Description],[Url_IMG],Stock_Quantity,[Status])
+VALUES (3,1,1,'may tinh asus',100,null,null,2,1)
+INSERT INTO [Product]([User_Id],[Category_Id],Subcategory_Id,[Name],[Price],[Description],[Url_IMG],Stock_Quantity,[Status])
+VALUES (3,1,1,'may tinh acer',200,null,null,2,1)
+INSERT INTO [Product]([User_Id],[Category_Id],Subcategory_Id,[Name],[Price],[Description],[Url_IMG],Stock_Quantity,[Status])
+VALUES (3,1,1,'may tinh dell',300,null,null,2,1)
+
+
+
 
 
 

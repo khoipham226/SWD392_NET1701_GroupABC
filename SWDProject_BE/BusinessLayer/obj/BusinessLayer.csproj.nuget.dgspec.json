@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {}
+    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {
+    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
+        "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
         "packagesPath": "C:\\Users\\laptoptk\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\obj\\",
+        "outputPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\laptoptk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj"
+              "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj"
               }
             }
           }
@@ -49,6 +49,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "PayPalCheckoutSdk": {
               "target": "Package",
               "version": "[1.0.4, )"
@@ -74,14 +82,14 @@
         }
       }
     },
-    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
+    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+        "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
         "packagesPath": "C:\\Users\\laptoptk\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\obj\\",
+        "outputPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\laptoptk\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,18 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
+  "WorkspaceRootPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc_thuan\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\utils\\paypalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\utils\\paypalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc_thuan\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc_thuan\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,41 +86,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PaymentService.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\PaymentService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\PaymentService.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\PaymentService.cs",
-              "RelativeToolTip": "BusinessLayer\\Services\\Implements\\PaymentService.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAowDAAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T06:23:13.905Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PayPalService.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Utils\\PayPalService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Utils\\PayPalService.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Utils\\PayPalService.cs",
-              "RelativeToolTip": "BusinessLayer\\Utils\\PayPalService.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAUwBcAAAAlAAAA",
+              "Title": "PaymentService.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\PaymentService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\PaymentService.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\PaymentService.cs",
+              "RelativeToolTip": "BusinessLayer\\Services\\Implements\\PaymentService.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAwwCIAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T06:20:33.332Z",
+              "WhenOpened": "2024-06-18T02:50:26.652Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PaymentsController.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PaymentsController.cs",
-              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\PaymentsController.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PaymentsController.cs",
-              "RelativeToolTip": "SWDProject_BE\\Controllers\\PaymentsController.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAqwDUAAAAQAAAA",
+              "Title": "DependencyInjectionContainers.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\AppStarts\\DependencyInjectionContainers.cs",
+              "RelativeDocumentMoniker": "SWDProject_BE\\AppStarts\\DependencyInjectionContainers.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\AppStarts\\DependencyInjectionContainers.cs",
+              "RelativeToolTip": "SWDProject_BE\\AppStarts\\DependencyInjectionContainers.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwBkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T06:14:58.162Z",
+              "WhenOpened": "2024-06-18T02:46:57.639Z",
               "EditorCaption": ""
             }
           ]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c2TcIrH0yU3M+rjp2r4gWp9JBYOXixJlC/X8g+IrG9FtdCZ7/ac1K1S1yaXTOO+MZtbIHwo7nwBRPmSeT4Fj5w==",
+  "dgSpecHash": "MjpiFwGiPNtOdNndc3zwg+Gc6fl1hzU9OCMXxJbQErcvu5lCjg0OtgAbU38ML+9ECl84VkQAPHjic+epkuiIyg==",
   "success": true,
-  "projectFilePath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC_Thuan\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+  "projectFilePath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\laptoptk\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\laptoptk\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

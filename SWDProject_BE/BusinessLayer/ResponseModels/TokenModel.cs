@@ -8,5 +8,6 @@ namespace BusinessLayer.ResponseModels
 {
 	public class TokenModel
 	{
+		public string? Token { get; set; }
 	}
 }

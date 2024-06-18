@@ -8,9 +8,12 @@
 
   <ItemGroup>
     <Folder Include="Mapper\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 
   <ItemGroup>
+	<PackageReference Include="AutoMapper" Version="12.0.1" />
+	<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
   </ItemGroup>
 
