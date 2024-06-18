@@ -124,7 +124,7 @@ namespace SWDProject_BE.Controllers
                 existingPost.Status = updatePostRequest.Status;
 
                 await _postService.UpdatePostAsync(existingPost);
-                return Ok("Post updated successfully.");
+                return StatusCode(StatusCodes.Status200OK, new { message = "Post updated successfully." });
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace SWDProject_BE.Controllers
                 }
 
                 await _postService.DeletePostAsync(id);
-                return Ok("Post deleted successfully.");
+                return StatusCode(StatusCodes.Status200OK, new { message = "Post deleted successfully." });
             }
             catch (Exception ex)
             {

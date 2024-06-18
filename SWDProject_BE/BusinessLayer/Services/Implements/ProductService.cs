@@ -79,7 +79,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true).ToList();
+                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.Price > 0).ToList();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {
@@ -208,6 +208,33 @@ namespace BusinessLayer.Services
 
             }
             catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<List<GetAllProductResponseModel>> GetAllProductsForExchange()
+        {
+            try
+            {
+                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.Price == 0).ToList();
+                List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
+                foreach (var product in Product)
+                {
+                    var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
+                    var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
+                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                    GetAllProductResponseModel result = new GetAllProductResponseModel();
+                    result = product.MapToGetAllProduct(_mapper);
+                    result.UserName = user.UserName;
+                    result.CategoryName = category.Name;
+                    result.SubcategoryName = Subcategory.Name;
+                    Final.Add(result);
+                }
+                return Final;
+
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }

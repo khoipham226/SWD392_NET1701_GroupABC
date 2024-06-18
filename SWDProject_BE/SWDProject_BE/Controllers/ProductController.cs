@@ -38,6 +38,22 @@ namespace SWDProject_BE.Controllers
             }
             
         }
+        [HttpGet]
+        [Route("GetAllForExchange")]
+        public async Task<IActionResult> GetAllProductForExchange()
+        {
+            try
+            {
+                var product = await ProductService.GetAllProductsForExchange();
+                return Ok(product);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
 
         [HttpGet]
         [Route("getProductDetails/{id}")]

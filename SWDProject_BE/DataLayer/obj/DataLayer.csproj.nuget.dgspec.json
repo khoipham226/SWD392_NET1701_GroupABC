@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\CN7\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {}
+    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {}
   },
   "projects": {
-    "E:\\CN7\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
+    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CN7\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "E:\\CN7\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "E:\\CN7\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\obj\\",
+        "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+        "packagesPath": "C:\\Users\\laptoptk\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\laptoptk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -85,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     }
