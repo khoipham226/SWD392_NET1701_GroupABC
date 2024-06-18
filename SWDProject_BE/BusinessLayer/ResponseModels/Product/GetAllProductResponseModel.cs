@@ -16,6 +16,8 @@ namespace BusinessLayer.ResponseModels.Product
         public string CategoryName { get; set; }
         public int SubcategoryId { get; set; }
         public string SubcategoryName { get; set; }
+        public double Price { get; set; }
+
         public string? Condition { get; set; }
         public string? Location { get; set; }
         public string? Description { get; set; }

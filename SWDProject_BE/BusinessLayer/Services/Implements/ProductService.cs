@@ -77,23 +77,29 @@ namespace BusinessLayer.Services
 
         public async Task<List<GetAllProductResponseModel>> GetAllProducts()
         {
-            
-            var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status ==true).ToList();
-            List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
-            foreach (var product in Product)
+            try
             {
-                var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
-                var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
-                GetAllProductResponseModel result = new GetAllProductResponseModel();
-                result = product.MapToGetAllProduct(_mapper);
-                result.UserName = user.UserName;
-                result.CategoryName = category.Name;
-                result.SubcategoryName = Subcategory.Name;
-                Final.Add(result);
-            }
-            return Final;
+                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true).ToList();
+                List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
+                foreach (var product in Product)
+                {
+                    var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
+                    var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
+                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                    GetAllProductResponseModel result = new GetAllProductResponseModel();
+                    result = product.MapToGetAllProduct(_mapper);
+                    result.UserName = user.UserName;
+                    result.CategoryName = category.Name;
+                    result.SubcategoryName = Subcategory.Name;
+                    Final.Add(result);
+                }
+                return Final;
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<string> updateProduct(int id,UpdateProductDto dto)
@@ -114,6 +120,10 @@ namespace BusinessLayer.Services
                     if (dto.Name != null)
                     {
                         product.Name = dto.Name;
+                    }
+                    if (dto.Price != 0)
+                    {
+                        product.Price = dto.Price;
                     }
                     if (dto.Description != null)
                     {
@@ -148,18 +158,25 @@ namespace BusinessLayer.Services
 
         public async Task<GetAllProductResponseModel> GetProductDetailsResponseModel(int id)
         {
-            var product = await unitOfWork.Repository<Product>().GetById(id);
-            if(product != null)
+            try
             {
-                var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
-                var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
-                GetAllProductResponseModel model = new GetAllProductResponseModel();
-                model = product.MapToGetAllProduct(_mapper);
-                model.UserName = user.UserName;
-                return model;
+                var product = await unitOfWork.Repository<Product>().GetById(id);
+                if (product != null)
+                {
+                    var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
+                    var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
+                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                    GetAllProductResponseModel model = new GetAllProductResponseModel();
+                    model = product.MapToGetAllProduct(_mapper);
+                    model.UserName = user.UserName;
+                    return model;
+                }
+                return null;
             }
-            return null;
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

@@ -17,6 +17,8 @@ namespace BusinessLayer.RequestModels.Product
         public string? Description { get; set; }
 
         public string? UrlImg { get; set; }
+        public double Price { get; set; } = 0;
+
 
         public int? StockQuantity { get; set; }
 
