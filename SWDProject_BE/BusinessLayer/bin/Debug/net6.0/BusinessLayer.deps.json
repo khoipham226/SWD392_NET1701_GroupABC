@@ -11,8 +11,7 @@
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "DataLayer": "1.0.0",
-          "PayPalCheckoutSdk": "1.0.4",
-          "PayPalCoreSDK": "1.7.1"
+          "PayPalCheckoutSdk": "1.0.4"
         },
         "runtime": {
           "BusinessLayer.dll": {}
@@ -519,14 +518,6 @@
           }
         }
       },
-      "Newtonsoft.Json/7.0.1": {
-        "runtime": {
-          "lib/net45/Newtonsoft.Json.dll": {
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.1.18622"
-          }
-        }
-      },
       "PayPalCheckoutSdk/1.0.4": {
         "dependencies": {
           "PayPalHttp": "1.0.1"
@@ -535,17 +526,6 @@
           "lib/netstandard2.0/PayPalCheckoutSdk.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "PayPalCoreSDK/1.7.1": {
-        "dependencies": {
-          "Newtonsoft.Json": "7.0.1"
-        },
-        "runtime": {
-          "lib/net451/PayPalCoreSDK.dll": {
-            "assemblyVersion": "1.7.1.0",
-            "fileVersion": "1.7.1.0"
           }
         }
       },
@@ -1036,26 +1016,12 @@
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
     },
-    "Newtonsoft.Json/7.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-q3V4KLetMLnt1gpAVWgtXnHjKs0UG/RalBc29u2ZKxd5t5Ze4JBL5WiiYIklJyK/5CRiIiNwigVQUo0FgbsuWA==",
-      "path": "newtonsoft.json/7.0.1",
-      "hashPath": "newtonsoft.json.7.0.1.nupkg.sha512"
-    },
     "PayPalCheckoutSdk/1.0.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-4fsOPj6SOJurbVf5ANg7NQ5TNvSYmtngf3dpJN11xEk6BP+5Rn6OcaaTbUx+bVnnYmgaoe5LbRZe52QpAjuwqg==",
       "path": "paypalcheckoutsdk/1.0.4",
       "hashPath": "paypalcheckoutsdk.1.0.4.nupkg.sha512"
-    },
-    "PayPalCoreSDK/1.7.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-hGOLo3X2vgOpOWJI91+vlBgr/Dchk3xZAF0bdIpKiAwjlRKMjzSC4zuT1eGwmQ8uVL1IaGBZwNGklyRHDniYlQ==",
-      "path": "paypalcoresdk/1.7.1",
-      "hashPath": "paypalcoresdk.1.7.1.nupkg.sha512"
     },
     "PayPalHttp/1.0.1": {
       "type": "package",

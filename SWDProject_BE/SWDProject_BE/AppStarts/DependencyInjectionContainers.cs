@@ -30,7 +30,10 @@ namespace SWDProject_BE.AppStarts
 			services.AddScoped<IProductService, ProductService>();
 			services.AddScoped<IPostService, PostService>();
 			services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddSingleton<PayPalService>();
+
 
         }
-	}
+    }
 }

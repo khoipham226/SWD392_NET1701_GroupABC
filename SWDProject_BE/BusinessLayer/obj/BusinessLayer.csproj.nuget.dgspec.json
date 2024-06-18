@@ -60,10 +60,6 @@
             "PayPalCheckoutSdk": {
               "target": "Package",
               "version": "[1.0.4, )"
-            },
-            "PayPalCoreSDK": {
-              "target": "Package",
-              "version": "[1.7.1, )"
             }
           },
           "imports": [
