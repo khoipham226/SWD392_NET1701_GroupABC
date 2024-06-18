@@ -3,9 +3,9 @@ GO
 
 IF DB_ID('SWD392_DB') IS NOT NULL
 BEGIN
-    DROP DATABASE [SWD392_DB]
-	--ALTER DATABASE [SWD392_DB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-	--DROP DATABASE [SWD392_DB];
+    --DROP DATABASE [SWD392_DB]
+	ALTER DATABASE [SWD392_DB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+	DROP DATABASE [SWD392_DB];
 END
 GO
 
@@ -117,7 +117,7 @@ CREATE TABLE [Product]
     Id INT IDENTITY(1,1) NOT NULL,
 	[User_Id] INT NOT NULL,
 	[Category_Id] INT NOT NULL,
-	[Subcategory_Id] INT NOT NULL,
+	[SubCategory_Id] INT NOT NULL,
     [Name] NVARCHAR(100) NOT NULL,
 	[Price] FLOAT NOT NULL,
 	[Description] NVARCHAR(MAX) NULL,
@@ -126,7 +126,7 @@ CREATE TABLE [Product]
 	[Url_IMG] NVARCHAR(MAX) NULL, 
 	[Stock_Quantity] INT NOT NULL,
 	[Status] BIT NOT NULL, 
-FOREIGN KEY ([Subcategory_Id]) REFERENCES [Subcategory] ([Id]),
+FOREIGN KEY ([SubCategory_Id]) REFERENCES [SubCategory] ([Id]),
 FOREIGN KEY ([User_Id]) REFERENCES [User] ([Id]),
 FOREIGN KEY ([Category_Id]) REFERENCES [Category]([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
@@ -236,6 +236,11 @@ INSERT INTO [Role]([Name],[Status])VALUES ('staff',1)
 INSERT INTO [Category]([Name],[Description],[Status])VALUES ('Do dien tu',null,1)
 INSERT INTO [Category]([Name],[Description],[Status])VALUES ('do gia dung',null,1)
 INSERT INTO [Category]([Name],[Description],[Status])VALUES ('quan ao',null,1)
+
+/*Insert User*/
+INSERT INTO [User]([Name],[Description],[Status])VALUES ('Do dien tu',null,1)
+INSERT INTO [User]([Name],[Description],[Status])VALUES ('do gia dung',null,1)
+INSERT INTO [User]([Name],[Description],[Status])VALUES ('quan ao',null,1)
 
 /*Insert SubCategory*/
 INSERT INTO [SubCategory](Category_Id,[Name],[Description],[Status])VALUES ('1','may tinh',null,1)

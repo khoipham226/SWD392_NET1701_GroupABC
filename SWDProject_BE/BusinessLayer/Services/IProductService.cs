@@ -22,6 +22,7 @@ namespace BusinessLayer.Services
         Task<String> deleteProduct(int id);
 
         Task<GetAllProductResponseModel> GetProductDetailsResponseModel(int id);
+        Task<List<GetAllProductResponseModel>> GetProductByUserId(int userId);
 
     }
 }

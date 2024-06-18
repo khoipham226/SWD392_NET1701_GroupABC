@@ -4,6 +4,7 @@ using DataLayer.Dto.Product;
 using DataLayer.Model;
 using DataLayer.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Linq;
 
@@ -48,6 +49,28 @@ namespace SWDProject_BE.Controllers
                 if (producmodel != null)
                 {
                     return Ok(producmodel);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("getProductByUserId/{userId}")]
+        public async Task<IActionResult> getProductByUserId(int userId)
+        {
+            try
+            {
+                var producModel = await ProductService.GetProductByUserId(userId);
+                if (!producModel.IsNullOrEmpty())
+                {
+                    return Ok(producModel);
                 }
                 else
                 {

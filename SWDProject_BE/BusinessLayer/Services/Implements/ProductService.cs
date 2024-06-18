@@ -178,5 +178,39 @@ namespace BusinessLayer.Services
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<List<GetAllProductResponseModel>> GetProductByUserId(int userId)
+        {
+            try
+            {
+                var listProduct = unitOfWork.Repository<Product>().FindAll(p => p.UserId == userId).ToList();
+                if(listProduct != null)
+                {
+                    List<GetAllProductResponseModel> final = new List<GetAllProductResponseModel>();
+                    foreach (var product in listProduct)
+                    {
+                        var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
+                        var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
+                        var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                        GetAllProductResponseModel result = new GetAllProductResponseModel();
+                        result = product.MapToGetAllProduct(_mapper);
+                        result.UserName = user.UserName;
+                        result.CategoryName = category.Name;
+                        result.SubcategoryName = Subcategory.Name;
+                        final.Add(result);
+                    }
+                    return final;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
