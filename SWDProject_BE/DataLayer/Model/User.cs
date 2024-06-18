@@ -8,7 +8,6 @@ namespace DataLayer.Model
         public User()
         {
             BannedAccounts = new HashSet<BannedAccount>();
-            Disputes = new HashSet<Dispute>();
             Exchangeds = new HashSet<Exchanged>();
             Orders = new HashSet<Order>();
             Posts = new HashSet<Post>();
@@ -26,6 +25,8 @@ namespace DataLayer.Model
         public string Address { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
         public int RoleId { get; set; }
+        public string Gender { get; set; } = null!;
+        public string ImgUrl { get; set; } = null!;
         public DateTime CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public int? RatingCount { get; set; }
@@ -33,7 +34,6 @@ namespace DataLayer.Model
 
         public virtual Role Role { get; set; } = null!;
         public virtual ICollection<BannedAccount> BannedAccounts { get; set; }
-        public virtual ICollection<Dispute> Disputes { get; set; }
         public virtual ICollection<Exchanged> Exchangeds { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
