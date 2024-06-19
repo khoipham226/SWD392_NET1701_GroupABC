@@ -14,6 +14,7 @@ namespace BusinessLayer.Services
     public interface IProductService
     {
 
+        Task<List<GetAllProductResponseModel>> GetAllProductsValid();
         Task<List<GetAllProductResponseModel>> GetAllProducts();
         Task<List<GetAllProductResponseModel>> GetAllProductsForExchange();
         Task<String> addProduct(AddProductDto dto);

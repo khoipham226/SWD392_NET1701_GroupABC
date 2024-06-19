@@ -380,7 +380,6 @@ F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debu
 F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\NuGet.Protocol.dll
 F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\NuGet.Versioning.dll
 F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\PayPalCheckoutSdk.dll
-F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\PayPalCoreSDK.dll
 F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\PayPalHttp-Dotnet.dll
 F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\SQLitePCLRaw.batteries_v2.dll
 F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\bin\Debug\net6.0\SQLitePCLRaw.core.dll

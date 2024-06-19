@@ -1,18 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
+  "WorkspaceRootPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\usersservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\usersservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\requestmodels\\product\\updateproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodels\\product\\updateproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\product\\getallproductresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\product\\getallproductresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\product\\productmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\product\\productmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\loginresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\loginresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\requestmodels\\product\\addproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodels\\product\\addproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\requestmodels\\postrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodels\\postrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\requestmodels\\usersrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodels\\usersrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,16 +62,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 22,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -90,41 +122,171 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PostsController.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
-              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\PostsController.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
-              "RelativeToolTip": "SWDProject_BE\\Controllers\\PostsController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAowH4AAABYAAAA",
+              "DocumentIndex": 1,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\ProductService.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
+              "RelativeToolTip": "BusinessLayer\\Services\\Implements\\ProductService.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAADwv1EAAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T06:11:53.115Z",
+              "WhenOpened": "2024-06-19T10:37:58.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductMapping.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
+              "RelativeToolTip": "BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T10:45:25.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginResponseModel.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
+              "RelativeToolTip": "BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T10:45:25.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetAllProductResponseModel.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
+              "RelativeToolTip": "BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T10:37:35.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AddProductDto.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\Product\\AddProductDto.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModels\\Product\\AddProductDto.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\Product\\AddProductDto.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModels\\Product\\AddProductDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T10:36:51.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Product.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Product.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Model\\Product.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Product.cs",
+              "RelativeToolTip": "DataLayer\\Model\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T10:36:39.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PostRequestModel.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\PostRequestModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModels\\PostRequestModel.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\PostRequestModel.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModels\\PostRequestModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T10:37:30.856Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IProductService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Services\\IProductService.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IProductService.cs",
+              "RelativeToolTip": "BusinessLayer\\Services\\IProductService.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAIAwwBEAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T06:09:25.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\ProductController.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
               "RelativeToolTip": "SWDProject_BE\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAvwHwAAABDAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAA7wDIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-18T06:11:16.617Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IProductService.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IProductService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Services\\IProductService.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IProductService.cs",
-              "RelativeToolTip": "BusinessLayer\\Services\\IProductService.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAIAwwBQAAAAiAAAA",
+              "DocumentIndex": 4,
+              "Title": "UpdateProductDto.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\Product\\UpdateProductDto.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModels\\Product\\UpdateProductDto.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\Product\\UpdateProductDto.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModels\\Product\\UpdateProductDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T06:09:25.901Z",
+              "WhenOpened": "2024-06-19T10:41:14.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsersServices.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\UsersServices.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\UsersServices.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\UsersServices.cs",
+              "RelativeToolTip": "BusinessLayer\\Services\\Implements\\UsersServices.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T10:49:09.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UsersRequestModel.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\UsersRequestModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModels\\UsersRequestModel.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\UsersRequestModel.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModels\\UsersRequestModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T10:37:32.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PostsController.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
+              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\PostsController.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
+              "RelativeToolTip": "SWDProject_BE\\Controllers\\PostsController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAowH4AAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T06:11:53.115Z",
               "EditorCaption": ""
             }
           ]
@@ -135,15 +297,15 @@
           "Children": [
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         },

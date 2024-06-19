@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {}
+    "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {
+    "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
-        "packagesPath": "C:\\Users\\laptoptk\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\obj\\",
+        "projectPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\BusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\laptoptk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj"
+              "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj"
               }
             }
           }
@@ -73,26 +78,44 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.30, 6.0.30]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.30, 6.0.30]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.30, 6.0.30]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
+    "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
-        "packagesPath": "C:\\Users\\laptoptk\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\obj\\",
+        "projectPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\laptoptk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,6 +123,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -163,12 +187,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.30, 6.0.30]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.30, 6.0.30]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.30, 6.0.30]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

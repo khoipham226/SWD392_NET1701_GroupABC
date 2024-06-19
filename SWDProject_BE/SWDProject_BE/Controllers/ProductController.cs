@@ -23,12 +23,12 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet]
-        [Route("GetAll")]
-        public async Task<IActionResult> GetAllProduct()
+        [Route("GetAllValid")]
+        public async Task<IActionResult> GetAllProductValid()
         {
             try 
             {
-               var product = await ProductService.GetAllProducts();
+               var product = await ProductService.GetAllProductsValid();
                 return Ok(product);
 
             }
@@ -38,6 +38,24 @@ namespace SWDProject_BE.Controllers
             }
             
         }
+
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAllProduct()
+        {
+            try
+            {
+                var product = await ProductService.GetAllProducts();
+                return Ok(product);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
         [HttpGet]
         [Route("GetAllForExchange")]
         public async Task<IActionResult> GetAllProductForExchange()

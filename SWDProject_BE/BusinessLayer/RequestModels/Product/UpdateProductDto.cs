@@ -9,31 +9,30 @@ namespace BusinessLayer.RequestModels.Product
     public class UpdateProductDto
     {
         public int? UserId { get; set; }
-
         public int? CategoryId { get; set; }
-
+        public int? SubcategoryId { get; set; }
         public string? Name { get; set; } = null!;
-
+        public double? Price { get; set; }
         public string? Description { get; set; }
-
+        public string? Condition { get; set; }
+        public string? Location { get; set; }
         public string? UrlImg { get; set; }
-        public double Price { get; set; } = 0;
-
-
         public int? StockQuantity { get; set; }
-
         public bool? Status { get; set; }
 
-        public UpdateProductDto(int? userId, int? categoryId, string? name, string? description, string? urlImg, int? stockQuantity, bool? status)
+        public UpdateProductDto(int? userId, int? categoryId, int? subcategoryId, string? name, double? price, string? description, string? condition, string? location, string? urlImg, int? stockQuantity, bool? status)
         {
             UserId = userId;
             CategoryId = categoryId;
+            SubcategoryId = subcategoryId;
             Name = name;
+            Price = price;
             Description = description;
+            Condition = condition;
+            Location = location;
             UrlImg = urlImg;
             StockQuantity = stockQuantity;
             Status = status;
-
         }
     }
 }
