@@ -28,8 +28,8 @@ namespace SWDProject_BE.AppStarts
 
 
             //Report
-            CreateMap<ReportRequestModel, SubCategory>().ReverseMap();
-            CreateMap<ReportResponseModel, SubCategory>().ReverseMap();
+            CreateMap<ReportRequestModel, Report>().ReverseMap();
+            CreateMap<ReportResponseModel, Report>().ReverseMap();
 
         }
     }
