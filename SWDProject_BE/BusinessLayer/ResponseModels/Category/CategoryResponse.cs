@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.ResponseModels.Subcategory
+namespace BusinessLayer.ResponseModels.Category
 {
-    public class SubcategoryResponseModel
+    public class CategoryResponse
     {
         public int Id { get; set; }
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
         public bool Status { get; set; }

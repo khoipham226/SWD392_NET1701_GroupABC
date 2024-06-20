@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Mapper\" />
-    <Folder Include="RequestModels\Category\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 
