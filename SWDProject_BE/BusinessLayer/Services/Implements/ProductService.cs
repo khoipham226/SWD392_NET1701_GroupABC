@@ -252,11 +252,11 @@ namespace BusinessLayer.Services
             }
         }
 
-        public async Task<List<GetAllProductResponseModel>> GetAllProductsForExchange()
+        public async Task<List<GetAllProductResponseModel>> GetAllProductsForExchange(int userId)
         {
             try
             {
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.Price == 0).ToList();
+                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.Price == 0 && p.UserId == userId).ToList();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {

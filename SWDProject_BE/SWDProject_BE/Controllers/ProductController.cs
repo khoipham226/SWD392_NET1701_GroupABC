@@ -59,12 +59,20 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllForExchange")]
+        [Route("GetAllForExchangeByUserId")]
         public async Task<IActionResult> GetAllProductForExchange()
         {
             try
             {
-                var product = await ProductService.GetAllProductsForExchange();
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                var product = await ProductService.GetAllProductsForExchange(userId);
                 return Ok(product);
 
             }
