@@ -3,10 +3,12 @@ using BusinessLayer.Services;
 using DataLayer.Dto.Product;
 using DataLayer.Model;
 using DataLayer.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Linq;
+using System.Security.Claims;
 
 namespace SWDProject_BE.Controllers
 {
@@ -96,11 +98,20 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet]
-        [Route("getProductByUserId/{userId}")]
-        public async Task<IActionResult> getProductByUserId(int userId)
+        [Route("getProductByUserId")]
+        [Authorize]
+        public async Task<IActionResult> getProductByUserId()
         {
             try
             {
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
                 var producModel = await ProductService.GetProductByUserId(userId);
                 if (!producModel.IsNullOrEmpty())
                 {
