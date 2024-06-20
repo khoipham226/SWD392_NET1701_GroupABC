@@ -51,8 +51,9 @@ namespace BusinessLayer.Services.Implements
 							Dob = user.Dob,
 							Address = user.Address,
 							PhoneNumber = user.PhoneNumber,
-							RoleId = user.RoleId
-	},
+							RoleId = user.RoleId,
+							ImgUrl = user.ImgUrl
+						},
 
 
 					}

@@ -35,6 +35,7 @@ namespace BusinessLayer.Services.Implements
                 Description = post.Description,
                 Date = post.Date,
                 PublicStatus = (bool)post.PublicStatus,
+                ImageUrl = post.ImageUrl,
                 User = new UserResponse
                 {
                     Id = post.User.Id,
@@ -68,6 +69,7 @@ namespace BusinessLayer.Services.Implements
                 Description = post.Description,
                 Date = post.Date,
                 PublicStatus = (bool)post.PublicStatus,
+                ImageUrl = post.ImageUrl,
                 User = new UserResponse
                 {
                     Id = post.User.Id,
@@ -101,6 +103,7 @@ namespace BusinessLayer.Services.Implements
                 Description = post.Description,
                 Date = post.Date,
                 PublicStatus = (bool)post.PublicStatus,
+                ImageUrl = post.ImageUrl,
                 User = new UserResponse
                 {
                     Id = post.User.Id,
@@ -123,6 +126,58 @@ namespace BusinessLayer.Services.Implements
             return await _unitOfWork.Repository<Post>().GetById(id);
         }
 
+        public async Task<PostResponseModel> GetPostDetailAsync(int id)
+        {
+            var post = await _unitOfWork.Repository<Post>().ObjectMapper(
+                selector: p => new
+                {
+                    p.Id,
+                    p.Title,
+                    p.Description,
+                    p.Date,
+                    p.PublicStatus,
+                    p.ImageUrl,
+                    User = p.User == null ? null : new
+                    {
+                        p.User.Id,
+                        p.User.UserName,
+                        p.User.ImgUrl
+                    },
+                    Product = p.Product == null ? null : new
+                    {
+                        p.Product.Id,
+                        p.Product.Name,
+                        p.Product.UrlImg
+                    }
+                },
+                predicate: p => p.Id == id,
+                include: query => query.Include(p => p.User).Include(p => p.Product)
+            ).FirstOrDefaultAsync();
+
+            var postResponseModel = new PostResponseModel()
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Description = post.Description,
+                Date = post.Date,
+                PublicStatus = (bool)post.PublicStatus,
+                ImageUrl = post.ImageUrl,
+                User = new UserResponse
+                {
+                    Id = post.User.Id,
+                    UserName = post.User.UserName,
+                    ImgUrl = post.User.ImgUrl,
+                },
+                Product = new ProductResponse
+                {
+                    Id = post.Product.Id,
+                    Name = post.Product.Name,
+                    UrlImg = post.Product.UrlImg
+                }
+            };
+
+            return postResponseModel;
+        }
         public async Task AddPostAsync(Post post)
         {
             await _unitOfWork.Repository<Post>().InsertAsync(post);

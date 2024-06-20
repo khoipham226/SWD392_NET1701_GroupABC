@@ -75,7 +75,7 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                var post = await _postService.GetPostByIdAsync(id);
+                var post = await _postService.GetPostDetailAsync(id);
                 if (post == null)
                 {
                     return NotFound();
