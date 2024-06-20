@@ -31,6 +31,7 @@ namespace SWDProject_BE.AppStarts
 			services.AddScoped<IPostService, PostService>();
 			services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddSingleton<PayPalService>();
 
 

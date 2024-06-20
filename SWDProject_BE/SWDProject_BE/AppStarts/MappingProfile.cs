@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using BusinessLayer.ResponseModels.Category;
 using BusinessLayer.ResponseModels.Product;
+using BusinessLayer.ResponseModels.Subcategory;
 using DataLayer.Model;
 
 namespace SWDProject_BE.AppStarts
@@ -8,7 +10,8 @@ namespace SWDProject_BE.AppStarts
     {
         public MappingProfile()
         {
-            CreateMap<Product, GetAllProductResponseModel>();
+            CreateMap<Product, GetAllProductResponseModel>().ReverseMap();
+            CreateMap<SubcategoryResponseModel, SubCategory>().ReverseMap();
         
         }
     }
