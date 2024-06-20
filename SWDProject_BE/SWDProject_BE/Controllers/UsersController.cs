@@ -60,7 +60,7 @@ namespace SWDProject_BE.Controllers
 
 			// Map properties from userModel to user entity
 			//user.Field = userModel.Field;
-			user.Password = userModel.Password;
+			//user.Password = userModel.Password;
 			user.Dob = userModel.Dob;
 			user.Address = userModel.Address;
 			user.PhoneNumber = userModel.PhoneNumber;		
