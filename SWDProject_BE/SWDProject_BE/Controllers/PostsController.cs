@@ -33,6 +33,20 @@ namespace SWDProject_BE.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("getAllByUserId/{userId}")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetPostsByUserId(int userId)
+        {
+            try
+            {
+                var posts = await _postService.GetAllPostsByUserIdAsync(userId);
+                return Ok(posts);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+            }
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Post>> GetPost(int id)

@@ -1,4 +1,5 @@
-﻿using DataLayer.Model;
+﻿using BusinessLayer.ResponseModels;
+using DataLayer.Model;
 using DataLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,9 +19,69 @@ namespace BusinessLayer.Services.Implements
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Post>> GetAllPostsAsync()
+        public async Task<IEnumerable<PostResponseModel>> GetAllPostsAsync()
         {
-            return await _unitOfWork.Repository<Post>().GetAll().ToListAsync();
+            var posts = await _unitOfWork.Repository<Post>()
+                            .GetAll()
+                            .Include(p => p.User)
+                            .Include(p => p.Product)
+                            .ToListAsync();
+
+            var postResponseModels = posts.Select(post => new PostResponseModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Description = post.Description,
+                Date = post.Date,
+                Status = post.Status,
+                User = new UserResponse
+                {
+                    Id = post.User.Id,
+                    UserName = post.User.UserName,
+                    ImgUrl = post.User.ImgUrl,
+                },
+                Product = new ProductResponse
+                {
+                    Id = post.Product.Id,
+                    Name = post.Product.Name,
+                    UrlImg = post.Product.UrlImg
+                }
+            }).ToList();
+
+            return postResponseModels;
+        }
+
+        public async Task<IEnumerable<PostResponseModel>> GetAllPostsByUserIdAsync(int userId)
+        {
+            var posts = await _unitOfWork.Repository<Post>()
+                                 .GetAll()
+                                 .Where(p => p.UserId == userId)
+                                 .Include(p => p.User)
+                                 .Include(p => p.Product)
+                                 .ToListAsync();
+
+            var postResponseModels = posts.Select(post => new PostResponseModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Description = post.Description,
+                Date = post.Date,
+                Status = post.Status,
+                User = new UserResponse
+                {
+                    Id = post.User.Id,
+                    UserName = post.User.UserName,
+                    ImgUrl = post.User.ImgUrl,
+                },
+                Product = new ProductResponse
+                {
+                    Id = post.Product.Id,
+                    Name = post.Product.Name,
+                    UrlImg = post.Product.UrlImg
+                }
+            }).ToList();
+
+            return postResponseModels;
         }
 
         public async Task<Post> GetPostByIdAsync(int id)

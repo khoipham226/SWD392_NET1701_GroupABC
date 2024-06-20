@@ -1,4 +1,5 @@
-﻿using DataLayer.Model;
+﻿using BusinessLayer.ResponseModels;
+using DataLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace BusinessLayer.Services
 {
     public interface IPostService
     {
-        Task<IEnumerable<Post>> GetAllPostsAsync();
+        Task<IEnumerable<PostResponseModel>> GetAllPostsAsync();
+        Task<IEnumerable<PostResponseModel>> GetAllPostsByUserIdAsync(int userId);
         Task<Post> GetPostByIdAsync(int id);
         Task AddPostAsync(Post post);
         Task UpdatePostAsync(Post post);
