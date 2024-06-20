@@ -47,11 +47,20 @@ namespace SWDProject_BE.Controllers
             }
         }
 
-        [HttpGet("getAllByUserId/{userId}")]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPostsByUserId(int userId)
+        [HttpGet("getAllByUserId")]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Post>>> GetPostsByUserId()
         {
             try
             {
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
                 var posts = await _postService.GetAllPostsByUserIdAsync(userId);
                 return Ok(posts);
             }

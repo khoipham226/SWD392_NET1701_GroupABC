@@ -34,7 +34,7 @@ namespace BusinessLayer.Services.Implements
                 Title = post.Title,
                 Description = post.Description,
                 Date = post.Date,
-                Status = (bool)post.PublicStatus,
+                PublicStatus = (bool)post.PublicStatus,
                 User = new UserResponse
                 {
                     Id = post.User.Id,
@@ -67,7 +67,7 @@ namespace BusinessLayer.Services.Implements
                 Title = post.Title,
                 Description = post.Description,
                 Date = post.Date,
-                Status = (bool)post.PublicStatus,
+                PublicStatus = (bool)post.PublicStatus,
                 User = new UserResponse
                 {
                     Id = post.User.Id,
@@ -100,7 +100,7 @@ namespace BusinessLayer.Services.Implements
                 Title = post.Title,
                 Description = post.Description,
                 Date = post.Date,
-                Status = (bool)post.PublicStatus,
+                PublicStatus = (bool)post.PublicStatus,
                 User = new UserResponse
                 {
                     Id = post.User.Id,
