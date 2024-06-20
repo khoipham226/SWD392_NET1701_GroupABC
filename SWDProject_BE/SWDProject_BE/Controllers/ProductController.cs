@@ -135,7 +135,15 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                String message = await ProductService.addProduct(dto);
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                String message = await ProductService.addProduct(dto, userId);
                 return Ok(message);
 
             }
@@ -151,7 +159,15 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                String message = await ProductService.updateProduct(id,dto);
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                String message = await ProductService.updateProduct(id,dto,userId);
                 if(message != null)
                 {
                     return Ok(message);

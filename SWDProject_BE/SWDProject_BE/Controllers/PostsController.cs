@@ -110,7 +110,7 @@ namespace SWDProject_BE.Controllers
                     ProductId = (int)createPostRequest.ProductId,
                     Title = createPostRequest.Title,
                     Description = createPostRequest.Description,
-                    Date = createPostRequest.Date,
+                    Date = DateTime.Now,
                     ImageUrl = createPostRequest.ImageUrl,
                     PublicStatus = false,
                     ExchangedStatus = false,
@@ -158,7 +158,7 @@ namespace SWDProject_BE.Controllers
                 existingPost.ProductId = (int)updatePostRequest.ProductId;
                 existingPost.Title = updatePostRequest.Title;
                 existingPost.Description = updatePostRequest.Description;
-                existingPost.Date = updatePostRequest.Date;
+                existingPost.Date = DateTime.Now;
                 existingPost.ImageUrl = updatePostRequest.ImageUrl;
 
                 await _postService.UpdatePostAsync(existingPost);

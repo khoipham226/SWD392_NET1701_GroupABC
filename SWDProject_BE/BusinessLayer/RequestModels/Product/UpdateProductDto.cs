@@ -8,7 +8,6 @@ namespace BusinessLayer.RequestModels.Product
 {
     public class UpdateProductDto
     {
-        public int? UserId { get; set; }
         public int? CategoryId { get; set; }
         public int? SubcategoryId { get; set; }
         public string? Name { get; set; } = null!;
@@ -20,9 +19,8 @@ namespace BusinessLayer.RequestModels.Product
         public int? StockQuantity { get; set; }
         public bool? Status { get; set; }
 
-        public UpdateProductDto(int? userId, int? categoryId, int? subcategoryId, string? name, double? price, string? description, string? condition, string? location, string? urlImg, int? stockQuantity, bool? status)
+        public UpdateProductDto(int? categoryId, int? subcategoryId, string? name, double? price, string? description, string? condition, string? location, string? urlImg, int? stockQuantity, bool? status)
         {
-            UserId = userId;
             CategoryId = categoryId;
             SubcategoryId = subcategoryId;
             Name = name;

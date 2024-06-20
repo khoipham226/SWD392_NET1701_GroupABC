@@ -80,7 +80,7 @@ namespace BusinessLayer.Services.Implements
 					new Claim(ClaimTypes.Role, roleId.ToString()), // Thêm vai trò của người dùng vào token
 					new Claim(ClaimTypes.NameIdentifier, userId.ToString())
 				}),
-				Expires = DateTime.UtcNow.AddHours(1),
+				Expires = DateTime.UtcNow.AddHours(24),
 				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
 			};
 

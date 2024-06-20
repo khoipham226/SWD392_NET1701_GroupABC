@@ -29,12 +29,12 @@ namespace BusinessLayer.Services
             this._mapper = _mapper;
         }
 
-        public async Task<String> addProduct(AddProductDto dto)
+        public async Task<String> addProduct(AddProductDto dto, int userId)
         {
             try
             {
                 Product product = new Product();
-                product.UserId = dto.UserId;
+                product.UserId = userId;
                 product.SubCategoryId = dto.SubcategoryId;
                 product.CategoryId = dto.CategoryId;
                 product.Name = dto.Name;
@@ -133,16 +133,16 @@ namespace BusinessLayer.Services
             }
         }
 
-        public async Task<string> updateProduct(int id,UpdateProductDto dto)
+        public async Task<string> updateProduct(int id,UpdateProductDto dto, int userId)
         {
             try
             {
                 var product = await unitOfWork.Repository<Product>().GetById(id);
                 if(product != null) 
                 {
-                    if (dto.UserId != 0)
+                    if (userId != 0)
                     {
-                        product.UserId = dto.UserId.Value;
+                        product.UserId = userId;
                     }
                     if (dto.CategoryId != 0)
                     {

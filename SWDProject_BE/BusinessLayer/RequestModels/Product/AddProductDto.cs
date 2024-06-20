@@ -10,7 +10,6 @@ namespace DataLayer.Dto.Product
     public class AddProductDto
     {
 
-        public int UserId { get; set; }
         public int CategoryId { get; set; }
         public int SubcategoryId { get; set; }
         public string Name { get; set; } = null!;
@@ -23,9 +22,8 @@ namespace DataLayer.Dto.Product
 
 
 
-        public AddProductDto(int userId, int categoryId, string name, string? description, string? urlImg, int stockQuantity)
+        public AddProductDto(int categoryId, string name, string? description, string? urlImg, int stockQuantity)
         {
-            UserId = userId;
             CategoryId = categoryId;
             Name = name;
             Description = description;
