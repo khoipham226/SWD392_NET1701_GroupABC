@@ -12,9 +12,10 @@ namespace BusinessLayer.ResponseModels
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
         public DateTime Date { get; set; }
-        public bool Status { get; set; }
+        public bool PublicStatus { get; set; }
         public UserResponse User { get; set; } = null!;
         public ProductResponse Product { get; set; } = null!;
+        public string? ImageUrl { get; set; }
     }
 
     public class UserResponse

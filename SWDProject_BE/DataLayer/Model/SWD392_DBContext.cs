@@ -19,6 +19,7 @@ namespace DataLayer.Model
         public virtual DbSet<BannedAccount> BannedAccounts { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Exchanged> Exchangeds { get; set; } = null!;
+        public virtual DbSet<ExchangedProduct> ExchangedProducts { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
         public virtual DbSet<Payment> Payments { get; set; } = null!;
@@ -35,8 +36,7 @@ namespace DataLayer.Model
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=localhost;Database=SWD392_DB;Uid=sa;Pwd=12345; TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("server =localhost; database =SWD392_DB;uid=sa;pwd=12345;Trusted_Connection=True;TrustServerCertificate=True");
             }
         }
 
@@ -87,6 +87,23 @@ namespace DataLayer.Model
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Exchanged__User___5CD6CB2B");
+            });
+
+            modelBuilder.Entity<ExchangedProduct>(entity =>
+            {
+                entity.ToTable("ExchangedProduct");
+
+                entity.HasOne(d => d.Exchange)
+                    .WithMany(p => p.ExchangedProducts)
+                    .HasForeignKey(d => d.ExchangeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Exchanged__Excha__6383C8BA");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.ExchangedProducts)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Exchanged__Produ__6477ECF3");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -145,6 +162,8 @@ namespace DataLayer.Model
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
+                entity.Property(e => e.ImageUrl).IsUnicode(false);
+
                 entity.Property(e => e.ProductId).HasColumnName("Product_Id");
 
                 entity.Property(e => e.Title).HasMaxLength(100);
@@ -178,7 +197,7 @@ namespace DataLayer.Model
 
                 entity.Property(e => e.StockQuantity).HasColumnName("Stock_Quantity");
 
-                entity.Property(e => e.SubcategoryId).HasColumnName("Subcategory_Id");
+                entity.Property(e => e.SubCategoryId).HasColumnName("SubCategory_Id");
 
                 entity.Property(e => e.UrlImg).HasColumnName("Url_IMG");
 
@@ -190,11 +209,11 @@ namespace DataLayer.Model
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Product__Categor__4AB81AF0");
 
-                entity.HasOne(d => d.Subcategory)
+                entity.HasOne(d => d.SubCategory)
                     .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.SubcategoryId)
+                    .HasForeignKey(d => d.SubCategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Product__Subcate__48CFD27E");
+                    .HasConstraintName("FK__Product__SubCate__48CFD27E");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Products)
@@ -219,13 +238,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.ExchangeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__Exchange__619B8048");
+                    .HasConstraintName("FK__Rating__Exchange__68487DD7");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__User_Id__60A75C0F");
+                    .HasConstraintName("FK__Rating__User_Id__6754599E");
             });
 
             modelBuilder.Entity<Report>(entity =>

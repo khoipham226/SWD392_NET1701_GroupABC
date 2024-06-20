@@ -7,6 +7,7 @@ namespace DataLayer.Model
     {
         public Product()
         {
+            ExchangedProducts = new HashSet<ExchangedProduct>();
             OrderDetails = new HashSet<OrderDetail>();
             Posts = new HashSet<Post>();
         }
@@ -14,7 +15,7 @@ namespace DataLayer.Model
         public int Id { get; set; }
         public int UserId { get; set; }
         public int CategoryId { get; set; }
-        public int SubcategoryId { get; set; }
+        public int SubCategoryId { get; set; }
         public string Name { get; set; } = null!;
         public double Price { get; set; }
         public string? Description { get; set; }
@@ -25,8 +26,9 @@ namespace DataLayer.Model
         public bool Status { get; set; }
 
         public virtual Category Category { get; set; } = null!;
-        public virtual SubCategory Subcategory { get; set; } = null!;
+        public virtual SubCategory SubCategory { get; set; } = null!;
         public virtual User User { get; set; } = null!;
+        public virtual ICollection<ExchangedProduct> ExchangedProducts { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
     }

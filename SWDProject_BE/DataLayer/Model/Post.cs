@@ -17,7 +17,9 @@ namespace DataLayer.Model
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
         public DateTime Date { get; set; }
-        public bool Status { get; set; }
+        public string? ImageUrl { get; set; }
+        public bool? PublicStatus { get; set; }
+        public bool? ExchangedStatus { get; set; }
 
         public virtual Product Product { get; set; } = null!;
         public virtual User User { get; set; } = null!;

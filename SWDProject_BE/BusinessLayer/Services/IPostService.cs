@@ -10,7 +10,8 @@ namespace BusinessLayer.Services
 {
     public interface IPostService
     {
-        Task<IEnumerable<PostResponseModel>> GetAllPostsAsync();
+        Task<IEnumerable<PostResponseModel>> GetAllValidPostsAsync();
+        Task<IEnumerable<PostResponseModel>> GetAllUnpublicPostsAsync();
         Task<IEnumerable<PostResponseModel>> GetAllPostsByUserIdAsync(int userId);
         Task<Post> GetPostByIdAsync(int id);
         Task AddPostAsync(Post post);

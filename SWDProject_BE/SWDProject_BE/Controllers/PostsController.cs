@@ -24,7 +24,7 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                var posts = await _postService.GetAllPostsAsync();
+                var posts = await _postService.GetAllValidPostsAsync();
                 return Ok(posts);
             }
             catch (Exception ex)
@@ -33,12 +33,34 @@ namespace SWDProject_BE.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("getAllByUserId/{userId}")]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPostsByUserId(int userId)
+        [HttpGet("getAllPendingPost")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetAllUnpublicPosts()
         {
             try
             {
+                var posts = await _postService.GetAllUnpublicPostsAsync();
+                return Ok(posts);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+            }
+        }
+
+        [HttpGet("getAllByUserId")]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Post>>> GetPostsByUserId()
+        {
+            try
+            {
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
                 var posts = await _postService.GetAllPostsByUserIdAsync(userId);
                 return Ok(posts);
             }
@@ -89,7 +111,9 @@ namespace SWDProject_BE.Controllers
                     Title = createPostRequest.Title,
                     Description = createPostRequest.Description,
                     Date = createPostRequest.Date,
-                    Status = createPostRequest.Status
+                    ImageUrl = createPostRequest.ImageUrl,
+                    PublicStatus = false,
+                    ExchangedStatus = false,
                 };
 
                 // Add the post using the post service
@@ -135,7 +159,7 @@ namespace SWDProject_BE.Controllers
                 existingPost.Title = updatePostRequest.Title;
                 existingPost.Description = updatePostRequest.Description;
                 existingPost.Date = updatePostRequest.Date;
-                existingPost.Status = updatePostRequest.Status;
+                existingPost.ImageUrl = updatePostRequest.ImageUrl;
 
                 await _postService.UpdatePostAsync(existingPost);
                 return StatusCode(StatusCodes.Status200OK, new { message = "Post updated successfully." });
