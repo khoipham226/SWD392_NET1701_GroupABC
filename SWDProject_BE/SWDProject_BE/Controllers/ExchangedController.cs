@@ -102,7 +102,7 @@ namespace SWDProject_BE.Controllers
             var userId = int.Parse(userIdClaim.Value);
 
             // Ensure that not the owner
-            if (post.UserId != userId)
+            if (post.UserId == userId)
             {
                 return Forbid();
             }
@@ -112,7 +112,7 @@ namespace SWDProject_BE.Controllers
                 UserId = userId,
                 PostId = exchangedRequest.PostId,
                 Description = exchangedRequest.Description,
-                Date = exchangedRequest.Date,
+                Date = DateTime.Now,
                 Status = false
             };
             await _exchangedService.AddExchangedAsync(exchanged);

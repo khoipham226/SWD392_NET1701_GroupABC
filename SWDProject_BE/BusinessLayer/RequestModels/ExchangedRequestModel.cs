@@ -14,8 +14,6 @@ namespace BusinessLayer.RequestModels
 
         public string? Description { get; set; }
 
-        public DateTime Date { get; set; }
-
         public List<int> ProductIds { get; set; } = new List<int>();
     }
 }
