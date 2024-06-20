@@ -77,6 +77,30 @@ namespace SWDProject_BE.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetSubcategoryByCategoryId/{categoryId}")]
+        public async Task<IActionResult> GetSubcategoryByCategoryId(int categoryId)
+        {
+            try
+            {
+                var subCategory = await _subCategoryService.GetSubcategoryByCategoryId(categoryId);
+                if (subCategory != null)
+                {
+                    return Ok(subCategory);
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         [Route("AddSubCategory")]
         public async Task<IActionResult> AddSubCategory(SubCategoryRequestModel dto)

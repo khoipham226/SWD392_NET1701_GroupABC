@@ -143,6 +143,18 @@ namespace BusinessLayer.Services.Implements
             }
         }
 
+        public async Task<List<SubcategoryResponseModel>> GetSubcategoryByCategoryId(int categoryId)
+        {
+            var category = await _unitOfWork.Repository<Category>().GetById(categoryId);
+            if(category != null)
+            {
+                var subcategory = _unitOfWork.Repository<SubCategory>().FindAll(s => s.CategoryId == categoryId).ToList();
+                var result = _mapper.Map<List<SubcategoryResponseModel>>(subcategory);
+                return result;
+            }                   
+            return null;
+        }
+
         public async Task<string> UpdateSubCategory(int id, SubCategoryRequestModel dto)
         {
             try

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using BusinessLayer.RequestModels.Category;
+using BusinessLayer.RequestModels.Report;
 using BusinessLayer.RequestModels.Subcategory;
 using BusinessLayer.ResponseModels.Category;
 using BusinessLayer.ResponseModels.Product;
+using BusinessLayer.ResponseModels.Report;
 using BusinessLayer.ResponseModels.Subcategory;
 using DataLayer.Model;
 
@@ -23,6 +25,11 @@ namespace SWDProject_BE.AppStarts
             //Subcategory
             CreateMap<SubCategoryRequestModel, SubCategory>().ReverseMap();
             CreateMap<SubcategoryResponseModel, SubCategory>().ReverseMap();
+
+
+            //Report
+            CreateMap<ReportRequestModel, SubCategory>().ReverseMap();
+            CreateMap<ReportResponseModel, SubCategory>().ReverseMap();
 
         }
     }

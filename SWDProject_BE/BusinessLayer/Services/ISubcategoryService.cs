@@ -18,5 +18,6 @@ namespace BusinessLayer.Services
         Task<List<SubcategoryResponseModel>> GetAll();
         Task<List<SubcategoryResponseModel>> GetAllValidSubCategory();
         Task<SubcategoryResponseModel> GetById(int id);
+        Task<List<SubcategoryResponseModel>> GetSubcategoryByCategoryId(int categoryId);
     }
 }
