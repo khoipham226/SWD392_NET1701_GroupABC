@@ -90,7 +90,7 @@ namespace SWDProject_BE.Controllers
                 }
                 else
                 {
-                    return NotFound();
+                    return NotFound("not found Category!");
                 }
 
 

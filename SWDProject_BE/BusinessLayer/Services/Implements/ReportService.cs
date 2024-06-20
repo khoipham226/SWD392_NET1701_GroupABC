@@ -59,19 +59,103 @@ namespace BusinessLayer.Services.Implements
             }
         }
 
-        public Task<List<ReportResponseModel>> GetAllValidReport()
+        public async Task<List<ReportResponseModel>> GetAllValidReport()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var Report = _unitOfWork.Repository<Report>().FindAll(r => r.Status == true).ToList();
+                List<ReportResponseModel> Final = new List<ReportResponseModel>();
+                foreach (var report in Report)
+                {
+                    var user = await _unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(report.UserId));
+                    var post = await _unitOfWork.Repository<Post>().FindAsync(c => c.Id.Equals(report.PostId));
+                    ReportResponseModel result = new ReportResponseModel();
+                    result = _mapper.Map<ReportResponseModel>(report);
+                    result.UserName = user.UserName;
+                    result.title = post.Title;
+                    Final.Add(result);
+                }
+                return Final;
+
+            }
+            catch (Exception ex)
+            {
+                {
+                    throw new Exception("Error DB!");
+                }
+            }
         }
 
-        public Task<List<ReportResponseModel>> GetReportByPostId()
+        public async Task<List<ReportResponseModel>> GetReportByPostId(int postId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var findPost = await _unitOfWork.Repository<Post>().GetById(postId);
+                if (findPost != null)
+                {
+                    var Report = _unitOfWork.Repository<Report>().FindAll(r => r.PostId == postId).ToList();
+                    List<ReportResponseModel> Final = new List<ReportResponseModel>();
+                    foreach (var report in Report)
+                    {
+                        var user = await _unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(report.UserId));
+                        var post = await _unitOfWork.Repository<Post>().FindAsync(c => c.Id.Equals(report.PostId));
+                        ReportResponseModel result = new ReportResponseModel();
+                        result = _mapper.Map<ReportResponseModel>(report);
+                        result.UserName = user.UserName;
+                        result.title = post.Title;
+                        Final.Add(result);
+                    }
+                    return Final;
+                }
+                else
+                {
+                    return null;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                {
+                    throw new Exception("Error DB!");
+                }
+            }
         }
 
-        public Task<List<ReportResponseModel>> GetReportByUserId()
+        public async Task<List<ReportResponseModel>> GetReportByUserId(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var findUser = await _unitOfWork.Repository<User>().GetById(userId);
+                if(findUser != null)
+                {
+                    var Report = _unitOfWork.Repository<Report>().FindAll(r => r.UserId == userId).ToList();
+                    List<ReportResponseModel> Final = new List<ReportResponseModel>();
+                    foreach (var report in Report)
+                    {
+                        var user = await _unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(report.UserId));
+                        var post = await _unitOfWork.Repository<Post>().FindAsync(c => c.Id.Equals(report.PostId));
+                        ReportResponseModel result = new ReportResponseModel();
+                        result = _mapper.Map<ReportResponseModel>(report);
+                        result.UserName = user.UserName;
+                        result.title = post.Title;
+                        Final.Add(result);
+                    }
+                    return Final;
+                }
+                else
+                {
+                    return null;
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                {
+                    throw new Exception("Error DB!");
+                }
+            }
         }
 
         public Task<string> UpdateReport(int id, ReportRequestModel dto)
