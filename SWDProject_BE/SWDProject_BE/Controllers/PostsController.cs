@@ -206,5 +206,26 @@ namespace SWDProject_BE.Controllers
             }
         }
 
+        [HttpPut("UpdateStatusPost/{id}")]
+        [Authorize]
+        public async Task<ActionResult> UpdateStatusPost(int id, Boolean newStatus)
+        {
+            try
+            {
+                var existingPost = await _postService.GetPostByIdAsync(id);
+                if (existingPost == null)
+                {
+                    return NotFound();
+                }
+
+                await _postService.UpdatePostStatusAsync(id, newStatus);
+                return StatusCode(StatusCodes.Status200OK, new { message = "Post Publish status updated to " + newStatus });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+            }
+        }
+
     }
 }

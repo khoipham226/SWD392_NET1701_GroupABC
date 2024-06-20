@@ -7,37 +7,6 @@ CREATE TABLE [dbo].[ExchangedProduct] (
     FOREIGN KEY ([ProductId]) REFERENCES [dbo].[Product]([Id])
 ) ON [PRIMARY];
 
--- Drop foreign key constraints referencing the Post table
-IF OBJECT_ID('FK_Post_User', 'F') IS NOT NULL
-BEGIN
-    ALTER TABLE [SWD392_DB].[dbo].[Post] DROP CONSTRAINT FK_Post_User;
-END
-GO
-
-IF OBJECT_ID('FK_Post_Product', 'F') IS NOT NULL
-BEGIN
-    ALTER TABLE [SWD392_DB].[dbo].[Post] DROP CONSTRAINT FK_Post_Product;
-END
-GO
-IF OBJECT_ID('FK__Report__Post_Id__52593CB8', 'F') IS NOT NULL
-BEGIN
-    ALTER TABLE [SWD392_DB].[dbo].[Report] DROP CONSTRAINT FK__Report__Post_Id__52593CB8;
-END
-GO
-
-IF OBJECT_ID('FK__Exchanged__Post___5DCAEF64', 'F') IS NOT NULL
-BEGIN
-    ALTER TABLE [SWD392_DB].[dbo].[Exchanged] DROP CONSTRAINT FK__Exchanged__Post___5DCAEF64;
-END
-GO
-
--- Drop the Post table
-IF OBJECT_ID('[SWD392_DB].[dbo].[Post]', 'U') IS NOT NULL
-BEGIN
-    DROP TABLE [SWD392_DB].[dbo].[Post];
-END
-GO
-
 -- Drop the Post table
 IF OBJECT_ID('[SWD392_DB].[dbo].[Post]', 'U') IS NOT NULL
 BEGIN
@@ -54,7 +23,6 @@ CREATE TABLE [Post]
     [Title] NVARCHAR(100) NOT NULL,
 	[Description] NVARCHAR(MAX) NULL,
 	[Date] DATE NOT NULL,
-	[Status] BIT NOT NULL, 
 	[ImageUrl] NVARCHAR(MAX) NULL,
 	[PublicStatus] BIT NULL,
 	[ExchangedStatus] BIT NULL,

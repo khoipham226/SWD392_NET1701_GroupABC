@@ -135,6 +135,20 @@ namespace BusinessLayer.Services.Implements
             await _unitOfWork.CommitAsync();
         }
 
+        public async Task UpdatePostStatusAsync(int id, bool newPublicStatus)
+        {
+            // Retrieve the post by its id
+            var post = await _unitOfWork.Repository<Post>().GetById(id);
+
+            post.PublicStatus = newPublicStatus;
+
+            // Update the post in the repository
+            await _unitOfWork.Repository<Post>().Update(post, post.Id);
+
+            // Commit the transaction
+            await _unitOfWork.CommitAsync();
+        }
+
         public async Task DeletePostAsync(int id)
         {
             await _unitOfWork.Repository<Post>().HardDelete(id);
