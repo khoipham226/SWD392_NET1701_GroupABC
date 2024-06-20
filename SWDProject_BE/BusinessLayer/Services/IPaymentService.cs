@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 public interface IPaymentService
 {
     Task<Order> CreatePaymentAsync(decimal amount, string returnUrl, string cancelUrl);
-    Task<Order> ExecutePaymentAsync(string paymentId, string payerId);
+    Task<Order> ExecutePaymentAsync(string paymentId, string payerId, OrderRequestModel orderRequest);
     Task<PayPalCheckoutSdk.Payments.Refund> RefundPaymentAsync(string captureId, decimal amount);
 }

@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Services;
+﻿using BusinessLayer.RequestModels;
+using BusinessLayer.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -47,11 +48,11 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPost("execute")]
-        public async Task<IActionResult> ExecutePayment(string token, string PayerID)
+        public async Task<IActionResult> ExecutePayment(string token, string PayerID, OrderRequestModel orderRequest)
         {
             try
             {
-                var payment = await _paymentService.ExecutePaymentAsync(token, PayerID);
+                var payment = await _paymentService.ExecutePaymentAsync(token, PayerID, orderRequest);
                 return Ok(payment);
             }
             catch (Exception ex)

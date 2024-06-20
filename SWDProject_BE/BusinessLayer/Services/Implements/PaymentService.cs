@@ -1,4 +1,5 @@
-﻿using DataLayer.Model;
+﻿using BusinessLayer.RequestModels;
+using DataLayer.Model;
 using DataLayer.Repository;
 using DataLayer.UnitOfWork;
 
@@ -8,6 +9,7 @@ public class PaymentService : IPaymentService
     private readonly IUnitOfWork _unitOfWork;
     private readonly IGenericRepository<Payment> _paymentRepository;
     private readonly IGenericRepository<DataLayer.Model.Order> _orderRepository;
+    private readonly IGenericRepository<OrderDetail> _orderDetailRepository;
 
     public PaymentService(IUnitOfWork unitOfWork, PayPalService payPalService)
     {
@@ -15,6 +17,7 @@ public class PaymentService : IPaymentService
         _unitOfWork = unitOfWork;
         _paymentRepository = _unitOfWork.Repository<Payment>();
         _orderRepository = _unitOfWork.Repository<DataLayer.Model.Order>();
+        _orderDetailRepository = _unitOfWork.Repository<OrderDetail>();
     }
 
     public async Task<PayPalCheckoutSdk.Orders.Order> CreatePaymentAsync(decimal amount, string returnUrl, string cancelUrl)
@@ -23,38 +26,49 @@ public class PaymentService : IPaymentService
         return payment;
     }
 
-    public async Task<PayPalCheckoutSdk.Orders.Order> ExecutePaymentAsync(string paymentId, string payerId)
+    public async Task<PayPalCheckoutSdk.Orders.Order> ExecutePaymentAsync(string paymentId, string payerId, OrderRequestModel orderRequest)
     {
         var executedPayment = await _payPalService.CaptureOrder(paymentId);
 
-        //var amount = decimal.Parse(executedPayment.PurchaseUnits.First().AmountWithBreakdown.Value);
-
         var order = new DataLayer.Model.Order
         {
-            UserId = 1, // default
-            PaymentId = null,
-            TotalPrice = 100, // default
+            UserId = orderRequest.UserId,
+            PaymentId = null, // add later
+            TotalPrice = orderRequest.TotalPrice,
             Date = DateTime.Now,
             Status = true
         };
-
         await _orderRepository.InsertAsync(order);
         await _unitOfWork.CommitAsync();
 
         var payment = new Payment
         {
             Date = DateTime.Now.ToString("yyyy-MM-dd"),
-            Amount = 100, // default
+            Amount = orderRequest.TotalPrice,
             Method = "PayPal",
             Status = true,
-            Description = paymentId,
+            Description = "PayerId: " + payerId + " - PaymentId: " + paymentId,
         };
-
         await _paymentRepository.InsertAsync(payment);
         await _unitOfWork.CommitAsync();
 
         order.PaymentId = payment.Id;
-        _orderRepository.Update(order, order.Id);
+        _ = _orderRepository.Update(order, order.Id);
+        await _unitOfWork.CommitAsync();
+
+        foreach (var detail in orderRequest.OrderDetails)
+        {
+            var orderDetail = new OrderDetail
+            {
+                OrderId = order.Id,
+                ProductId = detail.ProductId,
+                Quantity = detail.Quantity,
+                TotalPrice = detail.TotalPrice,
+                Status = true
+            };
+
+            await _orderDetailRepository.InsertAsync(orderDetail);
+        }
         await _unitOfWork.CommitAsync();
 
         return executedPayment;
@@ -68,7 +82,7 @@ public class PaymentService : IPaymentService
         if (payment == null) throw new Exception("Payment not found");
 
         payment.Status = false;
-        _paymentRepository.Update(payment, payment.Id);
+        _ = _paymentRepository.Update(payment, payment.Id);
         await _unitOfWork.CommitAsync();
 
         return refund;
