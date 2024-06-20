@@ -35,7 +35,7 @@ namespace BusinessLayer.Services
             {
                 Product product = new Product();
                 product.UserId = dto.UserId;
-                product.SubcategoryId = dto.SubcategoryId;
+                product.SubCategoryId = dto.SubcategoryId;
                 product.CategoryId = dto.CategoryId;
                 product.Name = dto.Name;
                 product.Price = dto.Price;
@@ -89,7 +89,7 @@ namespace BusinessLayer.Services
                 {
                     var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
                     var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
                     GetAllProductResponseModel result = new GetAllProductResponseModel();
                     result = product.MapToGetAllProduct(_mapper);
                     result.UserName = user.UserName;
@@ -116,7 +116,7 @@ namespace BusinessLayer.Services
                 {
                     var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
                     var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
                     GetAllProductResponseModel result = new GetAllProductResponseModel();
                     result = product.MapToGetAllProduct(_mapper);
                     result.UserName = user.UserName;
@@ -150,7 +150,7 @@ namespace BusinessLayer.Services
                     }
                     if (dto.SubcategoryId != 0)
                     {
-                        product.SubcategoryId = dto.SubcategoryId.Value;
+                        product.SubCategoryId = dto.SubcategoryId.Value;
                     }
                     if (dto.Name != null)
                     {
@@ -204,7 +204,7 @@ namespace BusinessLayer.Services
                 {
                     var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
                     var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
                     GetAllProductResponseModel model = new GetAllProductResponseModel();
                     model = product.MapToGetAllProduct(_mapper);
                     model.UserName = user.UserName;
@@ -230,7 +230,7 @@ namespace BusinessLayer.Services
                     {
                         var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
                         var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                        var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                        var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
                         GetAllProductResponseModel result = new GetAllProductResponseModel();
                         result = product.MapToGetAllProduct(_mapper);
                         result.UserName = user.UserName;
@@ -262,7 +262,7 @@ namespace BusinessLayer.Services
                 {
                     var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
                     var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubcategoryId));
+                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
                     GetAllProductResponseModel result = new GetAllProductResponseModel();
                     result = product.MapToGetAllProduct(_mapper);
                     result.UserName = user.UserName;

@@ -15,6 +15,7 @@ namespace BusinessLayer.ResponseModels
         public bool Status { get; set; }
         public UserResponse User { get; set; } = null!;
         public ProductResponse Product { get; set; } = null!;
+        public string? ImageUrl { get; set; }
     }
 
     public class UserResponse
