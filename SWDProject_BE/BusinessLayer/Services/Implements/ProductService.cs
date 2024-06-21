@@ -222,7 +222,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var listProduct = unitOfWork.Repository<Product>().FindAll(p => p.UserId == userId).ToList();
+                var listProduct = unitOfWork.Repository<Product>().FindAll(p => p.UserId == userId && p.Price>0).ToList();
                 if(listProduct != null)
                 {
                     List<GetAllProductResponseModel> final = new List<GetAllProductResponseModel>();
