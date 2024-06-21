@@ -197,7 +197,7 @@ namespace BusinessLayer.Services.Implements
                 {
                     report.Description = dto.Description;
                 }
-                await _unitOfWork.Repository<Report>().Update(report,id);
+                await _unitOfWork.Repository<Report>().Update(report,id);   
                 await _unitOfWork.CommitAsync();
                 return "Update Successful!";
             }
