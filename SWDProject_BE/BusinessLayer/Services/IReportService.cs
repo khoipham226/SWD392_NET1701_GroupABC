@@ -14,8 +14,8 @@ namespace BusinessLayer.Services
         Task<List<ReportResponseModel>> GetAllValidReport();
         Task<List<ReportResponseModel>> GetReportByUserId(int userId);
         Task<List<ReportResponseModel>> GetReportByPostId(int postId);
-        Task<string> AddReport(ReportRequestModel dto);
-        Task<string> UpdateReport(int id,ReportRequestModel dto);
+        Task<string> AddReportByUser(ReportRequestaUser dto, int userId);
+        Task<string> UpdateReportByUser(int id,ReportRequestaUser dto);
         Task<string> DeleteReport(int id);
     }
 }

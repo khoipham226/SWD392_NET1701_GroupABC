@@ -1,6 +1,10 @@
-﻿using BusinessLayer.Services;
+﻿using BusinessLayer.RequestModels.Product;
+using BusinessLayer.RequestModels.Report;
+using BusinessLayer.Services;
+using DataLayer.Dto.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace SWDProject_BE.Controllers
 {
@@ -98,6 +102,80 @@ namespace SWDProject_BE.Controllers
                 return BadRequest(ex.Message);
             }
 
+        }
+
+        [HttpPost]
+        [Route("AddReport")]
+        public async Task<IActionResult> AddReport(ReportRequestaUser dto)
+        {
+            try
+            {              
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                string message = await _reportService.AddReportByUser(dto, userId);
+                if (message != null)
+                {
+                    return Ok(message);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("UpdateReport/{id}")]
+        public async Task<IActionResult> UpdateProduct(int id, ReportRequestaUser dto)
+        {
+            try
+            {
+                String message = await _reportService.UpdateReportByUser(id, dto);
+                if (message != null)
+                {
+                    return Ok(message);
+                }
+                else
+                {
+                    return NotFound("Not found Report!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("DeleteReport/{id}")]
+        public async Task<IActionResult> DeleteReport(int id)
+        {
+            try
+            {
+                String message = await _reportService.DeleteReport(id);
+                if (message != null)
+                {
+                    return Ok(message);
+                }
+                else
+                {
+                    return NotFound("Not found Report!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 

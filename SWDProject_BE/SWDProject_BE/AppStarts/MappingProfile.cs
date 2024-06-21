@@ -28,7 +28,7 @@ namespace SWDProject_BE.AppStarts
 
 
             //Report
-            CreateMap<ReportRequestModel, Report>().ReverseMap();
+            CreateMap<ReportRequestaUser, Report>().ReverseMap();
             CreateMap<ReportResponseModel, Report>().ReverseMap();
 
         }

@@ -4,6 +4,7 @@ using BusinessLayer.ResponseModels.Product;
 using BusinessLayer.ResponseModels.Report;
 using DataLayer.Model;
 using DataLayer.UnitOfWork;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +23,39 @@ namespace BusinessLayer.Services.Implements
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public Task<string> AddReport(ReportRequestModel dto)
+        public async Task<string> AddReportByUser(ReportRequestaUser dto, int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = _mapper.Map<Report>(dto);
+                result.Status = true;
+                result.UserId = userId;
+                result.Date = DateTime.Now;
+                await _unitOfWork.Repository<Report>().InsertAsync(result);
+                await _unitOfWork.CommitAsync();
+                return "Add successful!";
+
+
+            }catch (Exception ex)
+            {
+                throw new Exception("Error DB!");
+            }
         }
 
-        public Task<string> DeleteReport(int id)
+        public async Task<string> DeleteReport(int id)
         {
-            throw new NotImplementedException();
+            var report = await _unitOfWork.Repository<Report>().GetById(id);
+            if(report != null)
+            {
+                report.Status = false;
+                await _unitOfWork.Repository<Report>().Update(report,id);
+                await _unitOfWork.CommitAsync();
+                return "Delete successfull!";
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task<List<ReportResponseModel>> GetAll()
@@ -158,9 +184,24 @@ namespace BusinessLayer.Services.Implements
             }
         }
 
-        public Task<string> UpdateReport(int id, ReportRequestModel dto)
+        public async Task<string> UpdateReportByUser(int id, ReportRequestaUser dto)
         {
-            throw new NotImplementedException();
+            var report = await _unitOfWork.Repository<Report>().GetById(id);
+            if(report != null)
+            {
+                if(dto.PostId != 0)
+                {
+                    report.PostId = dto.PostId;
+                }
+                if (!dto.Description.IsNullOrEmpty())
+                {
+                    report.Description = dto.Description;
+                }
+                await _unitOfWork.Repository<Report>().Update(report,id);
+                await _unitOfWork.CommitAsync();
+                return "Update Successful!";
+            }
+            return null;
         }
     }
 }

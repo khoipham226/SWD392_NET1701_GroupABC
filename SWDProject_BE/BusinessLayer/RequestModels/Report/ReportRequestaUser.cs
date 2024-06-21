@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.RequestModels.Report
 {
-    public class ReportRequestModel
+    public class ReportRequestaUser
     {
-        public int UserId { get; set; }
         public int PostId { get; set; }
-        public string title { get; set; }
         public string? Description { get; set; }
-        public DateTime Date { get; set; }
     }
 }
