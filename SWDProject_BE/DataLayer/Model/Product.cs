@@ -19,11 +19,10 @@ namespace DataLayer.Model
         public string Name { get; set; } = null!;
         public double Price { get; set; }
         public string? Description { get; set; }
-        public string? Condition { get; set; }
         public string? Location { get; set; }
         public string? UrlImg { get; set; }
-        public int StockQuantity { get; set; }
         public bool Status { get; set; }
+        public bool? IsForSell { get; set; }
 
         public virtual Category Category { get; set; } = null!;
         public virtual SubCategory SubCategory { get; set; } = null!;

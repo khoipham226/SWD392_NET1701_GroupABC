@@ -14,7 +14,7 @@ namespace BusinessLayer.Services
         Task<IEnumerable<PostResponseModel>> GetAllUnpublicPostsAsync();
         Task<IEnumerable<PostResponseModel>> GetAllPostsByUserIdAsync(int userId);
         Task<Post> GetPostByIdAsync(int id);
-        Task<PostResponseModel> GetPostDetailAsync(int id);
+        Task<PostDetailResponseModel> GetPostDetailAsync(int id, int userId);
         Task AddPostAsync(Post post);
         Task UpdatePostAsync(Post post);
         Task UpdatePostStatusAsync(int id, bool newPublicStatus);

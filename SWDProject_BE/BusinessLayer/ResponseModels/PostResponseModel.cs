@@ -31,5 +31,11 @@ namespace BusinessLayer.ResponseModels
         public string Name { get; set; } = null!;
         public string? UrlImg { get; set; }
     }
+
+    public class PostDetailResponseModel : PostResponseModel
+    {
+        public int? ExchangeId { get; set; }
+        public bool IsExchangedByUser { get; set; }
+    }
 }
 

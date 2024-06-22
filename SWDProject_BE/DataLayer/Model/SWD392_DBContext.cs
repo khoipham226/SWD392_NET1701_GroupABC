@@ -36,6 +36,7 @@ namespace DataLayer.Model
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("server =localhost; database =SWD392_DB;uid=sa;pwd=12345;Trusted_Connection=True;TrustServerCertificate=True");
             }
         }
@@ -174,13 +175,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Post__Product_Id__4E88ABD4");
+                    .HasConstraintName("FK__Post__Product_Id__7B5B524B");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Post__User_Id__4D94879B");
+                    .HasConstraintName("FK__Post__User_Id__7A672E12");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -189,13 +190,9 @@ namespace DataLayer.Model
 
                 entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
 
-                entity.Property(e => e.Condition).HasMaxLength(50);
-
                 entity.Property(e => e.Location).HasMaxLength(100);
 
                 entity.Property(e => e.Name).HasMaxLength(100);
-
-                entity.Property(e => e.StockQuantity).HasColumnName("Stock_Quantity");
 
                 entity.Property(e => e.SubCategoryId).HasColumnName("SubCategory_Id");
 

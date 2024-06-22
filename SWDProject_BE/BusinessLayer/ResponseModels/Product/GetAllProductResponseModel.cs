@@ -18,13 +18,11 @@ namespace BusinessLayer.ResponseModels.Product
         public string SubcategoryName { get; set; }
         public double Price { get; set; }
 
-        public string? Condition { get; set; }
         public string? Location { get; set; }
         public string? Description { get; set; }
         public string? UrlImg { get; set; }
-        public int StockQuantity { get; set; }
 
-        public GetAllProductResponseModel(int id = 0, int userId = 0, string userName = "", int categoryId = 0, string categoryName = "", string name = "", string? description = null, string? urlImg = null, int stockQuantity = 0)
+        public GetAllProductResponseModel(int id = 0, int userId = 0, string userName = "", int categoryId = 0, string categoryName = "", string name = "", string? description = null, string? urlImg = null)
         {
             Id = id;
             UserId = userId;
@@ -34,7 +32,6 @@ namespace BusinessLayer.ResponseModels.Product
             Name = name;
             Description = description;
             UrlImg = urlImg;
-            StockQuantity = stockQuantity;
         }
     }
 }

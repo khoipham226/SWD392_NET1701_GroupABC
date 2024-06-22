@@ -40,11 +40,10 @@ namespace BusinessLayer.Services
                 product.Name = dto.Name;
                 product.Price = dto.Price;
                 product.Description = dto.Description;
-                product.Condition = dto.Condition;
                 product.Location = dto.Location;
                 product.UrlImg = dto.UrlImg;
-                product.StockQuantity = dto.StockQuantity;
                 product.Status = true;
+                product.IsForSell = true;
                 await unitOfWork.Repository<Product>().InsertAsync(product);
                 await unitOfWork.CommitAsync();
                 return "add product successfull!";
@@ -53,6 +52,31 @@ namespace BusinessLayer.Services
             {
                 throw;
             }   
+        }
+
+        public async Task<String> addProductForExchange(AddProductDto dto, int userId)
+        {
+            try
+            {
+                Product product = new Product();
+                product.UserId = userId;
+                product.SubCategoryId = dto.SubcategoryId;
+                product.CategoryId = dto.CategoryId;
+                product.Name = dto.Name;
+                product.Price = dto.Price;
+                product.Description = dto.Description;
+                product.Location = dto.Location;
+                product.UrlImg = dto.UrlImg;
+                product.Status = true;
+                product.IsForSell = false;
+                await unitOfWork.Repository<Product>().InsertAsync(product);
+                await unitOfWork.CommitAsync();
+                return "add product successfull!";
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<string> deleteProduct(int id)
@@ -83,7 +107,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.Price > 0).ToList();
+                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == true).ToList();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {
@@ -164,17 +188,9 @@ namespace BusinessLayer.Services
                     {
                         product.Description = dto.Description;
                     }
-                    if (dto.Condition != null)
-                    {
-                        product.Condition = dto.Condition;
-                    }
                     if (dto.UrlImg != null)
                     {
                         product.UrlImg = dto.UrlImg;
-                    }
-                    if (dto.StockQuantity != 0)
-                    {
-                        product.StockQuantity = dto.StockQuantity.Value;
                     }
                     if (dto.Status.HasValue)
                     {
@@ -222,7 +238,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var listProduct = unitOfWork.Repository<Product>().FindAll(p => p.UserId == userId && p.Price>0).ToList();
+                var listProduct = unitOfWork.Repository<Product>().FindAll(p => p.UserId == userId && p.IsForSell==true).ToList();
                 if(listProduct != null)
                 {
                     List<GetAllProductResponseModel> final = new List<GetAllProductResponseModel>();
@@ -256,7 +272,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.Price == 0 && p.UserId == userId).ToList();
+                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == false && p.UserId == userId).ToList();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {

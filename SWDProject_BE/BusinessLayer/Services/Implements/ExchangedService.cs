@@ -29,7 +29,16 @@ namespace BusinessLayer.Services.Implements
         public async Task AddExchangedProductAsync(ExchangedProduct exchangedProduct)
         {
             await _unitOfWork.Repository<ExchangedProduct>().InsertAsync(exchangedProduct);
+            
+            // update product status
+            var product = await _unitOfWork.Repository<Product>().GetById(exchangedProduct.ProductId);
+            if (product != null)
+            {
+                product.Status = false;
+                await _unitOfWork.Repository<Product>().Update(product, product.Id);
+            }
             await _unitOfWork.CommitAsync();
+
         }
 
         public async Task<IEnumerable<ExchangedResponseModel>> GetAllFinishedExchangedByUserIdAsync(int userId)
@@ -173,6 +182,12 @@ namespace BusinessLayer.Services.Implements
 
                 foreach (var exchangedProduct in exchangedProductsToDelete)
                 {
+                    var product = await _unitOfWork.Repository<Product>().GetById(exchangedProduct.ProductId);
+                    if (product != null)
+                    {
+                        product.Status = true;
+                        await _unitOfWork.Repository<Product>().Update(product, product.Id);
+                    }
                     await _unitOfWork.Repository<ExchangedProduct>().HardDelete(exchangedProduct.Id);
                 }
 
@@ -191,6 +206,12 @@ namespace BusinessLayer.Services.Implements
 
             foreach (var exchangedProduct in exchangedProductsToDelete)
             {
+                var product = await _unitOfWork.Repository<Product>().GetById(exchangedProduct.ProductId);
+                if (product != null)
+                {
+                    product.Status = true;
+                    await _unitOfWork.Repository<Product>().Update(product, product.Id);
+                }
                 await _unitOfWork.Repository<ExchangedProduct>().HardDelete(exchangedProduct.Id);
             }
 

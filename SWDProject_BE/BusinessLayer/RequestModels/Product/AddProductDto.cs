@@ -15,21 +15,17 @@ namespace DataLayer.Dto.Product
         public string Name { get; set; } = null!;
         public double Price { get; set; }
         public string? Description { get; set; }
-        public string? Condition { get; set; }
         public string? Location { get; set; }
         public string? UrlImg { get; set; }
-        public int StockQuantity { get; set; }
 
 
 
-        public AddProductDto(int categoryId, string name, string? description, string? urlImg, int stockQuantity)
+        public AddProductDto(int categoryId, string name, string? description, string? urlImg)
         {
             CategoryId = categoryId;
             Name = name;
             Description = description;
             UrlImg = urlImg;
-            StockQuantity = stockQuantity;
-
         }
     }
 }

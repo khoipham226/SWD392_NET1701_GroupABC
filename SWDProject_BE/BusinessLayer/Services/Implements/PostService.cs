@@ -126,7 +126,7 @@ namespace BusinessLayer.Services.Implements
             return await _unitOfWork.Repository<Post>().GetById(id);
         }
 
-        public async Task<PostResponseModel> GetPostDetailAsync(int id)
+        public async Task<PostDetailResponseModel> GetPostDetailAsync(int id, int userId)
         {
             var post = await _unitOfWork.Repository<Post>().ObjectMapper(
                 selector: p => new
@@ -147,14 +147,22 @@ namespace BusinessLayer.Services.Implements
                     {
                         p.Product.Id,
                         p.Product.Name,
-                        p.Product.UrlImg
+                        p.Product.UrlImg,
+                        Exchanged = p.Exchangeds.FirstOrDefault(e => e.UserId == userId) == null ? null : new
+                        {
+                            ExchangeId = p.Exchangeds.FirstOrDefault().Id,
+                        }
                     }
                 },
                 predicate: p => p.Id == id,
-                include: query => query.Include(p => p.User).Include(p => p.Product)
+                include: query => query.Include(p => p.User)
+                .Include(p => p.Product)
+                .Include(p => p.Exchangeds)
             ).FirstOrDefaultAsync();
 
-            var postResponseModel = new PostResponseModel()
+
+
+            var postResponseModel = new PostDetailResponseModel()
             {
                 Id = post.Id,
                 Title = post.Title,
@@ -173,7 +181,9 @@ namespace BusinessLayer.Services.Implements
                     Id = post.Product.Id,
                     Name = post.Product.Name,
                     UrlImg = post.Product.UrlImg
-                }
+                },
+                ExchangeId = post.Product.Exchanged?.ExchangeId,
+                IsExchangedByUser = post.Product.Exchanged != null
             };
 
             return postResponseModel;

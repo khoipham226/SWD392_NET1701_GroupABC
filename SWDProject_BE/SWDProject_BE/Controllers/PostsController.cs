@@ -75,7 +75,15 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                var post = await _postService.GetPostDetailAsync(id);
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                var post = await _postService.GetPostDetailAsync(id, userId);
                 if (post == null)
                 {
                     return NotFound();

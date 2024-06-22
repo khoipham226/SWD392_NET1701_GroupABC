@@ -161,6 +161,30 @@ namespace SWDProject_BE.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("AddProductForExchange")]
+        public async Task<IActionResult> AddProductForExchange(AddProductDto dto)
+        {
+            try
+            {
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                String message = await ProductService.addProductForExchange(dto, userId);
+                return Ok(message);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPut]
         [Route("UpdateProduct/{id}")]
         public async Task<IActionResult> UpdateProduct(int id, UpdateProductDto dto)
