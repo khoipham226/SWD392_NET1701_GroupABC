@@ -19,5 +19,6 @@ namespace BusinessLayer.Services
         Task<Exchanged> GetExchangedByIdAsync(int id);
         Task UpdateExchangedStatusAcceptAsync(int id);
         Task UpdateExchangedStatusDenyAsync(int id);
+        Task CancelExchaneAsync(int id);
     }
 }

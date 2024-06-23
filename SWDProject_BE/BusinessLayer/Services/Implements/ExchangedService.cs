@@ -221,5 +221,30 @@ namespace BusinessLayer.Services.Implements
             // Commit changes
             await _unitOfWork.CommitAsync();
         }
+
+        public async Task CancelExchaneAsync(int id)
+        {
+            var exchangedProductsToDelete = await _unitOfWork.Repository<ExchangedProduct>()
+                .GetAll()
+                .Where(ep => ep.ExchangeId == id)
+                .ToListAsync();
+
+            foreach (var exchangedProduct in exchangedProductsToDelete)
+            {
+                var product = await _unitOfWork.Repository<Product>().GetById(exchangedProduct.ProductId);
+                if (product != null)
+                {
+                    product.Status = true;
+                    await _unitOfWork.Repository<Product>().Update(product, product.Id);
+                }
+                await _unitOfWork.Repository<ExchangedProduct>().HardDelete(exchangedProduct.Id);
+            }
+
+            // Delete the exchanged entity itself
+            await _unitOfWork.Repository<Exchanged>().HardDelete(id);
+
+            // Commit changes
+            await _unitOfWork.CommitAsync();
+        }
     }
 }

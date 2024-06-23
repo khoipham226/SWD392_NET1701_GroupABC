@@ -28,15 +28,11 @@ namespace SWDProject_BE.Controllers
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                return Unauthorized();
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
             var userId = int.Parse(userIdClaim.Value);
 
             var exchanged = await _exchangedService.GetAllFinishedExchangedByUserIdAsync(userId);
-            if (exchanged == null)
-            {
-                return NotFound();
-            }
             return Ok(exchanged);
         }
 
@@ -46,7 +42,7 @@ namespace SWDProject_BE.Controllers
             var exchanged = await _exchangedService.GetExchangedByIdAsync(id);
             if (exchanged == null)
             {
-                return NotFound();
+                return StatusCode(StatusCodes.Status404NotFound, new { message = "Exchanged id not found." });
             }
             return Ok(exchanged);
         }
@@ -59,7 +55,7 @@ namespace SWDProject_BE.Controllers
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                return Unauthorized();
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
             var userId = int.Parse(userIdClaim.Value);
             var exchanged = await _exchangedService.GetAllPendingExchangedByUserIdForCustomerAsync(userId);
@@ -74,7 +70,7 @@ namespace SWDProject_BE.Controllers
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                return Unauthorized();
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
             var userId = int.Parse(userIdClaim.Value);
 
@@ -97,14 +93,14 @@ namespace SWDProject_BE.Controllers
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                return Unauthorized();
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
             var userId = int.Parse(userIdClaim.Value);
 
             // Ensure that not the owner
             if (post.UserId == userId)
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden, new { message = "This Post is your own post." });
             }
 
             var exchanged = new Exchanged
@@ -140,14 +136,14 @@ namespace SWDProject_BE.Controllers
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                return Unauthorized();
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
             var userId = int.Parse(userIdClaim.Value);
 
             // Ensure that only the owner of the post
             if (OwnPost.UserId != userId)
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden, new { message = "This Post is not your own post." });
             }
 
             await _exchangedService.UpdateExchangedStatusAcceptAsync(id);
@@ -165,17 +161,40 @@ namespace SWDProject_BE.Controllers
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                return Unauthorized();
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
             var userId = int.Parse(userIdClaim.Value);
 
             // Ensure that only the owner of the post
             if (OwnPost.UserId != userId)
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden, new { message = "This Post is not your own post." });
             }
             await _exchangedService.UpdateExchangedStatusDenyAsync(id);
             return StatusCode(StatusCodes.Status200OK, new { message = "Exchange deny successfully." });
+        }
+
+        [HttpDelete("cancel/{id}")]
+        [Authorize]
+        public async Task<ActionResult> CancelExchanged(int id)
+        {
+            var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
+
+            // Take the user id from JWT
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
+            }
+            var userId = int.Parse(userIdClaim.Value);
+
+            // Ensure that only the owner of the exchanged
+            if (existingExchanged.UserId != userId)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, new { message = "This exchange is not your." });
+            }
+            await _exchangedService.UpdateExchangedStatusDenyAsync(id);
+            return StatusCode(StatusCodes.Status200OK, new { message = "Exchange cancel successfully." });
         }
     }
 }
