@@ -12,7 +12,7 @@ namespace BusinessLayer.Services
     {
         Task<IEnumerable<PostResponseModel>> GetAllValidPostsAsync();
         Task<IEnumerable<PostResponseModel>> GetAllUnpublicPostsAsync();
-        Task<IEnumerable<PostResponseModel>> GetAllPostsByUserIdAsync(int userId);
+        Task<IEnumerable<PostResponseModelByUser>> GetAllPostsByUserIdAsync(int userId);
         Task<Post> GetPostByIdAsync(int id);
         Task<PostDetailResponseModel> GetPostDetailAsync(int id, int userId);
         Task AddPostAsync(Post post);

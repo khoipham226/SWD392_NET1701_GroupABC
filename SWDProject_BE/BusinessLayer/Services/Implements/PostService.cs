@@ -87,7 +87,7 @@ namespace BusinessLayer.Services.Implements
             return postResponseModels;
         }
 
-        public async Task<IEnumerable<PostResponseModel>> GetAllPostsByUserIdAsync(int userId)
+        public async Task<IEnumerable<PostResponseModelByUser>> GetAllPostsByUserIdAsync(int userId)
         {
             var posts = await _unitOfWork.Repository<Post>()
                                  .GetAll()
@@ -96,7 +96,7 @@ namespace BusinessLayer.Services.Implements
                                  .Include(p => p.Product)
                                  .ToListAsync();
 
-            var postResponseModels = posts.Select(post => new PostResponseModel
+            var postResponseModels = posts.Select(post => new PostResponseModelByUser
             {
                 Id = post.Id,
                 Title = post.Title,
@@ -104,6 +104,7 @@ namespace BusinessLayer.Services.Implements
                 Date = post.Date,
                 PublicStatus = (bool)post.PublicStatus,
                 ImageUrl = post.ImageUrl,
+                isExchanged = (bool)post.ExchangedStatus,
                 User = new UserResponse
                 {
                     Id = post.User.Id,

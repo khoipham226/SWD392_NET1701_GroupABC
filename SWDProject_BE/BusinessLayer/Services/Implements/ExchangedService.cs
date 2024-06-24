@@ -47,7 +47,11 @@ namespace BusinessLayer.Services.Implements
                 .GetAll()
                 .Where(e => e.Status && (e.UserId == userId || e.Post.UserId == userId))
                 .Include(e => e.User) 
-                .Include(e => e.Post) 
+                .Include(e => e.Post)
+                .ThenInclude(p => p.Product)
+                .ThenInclude(p => p.User)
+                .Include(e => e.ExchangedProducts)
+                .ThenInclude(ep => ep.Product)
                 .ToListAsync();
 
             var exchangedResponseModels = exchangeds.Select(exchanged => new ExchangedResponseModel
@@ -62,12 +66,31 @@ namespace BusinessLayer.Services.Implements
                     UserName = exchanged.User.UserName,
                     ImgUrl = exchanged.User.ImgUrl,
                 },
+                PostOwner = new UserResponse
+                {
+                    Id = exchanged.Post.User.Id,
+                    UserName = exchanged.Post.User.UserName,
+                    ImgUrl = exchanged.Post.User.ImgUrl,
+                },
                 Post = new PostResponse
                 {
                     Id = exchanged.PostId,
                     Title = exchanged.Post.Title,
                     ImageUrl = exchanged.Post.ImageUrl
-                }
+                },
+                ProductOfPost = new ProductResponse
+                {
+                    Id = exchanged.Post.Product.Id,
+                    Name = exchanged.Post.Product.Name,
+                    UrlImg = exchanged.Post.Product.UrlImg
+                },
+                ExchangedProducts = exchanged.ExchangedProducts.Select(ep => new ProductResponseForExchange
+                {
+                    Id = ep.Product.Id,
+                    Name = ep.Product.Name,
+                    Description = ep.Product.Description,
+                    UrlImg = ep.Product.UrlImg
+                }).ToList()
             }).ToList();
 
             return exchangedResponseModels;
@@ -79,7 +102,11 @@ namespace BusinessLayer.Services.Implements
                 .GetAll() 
                 .Where(e => e.UserId == userId && !e.Status)
                 .Include(e => e.User)
-                .Include(e => e.Post) 
+                .Include(e => e.Post)
+                .ThenInclude(p => p.Product)
+                .ThenInclude(p => p.User)
+                .Include(e => e.ExchangedProducts)
+                .ThenInclude(ep => ep.Product)
                 .ToListAsync();
 
             var exchangedResponseModels = exchangeds.Select(exchanged => new ExchangedResponseModel
@@ -94,12 +121,31 @@ namespace BusinessLayer.Services.Implements
                     UserName = exchanged.User.UserName,
                     ImgUrl = exchanged.User.ImgUrl,
                 },
+                PostOwner = new UserResponse
+                {
+                    Id = exchanged.Post.User.Id,
+                    UserName = exchanged.Post.User.UserName,
+                    ImgUrl = exchanged.Post.User.ImgUrl,
+                },
                 Post = new PostResponse
                 {
                     Id = exchanged.PostId,
                     Title = exchanged.Post.Title,
                     ImageUrl = exchanged.Post.ImageUrl
-                }
+                },
+                ProductOfPost = new ProductResponse
+                {
+                    Id = exchanged.Post.Product.Id,
+                    Name = exchanged.Post.Product.Name,
+                    UrlImg = exchanged.Post.Product.UrlImg
+                },
+                ExchangedProducts = exchanged.ExchangedProducts.Select(ep => new ProductResponseForExchange
+                {
+                    Id = ep.Product.Id,
+                    Name = ep.Product.Name,
+                    Description = ep.Product.Description,
+                    UrlImg = ep.Product.UrlImg
+                }).ToList()
             }).ToList();
 
             return exchangedResponseModels;
@@ -111,8 +157,13 @@ namespace BusinessLayer.Services.Implements
                 .GetAll()
                 .Include(e => e.User)
                 .Include(e => e.Post)
+                .ThenInclude(p => p.Product)
+                .ThenInclude(p => p.User)
                 .Where(e => e.Post.UserId == userId && !e.Status)
+                .Include(e => e.ExchangedProducts)
+                .ThenInclude(ep => ep.Product)
                 .ToListAsync();
+
             var exchangedResponseModels = exchangeds.Select(exchanged => new ExchangedResponseModel
             {
                 Id = exchanged.Id,
@@ -125,12 +176,31 @@ namespace BusinessLayer.Services.Implements
                     UserName = exchanged.User.UserName,
                     ImgUrl = exchanged.User.ImgUrl,
                 },
+                PostOwner = new UserResponse
+                {
+                    Id = exchanged.Post.User.Id,
+                    UserName = exchanged.Post.User.UserName,
+                    ImgUrl = exchanged.Post.User.ImgUrl,
+                },
                 Post = new PostResponse
                 {
                     Id = exchanged.PostId,
                     Title = exchanged.Post.Title,
                     ImageUrl = exchanged.Post.ImageUrl
-                }
+                },
+                ProductOfPost = new ProductResponse
+                {
+                    Id = exchanged.Post.Product.Id,
+                    Name = exchanged.Post.Product.Name,
+                    UrlImg = exchanged.Post.Product.UrlImg
+                },
+                ExchangedProducts = exchanged.ExchangedProducts.Select(ep => new ProductResponseForExchange
+                {
+                    Id = ep.Product.Id,
+                    Name = ep.Product.Name,
+                    Description = ep.Product.Description,
+                    UrlImg = ep.Product.UrlImg
+                }).ToList()
             }).ToList();
 
             return exchangedResponseModels;

@@ -37,5 +37,15 @@ namespace BusinessLayer.ResponseModels
         public int? ExchangeId { get; set; }
         public bool IsExchangedByUser { get; set; }
     }
+
+    public class PostResponseModelByUser : PostResponseModel
+    {
+        public bool isExchanged { get; set; }
+    }
+
+    public class ProductResponseForExchange: ProductResponse
+    {
+        public string? Description { get; set; }
+    }
 }
 

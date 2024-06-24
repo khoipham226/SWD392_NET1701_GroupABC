@@ -13,7 +13,10 @@ namespace BusinessLayer.ResponseModels
         public DateTime Date { get; set; }
         public bool Status { get; set; }
         public UserResponse User { get; set; } = null!;
+        public UserResponse PostOwner { get; set; } = null!;
         public PostResponse Post { get; set; } = null!;
+        public ProductResponse ProductOfPost { get; set; } = null!;
+        public List<ProductResponseForExchange> ExchangedProducts { get; set; } = new List<ProductResponseForExchange>();
     }
 
     public class PostResponse
