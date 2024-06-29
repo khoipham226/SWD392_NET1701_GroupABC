@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.RequestModels;
 using BusinessLayer.Services;
 using DataLayer.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SWDProject_BE.Controllers
@@ -24,6 +25,20 @@ namespace SWDProject_BE.Controllers
 			return StatusCode((int)result.Code, result);
 		}
 
+		[HttpPost("send-email")]
+		public async Task<ActionResult> Gets(int employeeId)
+		{
+			var result = await _authService.SendAccount(employeeId);
+			return StatusCode((int)result.Code, result);
+		}
+
+		[HttpGet("forgot-password")]
+		public async Task<ActionResult> ForgotPassword(int employeeId)
+		{
+			var result = await _authService.ForgotPassword(employeeId);
+			return StatusCode((int)result.Code, result);
+		}
+
 		[HttpPost("register")]
 		public IActionResult Register(RegisterModel model)
 		{
@@ -34,5 +49,7 @@ namespace SWDProject_BE.Controllers
 			var result = _authService.RegisterAsync(model).Result;
 			return StatusCode((int) result.Code, result);
 		}
+
+
 	}
 }

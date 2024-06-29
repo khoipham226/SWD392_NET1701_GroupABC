@@ -15,5 +15,9 @@ namespace BusinessLayer.Services
 		string GenerateJwtToken(string username, int roleId, int userId);
 
 		Task<BaseResponse<TokenModel>> RegisterAsync(RegisterModel user);
+
+		Task<BaseResponse> SendAccount(int employeeId);
+
+		Task<BaseResponse> ForgotPassword(int employeeId);
 	}
 }
