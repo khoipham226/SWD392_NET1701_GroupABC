@@ -12,6 +12,7 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Security.Cryptography;
 
 namespace BusinessLayer.Services.Implements
 {
@@ -34,7 +35,7 @@ namespace BusinessLayer.Services.Implements
 			// Implement authentication logic here
 			// For demonstration purposes, let's assume the user is valid if username and password match
 			var user = await _userService.GetUserByEmailAsync(email);
-			if (user != null && user.Password == password)
+			if (user != null && VerifyPassword(password, user.Password))
 			{
 				string token =  GenerateJwtToken(email, user.RoleId, user.Id);
 
@@ -56,7 +57,8 @@ namespace BusinessLayer.Services.Implements
 							Address = user.Address,
 							PhoneNumber = user.PhoneNumber,
 							RoleId = user.RoleId,
-							ImgUrl = user.ImgUrl
+							ImgUrl = user.ImgUrl,
+							Gender = user.Gender
 						},
 
 
@@ -105,13 +107,59 @@ namespace BusinessLayer.Services.Implements
 					Message = "Username or email already exists",
 				};
 			}
+
 			var user = new User()
 			{
 				Address = registerModel.Address,
 				RoleId = 2,
 				UserName = registerModel.Username,
 				Email = registerModel.Email,
-				Password = registerModel.Password,
+				Password = HashPassword(registerModel.Password),
+				Dob = registerModel.Dob,
+				PhoneNumber = registerModel.PhoneNumber,
+				Gender = registerModel.Gender,
+				ImgUrl = registerModel.ImgUrl,
+			};
+
+			await _unitOfWork.Repository<User>().InsertAsync(user);
+			await _unitOfWork.CommitAsync();
+
+			// Generate JWT token
+			string token = GenerateJwtToken(user.UserName, user.RoleId, user.Id);
+
+			return new BaseResponse<TokenModel> { 
+				Code = 201,
+				Message = "Register sucessfully",
+				Data = new TokenModel
+				{
+					Token = token
+				}
+
+			};
+		}
+
+		public async Task<BaseResponse<TokenModel>> AdminGenAcc(RegisterModel registerModel)
+
+		{
+			var existingUser = await _unitOfWork.Repository<User>().FindAsync(u => u.UserName == registerModel.Username || u.Email == registerModel.Email);
+
+			if (existingUser != null)
+			{
+				return new BaseResponse<TokenModel>
+				{
+					Code = 409, // Conflict code
+					Message = "Username or email already exists",
+				};
+			}
+
+			var providePassword = GeneratePassword();
+			var user = new User()
+			{
+				Address = registerModel.Address,
+				RoleId = 2,
+				UserName = registerModel.Username,
+				Email = registerModel.Email,
+				Password = HashPassword(providePassword),
 				Dob = registerModel.Dob,
 				PhoneNumber = registerModel.PhoneNumber,
 			};
@@ -138,6 +186,10 @@ namespace BusinessLayer.Services.Implements
 			try
 			{
 				var user = await _userService.GetUserByIdAsync(employeeId);
+				var providePassword = GeneratePassword();
+				user.Password = HashPassword(providePassword);
+				await _unitOfWork.Repository<User>().Update(user, user.Id);
+				await _unitOfWork.CommitAsync();
 
 				var smtpClient = new SmtpClient("smtp.gmail.com");
 				smtpClient.Port = 587;
@@ -149,7 +201,7 @@ namespace BusinessLayer.Services.Implements
 				mailMessage.From = new MailAddress("starassystem@gmail.com");
 				mailMessage.To.Add(user.Email);
 				mailMessage.Subject = "YOUR ENTRY ACCOUNT";
-				mailMessage.Body = "Welcome to our family.\nEmail: " + user.Email + "\nPassword: " + user.Password + "\n\nThis is temporary password. Please change your password after logged in.";
+				mailMessage.Body = "Welcome to our family.\nEmail: " + user.Email + "\nPassword: " + providePassword + "\n\nThis is temporary password. Please change your password after logged in.";
 
 				await smtpClient.SendMailAsync(mailMessage);
 
@@ -203,6 +255,66 @@ namespace BusinessLayer.Services.Implements
 					Message = "An error occurred: " + ex.Message
 				};
 			}
+		}
+
+		public string HashPassword(string password)
+		{
+			// TODO: Implement password hashing algorithm
+			// Generate a random salt
+			byte[] salt = new byte[16];
+			using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+			{
+				rng.GetBytes(salt);
+			}
+
+			// Hash the password and salt using PBKDF2
+			var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+			byte[] hash = pbkdf2.GetBytes(20);
+
+			// Combine the salt and hash into a single string
+			byte[] hashBytes = new byte[36];
+			Array.Copy(salt, 0, hashBytes, 0, 16);
+			Array.Copy(hash, 0, hashBytes, 16, 20);
+			string hashedPassword = Convert.ToBase64String(hashBytes);
+
+			return hashedPassword;
+		}
+
+		public bool VerifyPassword(string password, string hashedPassword)
+		{
+			// TODO: Implement password verification algorithm
+			// Extract the salt and hash from the hashed password string
+			byte[] hashBytes = Convert.FromBase64String(hashedPassword);
+			byte[] salt = new byte[16];
+			Array.Copy(hashBytes, 0, salt, 0, 16);
+			byte[] hash = new byte[20];
+			Array.Copy(hashBytes, 16, hash, 0, 20);
+
+			// Compute the hash of the password and salt using PBKDF2
+			var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+			byte[] computedHash = pbkdf2.GetBytes(20);
+
+			// Compare the computed hash with the stored hash
+			for (int i = 0; i < 20; i++)
+			{
+				if (hash[i] != computedHash[i])
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public string GeneratePassword()
+		{
+			string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()";
+			var bytes = new byte[8];
+			using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+			{
+				rng.GetBytes(bytes);
+			}
+			var password = new string(bytes.Select(b => characters[b % characters.Length]).ToArray());
+			return password;
 		}
 	}
 }

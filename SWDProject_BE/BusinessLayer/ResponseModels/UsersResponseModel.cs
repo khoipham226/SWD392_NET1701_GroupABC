@@ -16,5 +16,8 @@ namespace BusinessLayer.ResponseModels
 		public string PhoneNumber { get; set; } = null!;
 		public int RoleId { get; set; }
         public string ImgUrl { get; set; } = null!;
-    }
+
+		public string Gender { get; set; }
+	
+	}
 }

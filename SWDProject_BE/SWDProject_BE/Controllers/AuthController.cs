@@ -50,6 +50,15 @@ namespace SWDProject_BE.Controllers
 			return StatusCode((int) result.Code, result);
 		}
 
+		[HttpPost("register")]
+		public IActionResult AdminGenAcc(RegisterModel model)
+		{
+			// Implement user registration logic here
 
+			// Once the user is registered, generate JWT token
+			//return Ok(_authService.RegisterAsync(model).Result);
+			var result = _authService.RegisterAsync(model).Result;
+			return StatusCode((int) result.Code, result);
+		}
 	}
 }

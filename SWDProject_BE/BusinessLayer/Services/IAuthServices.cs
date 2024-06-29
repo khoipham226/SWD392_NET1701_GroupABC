@@ -15,6 +15,7 @@ namespace BusinessLayer.Services
 		string GenerateJwtToken(string username, int roleId, int userId);
 
 		Task<BaseResponse<TokenModel>> RegisterAsync(RegisterModel user);
+		Task<BaseResponse<TokenModel>> AdminGenAcc(RegisterModel registerModel);
 
 		Task<BaseResponse> SendAccount(int employeeId);
 
