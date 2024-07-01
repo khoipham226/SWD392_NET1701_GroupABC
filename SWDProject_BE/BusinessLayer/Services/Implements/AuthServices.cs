@@ -37,13 +37,10 @@ namespace BusinessLayer.Services.Implements
 			var user = await _userService.GetUserByEmailAsync(email);
 			if (user != null && VerifyPassword(password, user.Password))
 			{
-<<<<<<< HEAD
-				string token =  GenerateJwtToken(email, user.RoleId, user.Id);
-=======
-				string token =  GenerateJwtToken(username, user.Role.Name, user.Id);
->>>>>>> thuan1
 
-				return new BaseResponse<LoginResponseModel>()
+				string token =  GenerateJwtToken(user.UserName, user.Role.Name, user.Id);
+
+                return new BaseResponse<LoginResponseModel>()
 				{
 					Code = 200,
 					Message = "",
@@ -129,7 +126,7 @@ namespace BusinessLayer.Services.Implements
 			await _unitOfWork.CommitAsync();
 
 			// Generate JWT token
-			string token = GenerateJwtToken(user.UserName, user.RoleId, user.Id);
+			string token = GenerateJwtToken(user.UserName, user.Role.Name, user.Id);
 
 			return new BaseResponse<TokenModel> { 
 				Code = 201,

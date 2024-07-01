@@ -189,10 +189,6 @@ namespace SWDProject_BE.Controllers
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-<<<<<<< HEAD
-                // Ensure that only the owner or an admin
-=======
->>>>>>> thuan1
                 if (existingPost.UserId != userId && !User.IsInRole("Moderator"))
                 {
                     return BadRequest("Only the PostOwner (or Moderator) can modify it");
