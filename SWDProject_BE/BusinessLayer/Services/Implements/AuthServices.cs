@@ -156,7 +156,7 @@ namespace BusinessLayer.Services.Implements
 			var user = new User()
 			{
 				Address = registerModel.Address,
-				RoleId = 2,
+				RoleId = registerModel.RoleId,
 				UserName = registerModel.Username,
 				Email = registerModel.Email,
 				Password = HashPassword(providePassword),

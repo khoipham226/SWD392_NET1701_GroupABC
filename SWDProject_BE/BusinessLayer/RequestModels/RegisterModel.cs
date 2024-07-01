@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,7 @@ namespace BusinessLayer.RequestModels
 		public string PhoneNumber { get; set; }
 		public string Gender { get; set; } = null!;
 		public string ImgUrl { get; set; } = null!;
+		public int RoleId { get; set; }
+
 	}
 }
