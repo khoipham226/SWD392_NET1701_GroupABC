@@ -18,6 +18,7 @@ namespace DataLayer.Model
 
         public virtual DbSet<BannedAccount> BannedAccounts { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
+        public virtual DbSet<Comment> Comments { get; set; } = null!;
         public virtual DbSet<Exchanged> Exchangeds { get; set; } = null!;
         public virtual DbSet<ExchangedProduct> ExchangedProducts { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
@@ -47,6 +48,8 @@ namespace DataLayer.Model
             {
                 entity.ToTable("Banned_Account");
 
+                entity.HasIndex(e => e.UserId, "IX_Banned_Account_User_Id");
+
                 entity.Property(e => e.Date).HasColumnType("datetime");
 
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
@@ -65,9 +68,40 @@ namespace DataLayer.Model
                 entity.Property(e => e.Name).HasMaxLength(100);
             });
 
+            modelBuilder.Entity<Comment>(entity =>
+            {
+                entity.ToTable("Comment");
+
+                entity.HasIndex(e => e.PostId, "IX_Comment_Post_Id");
+
+                entity.HasIndex(e => e.UserId, "IX_Comment_User_Id");
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.PostId).HasColumnName("Post_Id");
+
+                entity.Property(e => e.UserId).HasColumnName("User_Id");
+
+                entity.HasOne(d => d.Post)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(d => d.PostId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Comment__Post_Id__2DE6D218");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Comment__User_Id__2CF2ADDF");
+            });
+
             modelBuilder.Entity<Exchanged>(entity =>
             {
                 entity.ToTable("Exchanged");
+
+                entity.HasIndex(e => e.PostId, "IX_Exchanged_Post_Id");
+
+                entity.HasIndex(e => e.UserId, "IX_Exchanged_User_Id");
 
                 entity.Property(e => e.Date)
                     .HasColumnType("datetime")
@@ -94,6 +128,10 @@ namespace DataLayer.Model
             {
                 entity.ToTable("ExchangedProduct");
 
+                entity.HasIndex(e => e.ExchangeId, "IX_ExchangedProduct_ExchangeId");
+
+                entity.HasIndex(e => e.ProductId, "IX_ExchangedProduct_ProductId");
+
                 entity.HasOne(d => d.Exchange)
                     .WithMany(p => p.ExchangedProducts)
                     .HasForeignKey(d => d.ExchangeId)
@@ -110,6 +148,10 @@ namespace DataLayer.Model
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("Order");
+
+                entity.HasIndex(e => e.PaymentId, "IX_Order_Payment_Id");
+
+                entity.HasIndex(e => e.UserId, "IX_Order_User_Id");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -133,6 +175,10 @@ namespace DataLayer.Model
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {
+                entity.HasIndex(e => e.OrderId, "IX_OrderDetails_Order_Id");
+
+                entity.HasIndex(e => e.ProductId, "IX_OrderDetails_Product_Id");
+
                 entity.Property(e => e.OrderId).HasColumnName("Order_Id");
 
                 entity.Property(e => e.ProductId).HasColumnName("Product_Id");
@@ -161,6 +207,10 @@ namespace DataLayer.Model
             {
                 entity.ToTable("Post");
 
+                entity.HasIndex(e => e.ProductId, "IX_Post_Product_Id");
+
+                entity.HasIndex(e => e.UserId, "IX_Post_User_Id");
+
                 entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.ImageUrl).IsUnicode(false);
@@ -187,6 +237,12 @@ namespace DataLayer.Model
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product");
+
+                entity.HasIndex(e => e.CategoryId, "IX_Product_Category_Id");
+
+                entity.HasIndex(e => e.SubCategoryId, "IX_Product_SubCategory_Id");
+
+                entity.HasIndex(e => e.UserId, "IX_Product_User_Id");
 
                 entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
 
@@ -223,6 +279,10 @@ namespace DataLayer.Model
             {
                 entity.ToTable("Rating");
 
+                entity.HasIndex(e => e.ExchangeId, "IX_Rating_Exchange_Id");
+
+                entity.HasIndex(e => e.UserId, "IX_Rating_User_Id");
+
                 entity.Property(e => e.Date)
                     .HasColumnType("datetime")
                     .HasColumnName("DATE");
@@ -247,6 +307,10 @@ namespace DataLayer.Model
             modelBuilder.Entity<Report>(entity =>
             {
                 entity.ToTable("Report");
+
+                entity.HasIndex(e => e.PostId, "IX_Report_Post_Id");
+
+                entity.HasIndex(e => e.UserId, "IX_Report_User_Id");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -278,6 +342,8 @@ namespace DataLayer.Model
             {
                 entity.ToTable("SubCategory");
 
+                entity.HasIndex(e => e.CategoryId, "IX_SubCategory_Category_Id");
+
                 entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
 
                 entity.Property(e => e.Name).HasMaxLength(100);
@@ -293,6 +359,8 @@ namespace DataLayer.Model
             {
                 entity.ToTable("Token");
 
+                entity.HasIndex(e => e.UserId, "IX_Token_User_Id");
+
                 entity.Property(e => e.Expiration).HasColumnType("datetime");
 
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
@@ -307,6 +375,8 @@ namespace DataLayer.Model
             modelBuilder.Entity<User>(entity =>
             {
                 entity.ToTable("User");
+
+                entity.HasIndex(e => e.RoleId, "IX_User_Role_Id");
 
                 entity.Property(e => e.Address).HasMaxLength(100);
 

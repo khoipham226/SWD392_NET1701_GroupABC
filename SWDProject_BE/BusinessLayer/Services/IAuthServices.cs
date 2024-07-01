@@ -12,7 +12,7 @@ namespace BusinessLayer.Services
 	public interface IAuthServices
 	{
 		Task<BaseResponse<LoginResponseModel>> AuthenticateAsync(string username, string password);
-		string GenerateJwtToken(string username, int roleId, int userId);
+		string GenerateJwtToken(string username, string roleName, int userId);
 
 		Task<BaseResponse<TokenModel>> RegisterAsync(RegisterModel user);
 	}
