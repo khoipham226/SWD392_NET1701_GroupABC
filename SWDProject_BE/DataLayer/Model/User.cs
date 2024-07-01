@@ -7,6 +7,7 @@ namespace DataLayer.Model
     {
         public User()
         {
+            Appeals = new HashSet<Appeal>();
             BannedAccounts = new HashSet<BannedAccount>();
             Comments = new HashSet<Comment>();
             Exchangeds = new HashSet<Exchanged>();
@@ -34,6 +35,7 @@ namespace DataLayer.Model
         public bool Status { get; set; }
 
         public virtual Role Role { get; set; } = null!;
+        public virtual ICollection<Appeal> Appeals { get; set; }
         public virtual ICollection<BannedAccount> BannedAccounts { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Exchanged> Exchangeds { get; set; }

@@ -16,6 +16,7 @@ namespace DataLayer.Model
         {
         }
 
+        public virtual DbSet<Appeal> Appeals { get; set; } = null!;
         public virtual DbSet<BannedAccount> BannedAccounts { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Comment> Comments { get; set; } = null!;
@@ -38,19 +39,48 @@ namespace DataLayer.Model
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server =localhost; database =SWD392_DB;uid=sa;pwd=12345;Trusted_Connection=True;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=SWD392_DB;Uid=sa;Pwd=12345;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BannedAccount>(entity =>
+            modelBuilder.Entity<Appeal>(entity =>
             {
-                entity.ToTable("Banned_Account");
+                entity.ToTable("Appeal");
 
-                entity.HasIndex(e => e.UserId, "IX_Banned_Account_User_Id");
+                entity.Property(e => e.BannerAcountId).HasColumnName("BannerAcount_Id");
 
                 entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("Modified_Date");
+
+                entity.Property(e => e.UserId).HasColumnName("User_Id");
+
+                entity.HasOne(d => d.BannerAcount)
+                    .WithMany(p => p.Appeals)
+                    .HasForeignKey(d => d.BannerAcountId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Appeal__BannerAc__31EC6D26");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Appeals)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Appeal__User_Id__30F848ED");
+            });
+
+            modelBuilder.Entity<BannedAccount>(entity =>
+            {
+                entity.ToTable("BannedAccount");
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("Modified_Date");
 
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
 
@@ -58,7 +88,7 @@ namespace DataLayer.Model
                     .WithMany(p => p.BannedAccounts)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Banned_Ac__User___412EB0B6");
+                    .HasConstraintName("FK__BannedAcc__User___2E1BDC42");
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -72,10 +102,6 @@ namespace DataLayer.Model
             {
                 entity.ToTable("Comment");
 
-                entity.HasIndex(e => e.PostId, "IX_Comment_Post_Id");
-
-                entity.HasIndex(e => e.UserId, "IX_Comment_User_Id");
-
                 entity.Property(e => e.Date).HasColumnType("datetime");
 
                 entity.Property(e => e.PostId).HasColumnName("Post_Id");
@@ -86,22 +112,18 @@ namespace DataLayer.Model
                     .WithMany(p => p.Comments)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Comment__Post_Id__2DE6D218");
+                    .HasConstraintName("FK__Comment__Post_Id__4316F928");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Comments)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Comment__User_Id__2CF2ADDF");
+                    .HasConstraintName("FK__Comment__User_Id__4222D4EF");
             });
 
             modelBuilder.Entity<Exchanged>(entity =>
             {
                 entity.ToTable("Exchanged");
-
-                entity.HasIndex(e => e.PostId, "IX_Exchanged_Post_Id");
-
-                entity.HasIndex(e => e.UserId, "IX_Exchanged_User_Id");
 
                 entity.Property(e => e.Date)
                     .HasColumnType("datetime")
@@ -115,43 +137,35 @@ namespace DataLayer.Model
                     .WithMany(p => p.Exchangeds)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__Post___5DCAEF64");
+                    .HasConstraintName("FK__Exchanged__Post___52593CB8");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Exchangeds)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__User___5CD6CB2B");
+                    .HasConstraintName("FK__Exchanged__User___5165187F");
             });
 
             modelBuilder.Entity<ExchangedProduct>(entity =>
             {
                 entity.ToTable("ExchangedProduct");
 
-                entity.HasIndex(e => e.ExchangeId, "IX_ExchangedProduct_ExchangeId");
-
-                entity.HasIndex(e => e.ProductId, "IX_ExchangedProduct_ProductId");
-
                 entity.HasOne(d => d.Exchange)
                     .WithMany(p => p.ExchangedProducts)
                     .HasForeignKey(d => d.ExchangeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__Excha__6383C8BA");
+                    .HasConstraintName("FK__Exchanged__Excha__5535A963");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.ExchangedProducts)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__Produ__6477ECF3");
+                    .HasConstraintName("FK__Exchanged__Produ__5629CD9C");
             });
 
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("Order");
-
-                entity.HasIndex(e => e.PaymentId, "IX_Order_Payment_Id");
-
-                entity.HasIndex(e => e.UserId, "IX_Order_User_Id");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -164,21 +178,17 @@ namespace DataLayer.Model
                 entity.HasOne(d => d.Payment)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.PaymentId)
-                    .HasConstraintName("FK__Order__Payment_I__5629CD9C");
+                    .HasConstraintName("FK__Order__Payment_I__4AB81AF0");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__User_Id__5535A963");
+                    .HasConstraintName("FK__Order__User_Id__49C3F6B7");
             });
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {
-                entity.HasIndex(e => e.OrderId, "IX_OrderDetails_Order_Id");
-
-                entity.HasIndex(e => e.ProductId, "IX_OrderDetails_Product_Id");
-
                 entity.Property(e => e.OrderId).HasColumnName("Order_Id");
 
                 entity.Property(e => e.ProductId).HasColumnName("Product_Id");
@@ -187,13 +197,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Order__59FA5E80");
+                    .HasConstraintName("FK__OrderDeta__Order__4E88ABD4");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Produ__59063A47");
+                    .HasConstraintName("FK__OrderDeta__Produ__4D94879B");
             });
 
             modelBuilder.Entity<Payment>(entity =>
@@ -207,13 +217,7 @@ namespace DataLayer.Model
             {
                 entity.ToTable("Post");
 
-                entity.HasIndex(e => e.ProductId, "IX_Post_Product_Id");
-
-                entity.HasIndex(e => e.UserId, "IX_Post_User_Id");
-
                 entity.Property(e => e.Date).HasColumnType("date");
-
-                entity.Property(e => e.ImageUrl).IsUnicode(false);
 
                 entity.Property(e => e.ProductId).HasColumnName("Product_Id");
 
@@ -225,30 +229,28 @@ namespace DataLayer.Model
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Post__Product_Id__7B5B524B");
+                    .HasConstraintName("FK__Post__Product_Id__3F466844");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Post__User_Id__7A672E12");
+                    .HasConstraintName("FK__Post__User_Id__3E52440B");
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product");
 
-                entity.HasIndex(e => e.CategoryId, "IX_Product_Category_Id");
-
-                entity.HasIndex(e => e.SubCategoryId, "IX_Product_SubCategory_Id");
-
-                entity.HasIndex(e => e.UserId, "IX_Product_User_Id");
-
                 entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
+
+                entity.Property(e => e.Condition).HasMaxLength(50);
 
                 entity.Property(e => e.Location).HasMaxLength(100);
 
                 entity.Property(e => e.Name).HasMaxLength(100);
+
+                entity.Property(e => e.StockQuantity).HasColumnName("Stock_Quantity");
 
                 entity.Property(e => e.SubCategoryId).HasColumnName("SubCategory_Id");
 
@@ -260,57 +262,41 @@ namespace DataLayer.Model
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Product__Categor__4AB81AF0");
+                    .HasConstraintName("FK__Product__Categor__3B75D760");
 
                 entity.HasOne(d => d.SubCategory)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.SubCategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Product__SubCate__48CFD27E");
+                    .HasConstraintName("FK__Product__SubCate__398D8EEE");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Product__User_Id__49C3F6B7");
+                    .HasConstraintName("FK__Product__User_Id__3A81B327");
             });
 
             modelBuilder.Entity<Rating>(entity =>
             {
                 entity.ToTable("Rating");
 
-                entity.HasIndex(e => e.ExchangeId, "IX_Rating_Exchange_Id");
-
-                entity.HasIndex(e => e.UserId, "IX_Rating_User_Id");
-
                 entity.Property(e => e.Date)
                     .HasColumnType("datetime")
                     .HasColumnName("DATE");
 
-                entity.Property(e => e.ExchangeId).HasColumnName("Exchange_Id");
-
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
-
-                entity.HasOne(d => d.Exchange)
-                    .WithMany(p => p.Ratings)
-                    .HasForeignKey(d => d.ExchangeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__Exchange__68487DD7");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__User_Id__6754599E");
+                    .HasConstraintName("FK__Rating__User_Id__59063A47");
             });
 
             modelBuilder.Entity<Report>(entity =>
             {
                 entity.ToTable("Report");
-
-                entity.HasIndex(e => e.PostId, "IX_Report_Post_Id");
-
-                entity.HasIndex(e => e.UserId, "IX_Report_User_Id");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -322,13 +308,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Reports)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Report__Post_Id__52593CB8");
+                    .HasConstraintName("FK__Report__Post_Id__46E78A0C");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reports)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Report__User_Id__5165187F");
+                    .HasConstraintName("FK__Report__User_Id__45F365D3");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -342,8 +328,6 @@ namespace DataLayer.Model
             {
                 entity.ToTable("SubCategory");
 
-                entity.HasIndex(e => e.CategoryId, "IX_SubCategory_Category_Id");
-
                 entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
 
                 entity.Property(e => e.Name).HasMaxLength(100);
@@ -352,14 +336,12 @@ namespace DataLayer.Model
                     .WithMany(p => p.SubCategories)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__SubCatego__Categ__45F365D3");
+                    .HasConstraintName("FK__SubCatego__Categ__36B12243");
             });
 
             modelBuilder.Entity<Token>(entity =>
             {
                 entity.ToTable("Token");
-
-                entity.HasIndex(e => e.UserId, "IX_Token_User_Id");
 
                 entity.Property(e => e.Expiration).HasColumnType("datetime");
 
@@ -369,14 +351,12 @@ namespace DataLayer.Model
                     .WithMany(p => p.Tokens)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Token__User_Id__3C69FB99");
+                    .HasConstraintName("FK__Token__User_Id__29572725");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
                 entity.ToTable("User");
-
-                entity.HasIndex(e => e.RoleId, "IX_User_Role_Id");
 
                 entity.Property(e => e.Address).HasMaxLength(100);
 
@@ -414,7 +394,7 @@ namespace DataLayer.Model
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__Role_Id__398D8EEE");
+                    .HasConstraintName("FK__User__Role_Id__267ABA7A");
             });
 
             OnModelCreatingPartial(modelBuilder);

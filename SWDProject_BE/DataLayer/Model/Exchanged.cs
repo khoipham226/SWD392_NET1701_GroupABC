@@ -8,7 +8,6 @@ namespace DataLayer.Model
         public Exchanged()
         {
             ExchangedProducts = new HashSet<ExchangedProduct>();
-            Ratings = new HashSet<Rating>();
         }
 
         public int Id { get; set; }
@@ -21,6 +20,5 @@ namespace DataLayer.Model
         public virtual Post Post { get; set; } = null!;
         public virtual User User { get; set; } = null!;
         public virtual ICollection<ExchangedProduct> ExchangedProducts { get; set; }
-        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

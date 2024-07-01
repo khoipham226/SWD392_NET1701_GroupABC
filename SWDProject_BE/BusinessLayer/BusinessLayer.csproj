@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Mapper\" />
+    <Folder Include="RequestModels\Rating\" />
+    <Folder Include="ResponseModels\Rating\" />
   </ItemGroup>
 
   <ItemGroup>
