@@ -99,14 +99,14 @@ namespace BusinessLayer.Services.Implements
 		public async Task<BaseResponse<TokenModel>> RegisterAsync(RegisterModel registerModel)
 
 		{
-			var existingUser = await _unitOfWork.Repository<User>().FindAsync(u => u.UserName == registerModel.Username || u.Email == registerModel.Email);
+			var existingUser = await _unitOfWork.Repository<User>().FindAsync(u => u.Email == registerModel.Email);
 
 			if (existingUser != null)
 			{
 				return new BaseResponse<TokenModel>
 				{
 					Code = 409, // Conflict code
-					Message = "Username or email already exists",
+					Message = "Email already exists",
 				};
 			}
 
@@ -144,14 +144,14 @@ namespace BusinessLayer.Services.Implements
 		public async Task<BaseResponse<TokenModel>> AdminGenAcc(RegisterModel registerModel)
 
 		{
-			var existingUser = await _unitOfWork.Repository<User>().FindAsync(u => u.UserName == registerModel.Username || u.Email == registerModel.Email);
+			var existingUser = await _unitOfWork.Repository<User>().FindAsync(u => u.Email == registerModel.Email);
 
 			if (existingUser != null)
 			{
 				return new BaseResponse<TokenModel>
 				{
 					Code = 409, // Conflict code
-					Message = "Username or email already exists",
+					Message = "Email already exists",
 				};
 			}
 
