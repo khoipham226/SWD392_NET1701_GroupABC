@@ -157,17 +157,13 @@ namespace BusinessLayer.Services
             }
         }
 
-        public async Task<string> updateProduct(int id,UpdateProductDto dto, int userId)
+        public async Task<string> updateProduct(int id,UpdateProductDto dto)
         {
             try
             {
                 var product = await unitOfWork.Repository<Product>().GetById(id);
                 if(product != null) 
                 {
-                    if (userId != 0)
-                    {
-                        product.UserId = userId;
-                    }
                     if (dto.CategoryId != 0)
                     {
                         product.CategoryId = dto.CategoryId.Value;

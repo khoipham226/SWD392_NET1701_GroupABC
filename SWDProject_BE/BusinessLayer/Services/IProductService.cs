@@ -20,7 +20,7 @@ namespace BusinessLayer.Services
         Task<String> addProduct(AddProductDto dto, int userId);
         Task<String> addProductForExchange(AddProductDto dto, int userId);
 
-        Task<String> updateProduct(int id, UpdateProductDto dto, int userId);
+        Task<String> updateProduct(int id, UpdateProductDto dto);
 
         Task<String> deleteProduct(int id);
 

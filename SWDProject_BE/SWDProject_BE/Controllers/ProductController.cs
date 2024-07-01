@@ -208,22 +208,14 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                // Take the user id from JWT
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized();
-                }
-                var userId = int.Parse(userIdClaim.Value);
-
-                String message = await ProductService.updateProduct(id,dto,userId);
+                String message = await ProductService.updateProduct(id,dto);
                 if(message != null)
                 {
                     return Ok(message);
                 }
                 else
                 {
-                    return NotFound();
+                    return NotFound("Not found Product!");
                 }
             }
             catch (Exception ex)
