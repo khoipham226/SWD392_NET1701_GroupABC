@@ -35,10 +35,11 @@ namespace BusinessLayer.Services.Implements
 			// Implement authentication logic here
 			// For demonstration purposes, let's assume the user is valid if username and password match
 			var user = await _userService.GetUserByEmailAsync(email);
-			if (user != null && VerifyPassword(password, user.Password))
+            
+            if (user != null && VerifyPassword(password, user.Password))
 			{
-
-				string token =  GenerateJwtToken(user.UserName, user.Role.Name, user.Id);
+                var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
+                string token =  GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
 
                 return new BaseResponse<LoginResponseModel>()
 				{
@@ -125,8 +126,9 @@ namespace BusinessLayer.Services.Implements
 			await _unitOfWork.Repository<User>().InsertAsync(user);
 			await _unitOfWork.CommitAsync();
 
-			// Generate JWT token
-			string token = GenerateJwtToken(user.UserName, user.Role.Name, user.Id);
+            var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
+            // Generate JWT token
+            string token = GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
 
 			return new BaseResponse<TokenModel> { 
 				Code = 201,
@@ -169,7 +171,6 @@ namespace BusinessLayer.Services.Implements
 			await _unitOfWork.CommitAsync();
 
             var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
-
             // Generate JWT token
             string token = GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
 
