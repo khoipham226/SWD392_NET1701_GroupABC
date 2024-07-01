@@ -268,38 +268,11 @@ namespace BusinessLayer.Services
             }
         }
 
-        public async Task<List<GetAllProductResponseModel>> GetAllProductsForExchangeByUserId(int userId)
+        public async Task<List<GetAllProductResponseModel>> GetAllProductsForExchange(int userId)
         {
             try
             {
                 var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == false && p.UserId == userId).ToList();
-                List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
-                foreach (var product in Product)
-                {
-                    var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
-                    var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
-                    GetAllProductResponseModel result = new GetAllProductResponseModel();
-                    result = product.MapToGetAllProduct(_mapper);
-                    result.UserName = user.UserName;
-                    result.CategoryName = category.Name;
-                    result.SubcategoryName = Subcategory.Name;
-                    Final.Add(result);
-                }
-                return Final;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public async Task<List<GetAllProductResponseModel>> GetAllProductsForExchane()
-        {
-            try
-            {
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == false).ToList();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {

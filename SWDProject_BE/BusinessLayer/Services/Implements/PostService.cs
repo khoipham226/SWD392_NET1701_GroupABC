@@ -203,45 +203,22 @@ namespace BusinessLayer.Services.Implements
 
         public async Task UpdatePostStatusAsync(int id, bool newPublicStatus)
         {
+            // Retrieve the post by its id
             var post = await _unitOfWork.Repository<Post>().GetById(id);
-            if (post != null)
-            {
-                post.PublicStatus = newPublicStatus;
 
-                await _unitOfWork.Repository<Post>().Update(post, post.Id);
+            post.PublicStatus = newPublicStatus;
 
-                await _unitOfWork.CommitAsync();
-            }
-            else
-            {
-                throw new Exception("Post not found");
-            }
+            // Update the post in the repository
+            await _unitOfWork.Repository<Post>().Update(post, post.Id);
+
+            // Commit the transaction
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task DeletePostAsync(int id)
         {
-            var post = await _unitOfWork.Repository<Post>()
-                                .GetAll()
-                                .Include(p => p.Reports)
-                                .FirstOrDefaultAsync(p => p.Id == id);
-
-
-            if (post != null)
-            {
-                var reports = post.Reports.ToList();
-                foreach (var report in reports)
-                {
-                    await _unitOfWork.Repository<Report>().HardDelete(report.Id);
-                }
-                await _unitOfWork.CommitAsync();
-
-                await _unitOfWork.Repository<Post>().HardDelete(id);
-                await _unitOfWork.CommitAsync();
-            }
-            else
-            {
-                throw new Exception("Post not found");
-            }
+            await _unitOfWork.Repository<Post>().HardDelete(id);
+            await _unitOfWork.CommitAsync();
         }
     }
 }

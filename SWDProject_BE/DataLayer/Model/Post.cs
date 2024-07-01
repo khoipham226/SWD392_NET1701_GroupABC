@@ -7,7 +7,6 @@ namespace DataLayer.Model
     {
         public Post()
         {
-            Comments = new HashSet<Comment>();
             Exchangeds = new HashSet<Exchanged>();
             Reports = new HashSet<Report>();
         }
@@ -24,7 +23,6 @@ namespace DataLayer.Model
 
         public virtual Product Product { get; set; } = null!;
         public virtual User User { get; set; } = null!;
-        public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Exchanged> Exchangeds { get; set; }
         public virtual ICollection<Report> Reports { get; set; }
     }

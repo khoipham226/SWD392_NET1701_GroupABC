@@ -24,225 +24,177 @@ namespace SWDProject_BE.Controllers
         [HttpGet("GetAllFinishedForUser")]
         public async Task<ActionResult<Exchanged>> GetAllFinishedExchangedByUserId()
         {
-            try
+            // Take the user id from JWT
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
             {
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized(new { message = "Check JWT token." });
-                }
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
+            }
+            var userId = int.Parse(userIdClaim.Value);
 
-                var userId = int.Parse(userIdClaim.Value);
-                var exchanged = await _exchangedService.GetAllFinishedExchangedByUserIdAsync(userId);
-                return Ok(exchanged);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var exchanged = await _exchangedService.GetAllFinishedExchangedByUserIdAsync(userId);
+            return Ok(exchanged);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Exchanged>> GetExchangedById(int id)
         {
-            try
+            var exchanged = await _exchangedService.GetExchangedByIdAsync(id);
+            if (exchanged == null)
             {
-                var exchanged = await _exchangedService.GetExchangedByIdAsync(id);
-                if (exchanged == null)
-                {
-                    return NotFound(new { message = "Exchanged ID not found." });
-                }
-
-                return Ok(exchanged);
+                return StatusCode(StatusCodes.Status404NotFound, new { message = "Exchanged id not found." });
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(exchanged);
         }
 
         [HttpGet("GetAllPendingForCustomer")]
         [Authorize]
         public async Task<ActionResult<IEnumerable<Exchanged>>> GetAllPendingExchangedByUserIdForCustomer()
         {
-            try
+            // Take the user id from JWT
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
             {
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized(new { message = "Check JWT token." });
-                }
-
-                var userId = int.Parse(userIdClaim.Value);
-                var exchanged = await _exchangedService.GetAllPendingExchangedByUserIdForCustomerAsync(userId);
-                return Ok(exchanged);
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var userId = int.Parse(userIdClaim.Value);
+            var exchanged = await _exchangedService.GetAllPendingExchangedByUserIdForCustomerAsync(userId);
+            return Ok(exchanged);
         }
 
         [HttpGet("GetAllPendingForPoster")]
         [Authorize]
         public async Task<ActionResult<IEnumerable<Exchanged>>> GetAllPendingExchangedByUserIdForPoster()
         {
-            try
+            // Take the user id from JWT
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
             {
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized(new { message = "Check JWT token." });
-                }
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
+            }
+            var userId = int.Parse(userIdClaim.Value);
 
-                var userId = int.Parse(userIdClaim.Value);
-                var exchanged = await _exchangedService.GetAllPendingExchangedByUserIdForPosterAsync(userId);
-                return Ok(exchanged);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var exchanged = await _exchangedService.GetAllPendingExchangedByUserIdForPosterAsync(userId);
+            return Ok(exchanged);
         }
 
         [HttpPost]
         [Authorize]
         public async Task<ActionResult> AddExchanged(ExchangedRequestModel exchangedRequest)
         {
-            try
+            var post = await _postService.GetPostByIdAsync(exchangedRequest.PostId);
+
+            if (post.ExchangedStatus == true)
             {
-                var post = await _postService.GetPostByIdAsync(exchangedRequest.PostId);
-                if (post.ExchangedStatus == true)
-                {
-                    return BadRequest(new { message = "Cannot add exchange because the post is already exchanged." });
-                }
+                return StatusCode(StatusCodes.Status400BadRequest, new { message = "Cannot add exchange because the post is aldready exchanged." });
+            }
 
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized(new { message = "Check JWT token." });
-                }
-                var userId = int.Parse(userIdClaim.Value);
+            // Take the user id from JWT
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
+            }
+            var userId = int.Parse(userIdClaim.Value);
 
-                if (post.UserId == userId)
-                {
-                    return BadRequest(new { message = "This post is your own post." });
-                }
+            // Ensure that not the owner
+            if (post.UserId == userId)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, new { message = "This Post is your own post." });
+            }
 
-                var exchanged = new Exchanged
+            var exchanged = new Exchanged
+            {
+                UserId = userId,
+                PostId = exchangedRequest.PostId,
+                Description = exchangedRequest.Description,
+                Date = DateTime.Now,
+                Status = false
+            };
+            await _exchangedService.AddExchangedAsync(exchanged);
+
+            foreach (var productId in exchangedRequest.ProductIds)
+            {
+                var exchangedProduct = new ExchangedProduct
                 {
-                    UserId = userId,
-                    PostId = exchangedRequest.PostId,
-                    Description = exchangedRequest.Description,
-                    Date = DateTime.Now,
-                    Status = false
+                    ExchangeId = exchanged.Id,
+                    ProductId = productId
                 };
-                await _exchangedService.AddExchangedAsync(exchanged);
-
-                foreach (var productId in exchangedRequest.ProductIds)
-                {
-                    var exchangedProduct = new ExchangedProduct
-                    {
-                        ExchangeId = exchanged.Id,
-                        ProductId = productId
-                    };
-                    await _exchangedService.AddExchangedProductAsync(exchangedProduct);
-                }
-                return Ok(new { message = "Exchange created successfully." });
+                await _exchangedService.AddExchangedProductAsync(exchangedProduct);
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return StatusCode(StatusCodes.Status200OK, new { message = "Exchange created successfully." });
         }
 
         [HttpPut("accept/{id}")]
         [Authorize]
         public async Task<ActionResult> UpdateExchangedStatusAccept(int id)
         {
-            try
+            var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
+            var OwnPost = await _postService.GetPostByIdAsync(existingExchanged.PostId);
+
+            // Take the user id from JWT
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
             {
-                var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
-                var ownPost = await _postService.GetPostByIdAsync(existingExchanged.PostId);
-
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized(new { message = "Check JWT token." });
-                }
-                var userId = int.Parse(userIdClaim.Value);
-
-                if (ownPost.UserId != userId)
-                {
-                    return BadRequest(new { message = "This post is not your own post." });
-                }
-
-                await _exchangedService.UpdateExchangedStatusAcceptAsync(id);
-                return Ok(new { message = "Exchange accepted successfully." });
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
-            catch (Exception ex)
+            var userId = int.Parse(userIdClaim.Value);
+
+            // Ensure that only the owner of the post
+            if (OwnPost.UserId != userId)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(StatusCodes.Status403Forbidden, new { message = "This Post is not your own post." });
             }
+
+            await _exchangedService.UpdateExchangedStatusAcceptAsync(id);
+            return StatusCode(StatusCodes.Status200OK, new { message = "Exchange accpept successfully." });
         }
 
         [HttpDelete("deny/{id}")]
         [Authorize]
         public async Task<ActionResult> UpdateExchangedStatusDeny(int id)
         {
-            try
+            var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
+            var OwnPost = await _postService.GetPostByIdAsync(existingExchanged.PostId);
+
+            // Take the user id from JWT
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
             {
-                var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
-                var ownPost = await _postService.GetPostByIdAsync(existingExchanged.PostId);
-
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized(new { message = "Check JWT token." });
-                }
-                var userId = int.Parse(userIdClaim.Value);
-
-                if (ownPost.UserId != userId)
-                {
-                    return BadRequest(new { message = "This post is not your own post." });
-                }
-
-                await _exchangedService.UpdateExchangedStatusDenyAsync(id);
-                return Ok(new { message = "Exchange denied successfully." });
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
-            catch (Exception ex)
+            var userId = int.Parse(userIdClaim.Value);
+
+            // Ensure that only the owner of the post
+            if (OwnPost.UserId != userId)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(StatusCodes.Status403Forbidden, new { message = "This Post is not your own post." });
             }
+            await _exchangedService.UpdateExchangedStatusDenyAsync(id);
+            return StatusCode(StatusCodes.Status200OK, new { message = "Exchange deny successfully." });
         }
 
         [HttpDelete("cancel/{id}")]
         [Authorize]
         public async Task<ActionResult> CancelExchanged(int id)
         {
-            try
+            var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
+
+            // Take the user id from JWT
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
             {
-                var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
-
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized(new { message = "Check JWT token." });
-                }
-
-                var userId = int.Parse(userIdClaim.Value);
-                if (existingExchanged.UserId != userId)
-                {
-                    return BadRequest(new { message = "This exchange is not yours." });
-                }
-
-                await _exchangedService.UpdateExchangedStatusDenyAsync(id);
-                return Ok(new { message = "Exchange cancelled successfully." });
+                return StatusCode(StatusCodes.Status401Unauthorized, new { message = "Check jwt token." });
             }
-            catch (Exception ex)
+            var userId = int.Parse(userIdClaim.Value);
+
+            // Ensure that only the owner of the exchanged
+            if (existingExchanged.UserId != userId)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(StatusCodes.Status403Forbidden, new { message = "This exchange is not your." });
             }
+            await _exchangedService.UpdateExchangedStatusDenyAsync(id);
+            return StatusCode(StatusCodes.Status200OK, new { message = "Exchange cancel successfully." });
         }
     }
 }

@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\commentresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\commentresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\exchangedcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\exchangedcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,60 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 16,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CommentResponseModel.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\CommentResponseModel.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\CommentResponseModel.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\CommentResponseModel.cs",
-              "RelativeToolTip": "BusinessLayer\\ResponseModels\\CommentResponseModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T11:47:54.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CommentService.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\CommentService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\CommentService.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\CommentService.cs",
-              "RelativeToolTip": "BusinessLayer\\Services\\Implements\\CommentService.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAwCoAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T11:44:54.162Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ExchangedController.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ExchangedController.cs",
-              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\ExchangedController.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ExchangedController.cs",
-              "RelativeToolTip": "SWDProject_BE\\Controllers\\ExchangedController.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAIwGIAAABkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T11:37:55.181Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CommentController.cs",
-              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\CommentController.cs",
-              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\CommentController.cs",
-              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\CommentController.cs",
-              "RelativeToolTip": "SWDProject_BE\\Controllers\\CommentController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAwwCEAAABOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T11:28:33.573Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -143,6 +79,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:138:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Repository\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Repository\\GenericRepository.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Repository\\GenericRepository.cs",
+              "RelativeToolTip": "DataLayer\\Repository\\GenericRepository.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T03:35:44.963Z",
+              "EditorCaption": ""
             }
           ]
         },
