@@ -11,14 +11,14 @@ namespace BusinessLayer.Services
 {
 	public interface IAuthServices
 	{
-		Task<BaseResponse<LoginResponseModel>> AuthenticateAsync(string username, string password);
+		Task<BaseResponse<LoginResponseModel>> AuthenticateAsync(string email, string password);
 		string GenerateJwtToken(string username, int roleId, int userId);
 
 		Task<BaseResponse<TokenModel>> RegisterAsync(RegisterModel user);
 		Task<BaseResponse<TokenModel>> AdminGenAcc(RegisterModel registerModel);
 
-		Task<BaseResponse> SendAccount(int employeeId);
+		Task<BaseResponse> SendAccount(int userId);
 
-		Task<BaseResponse> ForgotPassword(int employeeId);
+		Task<BaseResponse> ForgotPassword(int userId);
 	}
 }

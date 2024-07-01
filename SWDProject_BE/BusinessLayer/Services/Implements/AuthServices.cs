@@ -181,11 +181,11 @@ namespace BusinessLayer.Services.Implements
 			};
 		}
 
-		public async Task<BaseResponse> SendAccount(int employeeId)
+		public async Task<BaseResponse> SendAccount(int userId)
 		{
 			try
 			{
-				var user = await _userService.GetUserByIdAsync(employeeId);
+				var user = await _userService.GetUserByIdAsync(userId);
 				var providePassword = GeneratePassword();
 				user.Password = HashPassword(providePassword);
 				await _unitOfWork.Repository<User>().Update(user, user.Id);
@@ -195,13 +195,13 @@ namespace BusinessLayer.Services.Implements
 				smtpClient.Port = 587;
 				smtpClient.EnableSsl = true;
 				smtpClient.UseDefaultCredentials = false;
-				smtpClient.Credentials = new NetworkCredential("starassystem@gmail.com", "djgb uzwl texe nqmz");
+				smtpClient.Credentials = new NetworkCredential("studentexchangeweb@gmail.com", "fwpl wpkw zhqe peyh");
 
 				MailMessage mailMessage = new MailMessage();
-				mailMessage.From = new MailAddress("starassystem@gmail.com");
+				mailMessage.From = new MailAddress("studentexchangeweb@gmail.com");
 				mailMessage.To.Add(user.Email);
 				mailMessage.Subject = "YOUR ENTRY ACCOUNT";
-				mailMessage.Body = "Welcome to our family.\nEmail: " + user.Email + "\nPassword: " + providePassword + "\n\nThis is temporary password. Please change your password after logged in.";
+				mailMessage.Body = "Welcome to our Exchange web!!!\nEmail: " + user.Email + "\nPassword: " + providePassword + "\n\nThis is temporary password. Please change your password after logged in.";
 
 				await smtpClient.SendMailAsync(mailMessage);
 
@@ -221,23 +221,23 @@ namespace BusinessLayer.Services.Implements
 			}
 		}
 
-		public async Task<BaseResponse> ForgotPassword(int employeeId)
+		public async Task<BaseResponse> ForgotPassword(int userId)
 		{
 			try
 			{
-				var user = await _userService.GetUserByIdAsync(employeeId);
+				var user = await _userService.GetUserByIdAsync(userId);
 
 				var smtpClient = new SmtpClient("smtp.gmail.com");
 				smtpClient.Port = 587;
 				smtpClient.EnableSsl = true;
 				smtpClient.UseDefaultCredentials = false;
-				smtpClient.Credentials = new NetworkCredential("starassystem@gmail.com", "djgb uzwl texe nqmz");
+				smtpClient.Credentials = new NetworkCredential("studentexchangeweb@gmail.com", "fwpl wpkw zhqe peyh");
 
 				MailMessage mailMessage = new MailMessage();
-				mailMessage.From = new MailAddress("starassystem@gmail.com");
+				mailMessage.From = new MailAddress("studentexchangeweb@gmail.com");
 				mailMessage.To.Add(user.Email);
-				mailMessage.Subject = "YOUR NEW PASSWORD";
-				mailMessage.Body = "Welcome to our family.\nEmail: " + user.Email + "\nPassword: " + user.Password + "\n\nThis is temporary password. Please change your password after logged in.";
+				mailMessage.Subject = "YOUR PASSWORD";
+				mailMessage.Body = "Email: " + user.Email + "\nPassword: " + user.Password + "\n";
 
 				await smtpClient.SendMailAsync(mailMessage);
 

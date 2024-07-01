@@ -20,22 +20,22 @@ namespace SWDProject_BE.Controllers
 		[HttpPost("login")]
 		public IActionResult Login(LoginModel model)
 		{
-			var result = _authService.AuthenticateAsync(model.Username, model.Password).Result;
+			var result = _authService.AuthenticateAsync(model.Email, model.Password).Result;
 
 			return StatusCode((int)result.Code, result);
 		}
 
 		[HttpPost("send-email")]
-		public async Task<ActionResult> Gets(int employeeId)
+		public async Task<ActionResult> Gets(int userId)
 		{
-			var result = await _authService.SendAccount(employeeId);
+			var result = await _authService.SendAccount(userId);
 			return StatusCode((int)result.Code, result);
 		}
 
 		[HttpGet("forgot-password")]
-		public async Task<ActionResult> ForgotPassword(int employeeId)
+		public async Task<ActionResult> ForgotPassword(int userId)
 		{
-			var result = await _authService.ForgotPassword(employeeId);
+			var result = await _authService.ForgotPassword(userId);
 			return StatusCode((int)result.Code, result);
 		}
 
@@ -50,7 +50,7 @@ namespace SWDProject_BE.Controllers
 			return StatusCode((int) result.Code, result);
 		}
 
-		[HttpPost("register")]
+		[HttpPost("admin-create-account")]
 		public IActionResult AdminGenAcc(RegisterModel model)
 		{
 			// Implement user registration logic here
