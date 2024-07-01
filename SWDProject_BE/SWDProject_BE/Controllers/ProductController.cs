@@ -60,7 +60,7 @@ namespace SWDProject_BE.Controllers
 
         [HttpGet]
         [Route("GetAllForExchangeByUserId")]
-        public async Task<IActionResult> GetAllProductForExchange()
+        public async Task<IActionResult> GetAllProductForExchangeByUserId()
         {
             try
             {
@@ -72,7 +72,24 @@ namespace SWDProject_BE.Controllers
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                var product = await ProductService.GetAllProductsForExchange(userId);
+                var product = await ProductService.GetAllProductsForExchangeByUserId(userId);
+                return Ok(product);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpGet]
+        [Route("GetAllForExchange")]
+        public async Task<IActionResult> GetAllProductForExchange()
+        {
+            try
+            {
+                var product = await ProductService.GetAllProductsForExchane();
                 return Ok(product);
 
             }

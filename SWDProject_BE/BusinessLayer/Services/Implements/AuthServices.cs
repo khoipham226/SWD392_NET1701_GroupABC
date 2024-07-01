@@ -37,7 +37,11 @@ namespace BusinessLayer.Services.Implements
 			var user = await _userService.GetUserByEmailAsync(email);
 			if (user != null && VerifyPassword(password, user.Password))
 			{
+<<<<<<< HEAD
 				string token =  GenerateJwtToken(email, user.RoleId, user.Id);
+=======
+				string token =  GenerateJwtToken(username, user.Role.Name, user.Id);
+>>>>>>> thuan1
 
 				return new BaseResponse<LoginResponseModel>()
 				{
@@ -73,7 +77,7 @@ namespace BusinessLayer.Services.Implements
 			};
 		}
 
-		public string GenerateJwtToken(string username, int roleId, int userId)
+		public string GenerateJwtToken(string username, string roleName, int userId)
 		{
 			var tokenHandler = new JwtSecurityTokenHandler();
 			var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
@@ -83,7 +87,7 @@ namespace BusinessLayer.Services.Implements
 				Subject = new ClaimsIdentity(new[]
 				{
 					new Claim(ClaimTypes.Name, username),
-					new Claim(ClaimTypes.Role, roleId.ToString()), // Thêm vai trò của người dùng vào token
+					new Claim(ClaimTypes.Role, roleName), // Thêm vai trò của người dùng vào token
 					new Claim(ClaimTypes.NameIdentifier, userId.ToString())
 				}),
 				Expires = DateTime.UtcNow.AddHours(24),
@@ -167,8 +171,10 @@ namespace BusinessLayer.Services.Implements
 			await _unitOfWork.Repository<User>().InsertAsync(user);
 			await _unitOfWork.CommitAsync();
 
-			// Generate JWT token
-			string token = GenerateJwtToken(user.UserName, user.RoleId, user.Id);
+            var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
+
+            // Generate JWT token
+            string token = GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
 
 			return new BaseResponse<TokenModel> { 
 				Code = 201,

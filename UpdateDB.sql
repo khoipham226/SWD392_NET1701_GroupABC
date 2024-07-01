@@ -20,3 +20,15 @@ DROP COLUMN [Stock_Quantity],
 -- Step 3: Add the column [IsForSell] as BIT
 ALTER TABLE [SWD392_DB].[dbo].[Product]
 ADD [IsForSell] BIT;
+
+-- Create Comment
+CREATE TABLE Comment (
+    [Id] INT IDENTITY(1,1) PRIMARY KEY,
+    User_Id INT NOT NULL,
+    Post_Id INT NOT NULL,
+    [Content] NVARCHAR(MAX) NOT NULL,
+    [Date] DATETIME,
+    [Status]  BIT NOT NULL,
+    FOREIGN KEY (User_Id) REFERENCES [SWD392_DB].[dbo].[User](Id),
+    FOREIGN KEY (Post_Id) REFERENCES [SWD392_DB].[dbo].[Post](Id)
+);
