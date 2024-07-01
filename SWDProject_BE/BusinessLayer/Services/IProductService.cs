@@ -16,7 +16,7 @@ namespace BusinessLayer.Services
 
         Task<List<GetAllProductResponseModel>> GetAllProductsValid();
         Task<List<GetAllProductResponseModel>> GetAllProducts();
-        Task<List<GetAllProductResponseModel>> GetAllProductsForExchange(int userId);
+        Task<List<GetAllProductResponseModel>> GetAllProductsForExchangeByUserId(int userId);
         Task<String> addProduct(AddProductDto dto, int userId);
         Task<String> addProductForExchange(AddProductDto dto, int userId);
 
@@ -26,6 +26,7 @@ namespace BusinessLayer.Services
 
         Task<GetAllProductResponseModel> GetProductDetailsResponseModel(int id);
         Task<List<GetAllProductResponseModel>> GetProductByUserId(int userId);
+        Task<List<GetAllProductResponseModel>> GetAllProductsForExchane();
 
     }
 }

@@ -56,7 +56,9 @@ namespace BusinessLayer.Services.Implements
 		{
 			// Truy vấn người dùng từ cơ sở dữ liệu theo tên người dùng
 			var user = await _unitOfWork.Repository<User>()
-				.FindAsync(predicate: u => u.UserName == username);
+				.GetAll()
+                .Include(u => u.Role)
+                .FirstOrDefaultAsync(u => u.UserName == username);
 
 			return user;
 		}
