@@ -29,7 +29,7 @@ namespace SWDProject_BE.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -43,7 +43,7 @@ namespace SWDProject_BE.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -53,11 +53,10 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                // Take the user id from JWT
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {
-                    return Unauthorized();
+                    return Unauthorized(new { message = "Check JWT token." });
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
@@ -66,7 +65,7 @@ namespace SWDProject_BE.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -75,25 +74,24 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                // Take the user id from JWT
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {
-                    return Unauthorized();
+                    return Unauthorized(new { message = "Check JWT token." });
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
                 var post = await _postService.GetPostDetailAsync(id, userId);
                 if (post == null)
                 {
-                    return NotFound();
+                    return NotFound(new { message = "Post ID not found." });
                 }
                 return Ok(post);
             }
             catch (Exception ex)
             {
 
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -103,15 +101,13 @@ namespace SWDProject_BE.Controllers
         {
             try
             {
-                // Take the user id from JWT
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {
-                    return Unauthorized();
+                    return Unauthorized(new { message = "Check JWT token." });
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                // Create a new post
                 var post = new Post
                 {
                     UserId = userId,
@@ -124,15 +120,13 @@ namespace SWDProject_BE.Controllers
                     ExchangedStatus = false,
                 };
 
-                // Add the post using the post service
                 await _postService.AddPostAsync(post);
 
-                // Return the created post
                 return CreatedAtAction(nameof(GetPost), new { id = post.Id }, post);
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -145,24 +139,21 @@ namespace SWDProject_BE.Controllers
                 var existingPost = await _postService.GetPostByIdAsync(id);
                 if (existingPost == null)
                 {
-                    return NotFound();
+                    return NotFound(new { message = "Post ID not found." });
                 }
 
-                // Take the user id from JWT
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {
-                    return Unauthorized();
+                    return Unauthorized(new { message = "Check JWT token." });
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                // Ensure that only the owner or an admin
-                if (existingPost.UserId != userId && !User.IsInRole("Admin"))
+                if (existingPost.UserId != userId && !User.IsInRole("Moderator"))
                 {
-                    return Forbid();
+                    return BadRequest("Only the PostOwner (or Moderator) can modify it");
                 }
 
-                // Update the post properties
                 existingPost.ProductId = (int)updatePostRequest.ProductId;
                 existingPost.Title = updatePostRequest.Title;
                 existingPost.Description = updatePostRequest.Description;
@@ -170,11 +161,11 @@ namespace SWDProject_BE.Controllers
                 existingPost.ImageUrl = updatePostRequest.ImageUrl;
 
                 await _postService.UpdatePostAsync(existingPost);
-                return StatusCode(StatusCodes.Status200OK, new { message = "Post updated successfully." });
+                return Ok(new { message = "Post updated successfully." });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -188,29 +179,27 @@ namespace SWDProject_BE.Controllers
                 var existingPost = await _postService.GetPostByIdAsync(id);
                 if (existingPost == null)
                 {
-                    return NotFound();
+                    return NotFound(new { message = "Post ID not found." });
                 }
 
-                // Take the user id from JWT
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {
-                    return Unauthorized();
+                    return Unauthorized(new { message = "Check JWT token." });
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                // Ensure that only the owner or an admin
                 if (existingPost.UserId != userId && !User.IsInRole("Moderator"))
                 {
-                    return Forbid();
+                    return BadRequest("Only the PostOwner (or Moderator) can modify it");
                 }
 
                 await _postService.DeletePostAsync(id);
-                return StatusCode(StatusCodes.Status200OK, new { message = "Post deleted successfully." });
+                return Ok(new { message = "Post deleted successfully." });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -223,15 +212,15 @@ namespace SWDProject_BE.Controllers
                 var existingPost = await _postService.GetPostByIdAsync(id);
                 if (existingPost == null)
                 {
-                    return NotFound();
+                    return NotFound(new { message = "Post ID not found." });
                 }
 
                 await _postService.UpdatePostStatusAsync(id, newStatus);
-                return StatusCode(StatusCodes.Status200OK, new { message = "Post Publish status updated to " + newStatus });
+                return Ok(new { message = "Post publish status updated to " + newStatus });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Please try again later.");
+                return BadRequest(ex.Message);
             }
         }
 

@@ -1,5 +1,7 @@
-﻿using DataLayer.Model;
+﻿using BusinessLayer.ResponseModels;
+using DataLayer.Model;
 using DataLayer.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +19,28 @@ namespace BusinessLayer.Services.Implements
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Comment>> GetAllCommentsByPostAsync(int postId)
+        public async Task<IEnumerable<CommentResponseModel>> GetAllCommentsByPostAsync(int postId)
         {
-            return await _unitOfWork.Repository<Comment>().GetWhere(c => c.PostId == postId);
+            var comments = await _unitOfWork.Repository<Comment>()
+                .GetAll()
+                .Include(c => c.User)
+                .ToListAsync();
+
+            var commentResponseModels = comments.Select(comment => new CommentResponseModel
+            {
+                PostId = comment.PostId,
+                Content = comment.Content,
+                Status = (bool)comment.Status,
+                Date = comment.Date,
+                User = new UserResponse
+                {
+                    Id = comment.User.Id,
+                    UserName = comment.User.UserName,
+                    ImgUrl = comment.User.ImgUrl,
+                },
+            }).ToList();
+
+            return commentResponseModels;
         }
 
         public async Task<Comment> GetCommentByIdAsync(int id)
