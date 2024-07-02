@@ -102,15 +102,20 @@ namespace BusinessLayer.Services.Implements
                 foreach (var category in listCategory)
                 {
                     var listSubcategory =  _unitOfWork.Repository<SubCategory>().FindAll(s => s.CategoryId == category.Id && s.Status == true).ToList();
-                    var listSubcategoryResponse = _mapper.Map<List<SubcategoryResponseModel>>(listSubcategory);
 
+                    if (listSubcategory.Any())
+                    {
+                        var listSubcategoryResponse = _mapper.Map<List<SubcategoryResponseModel>>(listSubcategory);
 
-                    CategoryResponseModel categoryResponseModel = new CategoryResponseModel();
-                    categoryResponseModel.Id = category.Id;
-                    categoryResponseModel.Name = category.Name;
-                    categoryResponseModel.SubCategories = listSubcategoryResponse;
-                    result.Add(categoryResponseModel);
+                        CategoryResponseModel categoryResponseModel = new CategoryResponseModel
+                        {
+                            Id = category.Id,
+                            Name = category.Name,
+                            SubCategories = listSubcategoryResponse
+                        };
 
+                        result.Add(categoryResponseModel);
+                    }
                 }
                 return result;
             }
