@@ -10,6 +10,8 @@ using BusinessLayer.Services;
 using BusinessLayer.Services.Implements;
 using BusinessLayer.RequestModels;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using System.Drawing;
 
 namespace SWDProject_BE.Controllers
 {
@@ -89,9 +91,61 @@ namespace SWDProject_BE.Controllers
 			return NoContent();
 		}
 
+        [HttpPut("BanUser/{id}")]
+        [Authorize]
+        public async Task<IActionResult> BanUser(int id, string reason)
+        {
+            try
+            {
+                var user = await _userService.GetUserByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound(new { message = "User ID not found." });
+                }
+                if (user.Status == false)
+                {
+                    return BadRequest(new { message = "User Banned Already." });
+                }
 
-		// POST: api/Users
-		[HttpPost]
+                await _userService.BanUser(id, reason);
+
+                return Ok(new { message = "User Banned successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("UnBanUser/{id}")]
+        [Authorize]
+        public async Task<IActionResult> UnBanUser(int id)
+        {
+            try
+            {
+                var user = await _userService.GetUserByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound(new { message = "User ID not found." });
+                }
+                if (user.Status == true)
+                {
+                    return BadRequest(new { message = "User UnBanned Already." });
+                }
+
+                await _userService.UnBanUser(id);
+
+                return Ok(new { message = "User UnBanned successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        // POST: api/Users
+        [HttpPost]
 		[Authorize]
 		public async Task<ActionResult<User>> PostUser(UserCreateRequestModel userModel)
 		{

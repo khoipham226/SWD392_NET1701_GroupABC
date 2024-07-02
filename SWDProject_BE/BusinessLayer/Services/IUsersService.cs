@@ -14,7 +14,9 @@ namespace BusinessLayer.Services
 		Task CreateUserAsync(User user);
 		Task UpdateUserAsync(User user);
 		Task DeleteUserAsync(int id);
-		Task<bool> UserExistsAsync(int id);
+        Task BanUser(int id, string description);
+        Task UnBanUser(int id);
+        Task<bool> UserExistsAsync(int id);
 		Task<User> GetUserByUsernameAsync(string username);
 		Task<User> GetUserByEmailAsync(string email);
 	}
