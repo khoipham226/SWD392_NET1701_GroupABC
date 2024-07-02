@@ -16,7 +16,8 @@ namespace BusinessLayer.RequestModels
 		public string Address { get; set; } = null!;
 		public string PhoneNumber { get; set; } = null!;
 		public int RoleId { get; set; }
-		public bool Status { get; set; }
+        public string Gender { get; set; } = null!;
+        public bool Status { get; set; }
 	}
 
 	public class UserUpdateRequestModel

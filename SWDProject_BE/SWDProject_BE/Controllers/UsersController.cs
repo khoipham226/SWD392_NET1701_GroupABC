@@ -104,7 +104,8 @@ namespace SWDProject_BE.Controllers
 				PhoneNumber = userModel.PhoneNumber,
 				RoleId = userModel.RoleId,
 				Status = userModel.Status,
-				CreatedDate = DateTime.Now
+				CreatedDate = DateTime.Now,
+				Gender = userModel.Gender,
 			};
 
 			await _userService.CreateUserAsync(user);

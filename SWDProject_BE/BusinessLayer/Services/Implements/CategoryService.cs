@@ -101,7 +101,7 @@ namespace BusinessLayer.Services.Implements
                 var listCategory = _unitOfWork.Repository<Category>().FindAll(c => c.Status == true).ToList();
                 foreach (var category in listCategory)
                 {
-                    var listSubcategory =  _unitOfWork.Repository<SubCategory>().FindAll(s => s.CategoryId == category.Id).ToList();
+                    var listSubcategory =  _unitOfWork.Repository<SubCategory>().FindAll(s => s.CategoryId == category.Id && s.Status == true).ToList();
                     var listSubcategoryResponse = _mapper.Map<List<SubcategoryResponseModel>>(listSubcategory);
 
 
