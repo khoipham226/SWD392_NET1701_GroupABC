@@ -149,7 +149,7 @@ namespace SWDProject_BE.Controllers
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                if (existingPost.UserId != userId && !User.IsInRole("Moderator"))
+                if (existingPost.UserId != userId && !User.IsInRole("staff"))
                 {
                     return BadRequest("Only the PostOwner (or Moderator) can modify it");
                 }
@@ -189,7 +189,7 @@ namespace SWDProject_BE.Controllers
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                if (existingPost.UserId != userId && !User.IsInRole("Moderator"))
+                if (existingPost.UserId != userId && !User.IsInRole("staff"))
                 {
                     return BadRequest("Only the PostOwner (or Moderator) can modify it");
                 }
