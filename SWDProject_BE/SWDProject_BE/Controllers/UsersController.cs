@@ -66,6 +66,9 @@ namespace SWDProject_BE.Controllers
 			user.PhoneNumber = userModel.PhoneNumber;		
 			user.Status = userModel.Status;
 			user.ModifiedDate = DateTime.Now;
+			user.ImgUrl = userModel.ImgUrl;
+			user.Gender = userModel.Gender;
+
 
 			try
 			{
