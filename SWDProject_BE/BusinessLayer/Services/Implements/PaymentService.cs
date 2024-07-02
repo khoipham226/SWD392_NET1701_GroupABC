@@ -62,8 +62,6 @@ public class PaymentService : IPaymentService
             {
                 OrderId = order.Id,
                 ProductId = detail.ProductId,
-                Quantity = detail.Quantity,
-                TotalPrice = detail.TotalPrice,
                 Status = true
             };
 

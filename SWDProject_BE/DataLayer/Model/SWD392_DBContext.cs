@@ -244,13 +244,9 @@ namespace DataLayer.Model
 
                 entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
 
-                entity.Property(e => e.Condition).HasMaxLength(50);
-
                 entity.Property(e => e.Location).HasMaxLength(100);
 
                 entity.Property(e => e.Name).HasMaxLength(100);
-
-                entity.Property(e => e.StockQuantity).HasColumnName("Stock_Quantity");
 
                 entity.Property(e => e.SubCategoryId).HasColumnName("SubCategory_Id");
 

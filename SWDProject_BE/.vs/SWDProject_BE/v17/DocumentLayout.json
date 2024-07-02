@@ -1,93 +1,89 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
+  "WorkspaceRootPath": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\swd392_dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\swd392_dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\exchangedproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\exchangedproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\exchanged.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\exchanged.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\bannedaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\bannedaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\swdproject_be.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\swdproject_be.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\datalayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\datalayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\appeal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\appeal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\category\\categoryresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\category\\categoryresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\category\\categoryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\category\\categoryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\product\\getallproductresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\product\\getallproductresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\product\\productmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\product\\productmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\postresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\exchangedproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\exchangedproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\bannedaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\bannedaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\swdproject_be.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\swdproject_be.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\datalayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\datalayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\appeal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\appeal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\datalayer\\model\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA61FFE8-E431-4E85-9ECD-E57C1F275D83}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\model\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\category\\categoryresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\category\\categoryresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\category\\categoryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\category\\categoryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\product\\getallproductresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\product\\getallproductresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\product\\productmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\product\\productmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\postresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\postresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\loginresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\responsemodels\\loginresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodels\\loginresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|d:\\project\\c#\\project\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -98,223 +94,274 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 19,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Category.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Category.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Model\\Category.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Category.cs",
-              "RelativeToolTip": "DataLayer\\Model\\Category.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "PaymentService.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\PaymentService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\PaymentService.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\PaymentService.cs",
+              "RelativeToolTip": "BusinessLayer\\Services\\Implements\\PaymentService.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAhwD8AAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:35:36.42Z",
+              "WhenOpened": "2024-07-02T01:34:28.006Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SWDProject_BE",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.csproj",
-              "RelativeDocumentMoniker": "SWDProject_BE\\SWDProject_BE.csproj",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.csproj",
-              "RelativeToolTip": "SWDProject_BE\\SWDProject_BE.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-01T17:35:30.367Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DataLayer",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
-              "RelativeDocumentMoniker": "DataLayer\\DataLayer.csproj",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
-              "RelativeToolTip": "DataLayer\\DataLayer.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-01T17:35:19.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Appeal.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Appeal.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Model\\Appeal.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Appeal.cs",
-              "RelativeToolTip": "DataLayer\\Model\\Appeal.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:34:41.721Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "User.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\User.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Model\\User.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\User.cs",
-              "RelativeToolTip": "DataLayer\\Model\\User.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAzwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:34:26.471Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Rating.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Rating.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Model\\Rating.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Rating.cs",
-              "RelativeToolTip": "DataLayer\\Model\\Rating.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:34:25.721Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 2,
               "Title": "Product.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Product.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Product.cs",
               "RelativeDocumentMoniker": "DataLayer\\Model\\Product.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Product.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Product.cs",
               "RelativeToolTip": "DataLayer\\Model\\Product.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAowBUAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-01T17:34:25.219Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ExchangedProduct.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\ExchangedProduct.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Model\\ExchangedProduct.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\ExchangedProduct.cs",
-              "RelativeToolTip": "DataLayer\\Model\\ExchangedProduct.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:34:23.643Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 11,
               "Title": "OrderDetail.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\OrderDetail.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\OrderDetail.cs",
               "RelativeDocumentMoniker": "DataLayer\\Model\\OrderDetail.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\OrderDetail.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\OrderDetail.cs",
               "RelativeToolTip": "DataLayer\\Model\\OrderDetail.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:34:19.714Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Exchanged.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Exchanged.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Model\\Exchanged.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Exchanged.cs",
-              "RelativeToolTip": "DataLayer\\Model\\Exchanged.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAgwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:34:17.218Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BannedAccount.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\BannedAccount.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Model\\BannedAccount.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\BannedAccount.cs",
-              "RelativeToolTip": "DataLayer\\Model\\BannedAccount.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAgwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:34:15.14Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T17:34:19.714Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SWD392_DBContext.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\SWD392_DBContext.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Model\\SWD392_DBContext.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\SWD392_DBContext.cs",
-              "RelativeToolTip": "DataLayer\\Model\\SWD392_DBContext.cs",
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "SWDProject_BE\\Controllers\\ProductController.cs",
+              "ViewState": "AQIAAMoAAAAAAAAAAAAhwNAAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T17:19:49.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExchangedProduct.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\ExchangedProduct.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Model\\ExchangedProduct.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\ExchangedProduct.cs",
+              "RelativeToolTip": "DataLayer\\Model\\ExchangedProduct.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:34:08.822Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T17:34:23.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Rating.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Rating.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Model\\Rating.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Rating.cs",
+              "RelativeToolTip": "DataLayer\\Model\\Rating.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T17:34:25.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\User.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Model\\User.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\User.cs",
+              "RelativeToolTip": "DataLayer\\Model\\User.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAzwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T17:34:26.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Appeal.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Appeal.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Model\\Appeal.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Appeal.cs",
+              "RelativeToolTip": "DataLayer\\Model\\Appeal.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T17:34:41.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DataLayer.csproj",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+              "RelativeDocumentMoniker": "DataLayer\\DataLayer.csproj",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\DataLayer.csproj",
+              "RelativeToolTip": "DataLayer\\DataLayer.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-01T17:35:19.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SWDProject_BE.csproj",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.csproj",
+              "RelativeDocumentMoniker": "SWDProject_BE\\SWDProject_BE.csproj",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.csproj",
+              "RelativeToolTip": "SWDProject_BE\\SWDProject_BE.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-01T17:35:30.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Category.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Model\\Category.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Category.cs",
+              "RelativeToolTip": "DataLayer\\Model\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T17:35:36.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BannedAccount.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\BannedAccount.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Model\\BannedAccount.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\BannedAccount.cs",
+              "RelativeToolTip": "DataLayer\\Model\\BannedAccount.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T17:34:15.14Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "CategoryResponseModel.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponseModel.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Category\\CategoryResponseModel.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponseModel.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponseModel.cs",
               "RelativeToolTip": "BusinessLayer\\ResponseModels\\Category\\CategoryResponseModel.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:28:07.194Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T17:28:07.194Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "CategoryResponse.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponse.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponse.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Category\\CategoryResponse.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponse.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponse.cs",
               "RelativeToolTip": "BusinessLayer\\ResponseModels\\Category\\CategoryResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:28:06.128Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T17:28:06.128Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "GetAllProductResponseModel.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
               "RelativeToolTip": "BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:28:03.12Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T17:28:03.12Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "ProductMapping.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
               "RelativeToolTip": "BusinessLayer\\ResponseModels\\Product\\ProductMapping.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:28:02.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T17:28:02.372Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "IProductService.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IProductService.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IProductService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\IProductService.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IProductService.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IProductService.cs",
               "RelativeToolTip": "BusinessLayer\\Services\\IProductService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -324,34 +371,21 @@
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "ProductService.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\ProductService.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
               "RelativeToolTip": "BusinessLayer\\Services\\Implements\\ProductService.cs",
               "ViewState": "AQIAAI0AAAAAAAAAAAAmwLcAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:20:36.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T17:20:36.62Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\ProductController.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "SWDProject_BE\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAALoAAAAAAAAAAAAkwNkAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T17:19:49.295Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
               "Title": "PostResponseModel.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\PostResponseModel.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\PostResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\PostResponseModel.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\PostResponseModel.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\PostResponseModel.cs",
               "RelativeToolTip": "BusinessLayer\\ResponseModels\\PostResponseModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -359,11 +393,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "LoginResponseModel.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
               "RelativeToolTip": "BusinessLayer\\ResponseModels\\LoginResponseModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -371,15 +405,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "PostsController.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
+              "DocumentMoniker": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\PostsController.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
+              "ToolTip": "D:\\Project\\C#\\Project\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
               "RelativeToolTip": "SWDProject_BE\\Controllers\\PostsController.cs",
               "ViewState": "AQIAANAAAAAAAAAAAAAYwMkAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-01T12:21:50.37Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 131,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 118,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             }
           ]
         }
