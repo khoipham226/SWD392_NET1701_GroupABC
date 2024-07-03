@@ -18,7 +18,8 @@ namespace BusinessLayer.RequestModels
 		public int RoleId { get; set; }
         public string Gender { get; set; } = null!;
         public bool Status { get; set; }
-	}
+        public string ImgUrl { get; set; } = null!;
+    }
 
 	public class UserUpdateRequestModel
 	{
@@ -31,7 +32,8 @@ namespace BusinessLayer.RequestModels
 		public string PhoneNumber { get; set; } = null!;
         public string Gender { get; set; } = null!;
         public string ImgUrl { get; set; } = null!;
+        public bool Status { get; set; }
         //public int RoleId { get; set; }
-	}
+    }
 
 }
