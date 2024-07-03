@@ -1,13 +1,18 @@
+using DataLayer.Repository;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using SWDProject_BE.AppStarts;
+using SWDProject_BE.SignalR;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddSignalR();
 builder.Services.AddControllers();
-
+builder.Services.AddSingleton<IGroupRepository, GroupRepository>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 // Install AutoMapper
 builder.Services.ConfigureAutoMapper();
 // Install DI and dbcontext
@@ -82,5 +87,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHub<SWDProjectHub>("/chatHub");
 app.Run();
