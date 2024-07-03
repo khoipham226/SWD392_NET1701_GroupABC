@@ -66,10 +66,10 @@ namespace SWDProject_BE.Controllers
 			user.Dob = userModel.Dob;
 			user.Address = userModel.Address;
 			user.PhoneNumber = userModel.PhoneNumber;		
-			user.Status = userModel.Status;
 			user.ModifiedDate = DateTime.Now;
 			user.ImgUrl = userModel.ImgUrl;
 			user.Gender = userModel.Gender;
+			user.UserName = userModel.UserName;
 
 
 			try
