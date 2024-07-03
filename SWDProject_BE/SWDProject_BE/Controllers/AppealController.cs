@@ -1,6 +1,9 @@
-﻿using BusinessLayer.Services;
+﻿using BusinessLayer.RequestModels.Appeal;
+using BusinessLayer.Services;
+using DataLayer.Dto.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace SWDProject_BE.Controllers
 {
@@ -30,6 +33,44 @@ namespace SWDProject_BE.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetAppealById/{AppealId}")]
+        public async Task<IActionResult> GetAppealById(int AppealId)
+        {
+            try
+            {
+                var result = await _appealService.FindAppealById(AppealId);
+                if(result != null)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound("Not fount Appeal!");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetAllAppealProcessing")]
+        public async Task<IActionResult> GetAllAppealProcessing()
+        {
+            try
+            {
+                var result = await _appealService.GetAllAppealProcessingll();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [HttpGet]
         [Route("GetAllByUserId/{UserId}")]
@@ -49,6 +90,25 @@ namespace SWDProject_BE.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetAllByBannerAccountId/{BannerAccountId}")]
+        public async Task<IActionResult> GetAllByBannerAccountId(int BannerAccountId)
+        {
+            try
+            {
+                var result = await _appealService.GetAllByBannerAccountId(BannerAccountId);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                return NotFound("not found BannerAccount!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         [Route("AcceptAppeal/{AppealId}")]
         public async Task<IActionResult> AcceptAppeal(int AppealId)
@@ -59,6 +119,49 @@ namespace SWDProject_BE.Controllers
                 if (result != null)
                 {
                     return Ok(result);
+                }
+                return NotFound("not found Appeal!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("AddAppeal")]
+        public async Task<IActionResult> AddAppeal(AddAppealRequestModel dto)
+        {
+            try
+            {
+                // Take the user id from JWT
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized();
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                String message = await _appealService.AddAppeal(dto, userId);
+                return Ok(message);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("UpdateAppeal/{AppealId}")]
+        public async Task<IActionResult> UpdateAppeal(UppdateAppealRequestModel dto, int AppealId)
+        {
+            try
+            {
+                var message = await _appealService.UpdateAppeal(dto , AppealId);
+                if (message != null)
+                {
+                    return Ok(message);
                 }
                 return NotFound("not found Appeal!");
             }
