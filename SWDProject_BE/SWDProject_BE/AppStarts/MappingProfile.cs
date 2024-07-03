@@ -2,8 +2,10 @@
 using BusinessLayer.RequestModels.Category;
 using BusinessLayer.RequestModels.Report;
 using BusinessLayer.RequestModels.Subcategory;
+using BusinessLayer.ResponseModels.Appeal;
 using BusinessLayer.ResponseModels.Category;
 using BusinessLayer.ResponseModels.Product;
+using BusinessLayer.ResponseModels.Rating;
 using BusinessLayer.ResponseModels.Report;
 using BusinessLayer.ResponseModels.Subcategory;
 using DataLayer.Model;
@@ -30,6 +32,10 @@ namespace SWDProject_BE.AppStarts
             //Report
             CreateMap<ReportRequestaUser, Report>().ReverseMap();
             CreateMap<ReportResponseModel, Report>().ReverseMap();
+
+            //Rating
+            CreateMap<RatingResponseModel, Rating>().ReverseMap();
+            CreateMap<AppealResponseModel, Appeal>().ReverseMap();
 
         }
     }

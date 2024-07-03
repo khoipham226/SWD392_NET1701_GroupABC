@@ -22,7 +22,7 @@ namespace DataLayer.Model
         public string? Location { get; set; }
         public string? UrlImg { get; set; }
         public bool Status { get; set; }
-        public bool? IsForSell { get; set; }
+        public bool IsForSell { get; set; }
 
         public virtual Category Category { get; set; } = null!;
         public virtual SubCategory SubCategory { get; set; } = null!;

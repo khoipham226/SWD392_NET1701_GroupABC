@@ -36,6 +36,8 @@ namespace SWDProject_BE.AppStarts
             services.AddScoped<IExchangedService, ExchangedService>();
             services.AddScoped<IReportService, ReportService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<IAppealService, AppealService>();
             services.AddSingleton<PayPalService>();
 
         }
