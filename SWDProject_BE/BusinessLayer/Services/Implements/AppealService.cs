@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BusinessLayer.ResponseModels.Appeal;
-using BusinessLayer.Services.Implements;
 using DataLayer.Model;
 using DataLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Services
+namespace BusinessLayer.Services.Implements
 {
     public class AppealService : IAppealService
     {
@@ -29,7 +28,7 @@ namespace BusinessLayer.Services
             {
                 var appealList = await _unitOfWork.Repository<Appeal>().GetAll().ToListAsync();
                 List<AppealResponseModel> listAppealModel = new List<AppealResponseModel>();
-                foreach(var appeal in appealList)
+                foreach (var appeal in appealList)
                 {
                     AppealResponseModel appealModel = new AppealResponseModel();
                     appealModel = _mapper.Map<AppealResponseModel>(appeal);
@@ -44,7 +43,7 @@ namespace BusinessLayer.Services
                         appealModel.UserName = user.UserName;
                     }
                     var bannerUser = await _unitOfWork.Repository<BannedAccount>().FindAsync(b => b.Id == appeal.BannerAcountId);
-                    if(bannerUser == null)
+                    if (bannerUser == null)
                     {
                         appealModel.BannerDescription = "not found";
                     }
@@ -61,7 +60,51 @@ namespace BusinessLayer.Services
             {
                 throw new Exception(ex.Message);
             }
-            
+        }
+
+        public async Task<List<AppealResponseModel>> GetAllByUserId(int userId)
+        {
+            try
+            {
+                var checkUser = _unitOfWork.Repository<User>().Find(u => u.Id == userId).FirstOrDefault();
+                if (checkUser == null) 
+                {
+                    return null;
+                }
+                var appealList =  _unitOfWork.Repository<Appeal>().FindAll(a => a.UserId == userId).ToList();
+                List<AppealResponseModel> listAppealModel = new List<AppealResponseModel>();
+                foreach (var appeal in appealList)
+                {
+                    AppealResponseModel appealModel = new AppealResponseModel();
+                    appealModel = _mapper.Map<AppealResponseModel>(appeal);
+
+                    var user = await _unitOfWork.Repository<User>().FindAsync(u => u.Id == appeal.UserId);
+                    if (user == null)
+                    {
+                        appealModel.UserName = "not found";
+                    }
+                    else
+                    {
+                        appealModel.UserName = user.UserName;
+                    }
+                    var bannerUser = await _unitOfWork.Repository<BannedAccount>().FindAsync(b => b.Id == appeal.BannerAcountId);
+                    if (bannerUser == null)
+                    {
+                        appealModel.BannerDescription = "not found";
+                    }
+                    else
+                    {
+                        appealModel.BannerDescription = bannerUser.Description;
+                        appealModel.BannerDate = bannerUser.Date;
+                    }
+                    listAppealModel.Add(appealModel);
+                }
+                return listAppealModel;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

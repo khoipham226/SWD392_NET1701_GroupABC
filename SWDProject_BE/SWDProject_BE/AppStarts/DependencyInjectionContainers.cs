@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SWDProject_BE.AppStarts
 {
-	public static class DependencyInjectionContainers
+    public static class DependencyInjectionContainers
 	{
 		public static void InstallService(this IServiceCollection services, IConfiguration configuration)
 		{

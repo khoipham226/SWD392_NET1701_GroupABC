@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Services.Implements
+namespace BusinessLayer.Services
 {
     public interface IAppealService
     {
         Task<List<AppealResponseModel>> GetAll();
+        Task<List<AppealResponseModel>> GetAllByUserId(int userId);
     }
 }
