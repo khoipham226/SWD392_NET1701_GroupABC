@@ -96,13 +96,15 @@ namespace BusinessLayer.Services.Implements
             {
                 user.Status = true;
                 await _unitOfWork.Repository<User>().Update(user, id);
-                await _unitOfWork.CommitAsync();
-
+               
                 var bannedAccount = await _unitOfWork.Repository<BannedAccount>().FindAsync(ba => ba.UserId == id);
 				if (bannedAccount != null)
 				{
-					await _unitOfWork.Repository<BannedAccount>().HardDelete(bannedAccount.Id);
+                    bannedAccount.Status = false;
+                    bannedAccount.ModifiedDate = DateTime.Now;
+					await _unitOfWork.Repository<BannedAccount>().Update(bannedAccount,bannedAccount.Id);
 				}
+                await _unitOfWork.CommitAsync();
 
                 // Send email notification to the user
                 var smtpClient = new SmtpClient("smtp.gmail.com")

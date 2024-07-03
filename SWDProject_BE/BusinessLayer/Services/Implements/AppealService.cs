@@ -14,12 +14,39 @@ namespace BusinessLayer.Services.Implements
     public class AppealService : IAppealService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IUsersService _userService;
         private IMapper _mapper;
 
-        public AppealService(IUnitOfWork unitOfWork, IMapper mapper)
+        public AppealService(IUnitOfWork unitOfWork, IMapper mapper, IUsersService usersService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _userService = usersService;
+        }
+
+        public async Task<string> AcceptAppeal(int AppealId)
+        {
+            try
+            {
+                var appeal = _unitOfWork.Repository<Appeal>().Find(a => a.Id == AppealId).FirstOrDefault();
+                if(appeal != null)
+                {
+                    appeal.ModifiedDate = DateTime.Now;
+                    appeal.Status = true;
+                    await _unitOfWork.Repository<Appeal>().Update(appeal, AppealId);
+                    await _userService.UnBanUser(appeal.UserId);          
+                    return "Unban Sucessful!";
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<List<AppealResponseModel>> GetAll()
