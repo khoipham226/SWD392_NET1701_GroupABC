@@ -54,42 +54,31 @@ namespace SWDProject_BE.Controllers
 		[Authorize]
 		public async Task<IActionResult> PutUser(int id, UserUpdateRequestModel userModel)
 		{
-			var user = await _userService.GetUserByIdAsync(id);
-			if (user == null)
-			{
-				return NotFound();
-			}
+            try
+            {
+                var user = await _userService.GetUserByIdAsync(id);
+				if (user == null)
+				{
+					return NotFound(new { message = "User ID not found." });
+				}
 
-			// Map properties from userModel to user entity
-			//user.Field = userModel.Field;
-			//user.Password = userModel.Password;
-			user.Dob = userModel.Dob;
-			user.Address = userModel.Address;
-			user.PhoneNumber = userModel.PhoneNumber;		
-			user.Status = userModel.Status;
-			user.ModifiedDate = DateTime.Now;
-			user.ImgUrl = userModel.ImgUrl;
-			user.Gender = userModel.Gender;
+				user.Dob = userModel.Dob;
+				user.Address = userModel.Address;
+				user.PhoneNumber = userModel.PhoneNumber;		
+				user.ModifiedDate = DateTime.Now;
+				user.ImgUrl = userModel.ImgUrl;
+				user.Gender = userModel.Gender;
+				user.UserName = userModel.UserName;
 
-
-			try
-			{
 				await _userService.UpdateUserAsync(user);
-			}
-			catch (DbUpdateConcurrencyException)
-			{
-				if (!await UserExists(id))
-				{
-					return NotFound();
-				}
-				else
-				{
-					throw;
-				}
-			}
 
-			return NoContent();
-		}
+                return Ok(new { message = "User updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPut("BanUser/{id}")]
         [Authorize]
@@ -163,6 +152,7 @@ namespace SWDProject_BE.Controllers
 				Status = userModel.Status,
 				CreatedDate = DateTime.Now,
 				Gender = userModel.Gender,
+				ImgUrl = userModel.ImgUrl,
 			};
 
 			await _userService.CreateUserAsync(user);

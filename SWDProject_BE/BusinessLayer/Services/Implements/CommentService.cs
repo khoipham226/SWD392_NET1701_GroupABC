@@ -24,10 +24,12 @@ namespace BusinessLayer.Services.Implements
             var comments = await _unitOfWork.Repository<Comment>()
                 .GetAll()
                 .Include(c => c.User)
+                .Where(c => c.PostId == postId)
                 .ToListAsync();
 
             var commentResponseModels = comments.Select(comment => new CommentResponseModel
             {
+                id = comment.Id,
                 PostId = comment.PostId,
                 Content = comment.Content,
                 Status = (bool)comment.Status,
