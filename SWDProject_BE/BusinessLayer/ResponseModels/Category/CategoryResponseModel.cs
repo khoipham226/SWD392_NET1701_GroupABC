@@ -14,4 +14,9 @@ namespace BusinessLayer.ResponseModels.Category
         public string Name { get; set; } = null!;
         public ICollection<SubcategoryResponseModel> SubCategories { get; set; }
     }
+
+    public class CategoryResponseModelForStaff : CategoryResponseModel
+    {
+        public bool Status { get; set; }
+    }
 }

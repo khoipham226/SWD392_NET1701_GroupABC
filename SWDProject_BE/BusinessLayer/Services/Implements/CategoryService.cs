@@ -34,6 +34,11 @@ namespace BusinessLayer.Services.Implements
                     Name = dto.Name,
                     Status = true
                 };
+                var exsitingCategory = await _unitOfWork.Repository<Category>().FindAsync(c => c.Name.Equals(category.Name));
+                if (exsitingCategory != null)
+                {
+                    return ("Category "+ category.Name + " exsited");
+                }
                 await _unitOfWork.Repository<Category>().InsertAsync(category);
                 await _unitOfWork.CommitAsync();
                 return "Add Category Sucessfull";
@@ -54,6 +59,16 @@ namespace BusinessLayer.Services.Implements
                     category.Status = false;
                     await _unitOfWork.Repository<Category>().Update(category,id);
                     await _unitOfWork.CommitAsync();
+
+                    var subCategories = await _unitOfWork.Repository<SubCategory>().GetAll().Where(sc => sc.CategoryId == id).ToListAsync();
+                    foreach (var subCategory in subCategories)
+                    {
+                        subCategory.Status = false;
+                        await _unitOfWork.Repository<SubCategory>().Update(subCategory, subCategory.Id);
+                        await _unitOfWork.CommitAsync();
+                    }
+
+
                     return "Delete Successful!";
                 }
                 return null;
@@ -93,7 +108,7 @@ namespace BusinessLayer.Services.Implements
             }
         }
 
-        public async Task<List<CategoryResponseModel>> GetAllWithSubcategory()
+        public async Task<List<CategoryResponseModel>> GetAllWithSubcategoryForCreateProduct()
         {
             try
             {
@@ -125,6 +140,37 @@ namespace BusinessLayer.Services.Implements
             }         
         }
 
+        public async Task<List<CategoryResponseModelForStaff>> GetAllWithSubcategoryForStaff()
+        {
+            try
+            {
+                List<CategoryResponseModelForStaff> result = new List<CategoryResponseModelForStaff>();
+                var listCategory = _unitOfWork.Repository<Category>().GetAll().ToList();
+                foreach (var category in listCategory)
+                {
+                    var listSubcategory = _unitOfWork.Repository<SubCategory>().GetAll().ToList();
+
+                    var listSubcategoryResponse = _mapper.Map<List<SubcategoryResponseModel>>(listSubcategory);
+
+                    CategoryResponseModelForStaff categoryResponseModel = new CategoryResponseModelForStaff
+                    {
+                        Id = category.Id,
+                        Name = category.Name,
+                        SubCategories = listSubcategoryResponse,
+                        Status = category.Status
+                    };
+
+                    result.Add(categoryResponseModel);
+
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<CategoryResponse> GetById(int id)
         {
             try
@@ -151,9 +197,16 @@ namespace BusinessLayer.Services.Implements
             try
             {
                 var category = await _unitOfWork.Repository<Category>().GetById(id);
+                
                 if (category != null)
                 {
-                    if(dto.Name != null)
+                    var exsitingCategory = await _unitOfWork.Repository<Category>().FindAsync(c => c.Name.Equals(dto.Name));
+                    if (exsitingCategory != null)
+                    {
+                        return ("Category " + category.Name + " exsited");
+                    }
+
+                    if (dto.Name != null)
                     {
                         category.Name = dto.Name;
                     }

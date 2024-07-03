@@ -11,7 +11,8 @@ namespace BusinessLayer.Services
 {
     public interface ICategoryService
     {
-        Task<List<CategoryResponseModel>> GetAllWithSubcategory();
+        Task<List<CategoryResponseModel>> GetAllWithSubcategoryForCreateProduct();
+        Task<List<CategoryResponseModelForStaff>> GetAllWithSubcategoryForStaff();
         Task<string> UpdateCategory(int id, CategoryRequestModel dto);
         Task<string> AddCategory(CategoryRequestModel dto);
         Task<string> DeleteCategory(int id);
