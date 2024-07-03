@@ -29,6 +29,7 @@ namespace BusinessLayer.Services.Implements
 
             var commentResponseModels = comments.Select(comment => new CommentResponseModel
             {
+                id = comment.Id,
                 PostId = comment.PostId,
                 Content = comment.Content,
                 Status = (bool)comment.Status,

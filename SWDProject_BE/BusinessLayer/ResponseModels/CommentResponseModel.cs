@@ -8,6 +8,7 @@ namespace BusinessLayer.ResponseModels
 {
     public class CommentResponseModel
     {
+        public int id { get; set; }
         public int PostId { get; set; }
         public string Content { get; set; } = null!;
         public DateTime? Date { get; set; }
