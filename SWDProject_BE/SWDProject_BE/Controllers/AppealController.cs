@@ -32,7 +32,7 @@ namespace SWDProject_BE.Controllers
 
 
         [HttpGet]
-        [Route("GetAll/{UserId}")]
+        [Route("GetAllByUserId/{UserId}")]
         public async Task<IActionResult> GetAllByUserId(int UserId)
         {
             try
@@ -44,6 +44,25 @@ namespace SWDProject_BE.Controllers
                 }
                 return NotFound("not found User!");
             }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("AcceptAppeal/{AppealId}")]
+        public async Task<IActionResult> AcceptAppeal(int AppealId)
+        {
+            try
+            {
+                var result = await _appealService.AcceptAppeal(AppealId);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                return NotFound("not found Appeal!");
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

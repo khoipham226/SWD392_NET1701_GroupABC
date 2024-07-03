@@ -11,5 +11,6 @@ namespace BusinessLayer.Services
     {
         Task<List<AppealResponseModel>> GetAll();
         Task<List<AppealResponseModel>> GetAllByUserId(int userId);
+        Task<string> AcceptAppeal(int AppealId);
     }
 }
