@@ -67,7 +67,7 @@ namespace BusinessLayer.Services.Implements
 				user.Status = true;
 				await _unitOfWork.Repository<User>().Update(user, id);
 
-				var bannedAccount = await _unitOfWork.Repository<BannedAccount>().FindAsync(ba => ba.UserId == id);
+				var bannedAccount = await _unitOfWork.Repository<BannedAccount>().FindAsync(ba => ba.UserId == id && ba.Status == true);
 				if (bannedAccount != null)
 				{
 					bannedAccount.Status = false;

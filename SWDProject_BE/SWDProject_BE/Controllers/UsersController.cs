@@ -80,59 +80,6 @@ namespace SWDProject_BE.Controllers
             }
         }
 
-        [HttpPut("BanUser/{id}")]
-        [Authorize]
-        public async Task<IActionResult> BanUser(int id, string reason)
-        {
-            try
-            {
-                var user = await _userService.GetUserByIdAsync(id);
-                if (user == null)
-                {
-                    return NotFound(new { message = "User ID not found." });
-                }
-                if (user.Status == false)
-                {
-                    return BadRequest(new { message = "User Banned Already." });
-                }
-
-                await _userService.BanUser(id, reason);
-
-                return Ok(new { message = "User Banned successfully." });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpPut("UnBanUser/{id}")]
-        [Authorize]
-        public async Task<IActionResult> UnBanUser(int id)
-        {
-            try
-            {
-                var user = await _userService.GetUserByIdAsync(id);
-                if (user == null)
-                {
-                    return NotFound(new { message = "User ID not found." });
-                }
-                if (user.Status == true)
-                {
-                    return BadRequest(new { message = "User UnBanned Already." });
-                }
-
-                await _userService.UnBanUser(id);
-
-                return Ok(new { message = "User UnBanned successfully." });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-
         // POST: api/Users
         [HttpPost]
 		[Authorize]
