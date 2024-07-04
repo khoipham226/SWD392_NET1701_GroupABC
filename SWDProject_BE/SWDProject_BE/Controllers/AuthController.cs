@@ -18,9 +18,9 @@ namespace SWDProject_BE.Controllers
 		}
 
 		[HttpPost("login")]
-		public IActionResult Login(LoginModel model)
+		public async Task<ActionResult> Login(LoginModel model)
 		{
-			var result = _authService.AuthenticateAsync(model.Email, model.Password).Result;
+			var result = await _authService.AuthenticateAsync(model.Email, model.Password).;
 
 			return StatusCode((int)result.Code, result);
 		}
