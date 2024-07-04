@@ -10,6 +10,6 @@ namespace BusinessLayer.Services
 	public interface IMessageService
 	{
 		Message Add(Message message);
-		object FindByPostId(int postId);
+		public List<Message> FindByPostId(int postId);
 	}
 }

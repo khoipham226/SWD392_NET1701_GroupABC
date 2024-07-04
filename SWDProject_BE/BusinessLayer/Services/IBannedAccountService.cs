@@ -8,5 +8,7 @@ namespace BusinessLayer.Services
 {
 	public interface IBannedAccountService
 	{
+		Task BanUser(int id, string description);
+		Task UnBanUser(int id);
 	}
 }

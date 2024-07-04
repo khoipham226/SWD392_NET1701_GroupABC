@@ -31,5 +31,7 @@ namespace BusinessLayer.Services.Implements
 		{
 			return _messages.Where(m => m.PostId == postId).ToList();
 		}
+
+	
 	}
 }
