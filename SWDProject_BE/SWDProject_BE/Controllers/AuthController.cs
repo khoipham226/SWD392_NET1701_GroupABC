@@ -20,7 +20,7 @@ namespace SWDProject_BE.Controllers
 		[HttpPost("login")]
 		public async Task<ActionResult> Login(LoginModel model)
 		{
-			var result = await _authService.AuthenticateAsync(model.Email, model.Password).;
+			var result = await _authService.AuthenticateAsync(model.Email, model.Password);
 
 			return StatusCode((int)result.Code, result);
 		}
