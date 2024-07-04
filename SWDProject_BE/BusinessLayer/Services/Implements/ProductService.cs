@@ -13,6 +13,7 @@ using BusinessLayer.RequestModels.Product;
 using BusinessLayer.ResponseModels.Product;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using BusinessLayer.ResponseModels.Category;
 
 namespace BusinessLayer.Services
 {
@@ -83,10 +84,23 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var product = await unitOfWork.Repository<Product>().GetById(id);
+                var product = await unitOfWork.Repository<Product>().GetAll()
+                        .Include(p => p.ExchangedProducts)
+                        .Include(p => p.Posts)
+                        .FirstOrDefaultAsync(p => p.Id == id);
 
                 if (product != null)
                 {
+                    if (product.Posts.Any())
+                    {
+                        return "Cannot delete product as it is already in a post.";
+                    }
+
+                    if (product.ExchangedProducts.Any())
+                    {
+                        return "Cannot delete product as it is already in a exchange.";
+                    }
+
                     product.Status = false;    
                     await unitOfWork.Repository<Product>().Update(product, id);
                     await unitOfWork.CommitAsync();
@@ -272,15 +286,19 @@ namespace BusinessLayer.Services
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {
-                    var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
-                    var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
-                    GetAllProductResponseModel result = new GetAllProductResponseModel();
-                    result = product.MapToGetAllProduct(_mapper);
-                    result.UserName = user.UserName;
-                    result.CategoryName = category.Name;
-                    result.SubcategoryName = Subcategory.Name;
-                    Final.Add(result);
+                    var post = await unitOfWork.Repository<Post>().FindAsync(p => p.ProductId == product.Id);
+                    if (post == null)
+                    {
+                        var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
+                        var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
+                        var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
+                        GetAllProductResponseModel result = new GetAllProductResponseModel();
+                        result = product.MapToGetAllProduct(_mapper);
+                        result.UserName = user.UserName;
+                        result.CategoryName = category.Name;
+                        result.SubcategoryName = Subcategory.Name;
+                        Final.Add(result);
+                    }
                 }
                 return Final;
 
@@ -295,8 +313,10 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == false).ToList();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
+
+                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == false).ToList();
+
                 foreach (var product in Product)
                 {
                     var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));

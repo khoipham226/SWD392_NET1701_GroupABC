@@ -191,8 +191,33 @@ namespace BusinessLayer.Services.Implements
         }
         public async Task AddPostAsync(Post post)
         {
-            await _unitOfWork.Repository<Post>().InsertAsync(post);
-            await _unitOfWork.CommitAsync();
+            try
+            {
+                var product = await _unitOfWork.Repository<Product>().FindAsync(p => p.Id == post.ProductId && p.Status == true && p.IsForSell == false);
+                if (product == null)
+                {
+                    throw new Exception("Product is either inactive or marked for sale.");
+                }
+
+                var existingPost = await _unitOfWork.Repository<Post>().FindAsync(p => p.ProductId == post.ProductId);
+                if (existingPost != null)
+                {
+                    throw new Exception("Product is already part of an post.");
+                }
+
+                var exchangeProduct = await _unitOfWork.Repository<ExchangedProduct>().FindAsync(ep => ep.ProductId == post.ProductId);
+                if (exchangeProduct != null)
+                {
+                    throw new Exception("Product is part of an exchange.");
+                }
+
+                await _unitOfWork.Repository<Post>().InsertAsync(post);
+                await _unitOfWork.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while adding the post: {ex.Message}", ex);
+            }
         }
 
         public async Task UpdatePostAsync(Post post)

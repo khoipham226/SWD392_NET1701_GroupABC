@@ -28,17 +28,37 @@ namespace BusinessLayer.Services.Implements
 
         public async Task AddExchangedProductAsync(ExchangedProduct exchangedProduct)
         {
-            await _unitOfWork.Repository<ExchangedProduct>().InsertAsync(exchangedProduct);
-            
-            // update product status
-            var product = await _unitOfWork.Repository<Product>().GetById(exchangedProduct.ProductId);
-            if (product != null)
+            try
             {
+                var product = await _unitOfWork.Repository<Product>().FindAsync(p => p.Id == exchangedProduct.ProductId && p.Status == true && p.IsForSell == false);
+                if (product == null)
+                {
+                    throw new Exception("Product is either inactive or marked for sale.");
+                }
+
+                var existingPost = await _unitOfWork.Repository<Post>().FindAsync(p => p.ProductId == exchangedProduct.ProductId);
+                if (existingPost != null)
+                {
+                    throw new Exception("Product is already part of an post.");
+                }
+
+                var existingExchangeProduct = await _unitOfWork.Repository<ExchangedProduct>().FindAsync(ep => ep.ProductId == exchangedProduct.ProductId);
+                if (existingExchangeProduct != null)
+                {
+                    throw new Exception("Product is part of an exchange.");
+                }
+
+                await _unitOfWork.Repository<ExchangedProduct>().InsertAsync(exchangedProduct);
+
                 product.Status = false;
                 await _unitOfWork.Repository<Product>().Update(product, product.Id);
-            }
-            await _unitOfWork.CommitAsync();
 
+                await _unitOfWork.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while adding the exchanged product: {ex.Message}", ex);
+            }
         }
 
         public async Task<IEnumerable<ExchangedResponseModel>> GetAllFinishedExchangedByUserIdAsync(int userId)
