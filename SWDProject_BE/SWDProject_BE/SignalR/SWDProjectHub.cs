@@ -1,4 +1,5 @@
 ﻿
+using BusinessLayer.Services;
 using DataLayer.Model;
 using DataLayer.Repository;
 using Microsoft.AspNetCore.SignalR;
@@ -7,12 +8,13 @@ namespace SWDProject_BE.SignalR
 {
 	public class SWDProjectHub: Hub
 	{
-		private readonly IGroupRepository _groupRepository;
-		private readonly IMessageRepository _messageRepository;
-		public SWDProjectHub(IGroupRepository groupRepository, IMessageRepository messageRepository)
+		private readonly IGroupService _groupService;
+		private readonly IMessageService _messageService;
+
+		public SWDProjectHub(IMessageService messageService, IGroupService groupService)
 		{
-			_groupRepository = groupRepository;
-			_messageRepository = messageRepository;
+			_messageService = messageService;
+			_groupService = groupService;
 		}
 
 		public override Task OnConnectedAsync()
@@ -30,7 +32,7 @@ namespace SWDProject_BE.SignalR
 		{
 			
 			//Save group to db
-			var newGroup= _groupRepository.Add(group);
+			var newGroup= _groupService.Add(group);
 			//Goi lenh nhan group o Client
 			//Gui cho tat ca client dang connect
 			//Client se kiem tra minh co thuoc nhom vua tao khong
@@ -57,7 +59,7 @@ namespace SWDProject_BE.SignalR
 		public async Task JoinAllGroup(int userId)
 		{
 			//Lay tat ca cac nhom ma user da tham gia
-			var groups = _groupRepository.FindAllByUserId(userId);
+			var groups = _groupService.FindAllByUserId(userId);
 			foreach (var group in groups)
 			{
 				await Groups.AddToGroupAsync(Context.ConnectionId, group.PostId.ToString());
@@ -68,7 +70,7 @@ namespace SWDProject_BE.SignalR
 		public async Task SendMessage(Message message)
 		{
 			//Luu tin nhan vao db
-			var newMessage = _messageRepository.Add(message);
+			var newMessage = _messageService.Add(message);
 			//Gui tin nhan theo group co PostId
 			await Clients.Group(newMessage.PostId.ToString()).SendAsync("ReceiveMessage", newMessage);
 		}
@@ -78,7 +80,7 @@ namespace SWDProject_BE.SignalR
 		{
 			//lay tat ca tin nhan co postId
 			//tai mot phan tin nhan, sau khi lan chuot se tiep tuc load
-			var messages = _messageRepository.FindByPostId(postId);
+			var messages = _messageService.FindByPostId(postId);
 			await Clients.Clients(Context.ConnectionId).SendAsync("ReceiveMessages", messages);
 		}
 
