@@ -98,8 +98,27 @@ namespace BusinessLayer.Services.Implements
         {
             try
             {
-                var category =  _unitOfWork.Repository<Category>().FindAll(c => c.Status == true).ToList();
-                var result = _mapper.Map<List<CategoryResponse>>(category);
+                List<CategoryResponse> result = new List<CategoryResponse>();
+
+                var listCategory = _unitOfWork.Repository<Category>().FindAll(c => c.Status == true).ToList();
+
+                foreach (var category in listCategory)
+                {
+                    var listSubcategory = _unitOfWork.Repository<SubCategory>().GetAll().Where(sc => sc.CategoryId == category.Id && sc.Status == true).ToList();
+
+                    if (listSubcategory.Any())
+                    {
+                        CategoryResponse categoryResponseModel = new CategoryResponse
+                        {
+                            Id = category.Id,
+                            Name = category.Name,
+                            Description = category.Description,
+                            Status = category.Status
+                        };
+                        result.Add(categoryResponseModel);
+                    }
+
+                }
                 return result;
             }
             catch (Exception ex)
@@ -108,7 +127,7 @@ namespace BusinessLayer.Services.Implements
             }
         }
 
-        public async Task<List<CategoryResponseModel>> GetAllWithSubcategoryForCreateProduct()
+        public async Task<List<CategoryResponseModel>> GetAllWithSubcategoryForUser()
         {
             try
             {

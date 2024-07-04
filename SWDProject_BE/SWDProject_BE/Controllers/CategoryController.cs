@@ -19,12 +19,12 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllCategoryWithSubcategoryForCreateProduct")]
+        [Route("GetAllWithSubcategoryForUser")]
         public async Task<IActionResult> GetAllCategoryWithSubcategory()
         {
             try
             {
-                var category = await _categoryService.GetAllWithSubcategoryForCreateProduct();
+                var category = await _categoryService.GetAllWithSubcategoryForUser();
                 return Ok(category);
 
             }
