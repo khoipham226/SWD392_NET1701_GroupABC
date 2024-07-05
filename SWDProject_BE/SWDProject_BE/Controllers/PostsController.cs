@@ -12,14 +12,16 @@ namespace SWDProject_BE.Controllers
     [ApiController]
     public class PostsController : ControllerBase
     {
+        private readonly ICommentService _commentService;
         private readonly IPostService _postService;
 
-        public PostsController(IPostService postService)
-        {
-            _postService = postService;
-        }
+		public PostsController(IPostService postService, ICommentService commentService)
+		{
+			_postService = postService;
+			_commentService = commentService;
+		}
 
-        [HttpGet]
+		[HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
             try
@@ -174,34 +176,45 @@ namespace SWDProject_BE.Controllers
         [Authorize]
         public async Task<ActionResult> DeletePost(int id)
         {
-            try
-            {
-                var existingPost = await _postService.GetPostByIdAsync(id);
-                if (existingPost == null)
-                {
-                    return NotFound(new { message = "Post ID not found." });
-                }
+			try
+			{
+				var existingPost = await _postService.GetPostByIdAsync(id);
+				if (existingPost == null)
+				{
+					return NotFound(new { message = "Post ID not found." });
+				}
 
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized(new { message = "Check JWT token." });
-                }
-                var userId = int.Parse(userIdClaim.Value);
+				var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+				if (userIdClaim == null)
+				{
+					return Unauthorized(new { message = "Check JWT token." });
+				}
+				var userId = int.Parse(userIdClaim.Value);
 
-                if (existingPost.UserId != userId && !User.IsInRole("staff"))
-                {
-                    return BadRequest("Only the PostOwner (or Moderator) can modify it");
-                }
+				if (existingPost.UserId != userId && !User.IsInRole("staff"))
+				{
+					return BadRequest("Only the PostOwner (or Moderator) can modify it");
+				}
 
-                await _postService.DeletePostAsync(id);
-                return Ok(new { message = "Post deleted successfully." });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+				// Retrieve and delete all comments related to the post
+				var comments = await _commentService.GetAllCommentsByPostAsync(id);
+				foreach (var comment in comments)
+				{
+					await _commentService.DeleteCommentAsync(comment.id);
+				}
+
+				// Delete the post
+				await _postService.DeletePostAsync(id);
+
+				return Ok(new { message = "Post and related comments deleted successfully." });
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
+
 
         [HttpPut("UpdateStatusPost/{id}")]
         [Authorize]

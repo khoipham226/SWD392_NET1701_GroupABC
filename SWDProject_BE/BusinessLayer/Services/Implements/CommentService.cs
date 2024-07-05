@@ -4,6 +4,7 @@ using DataLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,5 +68,5 @@ namespace BusinessLayer.Services.Implements
             await _unitOfWork.Repository<Comment>().HardDelete(id);
             await _unitOfWork.CommitAsync();
         }
-    }
+	}
 }

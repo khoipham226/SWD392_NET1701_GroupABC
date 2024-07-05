@@ -16,5 +16,5 @@ namespace BusinessLayer.Services
         Task AddCommentAsync(Comment comment);
         Task UpdateCommentAsync(Comment comment);
         Task DeleteCommentAsync(int id);
-    }
+	}
 }

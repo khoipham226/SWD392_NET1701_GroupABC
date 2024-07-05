@@ -49,7 +49,7 @@ namespace DataLayer.Repository
 
 		public EntityEntry<TEntity> Delete(TEntity entity);
 		public Task<IDbContextTransaction> BeginTransaction(CancellationToken cancellationToken = default);
-
+		
 		public Task UpdateDetached(TEntity entity);
 		public Task DetachEntity(TEntity entity);
 		public IQueryable<TEntity> AsNoTracking();

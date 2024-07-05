@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.RequestModels
 {
-	public class RegisterModel
+	public class AdminCreateAccountModel
 	{
 		//public int UserId {  get; set; }
 		public string Username { get; set; }
-		public string Password { get; set; }
 		public string Email { get; set; }
 		public DateTime Dob { get; set; }
 		public string Address { get; set; }
@@ -19,6 +18,12 @@ namespace BusinessLayer.RequestModels
 		public string Gender { get; set; } = null!;
 		public string ImgUrl { get; set; } = null!;
 		public int RoleId { get; set; }
+
+	}
+
+	public class RegisterModel: AdminCreateAccountModel
+	{
+		public string Password { get; set; }
 
 	}
 }

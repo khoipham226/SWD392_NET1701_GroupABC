@@ -11,8 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IGroupRepository, GroupRepository>();
-builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+
 // Install AutoMapper
 builder.Services.ConfigureAutoMapper();
 // Install DI and dbcontext
