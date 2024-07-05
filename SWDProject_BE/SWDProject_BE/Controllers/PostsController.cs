@@ -122,7 +122,7 @@ namespace SWDProject_BE.Controllers
 
                 await _postService.AddPostAsync(post);
 
-                return CreatedAtAction(nameof(GetPost), new { id = post.Id }, post);
+                return Ok(new { message = "Post Created successfully." });
             }
             catch (Exception ex)
             {

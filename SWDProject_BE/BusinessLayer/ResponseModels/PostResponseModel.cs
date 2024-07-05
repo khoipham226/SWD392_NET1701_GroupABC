@@ -41,6 +41,7 @@ namespace BusinessLayer.ResponseModels
     public class PostResponseModelByUser : PostResponseModel
     {
         public bool isExchanged { get; set; }
+        public bool isReported { get; set; }
     }
 
     public class ProductResponseForExchange: ProductResponse

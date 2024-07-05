@@ -38,6 +38,17 @@ namespace BusinessLayer.Services.Implements
             
             if (user != null && VerifyPassword(password, user.Password))
 			{
+
+				if (user.Status == false)
+				{
+                    return new BaseResponse<LoginResponseModel>()
+                    {
+                        Code = 404,
+                        Message = "Your Account has been banned. Check email for reason",
+                        Data = null
+                    };
+                }
+
                 var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
                 string token =  GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
 

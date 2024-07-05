@@ -93,6 +93,7 @@ namespace BusinessLayer.Services.Implements
                                  .GetAll()
                                  .Where(p => p.UserId == userId)
                                  .Include(p => p.User)
+                                 .Include(p => p.Reports)
                                  .Include(p => p.Product)
                                  .ToListAsync();
 
@@ -105,6 +106,7 @@ namespace BusinessLayer.Services.Implements
                 PublicStatus = (bool)post.PublicStatus,
                 ImageUrl = post.ImageUrl,
                 isExchanged = (bool)post.ExchangedStatus,
+                isReported = post.Reports.Any(r => r.Status == true && post.PublicStatus == false),
                 User = new UserResponse
                 {
                     Id = post.User.Id,

@@ -17,5 +17,6 @@ namespace BusinessLayer.Services
         Task<string> AddReportByUser(ReportRequestaUser dto, int userId);
         Task<string> UpdateReportByUser(int id,ReportRequestaUser dto);
         Task<string> DeleteReport(int id);
+        Task<string> AcceptReport(int id);
     }
 }

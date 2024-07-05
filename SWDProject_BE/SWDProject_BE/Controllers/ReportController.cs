@@ -156,13 +156,35 @@ namespace SWDProject_BE.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpDelete]
         [Route("DeleteReport/{id}")]
         public async Task<IActionResult> DeleteReport(int id)
         {
             try
             {
                 String message = await _reportService.DeleteReport(id);
+                if (message != null)
+                {
+                    return Ok(message);
+                }
+                else
+                {
+                    return NotFound("Not found Report!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("AcceptReport/{id}")]
+        public async Task<IActionResult> AcceptReport(int id)
+        {
+            try
+            {
+                String message = await _reportService.AcceptReport(id);
                 if (message != null)
                 {
                     return Ok(message);

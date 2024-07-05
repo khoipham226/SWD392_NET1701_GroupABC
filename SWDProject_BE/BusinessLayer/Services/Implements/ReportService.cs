@@ -27,8 +27,17 @@ namespace BusinessLayer.Services.Implements
         {
             try
             {
+                var post = await _unitOfWork.Repository<Post>().GetById(dto.PostId);
+                if (post == null)
+                {
+                    return "Post not found";
+                }
+                if (post.UserId == userId)
+                {
+                    return "You cannot report your own Post";
+                }
                 var result = _mapper.Map<Report>(dto);
-                result.Status = true;
+                result.Status = false;
                 result.UserId = userId;
                 result.Date = DateTime.Now;
                 await _unitOfWork.Repository<Report>().InsertAsync(result);
@@ -47,8 +56,7 @@ namespace BusinessLayer.Services.Implements
             var report = await _unitOfWork.Repository<Report>().GetById(id);
             if(report != null)
             {
-                report.Status = false;
-                await _unitOfWork.Repository<Report>().Update(report,id);
+                await _unitOfWork.Repository<Report>().HardDelete(id);
                 await _unitOfWork.CommitAsync();
                 return "Delete successfull!";
             }
@@ -200,6 +208,40 @@ namespace BusinessLayer.Services.Implements
                 await _unitOfWork.Repository<Report>().Update(report,id);   
                 await _unitOfWork.CommitAsync();
                 return "Update Successful!";
+            }
+            return null;
+        }
+
+        public async Task<string> AcceptReport(int id)
+        {
+            var report = await _unitOfWork.Repository<Report>().GetById(id);
+            if (report != null)
+            {
+                report.Status = true;
+                await _unitOfWork.Repository<Report>().Update(report, id);
+                await _unitOfWork.CommitAsync();
+
+                // Get all other reports related to the same post with Status = false
+                var relatedReports =  _unitOfWork.Repository<Report>()
+                    .FindAll(r => r.PostId == report.PostId && r.Status == false);
+
+                // Delete those reports
+                foreach (var relatedReport in relatedReports)
+                {
+                    await _unitOfWork.Repository<Report>().HardDelete(relatedReport.Id);
+                    await _unitOfWork.CommitAsync();
+                }
+
+                // Set the post's PublicStatus to false
+                var post = await _unitOfWork.Repository<Post>().GetById(report.PostId);
+                if (post != null)
+                {
+                    post.PublicStatus = false;
+                    await _unitOfWork.Repository<Post>().Update(post, post.Id);
+                    await _unitOfWork.CommitAsync();
+                }
+                
+                return "Accept Successful!";
             }
             return null;
         }
