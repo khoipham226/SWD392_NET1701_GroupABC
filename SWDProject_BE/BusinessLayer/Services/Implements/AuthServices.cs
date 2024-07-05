@@ -132,6 +132,7 @@ namespace BusinessLayer.Services.Implements
 				PhoneNumber = registerModel.PhoneNumber,
 				Gender = registerModel.Gender,
 				ImgUrl = registerModel.ImgUrl,
+				Status= true,
 			};
 
 			await _unitOfWork.Repository<User>().InsertAsync(user);
@@ -176,6 +177,7 @@ namespace BusinessLayer.Services.Implements
 				Password = HashPassword(providePassword),
 				Dob = adminCreateAccountModel.Dob,
 				PhoneNumber = adminCreateAccountModel.PhoneNumber,
+				Status= true,
 			};
 
 			await _unitOfWork.Repository<User>().InsertAsync(user);
