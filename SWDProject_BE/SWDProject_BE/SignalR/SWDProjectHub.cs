@@ -72,7 +72,7 @@ namespace SWDProject_BE.SignalR
 			//Luu tin nhan vao db
 			var newMessage = _messageService.Add(message);
 			//Gui tin nhan theo group co PostId
-			await Clients.Group(newMessage.PostId.ToString()).SendAsync("ReceiveMessage", newMessage);
+			await Clients.Group(newMessage.GroupId.ToString()).SendAsync("ReceiveMessage", newMessage);
 		}
 
 		//tai toan bo tin nhan tu nhom co ten la postId, thuc hien khi user mo form chat

@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataLayer.Model
+namespace DataLayer.Model;
+
+public partial class Group
 {
-	public class Group
-	{
-		public int Id { get; set; }
-		public int PostId { get; set; }
-		public int UserId { get; set; }
-		public List<int> GroupMembers { get; set; } = new List<int>();
-	}
+    public int Id { get; set; }
+
+    public int PostId { get; set; }
+
+    public int UserExchangeId { get; set; }
+
+    public DateTime CreatedDate { get; set; }
+
+    public DateTime? ModifiedDate { get; set; }
+
+    public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
+
+    public virtual Post Post { get; set; } = null!;
+
+    public virtual User UserExchange { get; set; } = null!;
 }

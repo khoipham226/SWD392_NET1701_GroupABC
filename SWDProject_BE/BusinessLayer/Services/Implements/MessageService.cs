@@ -21,15 +21,15 @@ namespace BusinessLayer.Services.Implements
 		{
 			// Giả sử Id được tạo tự động tăng
 			message.Id = _messages.Count > 0 ? _messages.Max(m => m.Id) + 1 : 1;
-			message.CreatedAt = DateTime.Now;
+			message.CreatedDate = DateTime.Now;
 			_messages.Add(message);
 			return message;
 		}
 
-		// Hàm tìm tất cả các Message theo PostId
+		// Hàm tìm tất cả các Message theo GroupId
 		public List<Message> FindByPostId(int postId)
 		{
-			return _messages.Where(m => m.PostId == postId).ToList();
+			return _messages.Where(m => m.GroupId == postId).ToList();
 		}
 
 	

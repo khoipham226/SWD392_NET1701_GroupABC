@@ -33,7 +33,7 @@ namespace BusinessLayer.Services.Implements
 			{
 				return new List<Group>(); // Hoặc trả về null, tùy thuộc vào cách bạn muốn xử lý khi không tìm thấy User
 			}
-			return _groups.Where(g => g.UserId == userId).ToList();
+			return _groups.Where(g => g.UserExchangeId == userId).ToList();
 		}
 	}
 }
