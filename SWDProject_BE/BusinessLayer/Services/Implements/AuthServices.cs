@@ -236,11 +236,11 @@ namespace BusinessLayer.Services.Implements
 			}
 		}
 
-		public async Task<BaseResponse> ForgotPassword(int userId)
+		public async Task<BaseResponse> ForgotPassword(string email)
 		{
 			try
 			{
-				var user = await _userService.GetUserByIdAsync(userId);
+				var user = await _userService.GetUserByEmailAsync(email);
 
 				var smtpClient = new SmtpClient("smtp.gmail.com");
 				smtpClient.Port = 587;

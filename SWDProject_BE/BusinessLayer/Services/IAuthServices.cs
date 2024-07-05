@@ -16,6 +16,6 @@ namespace BusinessLayer.Services
 		Task<BaseResponse<TokenModel>> RegisterAsync(RegisterModel user);
 		Task<BaseResponse<TokenModel>> AdminGenAcc(RegisterModel registerModel);
 		Task<BaseResponse> SendAccount(int userId);
-		Task<BaseResponse> ForgotPassword(int userId);
+		Task<BaseResponse> ForgotPassword(string email);
 	}
 }
