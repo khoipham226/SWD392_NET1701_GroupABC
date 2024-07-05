@@ -19,6 +19,8 @@ namespace BusinessLayer.RequestModels
 		public string ImgUrl { get; set; } = null!;
 		public int RoleId { get; set; }
 
+		public bool Status {  get; set; }
+
 	}
 
 	public class RegisterModel: AdminCreateAccountModel

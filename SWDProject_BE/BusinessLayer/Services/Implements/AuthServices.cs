@@ -152,10 +152,10 @@ namespace BusinessLayer.Services.Implements
 			};
 		}
 
-		public async Task<BaseResponse<TokenModel>> AdminGenAcc(RegisterModel registerModel)
+		public async Task<BaseResponse<TokenModel>> AdminGenAcc(AdminCreateAccountModel adminCreateAccountModel)
 
 		{
-			var existingUser = await _unitOfWork.Repository<User>().FindAsync(u => u.Email == registerModel.Email);
+			var existingUser = await _unitOfWork.Repository<User>().FindAsync(u => u.Email == adminCreateAccountModel.Email);
 
 			if (existingUser != null)
 			{
@@ -169,13 +169,13 @@ namespace BusinessLayer.Services.Implements
 			var providePassword = GeneratePassword();
 			var user = new User()
 			{
-				Address = registerModel.Address,
-				RoleId = registerModel.RoleId,
-				UserName = registerModel.Username,
-				Email = registerModel.Email,
+				Address = adminCreateAccountModel.Address,
+				RoleId = adminCreateAccountModel.RoleId,
+				UserName = adminCreateAccountModel.Username,
+				Email = adminCreateAccountModel.Email,
 				Password = HashPassword(providePassword),
-				Dob = registerModel.Dob,
-				PhoneNumber = registerModel.PhoneNumber,
+				Dob = adminCreateAccountModel.Dob,
+				PhoneNumber = adminCreateAccountModel.PhoneNumber,
 			};
 
 			await _unitOfWork.Repository<User>().InsertAsync(user);

@@ -14,7 +14,7 @@ namespace BusinessLayer.Services
 		Task<BaseResponse<LoginResponseModel>> AuthenticateAsync(string username, string password);
 		string GenerateJwtToken(string username, string roleName, int userId);
 		Task<BaseResponse<TokenModel>> RegisterAsync(RegisterModel user);
-		Task<BaseResponse<TokenModel>> AdminGenAcc(RegisterModel registerModel);
+		Task<BaseResponse<TokenModel>> AdminGenAcc(AdminCreateAccountModel adminCreateAccountModel);
 		Task<BaseResponse> SendAccount(int userId);
 		Task<BaseResponse> ForgotPassword(string email);
 	}

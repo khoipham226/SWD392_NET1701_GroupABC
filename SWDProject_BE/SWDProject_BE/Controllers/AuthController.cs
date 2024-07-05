@@ -51,13 +51,13 @@ namespace SWDProject_BE.Controllers
 		}
 
 		[HttpPost("admin-create-account")]
-		public IActionResult AdminGenAcc(RegisterModel model)
+		public IActionResult AdminGenAcc(AdminCreateAccountModel model)
 		{
 			// Implement user registration logic here
 
 			// Once the user is registered, generate JWT token
 			//return Ok(_authService.RegisterAsync(model).Result);
-			var result = _authService.RegisterAsync(model).Result;
+			var result = _authService.AdminGenAcc(model).Result;
 			return StatusCode((int) result.Code, result);
 		}
 	}
