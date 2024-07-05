@@ -155,11 +155,13 @@ namespace BusinessLayer.Services.Implements
                         {
                             ExchangeId = p.Exchangeds.FirstOrDefault().Id,
                         }
-                    }
+                    },
+                    isReported = p.Reports.Any(r => r.Status == true && p.PublicStatus == false)
                 },
                 predicate: p => p.Id == id,
                 include: query => query.Include(p => p.User)
                 .Include(p => p.Product)
+                .Include(p => p.Reports)
                 .Include(p => p.Exchangeds)
             ).FirstOrDefaultAsync();
 
@@ -185,6 +187,7 @@ namespace BusinessLayer.Services.Implements
                     Name = post.Product.Name,
                     UrlImg = post.Product.UrlImg
                 },
+                isReported = post.isReported,
                 ExchangeId = post.Product.Exchanged?.ExchangeId,
                 IsExchangedByUser = post.Product.Exchanged != null
             };
