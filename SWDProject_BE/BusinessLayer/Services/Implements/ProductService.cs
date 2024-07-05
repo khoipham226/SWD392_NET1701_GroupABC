@@ -93,12 +93,12 @@ namespace BusinessLayer.Services
                 {
                     if (product.Posts.Any())
                     {
-                        return "Cannot delete product as it is already in a post.";
+                        throw new Exception("Cannot delete product as it is already in a post.");
                     }
 
                     if (product.ExchangedProducts.Any())
                     {
-                        return "Cannot delete product as it is already in a exchange.";
+                        throw new Exception("Cannot delete product as it is already in an exchange.");
                     }
 
                     product.Status = false;    
