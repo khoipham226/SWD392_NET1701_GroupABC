@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.RequestModels;
 using BusinessLayer.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SWDProject_BE.Controllers
@@ -48,11 +50,19 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPost("execute")]
+        [Authorize]
         public async Task<IActionResult> ExecutePayment(string token, string PayerID, OrderRequestModel orderRequest)
         {
             try
             {
-                var payment = await _paymentService.ExecutePaymentAsync(token, PayerID, orderRequest);
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized(new { message = "Check JWT token." });
+                }
+                var userId = int.Parse(userIdClaim.Value);
+
+                var payment = await _paymentService.ExecutePaymentAsync(token, PayerID, orderRequest,userId);
                 return Ok(payment);
             }
             catch (Exception ex)

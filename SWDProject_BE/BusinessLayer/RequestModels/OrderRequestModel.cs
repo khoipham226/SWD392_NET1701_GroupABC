@@ -8,7 +8,6 @@ namespace BusinessLayer.RequestModels
 {
     public class OrderRequestModel
     {
-        public int UserId { get; set; }
         public List<OrderDetailRequest> OrderDetails { get; set; }
         public double TotalPrice { get; set; }
     }

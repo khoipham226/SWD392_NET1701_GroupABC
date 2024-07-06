@@ -1,4 +1,6 @@
 ﻿using DataLayer.Model;
+using DataLayer.Repository;
+using DataLayer.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +11,25 @@ namespace BusinessLayer.Services.Implements
 {
 	public class MessageService : IMessageService
 	{
-		private List<Message> _messages;
+        private readonly IUnitOfWork _unitOfWork;
 
-		public MessageService()
-		{
-			_messages = new List<Message>();
-		}
+        public MessageService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
 
-		// Hàm thêm một Message vào danh sách
-		public Message Add(Message message)
-		{
-			// Giả sử Id được tạo tự động tăng
-			message.Id = _messages.Count > 0 ? _messages.Max(m => m.Id) + 1 : 1;
-			message.CreatedDate = DateTime.Now;
-			_messages.Add(message);
-			return message;
-		}
+        public  Message Add(Message message)
+        {
+            message.CreatedDate = DateTime.Now;
 
-		// Hàm tìm tất cả các Message theo GroupId
-		public List<Message> FindByPostId(int postId)
-		{
-			return _messages.Where(m => m.GroupId == postId).ToList();
-		}
+             _unitOfWork.Repository<Message>().InsertAsync(message);
+             _unitOfWork.CommitAsync();
+            return message;
+        }
 
-	
-	}
+        public  List<Message> FindByGroupId(int groupId)
+        {
+            return  _unitOfWork.Repository<Message>().GetAll().Where(m => m.GroupId == groupId).ToList();
+        }
+    }
 }

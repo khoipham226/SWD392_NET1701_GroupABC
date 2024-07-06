@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Services
 {
-	public interface IMessageService
-	{
-		Message Add(Message message);
-		public List<Message> FindByPostId(int postId);
-	}
+    public interface IMessageService
+    {
+        Message Add(Message message);
+        List<Message> FindByGroupId(int groupId);
+    }
 }

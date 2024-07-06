@@ -1,4 +1,5 @@
 ﻿using DataLayer.Model;
+using DataLayer.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,31 +10,31 @@ namespace BusinessLayer.Services.Implements
 {
 	public class GroupService : IGroupService
 	{
-		private List<Group> _groups;
-		private List<User> _users;
+        private readonly IUnitOfWork _unitOfWork;
 
-		public GroupService()
+        public GroupService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public Group Add(Group group)
 		{
-			_groups = new List<Group>();
-			_users= new List<User>();
-		}
+            group.CreatedDate = DateTime.Now;
 
-		// Hàm thêm một Group vào danh sách
-		public Group Add(Group group)
-		{
-			_groups.Add(group);
-			return group;
-		}
+            _unitOfWork.Repository<Group>().InsertAsync(group);
+            _unitOfWork.CommitAsync();
 
-		// Hàm tìm tất cả các Group theo UserId
+            return group;
+        }
+
 		public List<Group> FindAllByUserId(int userId)
 		{
-			var user = _users.FirstOrDefault(u => u.Id == userId);
+			var user = _unitOfWork.Repository<User>().Find(u => u.Id == userId);
 			if (user == null)
 			{
-				return new List<Group>(); // Hoặc trả về null, tùy thuộc vào cách bạn muốn xử lý khi không tìm thấy User
+				return null;
 			}
-			return _groups.Where(g => g.UserExchangeId == userId).ToList();
+			return _unitOfWork.Repository<Group>().GetAll().Where(g => g.UserExchangeId == userId).ToList();
 		}
 	}
 }

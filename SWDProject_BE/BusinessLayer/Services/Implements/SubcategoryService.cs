@@ -96,7 +96,7 @@ namespace BusinessLayer.Services.Implements
             try
             {
                 List<SubCategory> listSubcategory = new List<SubCategory>();
-                var subCategory = _unitOfWork.Repository<SubCategory>().FindAll(s => s.Status == true).ToList();
+                var subCategory = await _unitOfWork.Repository<SubCategory>().GetAll().Where(s => s.Status == true).ToListAsync();
                 var category = await _unitOfWork.Repository<Category>().GetAll().ToListAsync();
                 foreach (var sub in subCategory)
                 {
@@ -148,7 +148,7 @@ namespace BusinessLayer.Services.Implements
             var category = await _unitOfWork.Repository<Category>().GetById(categoryId);
             if(category != null)
             {
-                var subcategory = _unitOfWork.Repository<SubCategory>().FindAll(s => s.CategoryId == categoryId).ToList();
+                var subcategory = await _unitOfWork.Repository<SubCategory>().GetAll().Where(s => s.CategoryId == categoryId).ToListAsync();
                 var result = _mapper.Map<List<SubcategoryResponseModel>>(subcategory);
                 return result;
             }                   

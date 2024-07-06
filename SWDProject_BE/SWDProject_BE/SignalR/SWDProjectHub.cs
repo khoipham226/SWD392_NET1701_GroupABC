@@ -76,11 +76,11 @@ namespace SWDProject_BE.SignalR
 		}
 
 		//tai toan bo tin nhan tu nhom co ten la postId, thuc hien khi user mo form chat
-		public async Task LoadMessageByPostId(int postId)
+		public async Task LoadMessageByPostId(int groupId)
 		{
 			//lay tat ca tin nhan co postId
 			//tai mot phan tin nhan, sau khi lan chuot se tiep tuc load
-			var messages = _messageService.FindByPostId(postId);
+			var messages = _messageService.FindByGroupId(groupId);
 			await Clients.Clients(Context.ConnectionId).SendAsync("ReceiveMessages", messages);
 		}
 
