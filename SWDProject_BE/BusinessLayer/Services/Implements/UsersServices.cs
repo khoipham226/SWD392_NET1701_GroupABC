@@ -3,6 +3,7 @@ using DataLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
 using System.Net;
+using BusinessLayer.ResponseModels;
 
 namespace BusinessLayer.Services.Implements
 {
@@ -73,6 +74,31 @@ namespace BusinessLayer.Services.Implements
 
 			return user;
 		}
-	}
+
+        public async Task<UsersResponseModel> GetUserProfile(int id)
+        {
+            var user = await _unitOfWork.Repository<User>().GetById(id);
+
+            if (user == null)
+            {
+                throw new Exception($"User with ID {id} not found.");
+            }
+
+            var responseModel = new UsersResponseModel
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                Dob = user.Dob,
+                Address = user.Address,
+                PhoneNumber = user.PhoneNumber,
+                RoleId = user.RoleId,
+                ImgUrl = user.ImgUrl,
+                Gender = user.Gender
+            };
+
+            return responseModel;
+        }
+    }
 
 }

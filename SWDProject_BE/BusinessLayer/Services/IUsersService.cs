@@ -1,4 +1,5 @@
-﻿using DataLayer.Model;
+﻿using BusinessLayer.ResponseModels;
+using DataLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace BusinessLayer.Services
         Task<bool> UserExistsAsync(int id);
 		Task<User> GetUserByUsernameAsync(string username);
 		Task<User> GetUserByEmailAsync(string email);
-	}
+		Task<UsersResponseModel> GetUserProfile(int id);
+
+    }
 
 }

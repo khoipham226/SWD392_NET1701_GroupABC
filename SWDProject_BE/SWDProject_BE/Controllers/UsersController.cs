@@ -49,8 +49,22 @@ namespace SWDProject_BE.Controllers
 			return Ok(user);
 		}
 
-		// PUT: api/Users/5
-		[HttpPut("{id}")]
+        [HttpGet("GetUserProfile/{id}")]
+        public async Task<ActionResult<User>> GetUserProfile(int id)
+        {
+            try
+            {
+                var user = await _userService.GetUserProfile(id);
+				return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+			// PUT: api/Users/5
+			[HttpPut("{id}")]
 		[Authorize]
 		public async Task<IActionResult> PutUser(int id, UserUpdateRequestModel userModel)
 		{
