@@ -57,6 +57,7 @@ public class PaymentService : IPaymentService
             {
                 OrderId = order.Id,
                 ProductId = detail.ProductId,
+                Price = detail.Price,
                 Status = true
             };
 

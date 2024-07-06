@@ -121,7 +121,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == true).ToList();
+                var Product = await unitOfWork.Repository<Product>().GetAll().Where(p => p.Status == true && p.IsForSell == true).ToListAsync();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {
@@ -148,7 +148,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var Product = unitOfWork.Repository<Product>().GetAll().ToList();
+                var Product = await unitOfWork.Repository<Product>().GetAll().ToListAsync();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {
@@ -248,7 +248,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var listProduct = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.UserId == userId && p.IsForSell==true).ToList();
+                var listProduct = await unitOfWork.Repository<Product>().GetAll().Where(p => p.Status == true && p.UserId == userId && p.IsForSell==true).ToListAsync();
                 if(listProduct != null)
                 {
                     List<GetAllProductResponseModel> final = new List<GetAllProductResponseModel>();
@@ -282,7 +282,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == false && p.UserId == userId).ToList();
+                var Product = await unitOfWork.Repository<Product>().GetAll().Where(p => p.Status == true && p.IsForSell == false && p.UserId == userId).ToListAsync();
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
                 foreach (var product in Product)
                 {
@@ -315,7 +315,7 @@ namespace BusinessLayer.Services
             {
                 List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
 
-                var Product = unitOfWork.Repository<Product>().FindAll(p => p.Status == true && p.IsForSell == false).ToList();
+                var Product = await unitOfWork.Repository<Product>().GetAll().Where(p => p.Status == true && p.IsForSell == false).ToListAsync();
 
                 foreach (var product in Product)
                 {

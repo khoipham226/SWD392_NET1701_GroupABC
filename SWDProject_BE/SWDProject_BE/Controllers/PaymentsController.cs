@@ -63,7 +63,7 @@ namespace SWDProject_BE.Controllers
                 var userId = int.Parse(userIdClaim.Value);
 
                 var payment = await _paymentService.ExecutePaymentAsync(token, PayerID, orderRequest,userId);
-                return Ok(payment);
+                return Ok("Successfull payment");
             }
             catch (Exception ex)
             {
