@@ -38,7 +38,7 @@ namespace SWDProject_BE.Controllers
                 var approvalLink = payment.Links.FirstOrDefault(link => link.Rel.Equals("approve", StringComparison.OrdinalIgnoreCase))?.Href;
                 if (!string.IsNullOrEmpty(approvalLink))
                 {
-                    return Ok(new { approvalUrl = approvalLink });
+                    return Ok(new { approvalUrl = approvalLink, paymentId = payment.Id });
                 }
 
                 return BadRequest("Unable to create payment. Approval link is missing.");
@@ -62,7 +62,7 @@ namespace SWDProject_BE.Controllers
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                var payment = await _paymentService.ExecutePaymentAsync(token, PayerID, orderRequest,userId);
+                await _paymentService.ExecutePaymentAsync(token, PayerID, orderRequest,userId);
                 return Ok("Successfull payment");
             }
             catch (Exception ex)

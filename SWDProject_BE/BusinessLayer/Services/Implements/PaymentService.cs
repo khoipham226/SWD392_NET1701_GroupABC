@@ -21,51 +21,51 @@ public class PaymentService : IPaymentService
         return payment;
     }
 
-    public async Task<PayPalCheckoutSdk.Orders.Order> ExecutePaymentAsync(string paymentId, string payerId, OrderRequestModel orderRequest, int userId)
+    public async Task ExecutePaymentAsync(string paymentId, string payerId, OrderRequestModel orderRequest, int userId)
     {
-        var executedPayment = await _payPalService.CaptureOrder(paymentId);
-
-        var order = new DataLayer.Model.Order
+        var paymentStatus = await _payPalService.GetPaymentStatus(paymentId);
+        if (paymentStatus == "COMPLETED")
         {
-            UserId = userId,
-            PaymentId = null, // add later
-            TotalPrice = orderRequest.TotalPrice,
-            Date = DateTime.Now,
-            Status = true
-        };
-        await _unitOfWork.Repository<DataLayer.Model.Order>().InsertAsync(order);
-        await _unitOfWork.CommitAsync();
-
-        var payment = new Payment
-        {
-            Date = DateTime.Now.ToString("yyyy-MM-dd"),
-            Amount = orderRequest.TotalPrice,
-            Method = "PayPal",
-            Status = true,
-            Description = "PayerId: " + payerId + " - PaymentId: " + paymentId,
-        };
-        await _unitOfWork.Repository<Payment>().InsertAsync(payment);
-        await _unitOfWork.CommitAsync();
-
-        order.PaymentId = payment.Id;
-        await _unitOfWork.Repository<DataLayer.Model.Order>().Update(order, order.Id);
-        await _unitOfWork.CommitAsync();
-
-        foreach (var detail in orderRequest.OrderDetails)
-        {
-            var orderDetail = new OrderDetail
+            var order = new DataLayer.Model.Order
             {
-                OrderId = order.Id,
-                ProductId = detail.ProductId,
-                Price = detail.Price,
+                UserId = userId,
+                PaymentId = null, // add later
+                TotalPrice = orderRequest.TotalPrice,
+                Date = DateTime.Now,
                 Status = true
             };
+            await _unitOfWork.Repository<DataLayer.Model.Order>().InsertAsync(order);
+            await _unitOfWork.CommitAsync();
 
-            await _unitOfWork.Repository<DataLayer.Model.OrderDetail>().InsertAsync(orderDetail);
+            var payment = new Payment
+            {
+                Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                Amount = orderRequest.TotalPrice,
+                Method = "PayPal",
+                Status = true,
+                Description = "PayerId: " + payerId + " - PaymentId: " + paymentId,
+            };
+            await _unitOfWork.Repository<Payment>().InsertAsync(payment);
+            await _unitOfWork.CommitAsync();
+
+            order.PaymentId = payment.Id;
+            await _unitOfWork.Repository<DataLayer.Model.Order>().Update(order, order.Id);
+            await _unitOfWork.CommitAsync();
+
+            foreach (var detail in orderRequest.OrderDetails)
+            {
+                var orderDetail = new OrderDetail
+                {
+                    OrderId = order.Id,
+                    ProductId = detail.ProductId,
+                    Price = detail.Price,
+                    Status = true
+                };
+
+                await _unitOfWork.Repository<DataLayer.Model.OrderDetail>().InsertAsync(orderDetail);
+            }
+            await _unitOfWork.CommitAsync();
         }
-        await _unitOfWork.CommitAsync();
-
-        return executedPayment;
     }
 
     public async Task<PayPalCheckoutSdk.Payments.Refund> RefundPaymentAsync(string captureId, decimal amount)

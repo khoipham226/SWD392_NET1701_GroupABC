@@ -69,4 +69,13 @@ public class PayPalService
         var result = response.Result<PayPalCheckoutSdk.Payments.Refund>();
         return result;
     }
+
+    public async Task<string> GetPaymentStatus(string orderId)
+    {
+        var request = new OrdersGetRequest(orderId);
+        var response = await _client.Execute(request);
+        var result = response.Result<Order>();
+
+        return result.Status;
+    }
 }
