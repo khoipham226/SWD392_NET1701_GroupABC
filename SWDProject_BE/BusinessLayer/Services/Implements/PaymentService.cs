@@ -54,6 +54,7 @@ public class PaymentService : IPaymentService
 
             foreach (var detail in orderRequest.OrderDetails)
             {
+                var product = await _unitOfWork.Repository<Product>().FindAsync(p => p.Id == detail.ProductId);
                 var orderDetail = new OrderDetail
                 {
                     OrderId = order.Id,
@@ -63,6 +64,9 @@ public class PaymentService : IPaymentService
                 };
 
                 await _unitOfWork.Repository<DataLayer.Model.OrderDetail>().InsertAsync(orderDetail);
+                product.Status = false;
+                await _unitOfWork.Repository<Product>().Update(product, product.Id);
+                await _unitOfWork.CommitAsync();
             }
             await _unitOfWork.CommitAsync();
         }
