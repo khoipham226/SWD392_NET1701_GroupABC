@@ -19,4 +19,8 @@ namespace BusinessLayer.ResponseModels
 		public string Gender { get; set; }
 	
 	}
+    public class UserDetailResponse : UsersResponseModel
+    {
+        public int? RatingCount { get; set; }
+    }
 }

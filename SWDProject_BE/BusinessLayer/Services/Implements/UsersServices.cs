@@ -75,7 +75,7 @@ namespace BusinessLayer.Services.Implements
 			return user;
 		}
 
-        public async Task<UsersResponseModel> GetUserProfile(int id)
+        public async Task<UserDetailResponse> GetUserProfile(int id)
         {
             var user = await _unitOfWork.Repository<User>().GetById(id);
 
@@ -84,7 +84,7 @@ namespace BusinessLayer.Services.Implements
                 throw new Exception($"User with ID {id} not found.");
             }
 
-            var responseModel = new UsersResponseModel
+            var responseModel = new UserDetailResponse
             {
                 Id = user.Id,
                 UserName = user.UserName,
@@ -94,7 +94,8 @@ namespace BusinessLayer.Services.Implements
                 PhoneNumber = user.PhoneNumber,
                 RoleId = user.RoleId,
                 ImgUrl = user.ImgUrl,
-                Gender = user.Gender
+                Gender = user.Gender,
+				RatingCount = user.RatingCount
             };
 
             return responseModel;

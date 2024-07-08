@@ -23,52 +23,71 @@ public class PaymentService : IPaymentService
 
     public async Task ExecutePaymentAsync(string paymentId, string payerId, OrderRequestModel orderRequest, int userId)
     {
-        var paymentStatus = await _payPalService.GetPaymentStatus(paymentId);
-        if (paymentStatus == "COMPLETED")
+        var dbContextField = _unitOfWork.GetType().GetField("_context", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var dbContext = (SWD392_DBContext)dbContextField.GetValue(_unitOfWork);
+
+        using (var transaction = await dbContext.Database.BeginTransactionAsync())
         {
-            var order = new DataLayer.Model.Order
+            try
             {
-                UserId = userId,
-                PaymentId = null, // add later
-                TotalPrice = orderRequest.TotalPrice,
-                Date = DateTime.Now,
-                Status = true
-            };
-            await _unitOfWork.Repository<DataLayer.Model.Order>().InsertAsync(order);
-            await _unitOfWork.CommitAsync();
-
-            var payment = new Payment
-            {
-                Date = DateTime.Now.ToString("yyyy-MM-dd"),
-                Amount = orderRequest.TotalPrice,
-                Method = "PayPal",
-                Status = true,
-                Description = "PayerId: " + payerId + " - PaymentId: " + paymentId,
-            };
-            await _unitOfWork.Repository<Payment>().InsertAsync(payment);
-            await _unitOfWork.CommitAsync();
-
-            order.PaymentId = payment.Id;
-            await _unitOfWork.Repository<DataLayer.Model.Order>().Update(order, order.Id);
-            await _unitOfWork.CommitAsync();
-
-            foreach (var detail in orderRequest.OrderDetails)
-            {
-                var product = await _unitOfWork.Repository<Product>().FindAsync(p => p.Id == detail.ProductId);
-                var orderDetail = new OrderDetail
+                var paymentStatus = await _payPalService.GetPaymentStatus(paymentId);
+                if (paymentStatus == "COMPLETED")
                 {
-                    OrderId = order.Id,
-                    ProductId = detail.ProductId,
-                    Price = detail.Price,
-                    Status = true
-                };
+                    var order = new DataLayer.Model.Order
+                    {
+                        UserId = userId,
+                        PaymentId = null, // add later
+                        TotalPrice = orderRequest.TotalPrice,
+                        Date = DateTime.Now,
+                        Status = false
+                    };
+                    await _unitOfWork.Repository<DataLayer.Model.Order>().InsertAsync(order);
+                    await _unitOfWork.CommitAsync();
 
-                await _unitOfWork.Repository<DataLayer.Model.OrderDetail>().InsertAsync(orderDetail);
-                product.Status = false;
-                await _unitOfWork.Repository<Product>().Update(product, product.Id);
-                await _unitOfWork.CommitAsync();
+                    var payment = new Payment
+                    {
+                        Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                        Amount = orderRequest.TotalPrice,
+                        Method = "PayPal",
+                        Status = true,
+                        Description = "PayerId: " + payerId + " - PaymentId: " + paymentId,
+                    };
+                    await _unitOfWork.Repository<Payment>().InsertAsync(payment);
+                    await _unitOfWork.CommitAsync();
+
+                    order.PaymentId = payment.Id;
+                    await _unitOfWork.Repository<DataLayer.Model.Order>().Update(order, order.Id);
+                    await _unitOfWork.CommitAsync();
+
+                    foreach (var detail in orderRequest.OrderDetails)
+                    {
+                        var product = await _unitOfWork.Repository<Product>().FindAsync(p => p.Id == detail.ProductId && p.Status == true);
+                        if (product == null)
+                        {
+                            throw new Exception("Product is either not exist or is sold.");
+                        }
+                        var orderDetail = new OrderDetail
+                        {
+                            OrderId = order.Id,
+                            ProductId = detail.ProductId,
+                            Price = detail.Price,
+                            Status = true
+                        };
+
+                        await _unitOfWork.Repository<DataLayer.Model.OrderDetail>().InsertAsync(orderDetail);
+                        product.Status = false;
+                        await _unitOfWork.Repository<Product>().Update(product, product.Id);
+                        await _unitOfWork.CommitAsync();
+                    }
+
+                    await transaction.CommitAsync();
+                }
             }
-            await _unitOfWork.CommitAsync();
+            catch (Exception)
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
     }
 
