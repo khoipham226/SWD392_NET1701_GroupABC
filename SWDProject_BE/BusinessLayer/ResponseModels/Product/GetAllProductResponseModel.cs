@@ -21,8 +21,6 @@ namespace BusinessLayer.ResponseModels.Product
         public string? Location { get; set; }
         public string? Description { get; set; }
         public string? UrlImg { get; set; }
-        public string UserImg { get; set; }
-
         public GetAllProductResponseModel(int id = 0, int userId = 0, string userName = "", int categoryId = 0, string categoryName = "", string name = "", string? description = null, string? urlImg = null)
         {
             Id = id;

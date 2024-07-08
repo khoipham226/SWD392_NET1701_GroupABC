@@ -234,7 +234,6 @@ namespace BusinessLayer.Services
                     GetAllProductResponseModel model = new GetAllProductResponseModel();
                     model = product.MapToGetAllProduct(_mapper);
                     model.UserName = user.UserName;
-                    model.UserImg = user.ImgUrl;
                     return model;
                 }
                 return null;
