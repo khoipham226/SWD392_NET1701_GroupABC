@@ -12,6 +12,7 @@ namespace BusinessLayer.ResponseModels.Product
         public string Name { get; set; } = null!;
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string UserImgUrl { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public int SubcategoryId { get; set; }
