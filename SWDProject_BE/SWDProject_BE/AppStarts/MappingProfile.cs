@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using BusinessLayer.RequestModels.Appeal;
 using BusinessLayer.RequestModels.Category;
+using BusinessLayer.RequestModels.Order;
 using BusinessLayer.RequestModels.Report;
 using BusinessLayer.RequestModels.Subcategory;
 using BusinessLayer.ResponseModels.Appeal;
 using BusinessLayer.ResponseModels.Category;
+using BusinessLayer.ResponseModels.Order;
 using BusinessLayer.ResponseModels.Product;
 using BusinessLayer.ResponseModels.Rating;
 using BusinessLayer.ResponseModels.Report;
@@ -41,6 +43,10 @@ namespace SWDProject_BE.AppStarts
             CreateMap<AppealResponseModel, Appeal>().ReverseMap();
             CreateMap<AddAppealRequestModel, Appeal>().ReverseMap();
             CreateMap<AppealResponseModel, AppealResponseModel>().ReverseMap();
+
+            //Order
+            CreateMap<AddOrderRequestModel, Order>().ReverseMap();
+            CreateMap<OrderResponseModel, Order>().ReverseMap();
 
         }
     }

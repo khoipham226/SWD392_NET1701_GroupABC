@@ -1,4 +1,6 @@
-﻿using DataLayer.Model;
+﻿using BusinessLayer.RequestModels.Order;
+using BusinessLayer.ResponseModels.Order;
+using DataLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,6 @@ namespace BusinessLayer.Services
 {
     public interface IOrderService
     {
-        List<Order> GetAllOrder();
+        Task<List<OrderResponseModel>> GetAllOrder();
     }
 }

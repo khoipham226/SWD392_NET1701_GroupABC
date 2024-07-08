@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DataLayer.Model;
 
@@ -15,6 +16,7 @@ public partial class OrderDetail
 
     public bool Status { get; set; }
 
+    [JsonIgnore]
     public virtual Order Order { get; set; } = null!;
 
     public virtual Product Product { get; set; } = null!;
