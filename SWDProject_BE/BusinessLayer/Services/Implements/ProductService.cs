@@ -20,13 +20,11 @@ namespace BusinessLayer.Services
     public class ProductService : IProductService
     {
         private IUnitOfWork unitOfWork;
-        private SWD392_DBContext context;
         public IMapper _mapper;
 
-        public ProductService(IUnitOfWork unitOfWork, SWD392_DBContext context, IMapper _mapper)
+        public ProductService(IUnitOfWork unitOfWork, IMapper _mapper)
         {
             this.unitOfWork = unitOfWork;
-            this.context = context;
             this._mapper = _mapper;
         }
 
@@ -121,28 +119,31 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var Product = await unitOfWork.Repository<Product>().GetAll().Where(p => p.Status == true && p.IsForSell == true).ToListAsync();
-                List<GetAllProductResponseModel> Final = new List<GetAllProductResponseModel>();
-                foreach (var product in Product)
-                {
-                    var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
-                    var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                    var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
-                    GetAllProductResponseModel result = new GetAllProductResponseModel();
-                    result = product.MapToGetAllProduct(_mapper);
-                    result.UserName = user.UserName;
-                    result.CategoryName = category.Name;
-                    result.SubcategoryName = Subcategory.Name;
-                    Final.Add(result);
-                }
-                return Final;
+                var products = await unitOfWork.Repository<Product>()
+                    .GetAll()
+                    .Where(p => p.Status == true && p.IsForSell == true)
+                    .Include(p => p.User)
+                    .Include(p => p.Category)
+                    .Include(p => p.SubCategory)
+                    .ToListAsync();
 
+                List<GetAllProductResponseModel> final = products.Select(product =>
+                {
+                    var result = product.MapToGetAllProduct(_mapper);
+                    result.UserName = product.User.UserName;
+                    result.CategoryName = product.Category.Name;
+                    result.SubcategoryName = product.SubCategory.Name;
+                    return result;
+                }).ToList();
+
+                return final;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
+
 
         public async Task<List<GetAllProductResponseModel>> GetAllProducts()
         {
@@ -249,35 +250,38 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var listProduct = await unitOfWork.Repository<Product>().GetAll().Where(p => p.Status == true && p.UserId == userId && p.IsForSell==true).ToListAsync();
-                if(listProduct != null)
+                var listProduct = await unitOfWork.Repository<Product>()
+                    .GetAll()
+                    .Where(p => p.Status == true && p.UserId == userId && p.IsForSell == true)
+                    .Include(p => p.User)
+                    .Include(p => p.Category)
+                    .Include(p => p.SubCategory)
+                    .ToListAsync();
+
+                if (listProduct != null && listProduct.Any())
                 {
-                    List<GetAllProductResponseModel> final = new List<GetAllProductResponseModel>();
-                    foreach (var product in listProduct)
+                    List<GetAllProductResponseModel> final = listProduct.Select(product =>
                     {
-                        var user = await unitOfWork.Repository<User>().FindAsync(u => u.Id.Equals(product.UserId));
-                        var category = await unitOfWork.Repository<Category>().FindAsync(c => c.Id.Equals(product.CategoryId));
-                        var Subcategory = await unitOfWork.Repository<SubCategory>().FindAsync(c => c.Id.Equals(product.SubCategoryId));
-                        GetAllProductResponseModel result = new GetAllProductResponseModel();
-                        result = product.MapToGetAllProduct(_mapper);
-                        result.UserName = user.UserName;
-                        result.CategoryName = category.Name;
-                        result.SubcategoryName = Subcategory.Name;
-                        final.Add(result);
-                    }
+                        var result = product.MapToGetAllProduct(_mapper);
+                        result.UserName = product.User.UserName;
+                        result.CategoryName = product.Category.Name;
+                        result.SubcategoryName = product.SubCategory.Name;
+                        return result;
+                    }).ToList();
+
                     return final;
                 }
                 else
                 {
-                    return null;
+                    return new List<GetAllProductResponseModel>();
                 }
-
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
+
 
         public async Task<List<GetAllProductResponseModel>> GetAllProductsForExchangeByUserId(int userId)
         {
