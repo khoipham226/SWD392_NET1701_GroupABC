@@ -4,6 +4,7 @@ using BusinessLayer.RequestModels.Category;
 using BusinessLayer.RequestModels.Order;
 using BusinessLayer.RequestModels.Report;
 using BusinessLayer.RequestModels.Subcategory;
+using BusinessLayer.ResponseModels;
 using BusinessLayer.ResponseModels.Appeal;
 using BusinessLayer.ResponseModels.Category;
 using BusinessLayer.ResponseModels.Order;
@@ -47,6 +48,9 @@ namespace SWDProject_BE.AppStarts
             //Order
             CreateMap<AddOrderRequestModel, Order>().ReverseMap();
             CreateMap<OrderResponseModel, Order>().ReverseMap();
+
+            //OrderDetails
+            CreateMap<OrderDetailResponeModel, OrderDetail>().ReverseMap();
 
         }
     }

@@ -23,6 +23,6 @@ namespace BusinessLayer.ResponseModels.Order
 
         public bool Status { get; set; }
 
-        public List<OrderDetail> OrderDetails { get; set; } 
+        public List<OrderDetailResponeModel> OrderDetails { get; set; }
     }
 }
