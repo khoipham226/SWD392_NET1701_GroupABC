@@ -175,7 +175,7 @@ namespace BusinessLayer.Services.Implements
 				RoleId = adminCreateAccountModel.RoleId,
 				UserName = adminCreateAccountModel.Username,
 				Email = adminCreateAccountModel.Email,
-				Password = HashPassword(providePassword),
+				Password = "01234",
 				Gender= adminCreateAccountModel.Gender,
 				Dob = adminCreateAccountModel.Dob,
 				PhoneNumber = adminCreateAccountModel.PhoneNumber,
@@ -186,7 +186,10 @@ namespace BusinessLayer.Services.Implements
 			await _unitOfWork.Repository<User>().InsertAsync(user);
 			await _unitOfWork.CommitAsync();
 
-            var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
+			//Send email with password to User
+			await SendAccount(user.Id);
+
+			var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
             // Generate JWT token
             string token = GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
 
