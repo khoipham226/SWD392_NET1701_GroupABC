@@ -5,11 +5,6 @@ using BusinessLayer.ResponseModels.Subcategory;
 using DataLayer.Model;
 using DataLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Services.Implements
 {
@@ -108,7 +103,8 @@ namespace BusinessLayer.Services.Implements
 
                 foreach (var category in listCategory)
                 {
-                    if (category.SubCategories.Any(s => s.Status == true))
+                    var validSubCategories = category.SubCategories.Where(s => s.Status == true).ToList();
+                    if (validSubCategories.Any())
                     {
                         CategoryResponse categoryResponseModel = new CategoryResponse
                         {
@@ -142,8 +138,8 @@ namespace BusinessLayer.Services.Implements
 
                 foreach (var category in listCategory)
                 {
-
-                    if (category.SubCategories.Any(s => s.Status == true))
+                    var validSubCategories = category.SubCategories.Where(s => s.Status == true).ToList();
+                    if (validSubCategories.Any())
                     {
                         var listSubcategoryResponse = _mapper.Map<List<SubcategoryResponseModel>>(category.SubCategories);
 
