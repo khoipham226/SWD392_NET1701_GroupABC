@@ -26,6 +26,7 @@ namespace BusinessLayer.RequestModels
 	public class RegisterModel: AdminCreateAccountModel
 	{
 		public string Password { get; set; }
+		
 
 	}
 }

@@ -32,10 +32,10 @@ namespace SWDProject_BE.Controllers
 			return StatusCode((int)result.Code, result);
 		}
 
-		[HttpPost("forgot-password")]
-		public async Task<ActionResult> ForgotPassword(string email)
+		[HttpPut("forgot-password")]
+		public async Task<ActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
 		{
-			var result = await _authService.ForgotPassword(email);
+			var result = await _authService.ForgotPassword(request);
 			return StatusCode((int)result.Code, result);
 		}
 

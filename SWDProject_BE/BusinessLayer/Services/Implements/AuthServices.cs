@@ -13,6 +13,7 @@ using System.Security.Claims;
 using System.Text;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Http;
 
 namespace BusinessLayer.Services.Implements
 {
@@ -175,8 +176,10 @@ namespace BusinessLayer.Services.Implements
 				UserName = adminCreateAccountModel.Username,
 				Email = adminCreateAccountModel.Email,
 				Password = HashPassword(providePassword),
+				Gender= adminCreateAccountModel.Gender,
 				Dob = adminCreateAccountModel.Dob,
 				PhoneNumber = adminCreateAccountModel.PhoneNumber,
+				ImgUrl= adminCreateAccountModel.ImgUrl,
 				Status= true,
 			};
 
@@ -238,11 +241,27 @@ namespace BusinessLayer.Services.Implements
 			}
 		}
 
-		public async Task<BaseResponse> ForgotPassword(string email)
+		public async Task<BaseResponse> ForgotPassword(ForgotPasswordRequest request)
 		{
 			try
 			{
-				var user = await _userService.GetUserByEmailAsync(email);
+				//var query = await _unitOfWork.Repository<User>().FindAsync(u => u.Email == request.Email);
+				var query = await _unitOfWork.Repository<User>()
+					.AsNoTracking()
+					.SingleOrDefaultAsync(x => x.Email == request.Email);
+
+
+				if (query.Email != request.Email)
+				{
+					return new BaseResponse
+					{
+						Code = StatusCodes.Status400BadRequest,
+						Message = "Email is not matched"
+					};
+				}
+
+				var providePassword = GeneratePassword();				
+				query.Password = HashPassword(providePassword);
 
 				var smtpClient = new SmtpClient("smtp.gmail.com");
 				smtpClient.Port = 587;
@@ -252,23 +271,25 @@ namespace BusinessLayer.Services.Implements
 
 				MailMessage mailMessage = new MailMessage();
 				mailMessage.From = new MailAddress("studentexchangeweb@gmail.com");
-				mailMessage.To.Add(user.Email);
-				mailMessage.Subject = "YOUR PASSWORD";
-				mailMessage.Body = "Email: " + user.Email + "\nPassword: " + user.Password + "\n";
+				mailMessage.To.Add(query.Email);
+				mailMessage.Subject = "WEB EXCHANGE: YOUR RESET PASSWORD";
+				mailMessage.Body = "Hello " + query.UserName + ",\nYour reset password is: " + providePassword + "\n\nThis is temporary password. Please change your password after logged in.";
 
 				await smtpClient.SendMailAsync(mailMessage);
+				await _unitOfWork.Repository<User>().Update(query, query.Id);
+				await _unitOfWork.CommitAsync();
 
 				return new BaseResponse
 				{
-					Code = 200,
-					Message = "Send succeed."
+					Code = StatusCodes.Status200OK,
+					Message = "Your reset password has been sent."
 				};
 			}
 			catch (Exception ex)
 			{
 				return new BaseResponse
 				{
-					Code = 400,
+					Code = StatusCodes.Status500InternalServerError,
 					Message = "An error occurred: " + ex.Message
 				};
 			}
