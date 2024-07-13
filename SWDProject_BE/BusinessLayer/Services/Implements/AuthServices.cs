@@ -45,7 +45,7 @@ namespace BusinessLayer.Services.Implements
                     return new BaseResponse<LoginResponseModel>()
                     {
                         Code = 404,
-                        Message = "Your Account has been banned. Check email for reason",
+                        Message = "Your Account has been banned. Check email " + email + "for reason",
                         Data = null
                     };
                 }
