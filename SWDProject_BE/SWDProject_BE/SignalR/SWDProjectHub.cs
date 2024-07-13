@@ -32,7 +32,7 @@ namespace SWDProject_BE.SignalR
 		{
 			
 			//Save group to db
-			var newGroup= _groupService.Add(group);
+			var newGroup= _groupService.AddGroupAsync(group);
 			//Goi lenh nhan group o Client
 			//Gui cho tat ca client dang connect
 			//Client se kiem tra minh co thuoc nhom vua tao khong
@@ -70,7 +70,7 @@ namespace SWDProject_BE.SignalR
 		public async Task SendMessage(Message message)
 		{
 			//Luu tin nhan vao db
-			var newMessage = _messageService.Add(message);
+			var newMessage = _messageService.AddMessage(message);
 			//Gui tin nhan theo group co PostId
 			await Clients.Group(newMessage.GroupId.ToString()).SendAsync("ReceiveMessage", newMessage);
 		}

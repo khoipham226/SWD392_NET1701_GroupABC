@@ -9,7 +9,7 @@ namespace BusinessLayer.Services
 {
 	public interface IGroupService
 	{
-		Group Add(Group group);
+		Task AddGroupAsync(Group group);
 		List<Group> FindAllByUserId(int userId);
 	}
 }

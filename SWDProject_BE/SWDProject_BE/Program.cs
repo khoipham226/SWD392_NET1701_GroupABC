@@ -9,7 +9,7 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSignalR();
+
 builder.Services.AddControllers();
 
 // Install AutoMapper
@@ -63,13 +63,16 @@ builder.Services.AddSwaggerGen(c =>
 // Add CORS
 builder.Services.AddCors(options =>
 {
-	options.AddDefaultPolicy(builder =>
-	{
-		builder.AllowAnyOrigin()
-			   .AllowAnyMethod()
-			   .AllowAnyHeader();
-	});
+	options.AddPolicy("CorsPolicy",
+		builder => builder
+		.AllowAnyMethod()
+		.AllowAnyHeader()
+		.AllowCredentials()
+		.WithOrigins("http://localhost:56789/chatHub"));
+
 });
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 

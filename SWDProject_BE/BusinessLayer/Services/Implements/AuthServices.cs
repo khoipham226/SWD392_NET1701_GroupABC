@@ -168,7 +168,6 @@ namespace BusinessLayer.Services.Implements
 				};
 			}
 
-			var providePassword = GeneratePassword();
 			var user = new User()
 			{
 				Address = adminCreateAccountModel.Address,

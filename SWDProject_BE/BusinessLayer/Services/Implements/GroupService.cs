@@ -17,14 +17,12 @@ namespace BusinessLayer.Services.Implements
             _unitOfWork = unitOfWork;
         }
 
-        public Group Add(Group group)
+        public async Task AddGroupAsync(Group group)
 		{
             group.CreatedDate = DateTime.Now;
 
             _unitOfWork.Repository<Group>().InsertAsync(group);
             _unitOfWork.CommitAsync();
-
-            return group;
         }
 
 		public List<Group> FindAllByUserId(int userId)

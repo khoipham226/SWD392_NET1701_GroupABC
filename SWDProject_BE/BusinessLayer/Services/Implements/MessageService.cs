@@ -18,10 +18,9 @@ namespace BusinessLayer.Services.Implements
             _unitOfWork = unitOfWork;
         }
 
-        public  Message Add(Message message)
+        public Message AddMessage(Message message)
         {
-            message.CreatedDate = DateTime.Now;
-
+              message.CreatedDate = DateTime.Now;
              _unitOfWork.Repository<Message>().InsertAsync(message);
              _unitOfWork.CommitAsync();
             return message;
