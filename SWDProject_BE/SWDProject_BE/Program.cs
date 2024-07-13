@@ -68,8 +68,8 @@ builder.Services.AddCors(options =>
 		.AllowAnyMethod()
 		.AllowAnyHeader()
 		.AllowCredentials()
-		.WithOrigins("http://localhost:56789/chatHub"));
-
+		//.WithOrigins("http://localhost:56789/chatHub"));
+		.WithOrigins("http://localhost:7293/chatHub"));
 });
 
 builder.Services.AddSignalR();

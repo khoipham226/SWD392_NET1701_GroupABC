@@ -112,6 +112,10 @@ namespace SWDProject_BE.Controllers
             try
             {
                 var post = await _postService.GetPostByIdAsync(exchangedRequest.PostId);
+                if (post.PublicStatus == false)
+                {
+                    return BadRequest(new { message = "Cannot add exchange because the post is unpublish or reported." });
+                }
                 if (post.ExchangedStatus == true)
                 {
                     return BadRequest(new { message = "Cannot add exchange because the post is already exchanged." });
@@ -139,22 +143,33 @@ namespace SWDProject_BE.Controllers
                 };
                 await _exchangedService.AddExchangedAsync(exchanged);
 
-                foreach (var productId in exchangedRequest.ProductIds)
+                try
                 {
-                    var exchangedProduct = new ExchangedProduct
+                    foreach (var productId in exchangedRequest.ProductIds)
                     {
-                        ExchangeId = exchanged.Id,
-                        ProductId = productId
-                    };
-                    await _exchangedService.AddExchangedProductAsync(exchangedProduct);
+                        var exchangedProduct = new ExchangedProduct
+                        {
+                            ExchangeId = exchanged.Id,
+                            ProductId = productId
+                        };
+                        await _exchangedService.AddExchangedProductAsync(exchangedProduct);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    // If adding exchanged product fails, delete the newly added exchanged
+                    await _exchangedService.DeleteExchangedAsync(exchanged.Id);
+                    return BadRequest(new { message = $"An error occurred: {ex.Message}" });
+                }
+
                 return Ok(new { message = "Exchange created successfully." });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = $"An error occurred: {ex.Message}" });
             }
         }
+
 
         [HttpPut("accept/{id}")]
         [Authorize]

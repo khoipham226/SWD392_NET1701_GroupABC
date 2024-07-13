@@ -257,6 +257,14 @@ namespace BusinessLayer.Services.Implements
             await _unitOfWork.Repository<Post>().Update(post, post.Id);
             await _unitOfWork.Repository<Exchanged>().Update(exchanged, id);
 
+            // Update the product in the post to false
+            var postProduct = await _unitOfWork.Repository<Product>().GetById(post.ProductId);
+            if (postProduct != null)
+            {
+                postProduct.Status = false;
+                await _unitOfWork.Repository<Product>().Update(postProduct, postProduct.Id);
+            }
+
             // Delete related exchanges except the one being accepted
             var exchangesToDelete = await _unitOfWork.Repository<Exchanged>()
                 .GetAll()
@@ -334,6 +342,12 @@ namespace BusinessLayer.Services.Implements
             await _unitOfWork.Repository<Exchanged>().HardDelete(id);
 
             // Commit changes
+            await _unitOfWork.CommitAsync();
+        }
+
+        public async Task DeleteExchangedAsync(int id)
+        {
+            await _unitOfWork.Repository<Exchanged>().HardDelete(id);
             await _unitOfWork.CommitAsync();
         }
     }

@@ -4,6 +4,7 @@ using BusinessLayer.ResponseModels.Product;
 using BusinessLayer.ResponseModels.Report;
 using DataLayer.Model;
 using DataLayer.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -239,6 +240,34 @@ namespace BusinessLayer.Services.Implements
                     post.PublicStatus = false;
                     await _unitOfWork.Repository<Post>().Update(post, post.Id);
                     await _unitOfWork.CommitAsync();
+
+                    // Get all Exchangeds related to the post with ExchangedStatus = false
+                    var relatedExchangeds = await _unitOfWork.Repository<Exchanged>()
+                        .GetAll().Where(e => e.PostId == post.Id && e.Status == false).ToListAsync();
+
+                    // Delete those Exchangeds and their related ExchangedProducts
+                    foreach (var exchanged in relatedExchangeds)
+                    {
+                        var exchangedProducts = await _unitOfWork.Repository<ExchangedProduct>()
+                            .GetAll().Where(ep => ep.ExchangeId == exchanged.Id).ToListAsync();
+
+                        foreach (var exchangedProduct in exchangedProducts)
+                        {
+                            // Update the product use in exchange status to true
+                            var product = await _unitOfWork.Repository<Product>().GetById(exchangedProduct.ProductId);
+                            if (product != null)
+                            {
+                                product.Status = true;
+                                await _unitOfWork.Repository<Product>().Update(product, product.Id);
+                            }
+
+                            await _unitOfWork.Repository<ExchangedProduct>().HardDelete(exchangedProduct.Id);
+                            await _unitOfWork.CommitAsync();
+                        }
+
+                        await _unitOfWork.Repository<Exchanged>().HardDelete(exchanged.Id);
+                        await _unitOfWork.CommitAsync();
+                    }
                 }
                 
                 return "Accept Successful!";
