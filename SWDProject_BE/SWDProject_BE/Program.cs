@@ -63,13 +63,13 @@ builder.Services.AddSwaggerGen(c =>
 // Add CORS
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("CorsPolicy",
-		builder => builder
-		.AllowAnyMethod()
-		.AllowAnyHeader()
-		.AllowCredentials()
-		//.WithOrigins("http://localhost:56789/chatHub"));
-		.WithOrigins("http://localhost:7293/chatHub"));
+options.AddPolicy("CorsPolicy",
+	builder => builder
+	.AllowAnyMethod()
+	.AllowAnyHeader()
+	.AllowCredentials()
+	.WithOrigins("https://localhost:7293", "http://localhost:3000")
+    );
 });
 
 builder.Services.AddSignalR();
@@ -82,9 +82,10 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
-app.UseCors();
-app.UseStaticFiles();
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
