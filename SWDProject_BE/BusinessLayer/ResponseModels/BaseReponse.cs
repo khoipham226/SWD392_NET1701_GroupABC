@@ -7,7 +7,12 @@
         public string? Message { get; set; }
         public T Data { get; set; }
     }
-    
+
+    public class BaseResponseForLogin<T> : BaseResponse<T>
+    {
+        public bool IsBanned { get; set; }
+    }
+
     public class BaseResponse
     {
         public int? Code { get; set; }

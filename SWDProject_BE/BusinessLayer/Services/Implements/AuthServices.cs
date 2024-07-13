@@ -31,7 +31,7 @@ namespace BusinessLayer.Services.Implements
 		}
 
 
-		public async Task<BaseResponse<LoginResponseModel>> AuthenticateAsync(string email, string password)
+		public async Task<BaseResponseForLogin<LoginResponseModel>> AuthenticateAsync(string email, string password)
 		{
 			// Implement authentication logic here
 			// For demonstration purposes, let's assume the user is valid if username and password match
@@ -42,18 +42,19 @@ namespace BusinessLayer.Services.Implements
 
 				if (user.Status == false)
 				{
-                    return new BaseResponse<LoginResponseModel>()
+                    return new BaseResponseForLogin<LoginResponseModel>()
                     {
                         Code = 404,
-                        Message = "Your Account has been banned. Check email " + email + "for reason",
-                        Data = null
+                        Message = "Your Account has been banned. Check email for reason",
+                        Data = null,
+						IsBanned = true
                     };
                 }
 
                 var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
                 string token =  GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
 
-                return new BaseResponse<LoginResponseModel>()
+                return new BaseResponseForLogin<LoginResponseModel>()
 				{
 					Code = 200,
 					Message = "",
@@ -76,14 +77,17 @@ namespace BusinessLayer.Services.Implements
 						},
 
 
-					}
-				};
+					},
+
+                    IsBanned = false
+                };
 			}
-			return new BaseResponse<LoginResponseModel>()
+			return new BaseResponseForLogin<LoginResponseModel>()
 			{
 				Code = 404,
 				Message = "Username or Password incorrect",
-				Data = null
+				Data = null,
+				IsBanned = false
 			};
 		}
 

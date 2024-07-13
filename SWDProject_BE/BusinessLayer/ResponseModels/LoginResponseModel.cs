@@ -12,5 +12,6 @@ namespace BusinessLayer.ResponseModels
 		public string Token { get; set; }
 
 		public UsersResponseModel User { get; set; }
-	}
+        public bool isBanned { get; set; }
+    }
 }
