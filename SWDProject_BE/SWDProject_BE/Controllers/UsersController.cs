@@ -98,17 +98,21 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPut("UpdatePassword")]
-        [Authorize]
-        public async Task<IActionResult> UpdatePassword(int id, string password)
+        public async Task<IActionResult> UpdatePassword(UpdatePasswordRequestModel request)
         {
             try
             {
-                var user = await _userService.GetUserByIdAsync(id);
+                var user = await _userService.GetUserByIdAsync(request.UserId);
                 if (user == null)
                 {
                     return NotFound(new { message = "User ID not found." });
                 }
-				string hashedPass = _authService.HashPassword(password);
+				if(_authService.VerifyPassword(request.OldPassword, user.Password) == false)
+				{
+                    return BadRequest(new { message = "Password is uncorrect." });
+                }
+
+				string hashedPass = _authService.HashPassword(request.NewPassword);
 
                 user.Password = hashedPass;
 
