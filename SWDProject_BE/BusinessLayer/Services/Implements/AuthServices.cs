@@ -36,7 +36,7 @@ namespace BusinessLayer.Services.Implements
             {
                 var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
                 string token = GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
-                var bannedAccount = await _unitOfWork.Repository<BannedAccount>().FindAsync(ba => ba.UserId == user.Id);
+                var bannedAccount = await _unitOfWork.Repository<BannedAccount>().FindAsync(ba => ba.UserId == user.Id && ba.Status == true);
 
                 if (user.Status == false)
                 {
@@ -46,7 +46,6 @@ namespace BusinessLayer.Services.Implements
                         Message = "Your Account has been banned. Check email for reason",
                         Data = new LoginResponseModel()
                         {
-                            Token = token,
                             User = new UsersResponseModel()
                             {
                                 Id = user.Id,
@@ -61,7 +60,7 @@ namespace BusinessLayer.Services.Implements
                             },
                         },
                         IsBanned = true,
-                        BannedAccountId = bannedAccount?.Id ?? 0
+                        BannedAccountId = bannedAccount.Id
                     };
                 }
 
