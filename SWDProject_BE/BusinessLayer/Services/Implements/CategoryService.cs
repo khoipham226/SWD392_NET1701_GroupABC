@@ -141,7 +141,7 @@ namespace BusinessLayer.Services.Implements
                     var validSubCategories = category.SubCategories.Where(s => s.Status == true).ToList();
                     if (validSubCategories.Any())
                     {
-                        var listSubcategoryResponse = _mapper.Map<List<SubcategoryResponseModel>>(category.SubCategories);
+                        var listSubcategoryResponse = _mapper.Map<List<SubcategoryResponseModel>>(validSubCategories);
 
                         CategoryResponseModel categoryResponseModel = new CategoryResponseModel
                         {
