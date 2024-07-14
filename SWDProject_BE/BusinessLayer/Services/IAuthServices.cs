@@ -17,5 +17,7 @@ namespace BusinessLayer.Services
 		Task<BaseResponse<TokenModel>> AdminGenAcc(AdminCreateAccountModel adminCreateAccountModel);
 		Task<BaseResponse> SendAccount(int userId);
 		Task<BaseResponse> ForgotPassword(ForgotPasswordRequest request);
-	}
+		string HashPassword(string password);
+
+    }
 }

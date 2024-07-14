@@ -130,17 +130,10 @@ namespace SWDProject_BE.Controllers
 
         [HttpPost]
         [Route("AddAppeal")]
-        public async Task<IActionResult> AddAppeal(AddAppealRequestModel dto)
+        public async Task<IActionResult> AddAppeal(AddAppealRequestModel dto, int userId)
         {
             try
             {
-                // Take the user id from JWT
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                if (userIdClaim == null)
-                {
-                    return Unauthorized();
-                }
-                var userId = int.Parse(userIdClaim.Value);
 
                 String message = await _appealService.AddAppeal(dto, userId);
                 return Ok(message);

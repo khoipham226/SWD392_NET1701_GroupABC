@@ -20,11 +20,14 @@ namespace SWDProject_BE.Controllers
 	public class UsersController : ControllerBase
 	{
 		private readonly IUsersService _userService;
+        private readonly IAuthServices _authService;
 
-		public UsersController(IUsersService userService)
+		public UsersController(IUsersService userService, IAuthServices authServices)
 		{
 			_userService = userService;
-		}
+			_authService = authServices;
+
+        }
 
 		// GET: api/Users
 		[HttpGet]
@@ -64,7 +67,7 @@ namespace SWDProject_BE.Controllers
         }
 
 			// PUT: api/Users/5
-			[HttpPut("{id}")]
+		[HttpPut("{id}")]
 		[Authorize]
 		public async Task<IActionResult> PutUser(int id, UserUpdateRequestModel userModel)
 		{
@@ -87,6 +90,31 @@ namespace SWDProject_BE.Controllers
 				await _userService.UpdateUserAsync(user);
 
                 return Ok(new { message = "User updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("UpdatePassword")]
+        [Authorize]
+        public async Task<IActionResult> UpdatePassword(int id, string password)
+        {
+            try
+            {
+                var user = await _userService.GetUserByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound(new { message = "User ID not found." });
+                }
+				string hashedPass = _authService.HashPassword(password);
+
+                user.Password = hashedPass;
+
+                await _userService.UpdateUserAsync(user);
+
+                return Ok(new { message = "User Password updated successfully." });
             }
             catch (Exception ex)
             {

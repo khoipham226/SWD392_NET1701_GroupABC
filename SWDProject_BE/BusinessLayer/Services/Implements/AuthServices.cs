@@ -51,9 +51,6 @@ namespace BusinessLayer.Services.Implements
                         Message = "Your Account has been banned. Check email for reason",
                         Data = new LoginResponseModel()
                         {
-
-                            Token = token,
-
                             User = new UsersResponseModel()
                             {
                                 Id = user.Id,
