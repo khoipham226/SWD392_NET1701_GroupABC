@@ -11,6 +11,7 @@
     public class BaseResponseForLogin<T> : BaseResponse<T>
     {
         public bool IsBanned { get; set; }
+        public int BannedAccountId { get; set; }
     }
 
     public class BaseResponse

@@ -39,20 +39,38 @@ namespace BusinessLayer.Services.Implements
             
             if (user != null && VerifyPassword(password, user.Password))
 			{
+                var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
+                string token = GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
+                var bannedAccountId = await _unitOfWork.Repository<BannedAccount>().FindAsync(ba => ba.UserId == user.Id);
 
-				if (user.Status == false)
+                if (user.Status == false)
 				{
                     return new BaseResponseForLogin<LoginResponseModel>()
                     {
                         Code = 404,
                         Message = "Your Account has been banned. Check email for reason",
-                        Data = null,
-						IsBanned = true
+                        Data = new LoginResponseModel()
+                        {
+
+                            Token = token,
+
+                            User = new UsersResponseModel()
+                            {
+                                Id = user.Id,
+                                UserName = user.UserName,
+                                Email = user.Email,
+                                Dob = user.Dob,
+                                Address = user.Address,
+                                PhoneNumber = user.PhoneNumber,
+                                RoleId = user.RoleId,
+                                ImgUrl = user.ImgUrl,
+                                Gender = user.Gender
+                            },
+                        },
+                        IsBanned = true,
+						BannedAccountId = bannedAccountId.Id
                     };
                 }
-
-                var userWithRole = await _userService.GetUserByUsernameAsync(user.UserName);
-                string token =  GenerateJwtToken(user.UserName, userWithRole.Role.Name, user.Id);
 
                 return new BaseResponseForLogin<LoginResponseModel>()
 				{
@@ -75,10 +93,7 @@ namespace BusinessLayer.Services.Implements
 							ImgUrl = user.ImgUrl,
 							Gender = user.Gender
 						},
-
-
 					},
-
                     IsBanned = false
                 };
 			}
