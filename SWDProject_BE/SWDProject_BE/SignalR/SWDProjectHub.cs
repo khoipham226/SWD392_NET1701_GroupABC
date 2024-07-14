@@ -1,4 +1,6 @@
 ﻿
+using BusinessLayer.RequestModels;
+using BusinessLayer.ResponseModels;
 using BusinessLayer.Services;
 using DataLayer.Model;
 using DataLayer.Repository;
@@ -32,12 +34,16 @@ namespace SWDProject_BE.SignalR
 		{
 			
 			//Save group to db
-			var newGroup= _groupService.AddGroupAsync(group);
-			//Goi lenh nhan group o Client
-			//Gui cho tat ca client dang connect
-			//Client se kiem tra minh co thuoc nhom vua tao khong
-			//Neu thuoc nhom vua tao, se dc add vao nhom
-			await Clients.All.SendAsync("ReceiveNewGroup", newGroup);				
+			await _groupService.AddGroupAsync(group);
+
+            var newGroupDto = new GroupResponseModel
+            {
+                Id = group.Id,
+                PostId = group.PostId,
+                UserExchangeId = group.UserExchangeId,
+            };
+
+            await Clients.All.SendAsync("ReceiveNewGroup", newGroupDto);				
 		}
 
 		//Join vao nhom
@@ -65,9 +71,26 @@ namespace SWDProject_BE.SignalR
 				await Groups.AddToGroupAsync(Context.ConnectionId, group.PostId.ToString());
 			}
 		}
-		
-		//Gui tin nhan
-		public async Task SendMessage(Message message)
+
+        public async Task GetAllGroupChat(int userId)
+        {
+            // Retrieve all groups that the user has joined
+            var groups = _groupService.FindAllByUserId(userId);
+
+            // Convert the group entities to a response model
+            var groupDtos = groups.Select(group => new GroupResponseModel
+            {
+                Id = group.Id,
+                PostId = group.PostId,
+                UserExchangeId = group.UserExchangeId,
+            }).ToList();
+
+            // Send the list of groups to the client
+            await Clients.All.SendAsync("ReceiveAllGroupChats", groupDtos);
+        }
+
+        //Gui tin nhan
+        public async Task SendMessage(Message message)
 		{
 			//Luu tin nhan vao db
 			var newMessage = _messageService.AddMessage(message);
@@ -76,7 +99,7 @@ namespace SWDProject_BE.SignalR
 		}
 
 		//tai toan bo tin nhan tu nhom co ten la postId, thuc hien khi user mo form chat
-		public async Task LoadMessageByPostId(int groupId)
+		public async Task LoadMessageByGroupId(int groupId)
 		{
 			//lay tat ca tin nhan co postId
 			//tai mot phan tin nhan, sau khi lan chuot se tiep tuc load

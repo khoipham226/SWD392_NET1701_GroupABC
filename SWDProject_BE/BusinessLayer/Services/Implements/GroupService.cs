@@ -21,8 +21,8 @@ namespace BusinessLayer.Services.Implements
 		{
             group.CreatedDate = DateTime.Now;
 
-            _unitOfWork.Repository<Group>().InsertAsync(group);
-            _unitOfWork.CommitAsync();
+            await _unitOfWork.Repository<Group>().InsertAsync(group);
+            await _unitOfWork.CommitAsync();
         }
 
 		public List<Group> FindAllByUserId(int userId)
