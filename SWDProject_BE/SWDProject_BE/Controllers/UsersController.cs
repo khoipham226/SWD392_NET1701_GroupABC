@@ -53,7 +53,8 @@ namespace SWDProject_BE.Controllers
 		}
 
         [HttpGet("GetUserProfile/{id}")]
-        public async Task<ActionResult<User>> GetUserProfile(int id)
+		[Authorize]
+		public async Task<ActionResult<User>> GetUserProfile(int id)
         {
             try
             {
@@ -98,7 +99,8 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPut("UpdatePassword")]
-        public async Task<IActionResult> UpdatePassword(UpdatePasswordRequestModel request)
+		[Authorize]
+		public async Task<IActionResult> UpdatePassword(UpdatePasswordRequestModel request)
         {
             try
             {

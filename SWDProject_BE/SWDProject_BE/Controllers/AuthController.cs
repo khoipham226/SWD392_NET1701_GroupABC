@@ -51,6 +51,7 @@ namespace SWDProject_BE.Controllers
 		}
 
 		[HttpPost("admin-create-account")]
+		[Authorize(Roles ="admin")]
 		public IActionResult AdminGenAcc(AdminCreateAccountModel model)
 		{
 			// Implement user registration logic here
