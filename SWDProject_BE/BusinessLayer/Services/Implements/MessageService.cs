@@ -27,10 +27,10 @@ namespace BusinessLayer.Services.Implements
         //    //return message;
         //}
 
-		public Message AddMessage(MessageResponseModel message)
+		public Message AddMessage(Message message)
 		{
 			message.CreatedDate = DateTime.Now;
-			 _unitOfWork.Repository<MessageResponseModel>().InsertAsync(message);
+			 _unitOfWork.Repository<Message>().InsertAsync(message);
 			 _unitOfWork.CommitAsync();
             return message;
 		}

@@ -93,21 +93,20 @@ namespace SWDProject_BE.SignalR
         //Gui tin nhan
         public async Task SendMessage(Message message)
 		{
-			//Luu tin nhan vao db
-			
-			
-			var messageDto = new MessageResponseModel
+            //Luu tin nhan vao db
+            var newMessage = _messageService.AddMessage(message);
+
+            var messageDto = new MessageResponseModel
 			{
 				Id = message.Id,
 				GroupId = message.GroupId,
 				SenderId = message.SenderId,
 				Content = message.Content,
 				CreatedDate = DateTime.UtcNow,
-				ModifiedDate = DateTime.UtcNow,
 			};
-			var newMessage = _messageService.AddMessage(messageDto);
+			
 			//Gui tin nhan theo group co PostId
-			await Clients.Group(newMessage.GroupId.ToString()).SendAsync("ReceiveMessage", newMessage);
+			await Clients.Group(newMessage.GroupId.ToString()).SendAsync("ReceiveMessage", messageDto);
 		}
 
 		//tai toan bo tin nhan tu nhom co ten la postId, thuc hien khi user mo form chat

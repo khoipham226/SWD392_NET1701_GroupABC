@@ -10,7 +10,7 @@ namespace BusinessLayer.Services
 {
     public interface IMessageService
     {
-        Message AddMessage(MessageResponseModel message);
+        Message AddMessage(Message message);
         List<Message> FindByGroupId(int groupId);
     }
 }
