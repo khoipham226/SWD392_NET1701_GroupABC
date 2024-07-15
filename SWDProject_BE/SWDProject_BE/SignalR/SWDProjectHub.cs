@@ -98,10 +98,10 @@ namespace SWDProject_BE.SignalR
 
             var messageDto = new MessageResponseModel
 			{
-				Id = message.Id,
-				GroupId = message.GroupId,
-				SenderId = message.SenderId,
-				Content = message.Content,
+				Id = newMessage.Id,
+				GroupId = newMessage.GroupId,
+				SenderId = newMessage.SenderId,
+				Content = newMessage.Content,
 				CreatedDate = DateTime.UtcNow,
 			};
 			
