@@ -80,6 +80,7 @@ namespace BusinessLayer.Services.Implements
                 Description = exchanged.Description,
                 Date = exchanged.Date,
                 Status = (bool)exchanged.Status,
+                IsCompleted = (bool)exchanged.StatusRating,
                 User = new UserResponse
                 {
                     Id = exchanged.User.Id,
@@ -241,6 +242,7 @@ namespace BusinessLayer.Services.Implements
 
             // Update exchanged status
             exchanged.Status = true;
+            exchanged.StatusRating = false;
 
             // Get the associated post
             var post = await _unitOfWork.Repository<Post>().GetById(exchanged.PostId);
@@ -340,6 +342,22 @@ namespace BusinessLayer.Services.Implements
 
             // Delete the exchanged entity itself
             await _unitOfWork.Repository<Exchanged>().HardDelete(id);
+
+            // Commit changes
+            await _unitOfWork.CommitAsync();
+        }
+
+        public async Task UpdateExchangeStatusCompleted(int id)
+        {
+            var exchanged = await _unitOfWork.Repository<Exchanged>().GetById(id);
+            if (exchanged == null)
+            {
+                throw new ArgumentException($"Exchanged with id {id} not found.");
+            }
+
+            exchanged.StatusRating = true;
+
+            await _unitOfWork.Repository<Exchanged>().Update(exchanged, id);
 
             // Commit changes
             await _unitOfWork.CommitAsync();

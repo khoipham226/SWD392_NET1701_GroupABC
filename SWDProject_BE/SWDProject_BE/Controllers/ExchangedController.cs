@@ -141,7 +141,8 @@ namespace SWDProject_BE.Controllers
                     PostId = exchangedRequest.PostId,
                     Description = exchangedRequest.Description,
                     Date = DateTime.Now,
-                    Status = false
+                    Status = false,
+                    StatusRating = false,
                 };
                 await _exchangedService.AddExchangedAsync(exchanged);
 
@@ -255,6 +256,35 @@ namespace SWDProject_BE.Controllers
 
                 await _exchangedService.UpdateExchangedStatusDenyAsync(id);
                 return Ok(new { message = "Exchange cancelled successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("updateCompletedStatus/{id}")]
+        [Authorize]
+        public async Task<ActionResult> CompleteExchanged(int id)
+        {
+            try
+            {
+                var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
+
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized(new { message = "Check JWT token." });
+                }
+
+                var userId = int.Parse(userIdClaim.Value);
+                if (existingExchanged.UserId != userId)
+                {
+                    return BadRequest(new { message = "This exchange is not yours." });
+                }
+
+                await _exchangedService.UpdateExchangeStatusCompleted(id);
+                return Ok(new { message = "Exchange Completed successfully." });
             }
             catch (Exception ex)
             {

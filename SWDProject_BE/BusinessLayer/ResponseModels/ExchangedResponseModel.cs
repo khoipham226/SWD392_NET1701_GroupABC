@@ -12,6 +12,7 @@ namespace BusinessLayer.ResponseModels
         public string? Description { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
+        public bool IsCompleted { get; set; }
         public UserResponse User { get; set; } = null!;
         public UserResponse PostOwner { get; set; } = null!;
         public PostResponse Post { get; set; } = null!;

@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataLayer.Model;
-
-public partial class Role
+namespace DataLayer.Model
 {
-    public int Id { get; set; }
+    public partial class Role
+    {
+        public Role()
+        {
+            Users = new HashSet<User>();
+        }
 
-    public string Name { get; set; } = null!;
+        public int Id { get; set; }
+        public string Name { get; set; } = null!;
+        public bool Status { get; set; }
 
-    public bool Status { get; set; }
-
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+        public virtual ICollection<User> Users { get; set; }
+    }
 }

@@ -18,6 +18,7 @@ namespace BusinessLayer.Services
         Task<IEnumerable<ExchangedResponseModel>> GetAllPendingExchangedByUserIdForPosterAsync(int userId);
         Task<Exchanged> GetExchangedByIdAsync(int id);
         Task UpdateExchangedStatusAcceptAsync(int id);
+        Task UpdateExchangeStatusCompleted(int id);
         Task UpdateExchangedStatusDenyAsync(int id);
         Task CancelExchaneAsync(int id);
         Task DeleteExchangedAsync(int id);
