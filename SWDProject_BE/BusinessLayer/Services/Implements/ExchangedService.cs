@@ -70,6 +70,7 @@ namespace BusinessLayer.Services.Implements
                 .Include(e => e.Post)
                 .ThenInclude(p => p.Product)
                 .ThenInclude(p => p.User)
+                .ThenInclude(p => p.Ratings)
                 .Include(e => e.ExchangedProducts)
                 .ThenInclude(ep => ep.Product)
                 .ToListAsync();
@@ -81,6 +82,7 @@ namespace BusinessLayer.Services.Implements
                 Date = exchanged.Date,
                 Status = (bool)exchanged.Status,
                 IsCompleted = (bool)exchanged.StatusRating,
+                IsRated = exchanged.Post.Ratings.Any(r => r.PostId == exchanged.PostId),
                 User = new UserResponse
                 {
                     Id = exchanged.User.Id,
