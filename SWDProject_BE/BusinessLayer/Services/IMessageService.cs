@@ -1,4 +1,5 @@
-﻿using DataLayer.Model;
+﻿using BusinessLayer.ResponseModels;
+using DataLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace BusinessLayer.Services
 {
     public interface IMessageService
     {
-        Message AddMessage(Message message);
+        Message AddMessage(MessageResponseModel message);
         List<Message> FindByGroupId(int groupId);
     }
 }

@@ -1,4 +1,5 @@
-﻿using DataLayer.Model;
+﻿using BusinessLayer.ResponseModels;
+using DataLayer.Model;
 using DataLayer.Repository;
 using DataLayer.UnitOfWork;
 using System;
@@ -18,15 +19,23 @@ namespace BusinessLayer.Services.Implements
             _unitOfWork = unitOfWork;
         }
 
-        public Message AddMessage(Message message)
-        {
-              message.CreatedDate = DateTime.Now;
-             _unitOfWork.Repository<Message>().InsertAsync(message);
-             _unitOfWork.CommitAsync();
-            return message;
-        }
+        //public Message AddMessage(MessageResponseModel message)
+        //{
+              
+        //      _unitOfWork.Repository<MessageResponseModel>().InsertAsync(message);
+        //      _unitOfWork.CommitAsync();
+        //    //return message;
+        //}
 
-        public  List<Message> FindByGroupId(int groupId)
+		public Message AddMessage(MessageResponseModel message)
+		{
+			message.CreatedDate = DateTime.Now;
+			 _unitOfWork.Repository<MessageResponseModel>().InsertAsync(message);
+			 _unitOfWork.CommitAsync();
+            return message;
+		}
+
+		public  List<Message> FindByGroupId(int groupId)
         {
             return  _unitOfWork.Repository<Message>().GetAll().Where(m => m.GroupId == groupId).ToList();
         }
