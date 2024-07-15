@@ -263,7 +263,7 @@ namespace SWDProject_BE.Controllers
             }
         }
 
-        [HttpDelete("updateCompletedStatus/{id}")]
+        [HttpPut("updateCompletedStatus/{id}")]
         [Authorize]
         public async Task<ActionResult> CompleteExchanged(int id)
         {
