@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.RequestModels.Appeal;
 using BusinessLayer.Services;
 using DataLayer.Dto.Product;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -20,6 +21,7 @@ namespace SWDProject_BE.Controllers
 
         [HttpGet]
         [Route("GetAll")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -32,9 +34,10 @@ namespace SWDProject_BE.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        
         [HttpGet]
         [Route("GetAppealById/{AppealId}")]
+        [Authorize]
         public async Task<IActionResult> GetAppealById(int AppealId)
         {
             try
@@ -58,6 +61,7 @@ namespace SWDProject_BE.Controllers
 
         [HttpGet]
         [Route("GetAllAppealProcessing")]
+        [Authorize(Roles = "staff")]
         public async Task<IActionResult> GetAllAppealProcessing()
         {
             try

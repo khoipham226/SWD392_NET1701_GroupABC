@@ -10,6 +10,9 @@ namespace BusinessLayer.ResponseModels.Rating
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string UserUrl { get; set; }
+        public int PostId { get; set; }
         public int Score { get; set; }
         public string? Description { get; set; }
         public DateTime Date { get; set; }

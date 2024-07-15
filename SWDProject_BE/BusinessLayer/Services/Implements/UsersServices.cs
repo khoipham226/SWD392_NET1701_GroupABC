@@ -10,6 +10,7 @@ namespace BusinessLayer.Services.Implements
 	public class UsersServices : IUsersService
 	{
 		private readonly IUnitOfWork _unitOfWork;
+		private readonly IRatingService _ratingService;
 
 		public UsersServices(IUnitOfWork unitOfWork)
 		{
@@ -83,6 +84,7 @@ namespace BusinessLayer.Services.Implements
             {
                 throw new Exception($"User with ID {id} not found.");
             }
+			int count = await _ratingService.CountRating(user.Id);
 
             var responseModel = new UserDetailResponse
             {
@@ -95,7 +97,7 @@ namespace BusinessLayer.Services.Implements
                 RoleId = user.RoleId,
                 ImgUrl = user.ImgUrl,
                 Gender = user.Gender,
-				RatingCount = user.RatingCount
+				RatingCount = count,
             };
 
             return responseModel;

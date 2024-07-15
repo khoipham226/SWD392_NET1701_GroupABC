@@ -1,4 +1,5 @@
-﻿using BusinessLayer.ResponseModels.Rating;
+﻿using BusinessLayer.RequestModels.Rating;
+using BusinessLayer.ResponseModels.Rating;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace BusinessLayer.Services
 {
     public interface IRatingService
     {
-        Task<RatingResponseModel> GetAll();
+        Task<List<RatingResponseModel>> GetAll();
+        Task<bool> RatingPost(int userId, RatingRequestModel dto);
+        Task<bool> GetRatingByUser(int userId, int postId);
+        Task<int> CountRating(int userId);
     }
 }

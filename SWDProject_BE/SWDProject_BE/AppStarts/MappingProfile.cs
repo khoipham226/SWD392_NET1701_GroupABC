@@ -2,6 +2,7 @@
 using BusinessLayer.RequestModels.Appeal;
 using BusinessLayer.RequestModels.Category;
 using BusinessLayer.RequestModels.Order;
+using BusinessLayer.RequestModels.Rating;
 using BusinessLayer.RequestModels.Report;
 using BusinessLayer.RequestModels.Subcategory;
 using BusinessLayer.ResponseModels;
@@ -39,6 +40,8 @@ namespace SWDProject_BE.AppStarts
 
             //Rating
             CreateMap<RatingResponseModel, Rating>().ReverseMap();
+            CreateMap<RatingRequestModel, Rating>().ReverseMap();
+            CreateMap<RatingRequestModel, RatingResponseModel>().ReverseMap();
 
             //Appeal
             CreateMap<AppealResponseModel, Appeal>().ReverseMap();
