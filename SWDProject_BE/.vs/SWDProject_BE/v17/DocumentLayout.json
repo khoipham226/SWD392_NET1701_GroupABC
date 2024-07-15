@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -78,11 +86,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Program.cs",
+              "RelativeDocumentMoniker": "SWDProject_BE\\Program.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Program.cs",
+              "RelativeToolTip": "SWDProject_BE\\Program.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAFAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T12:52:39.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\appsettings.json",
+              "RelativeDocumentMoniker": "SWDProject_BE\\appsettings.json",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\appsettings.json",
+              "RelativeToolTip": "SWDProject_BE\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAD1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-15T12:52:26.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "GetAllProductResponseModel.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
@@ -90,12 +123,11 @@
               "RelativeToolTip": "BusinessLayer\\ResponseModels\\Product\\GetAllProductResponseModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T17:51:29.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T17:51:29.406Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "OrderDetail.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\OrderDetail.cs",
               "RelativeDocumentMoniker": "DataLayer\\Model\\OrderDetail.cs",
@@ -103,12 +135,11 @@
               "RelativeToolTip": "DataLayer\\Model\\OrderDetail.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T16:53:30.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T16:53:30.222Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ProductController.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\ProductController.cs",
@@ -116,12 +147,11 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\ProductController.cs",
               "ViewState": "AQIAAEkAAAAAAAAAAAAcwGwAAABVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T16:43:13.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T16:43:13.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "OrderController.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\OrderController.cs",
@@ -133,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ProductService.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\ProductService.cs",
@@ -141,12 +171,11 @@
               "RelativeToolTip": "BusinessLayer\\Services\\Implements\\ProductService.cs",
               "ViewState": "AQIAAMUAAAAAAAAAAAAuwOwAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T16:40:32.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T16:40:32.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Order.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\DataLayer\\Model\\Order.cs",
               "RelativeDocumentMoniker": "DataLayer\\Model\\Order.cs",
@@ -154,12 +183,11 @@
               "RelativeToolTip": "DataLayer\\Model\\Order.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T16:29:05.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T16:29:05.317Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "CategoryResponse.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponse.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Category\\CategoryResponse.cs",
@@ -171,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "CategoryResponseModel.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Category\\CategoryResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Category\\CategoryResponseModel.cs",
@@ -183,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "IOrderService.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IOrderService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\IOrderService.cs",
@@ -195,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "OrderService.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\OrderService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\OrderService.cs",
@@ -207,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\AppStarts\\MappingProfile.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\AppStarts\\MappingProfile.cs",
@@ -219,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "OrderResponseModel.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\ResponseModels\\Order\\OrderResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModels\\Order\\OrderResponseModel.cs",
@@ -231,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "AddOrderRequestModel.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\RequestModels\\Order\\AddOrderRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModels\\Order\\AddOrderRequestModel.cs",
@@ -243,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "IUsersService.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IUsersService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\IUsersService.cs",
@@ -255,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "PostsController.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\PostsController.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\PostsController.cs",
@@ -267,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "UsersController.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\UsersController.cs",
@@ -279,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "UsersServices.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\UsersServices.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\UsersServices.cs",

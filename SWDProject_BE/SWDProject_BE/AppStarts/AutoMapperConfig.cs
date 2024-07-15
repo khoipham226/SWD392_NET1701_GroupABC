@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BusinessLayer.Mapper;
+//using BusinessLayer.Mapper;
 using System.Reflection;
 
 namespace SWDProject_BE.AppStarts
@@ -12,7 +12,7 @@ namespace SWDProject_BE.AppStarts
 			{
                 //mc.ConfigStoreModule();
                 mc.AddMaps(Assembly.GetExecutingAssembly());
-				mc.ConfigMessage();
+				//mc.ConfigMessage();
 			});
 			IMapper mapper = mapperConfiguration.CreateMapper();
 			services.AddSingleton(mapper);

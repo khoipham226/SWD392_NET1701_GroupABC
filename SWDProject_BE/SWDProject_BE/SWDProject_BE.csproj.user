@@ -11,6 +11,7 @@
     <WebStackScaffolding_DbContextTypeFullName>DataLayer.Model.SWD392_DBContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <ActiveDebugProfile>SWDProject_BE</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>F:\SU24\SWD392\Main\SWD392_NET1701_GroupABC\SWDProject_BE\SWDProject_BE\Properties\PublishProfiles\swd392web1 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
