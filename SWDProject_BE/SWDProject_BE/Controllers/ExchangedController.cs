@@ -22,6 +22,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet("GetAllFinishedForUser")]
+        [Authorize]
         public async Task<ActionResult<Exchanged>> GetAllFinishedExchangedByUserId()
         {
             try
@@ -43,6 +44,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Exchanged>> GetExchangedById(int id)
         {
             try

@@ -19,7 +19,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPut("BanUser/{id}")]
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> BanUser(int id, string reason)
         {
             try
@@ -45,7 +45,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPut("UnBanUser/{id}")]
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> UnBanUser(int id)
         {
             try

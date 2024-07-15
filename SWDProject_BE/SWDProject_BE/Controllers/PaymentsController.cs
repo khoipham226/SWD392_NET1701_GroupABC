@@ -20,6 +20,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPost("create")]
+        [Authorize]
         public async Task<IActionResult> CreatePayment(decimal amount)
         {
             try
@@ -72,6 +73,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPost("refund")]
+        [Authorize]
         public async Task<IActionResult> RefundPayment(string captureId, decimal amount)
         {
             try

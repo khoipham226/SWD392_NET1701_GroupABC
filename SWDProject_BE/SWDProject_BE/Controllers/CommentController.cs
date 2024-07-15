@@ -109,7 +109,7 @@ namespace SWDProject_BE.Controllers
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                if (existingComment.UserId != userId && !User.IsInRole("Moderator"))
+                if (existingComment.UserId != userId && !User.IsInRole("staff"))
                 {
                     return BadRequest("Only the CommentOwner (or Moderator) can modify it");
                 }
@@ -145,7 +145,7 @@ namespace SWDProject_BE.Controllers
                 }
                 var userId = int.Parse(userIdClaim.Value);
 
-                if (existingComment.UserId != userId && !User.IsInRole("Moderator"))
+                if (existingComment.UserId != userId && !User.IsInRole("staff"))
                 {
                     return BadRequest("Only the CommentOwner (or Moderator) can modify it");
                 }

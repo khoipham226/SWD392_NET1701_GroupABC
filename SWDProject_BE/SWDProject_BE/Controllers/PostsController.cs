@@ -36,6 +36,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet("getAllPendingPost")]
+        [Authorize(Roles = "staff")]
         public async Task<ActionResult<IEnumerable<Post>>> GetAllUnpublicPosts()
         {
             try
@@ -72,6 +73,7 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
             try

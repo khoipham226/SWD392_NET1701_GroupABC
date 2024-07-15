@@ -1,5 +1,6 @@
 ﻿using DataLayer.Model;
 using DataLayer.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,8 @@ namespace BusinessLayer.Services.Implements
 			{
 				return null;
 			}
-			return _unitOfWork.Repository<Group>().GetAll().Where(g => g.UserExchangeId == userId).ToList();
-		}
+			return _unitOfWork.Repository<Group>().GetAll().Include(p => p.Post).Where(g => g.UserExchangeId == userId || g.Post.UserId == userId).ToList();
+
+        }
 	}
 }
