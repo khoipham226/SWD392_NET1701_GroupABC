@@ -1,5 +1,6 @@
-using DataLayer.Repository;
+﻿using DataLayer.Repository;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using SWDProject_BE.AppStarts;
@@ -52,13 +53,25 @@ builder.Services.AddSwaggerGen(c =>
 			Id = "Bearer"
 		}
 	};
-	c.AddSecurityDefinition("Bearer", securitySchema);
-	c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-				{
-						securitySchema,
-					new string[] { "Bearer" }
-		}
-				});
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        Reference = new OpenApiReference
+        {
+            Type = ReferenceType.SecurityScheme,
+            Id = "Bearer"
+        }
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+        securitySchema, new string[] { "Bearer" }
+        }
+    });
 });
 // Add CORS
 builder.Services.AddCors(options =>
@@ -76,6 +89,18 @@ builder.Services.AddSignalR();
 
 var app = builder.Build();
 
+//ChatHyb
+app.MapHub<SWDProjectHub>("/chatHub", options =>
+{
+    // Lấy thông tin kết nối từ cấu hình
+    var configuration = app.Configuration;
+    var primaryConnectionString = configuration["SignalR:primaryConnectionString"];
+    var secondaryConnectionString = configuration["SignalR:secondaryConnectionString"];
+
+    // Thiết lập các tùy chọn cho Hub nếu cần thiết
+    options.Transports = HttpTransportType.WebSockets | HttpTransportType.LongPolling; // Cấu hình các loại transport
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
@@ -86,9 +111,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseCors("CorsPolicy");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<SWDProjectHub>("/chatHub");
 app.Run();
