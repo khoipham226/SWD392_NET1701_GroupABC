@@ -27,48 +27,6 @@ namespace BusinessLayer.Services.Implements
             _userService = usersService;
         }
 
-        public async Task<int> CountRating(int userId)
-        {
-            try
-            {
-                var post = await _postService.GetAllPostsByUserIdAsync(userId);
-                var listPost = post.ToList();
-
-                var listRating = await this.GetAll();
-
-                int count = 0;
-                foreach (var p in listPost)
-                {
-                    foreach (var r in listRating)
-                    {
-                        if(p.Id == r.PostId)
-                        {
-                            count++; 
-                        }
-                    }
-                }
-                return count;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public async Task<List<RatingResponseModel>> GetAll()
-        {
-            try
-            {
-                var rating = await _unitOfWork.Repository<Rating>().GetAll().ToListAsync();
-                var result = _mapper.Map<List<RatingResponseModel>>(rating);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
         public async Task<bool> GetRatingByUser(int userId, int postId)
         {
             try

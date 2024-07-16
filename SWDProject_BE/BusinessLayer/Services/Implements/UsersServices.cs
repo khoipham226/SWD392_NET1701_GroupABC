@@ -10,7 +10,6 @@ namespace BusinessLayer.Services.Implements
 	public class UsersServices : IUsersService
 	{
 		private readonly IUnitOfWork _unitOfWork;
-		private readonly IRatingService _ratingService;
 
 		public UsersServices(IUnitOfWork unitOfWork)
 		{
@@ -84,7 +83,16 @@ namespace BusinessLayer.Services.Implements
             {
                 throw new Exception($"User with ID {id} not found.");
             }
-			int count = await _ratingService.CountRating(user.Id);
+            var ratings = await _unitOfWork.Repository<Rating>()
+                                                .GetAll()
+												.Include(r => r.Post)
+                                                .Where(r => r.Post.UserId == id)
+                                                .ToListAsync();
+            double averageRating = 0;
+            if (ratings.Any())
+            {
+                averageRating = ratings.Average(r => r.Score);
+            }
 
             var responseModel = new UserDetailResponse
             {
@@ -97,7 +105,7 @@ namespace BusinessLayer.Services.Implements
                 RoleId = user.RoleId,
                 ImgUrl = user.ImgUrl,
                 Gender = user.Gender,
-				RatingCount = count,
+				RatingCount = averageRating,
             };
 
             return responseModel;

@@ -21,6 +21,6 @@ namespace BusinessLayer.ResponseModels
 	}
     public class UserDetailResponse : UsersResponseModel
     {
-        public int? RatingCount { get; set; }
+        public double RatingCount { get; set; }
     }
 }
