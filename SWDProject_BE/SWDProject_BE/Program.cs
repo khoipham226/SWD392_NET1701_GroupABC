@@ -52,7 +52,7 @@ builder.Services.AddSwaggerGen(c =>
 			Id = "Bearer"
 		}
 	};
-	//c.AddSecurityDefinition("Bearer", securitySchema);
+	c.AddSecurityDefinition("Bearer", securitySchema);
 	c.AddSecurityRequirement(new OpenApiSecurityRequirement {
 				{
 						securitySchema,
@@ -68,7 +68,7 @@ options.AddPolicy("CorsPolicy",
 	.AllowAnyMethod()
 	.AllowAnyHeader()
 	.AllowCredentials()
-	.WithOrigins("https://localhost:7293", "http://localhost:3000")
+	.WithOrigins("https://localhost:7293", "http://localhost:3000", "https://exchangeweb-fpt.netlify.app")
     );
 });
 

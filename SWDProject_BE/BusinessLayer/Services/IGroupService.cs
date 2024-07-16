@@ -10,6 +10,7 @@ namespace BusinessLayer.Services
 	public interface IGroupService
 	{
 		Task AddGroupAsync(Group group);
-		List<Group> FindAllByUserId(int userId);
-	}
+        Task<List<Group>> FindAllByUserId(int userId)
+
+    }
 }

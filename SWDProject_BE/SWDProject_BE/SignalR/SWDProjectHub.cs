@@ -66,7 +66,7 @@ namespace SWDProject_BE.SignalR
 		public async Task JoinAllGroup(int userId)
 		{
 			//Lay tat ca cac nhom ma user da tham gia
-			var groups = _groupService.FindAllByUserId(userId);
+			var groups = await _groupService.FindAllByUserId(userId);
 			foreach (var group in groups)
 			{
 				await Groups.AddToGroupAsync(Context.ConnectionId, group.PostId.ToString());
@@ -76,7 +76,7 @@ namespace SWDProject_BE.SignalR
         public async Task GetAllGroupChat(int userId)
         {
             // Retrieve all groups that the user has joined
-            var groups = _groupService.FindAllByUserId(userId);
+            var groups = await _groupService.FindAllByUserId(userId);
 
             // Convert the group entities to a response model
             var groupDtos = groups.Select(group => new GroupResponseModel
@@ -94,7 +94,7 @@ namespace SWDProject_BE.SignalR
         public async Task SendMessage(Message message)
 		{
             //Luu tin nhan vao db
-            var newMessage = _messageService.AddMessage(message);
+            var newMessage = await _messageService.AddMessage(message);
 
             var messageDto = new MessageResponseModel
 			{
@@ -114,7 +114,7 @@ namespace SWDProject_BE.SignalR
 		{
 			//lay tat ca tin nhan co postId
 			//tai mot phan tin nhan, sau khi lan chuot se tiep tuc load
-			var messages = _messageService.FindByGroupId(groupId);
+			var messages = await _messageService.FindByGroupId(groupId);
 			await Clients.Clients(Context.ConnectionId).SendAsync("ReceiveMessages", messages);
 		}
 

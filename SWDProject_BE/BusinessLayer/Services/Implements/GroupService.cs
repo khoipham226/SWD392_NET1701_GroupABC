@@ -26,14 +26,14 @@ namespace BusinessLayer.Services.Implements
             await _unitOfWork.CommitAsync();
         }
 
-		public List<Group> FindAllByUserId(int userId)
+		public async Task<List<Group>> FindAllByUserId(int userId)
 		{
-			var user = _unitOfWork.Repository<User>().Find(u => u.Id == userId);
+			var user = await _unitOfWork.Repository<User>().FindAsync(u => u.Id == userId);
 			if (user == null)
 			{
 				return null;
 			}
-			return _unitOfWork.Repository<Group>().GetAll().Include(p => p.Post).Where(g => g.UserExchangeId == userId || g.Post.UserId == userId).ToList();
+			return await _unitOfWork.Repository<Group>().GetAll().Include(p => p.Post).Where(g => g.UserExchangeId == userId || g.Post.UserId == userId).ToListAsync();
 
         }
 	}

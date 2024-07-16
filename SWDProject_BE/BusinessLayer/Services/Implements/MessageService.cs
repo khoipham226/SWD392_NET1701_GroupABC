@@ -2,6 +2,7 @@
 using DataLayer.Model;
 using DataLayer.Repository;
 using DataLayer.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,17 +28,17 @@ namespace BusinessLayer.Services.Implements
         //    //return message;
         //}
 
-		public Message AddMessage(Message message)
+		public async Task<Message> AddMessage(Message message)
 		{
 			message.CreatedDate = DateTime.Now;
-			 _unitOfWork.Repository<Message>().InsertAsync(message);
-			 _unitOfWork.CommitAsync();
+			 await _unitOfWork.Repository<Message>().InsertAsync(message);
+			 await _unitOfWork.CommitAsync();
             return message;
 		}
 
-		public  List<Message> FindByGroupId(int groupId)
+		public  async Task<List<Message>> FindByGroupId(int groupId)
         {
-            return  _unitOfWork.Repository<Message>().GetAll().Where(m => m.GroupId == groupId).ToList();
+            return  await _unitOfWork.Repository<Message>().GetAll().Where(m => m.GroupId == groupId).ToListAsync();
         }
     }
 }
