@@ -41,6 +41,7 @@ namespace SWDProject_BE.AppStarts
             services.AddScoped<IBannedAccountService,BannedAccountServices>();
             services.AddScoped<IGroupService, GroupService>();
             services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<INotificationService, NotificationService>();
             services.AddSingleton<PayPalService>();
 
         }

@@ -25,6 +25,7 @@ namespace DataLayer.Model
         public virtual DbSet<ExchangedProduct> ExchangedProducts { get; set; } = null!;
         public virtual DbSet<Group> Groups { get; set; } = null!;
         public virtual DbSet<Message> Messages { get; set; } = null!;
+        public virtual DbSet<Notification> Notifications { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
         public virtual DbSet<Payment> Payments { get; set; } = null!;
@@ -211,6 +212,19 @@ namespace DataLayer.Model
                     .HasForeignKey(d => d.SenderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Message__SenderI__17F790F9");
+            });
+
+            modelBuilder.Entity<Notification>(entity =>
+            {
+                entity.ToTable("Notification");
+
+                entity.Property(e => e.ReceiverId).HasColumnName("Receiver_Id");
+
+                entity.HasOne(d => d.Receiver)
+                    .WithMany(p => p.Notifications)
+                    .HasForeignKey(d => d.ReceiverId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Notificat__Recei__3C34F16F");
             });
 
             modelBuilder.Entity<Order>(entity =>

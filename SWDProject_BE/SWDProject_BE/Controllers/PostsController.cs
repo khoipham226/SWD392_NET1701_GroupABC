@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using BusinessLayer.ResponseModels;
 
 namespace SWDProject_BE.Controllers
 {
@@ -14,11 +15,13 @@ namespace SWDProject_BE.Controllers
     {
         private readonly ICommentService _commentService;
         private readonly IPostService _postService;
+        private readonly INotificationService _notificationService;
 
-		public PostsController(IPostService postService, ICommentService commentService)
+        public PostsController(IPostService postService, ICommentService commentService, INotificationService notificationService)
 		{
 			_postService = postService;
 			_commentService = commentService;
+            _notificationService = notificationService;
 		}
 
 		[HttpGet]
@@ -205,10 +208,21 @@ namespace SWDProject_BE.Controllers
 					await _commentService.DeleteCommentAsync(comment.id);
 				}
 
-				// Delete the post
-				await _postService.DeletePostAsync(id);
+                if(User.IsInRole("staff"))
+                {
+                    var notificationRequest = new NotificationModel
+                    {
+                        Content = $"Your Post with ID {id} has been rejected"
+                    };
+                    await _notificationService.AddNotificationAsync(notificationRequest, existingPost.UserId);
+                }
 
-				return Ok(new { message = "Post and related comments deleted successfully." });
+                // Delete the post
+                await _postService.DeletePostAsync(id);
+
+                
+
+                return Ok(new { message = "Post and related comments deleted successfully." });
 			}
 			catch (Exception ex)
 			{
@@ -231,6 +245,14 @@ namespace SWDProject_BE.Controllers
                 }
 
                 await _postService.UpdatePostStatusAsync(id, newStatus);
+
+                var notificationRequest = new NotificationModel
+                {
+                    Content = $"Your Post with ID {id} has been approved"
+                };
+
+                await _notificationService.AddNotificationAsync(notificationRequest, existingPost.UserId);
+
                 return Ok(new { message = "Post publish status updated to " + newStatus });
             }
             catch (Exception ex)

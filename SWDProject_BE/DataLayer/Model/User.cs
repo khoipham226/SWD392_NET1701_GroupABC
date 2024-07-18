@@ -13,6 +13,7 @@ namespace DataLayer.Model
             Exchangeds = new HashSet<Exchanged>();
             Groups = new HashSet<Group>();
             Messages = new HashSet<Message>();
+            Notifications = new HashSet<Notification>();
             Orders = new HashSet<Order>();
             Posts = new HashSet<Post>();
             Products = new HashSet<Product>();
@@ -43,6 +44,7 @@ namespace DataLayer.Model
         public virtual ICollection<Exchanged> Exchangeds { get; set; }
         public virtual ICollection<Group> Groups { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Product> Products { get; set; }
