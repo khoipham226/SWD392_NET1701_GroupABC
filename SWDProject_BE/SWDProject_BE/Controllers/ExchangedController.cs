@@ -182,8 +182,13 @@ namespace SWDProject_BE.Controllers
             {
                 var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
                 var ownPost = await _postService.GetPostByIdAsync(existingExchanged.PostId);
-
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+                if (existingExchanged == null)
+                {
+                    return NotFound(new { message = "Exchanged is not found." });
+                }
+
                 if (userIdClaim == null)
                 {
                     return Unauthorized(new { message = "Check JWT token." });
@@ -212,6 +217,11 @@ namespace SWDProject_BE.Controllers
             {
                 var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
                 var ownPost = await _postService.GetPostByIdAsync(existingExchanged.PostId);
+
+                if (existingExchanged == null)
+                {
+                    return NotFound(new { message = "Exchanged is not found." });
+                }
 
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
@@ -242,6 +252,11 @@ namespace SWDProject_BE.Controllers
             {
                 var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
 
+                if (existingExchanged == null)
+                {
+                    return NotFound(new { message = "Exchanged is not found." });
+                }
+
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {
@@ -270,6 +285,11 @@ namespace SWDProject_BE.Controllers
             try
             {
                 var existingExchanged = await _exchangedService.GetExchangedByIdAsync(id);
+
+                if (existingExchanged == null)
+                {
+                    return NotFound(new { message = "Exchanged is not found." });
+                }
 
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
