@@ -176,6 +176,15 @@ CREATE TABLE [Comment]
 ) ON [PRIMARY];
 GO
 
+CREATE TABLE [Notification] 
+(
+    [Id] INT IDENTITY(1,1) PRIMARY KEY,
+    [Receiver_Id] INT NOT NULL,
+    [Content] NVARCHAR(MAX) NOT NULL,
+    FOREIGN KEY ([Receiver_Id]) REFERENCES [User]([Id]),
+) ON [PRIMARY];
+GO
+
 CREATE TABLE [Report] 
 (
     Id INT IDENTITY(1,1) NOT NULL,
@@ -228,6 +237,7 @@ CREATE TABLE [Exchanged]
     [Description] NVARCHAR(MAX) NULL,
     [DATE] DATETIME NOT NULL,
     [Status] BIT NOT NULL, 
+	[StatusRating ] BIT NOT NULL, 
 FOREIGN KEY ([User_Id]) REFERENCES [User] ([Id]),
 FOREIGN KEY ([Post_Id]) REFERENCES [Post] ([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
@@ -253,7 +263,9 @@ CREATE TABLE [Rating]
     [Description] NVARCHAR(MAX) NULL,
     [DATE] DATETIME NOT NULL,
     [Status] BIT NOT NULL, 
+	[Post_Id] INT NOT NULL,
 FOREIGN KEY ([User_Id]) REFERENCES [User] ([Id]),
+FOREIGN KEY ([Post_Id]) REFERENCES [Post] ([Id]),
 PRIMARY KEY CLUSTERED ([Id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY];
@@ -293,42 +305,9 @@ GO
 
 -- Insert data into Role table
 INSERT INTO [Role] ([Name], [Status]) VALUES
-('Admin', 1),
-('User', 1),
-('Moderator', 1);
-
--- Insert data into User table
-INSERT INTO [User] 
-(UserName, [Password], Email, DOB, [Address], Phone_Number, [Role_Id], [Gender], [ImgURL], Created_Date, Modified_Date, [Rating_Count], [Status]) VALUES
-('admin', 'adminpassword', 'admin@example.com', '1980-01-01', '123 Admin St.', '123-456-7890', 1, 'Male', 'http://example.com/admin.jpg', GETDATE(), NULL, NULL, 1),
-('john_doe', 'password123', 'john@example.com', '1990-05-15', '456 Main St.', '123-456-7891', 2, 'Male', 'http://example.com/john.jpg', GETDATE(), NULL, NULL, 1),
-('jane_doe', 'password456', 'jane@example.com', '1992-08-25', '789 Maple St.', '123-456-7892', 2, 'Female', 'http://example.com/jane.jpg', GETDATE(), NULL, NULL, 1);
-
--- Insert data into Token table
-INSERT INTO [Token] 
-([Value], [User_Id], [Expiration]) VALUES
-('tokenvalue1', 1, DATEADD(day, 1, GETDATE())),
-('tokenvalue2', 2, DATEADD(day, 1, GETDATE())),
-('tokenvalue3', 3, DATEADD(day, 1, GETDATE()));
-
--- Insert data into Payment table
-INSERT INTO [Payment] 
-([Date], [Amount], [Method], [Description], [Status]) VALUES
-('2024-01-01', 100.0, 'Credit Card', 'Payment for services', 1),
-('2024-02-01', 150.0, 'PayPal', 'Payment for products', 1),
-('2024-03-01', 200.0, 'Bank Transfer', 'Payment for subscription', 1);
-
--- Insert data into BannedAccount table
-INSERT INTO [BannedAccount] 
-([User_Id], [Description], [Date], [Modified_Date], [Status]) VALUES
-(2, 'Violation of terms', GETDATE(), NULL, 1),
-(3, 'Spam activity', GETDATE(), NULL, 1);
-
--- Insert data into Appeal table
-INSERT INTO [Appeal] 
-([User_Id], [BannerAcount_Id], [Description], [Date], [Modified_Date], [Status]) VALUES
-(2, 1, 'Appeal for ban', GETDATE(), NULL, 0),
-(3, 2, 'Appeal for ban', GETDATE(), NULL, 0);
+('admin', 1),
+('user', 1),
+('staff', 1);
 
 -- Insert data into Category table
 INSERT INTO [Category] 
@@ -346,77 +325,6 @@ INSERT INTO [SubCategory]
 (2, 'Non-Fiction', 'Non-fictional books', 1),
 (3, 'Men', 'Men s clothing', 1),
 (3, 'Women', 'Women s clothing', 1);
-
--- Insert data into Product table
-INSERT INTO [Product] 
-([User_Id], [Category_Id], [SubCategory_Id], [Name], [Price], [Description], [Location], [Url_IMG], [Status], [IsForSell]) VALUES
-(2, 1, 1, 'iPhone 12', 799.99, 'Latest model of iPhone', 'New York', 'http://example.com/iphone12.jpg', 1, 1),
-(2, 2, 3, 'Harry Potter', 29.99, 'Complete series of Harry Potter', 'Los Angeles', 'http://example.com/harrypotter.jpg', 1, 1),
-(3, 3, 6, 'Womens Jacket', 49.99, 'Stylish womens jacket', 'San Francisco', 'http://example.com/womensjacket.jpg', 1, 1);
-
--- Insert data into Post table
-INSERT INTO [Post] 
-([User_Id], [Product_Id], [Title], [Description], [Date], [ImageUrl], [PublicStatus], [ExchangedStatus]) VALUES
-(2, 1, 'Selling iPhone 12', 'Brand new iPhone 12 for sale', GETDATE(), 'http://example.com/iphone12.jpg', 1, 0),
-(2, 2, 'Selling Harry Potter Series', 'Complete Harry Potter series in good condition', GETDATE(), 'http://example.com/harrypotter.jpg', 1, 0),
-(3, 3, 'Selling Women s Jacket', 'Stylish women s jacket for sale', GETDATE(), 'http://example.com/womensjacket.jpg', 1, 0);
-
--- Insert data into Comment table
-INSERT INTO [Comment] 
-([User_Id], [Post_Id], [Content], [Date], [Status]) VALUES
-(2, 1, 'Is the iPhone still available?', GETDATE(), 1),
-(3, 2, 'I am interested in the Harry Potter series.', GETDATE(), 1);
-
--- Insert data into Report table
-INSERT INTO [Report] 
-([User_Id], [Post_Id], [Description], [Date], [Status]) VALUES
-(2, 1, 'This post is inappropriate.', GETDATE(), 1),
-(3, 2, 'Spam content.', GETDATE(), 1);
-
--- Insert data into Order table
-INSERT INTO [Order] 
-([User_Id], [Payment_Id], [Total_Price], [Date], [Status]) VALUES
-(2, 1, 100.0, GETDATE(), 1),
-(3, 2, 150.0, GETDATE(), 1);
-
--- Insert data into OrderDetails table
-INSERT INTO [OrderDetails] 
-([Order_Id], [Product_Id], [Price], [Status]) VALUES
-(1, 1, 799.99, 1),
-(2, 2, 29.99, 1);
-
--- Insert data into Exchanged table
-INSERT INTO [Exchanged] 
-([User_Id], [Post_Id], [Description], [DATE], [Status]) VALUES
-(2, 1, 'Exchanging iPhone for a laptop', GETDATE(), 1),
-(3, 2, 'Exchanging Harry Potter series for a camera', GETDATE(), 1);
-
--- Insert data into ExchangedProduct table
-INSERT INTO [ExchangedProduct] 
-([ExchangeId], [ProductId]) VALUES
-(1, 1),
-(2, 2);
-
--- Insert data into Rating table
-INSERT INTO [Rating] 
-([User_Id], [Score], [Description], [DATE], [Status]) VALUES
-(2, 5, 'Great product!', GETDATE(), 1),
-(3, 4, 'Good seller.', GETDATE(), 1);
-
--- Insert data into Group table
-INSERT INTO [Group] 
-([PostId], [UserExchangeId], [CreatedDate], [ModifiedDate]) VALUES
-(1, 2, GETDATE(), NULL),
-(2, 3, GETDATE(), NULL);
-
--- Insert data into Message table
-INSERT INTO [Message] 
-([SenderId], [GroupId], [Content], [CreatedDate], [ModifiedDate]) VALUES
-(2, 1, 'Is the iPhone still available?', GETDATE(), NULL),
-(3, 2, 'I am interested in the Harry Potter series.', GETDATE(), NULL);
-GO
-
-
 
 
 

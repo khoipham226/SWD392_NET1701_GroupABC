@@ -16,7 +16,7 @@ namespace DataLayer.Model
         public string? Description { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
-        public bool? StatusRating { get; set; }
+        public bool StatusRating { get; set; }
 
         public virtual Post Post { get; set; } = null!;
         public virtual User User { get; set; } = null!;
