@@ -65,6 +65,11 @@ namespace BusinessLayer.Services.Implements
 
                     var post = await _postService.GetPostByIdAsync(dto.PostId);
                     var userPost = await _userService.GetUserByIdAsync(post.UserId);
+                    
+                    if (userId == post.UserId)
+                    {
+                        throw new Exception("You can't rating your own Post");
+                    }
 
                     if (userPost.RatingCount == null)
                     {

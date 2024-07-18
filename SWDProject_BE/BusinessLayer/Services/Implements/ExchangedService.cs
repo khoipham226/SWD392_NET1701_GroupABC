@@ -65,7 +65,7 @@ namespace BusinessLayer.Services.Implements
         {
             var exchangeds =  await _unitOfWork.Repository<Exchanged>()
                 .GetAll()
-                .Where(e => e.Status && (e.UserId == userId || e.Post.UserId == userId))
+                .Where(e => e.Status && (e.UserId == userId))
                 .Include(e => e.User) 
                 .Include(e => e.Post)
                 .ThenInclude(p => p.Product)
