@@ -213,9 +213,13 @@ namespace SWDProject_BE.Controllers
                 {
                     return Ok(message);
                 }
+                else if(message.Equals("Product not fount!"))
+                {
+                    return StatusCode(401);
+                }
                 else
                 {
-                    return BadRequest(message);    
+                    return StatusCode(402);
                 }
             }
             catch (Exception ex)
