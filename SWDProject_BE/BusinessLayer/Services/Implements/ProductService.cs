@@ -20,6 +20,7 @@ namespace BusinessLayer.Services
     public class ProductService : IProductService
     {
         private IUnitOfWork unitOfWork;
+        private IPostService _postService;
         public IMapper _mapper;
 
         public ProductService(IUnitOfWork unitOfWork, IMapper _mapper)
@@ -176,40 +177,45 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var product = await unitOfWork.Repository<Product>().GetById(id);
-                if(product != null) 
+                var check = _postService.GetPostByProductId(id);
+                if (check == null)
                 {
-                    if (dto.CategoryId != 0)
+
+                    var product = await unitOfWork.Repository<Product>().GetById(id);
+                    if (product != null)
                     {
-                        product.CategoryId = dto.CategoryId.Value;
+                        if (dto.CategoryId != 0)
+                        {
+                            product.CategoryId = dto.CategoryId.Value;
+                        }
+                        if (dto.SubcategoryId != 0)
+                        {
+                            product.SubCategoryId = dto.SubcategoryId.Value;
+                        }
+                        if (dto.Name != null)
+                        {
+                            product.Name = dto.Name;
+                        }
+                        if (dto.Price != 0)
+                        {
+                            product.Price = (double)dto.Price;
+                        }
+                        if (dto.Description != null)
+                        {
+                            product.Description = dto.Description;
+                        }
+                        if (dto.UrlImg != null)
+                        {
+                            product.UrlImg = dto.UrlImg;
+                        }
+                        if (dto.Status.HasValue)
+                        {
+                            product.Status = dto.Status.Value;
+                        }
+                        await unitOfWork.Repository<Product>().Update(product, id);
+                        await unitOfWork.CommitAsync();
+                        return "Update Successfull";
                     }
-                    if (dto.SubcategoryId != 0)
-                    {
-                        product.SubCategoryId = dto.SubcategoryId.Value;
-                    }
-                    if (dto.Name != null)
-                    {
-                        product.Name = dto.Name;
-                    }
-                    if (dto.Price != 0)
-                    {
-                        product.Price = (double)dto.Price;
-                    }
-                    if (dto.Description != null)
-                    {
-                        product.Description = dto.Description;
-                    }
-                    if (dto.UrlImg != null)
-                    {
-                        product.UrlImg = dto.UrlImg;
-                    }
-                    if (dto.Status.HasValue)
-                    {
-                        product.Status = dto.Status.Value;
-                    }
-                    await unitOfWork.Repository<Product>().Update(product, id);
-                    await unitOfWork.CommitAsync();
-                    return "Update Successfull";
                 }
                 else
                 {

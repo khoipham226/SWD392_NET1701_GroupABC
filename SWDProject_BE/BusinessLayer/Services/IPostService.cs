@@ -19,5 +19,6 @@ namespace BusinessLayer.Services
         Task UpdatePostAsync(Post post);
         Task UpdatePostStatusAsync(int id, bool newPublicStatus);
         Task DeletePostAsync(int id);
+        Task<Post> GetPostByProductId(int productId);
     }
 }

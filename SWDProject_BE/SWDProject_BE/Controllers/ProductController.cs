@@ -215,7 +215,7 @@ namespace SWDProject_BE.Controllers
                 }
                 else
                 {
-                    return NotFound("Not found Product!");
+                    return NotFound("Products already in the post can not be edited");
                 }
             }
             catch (Exception ex)

@@ -57,7 +57,7 @@ namespace BusinessLayer.Services.Implements
         {
             var posts = await _unitOfWork.Repository<Post>()
                             .GetAll()
-                            .Where(p => p.PublicStatus == false &&  p.ExchangedStatus == false)
+                            .Where(p => p.PublicStatus == false && p.ExchangedStatus == false)
                             .Include(p => p.User)
                             .Include(p => p.Product)
                             .ToListAsync();
@@ -272,6 +272,20 @@ namespace BusinessLayer.Services.Implements
             {
                 throw new Exception("Post not found");
             }
+        }
+
+        async Task<Post> GetPostByProductId(int productId)
+        {
+            try
+            {
+                var post = await _unitOfWork.Repository<Post>().FindAsync(p => p.ProductId == productId);
+                return post;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
     }
 }

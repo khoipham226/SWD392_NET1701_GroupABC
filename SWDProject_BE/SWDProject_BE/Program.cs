@@ -94,7 +94,7 @@ app.MapHub<SWDProjectHub>("/chatHub", options =>
 {
     // Lấy thông tin kết nối từ cấu hình
     var configuration = app.Configuration;
-    var primaryConnectionString = configuration["SignalR:primaryConnectionString"];
+    var ConnectionString = configuration["SignalR:ConnectionString"];
     var secondaryConnectionString = configuration["SignalR:secondaryConnectionString"];
 
     // Thiết lập các tùy chọn cho Hub nếu cần thiết
