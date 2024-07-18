@@ -212,7 +212,7 @@ namespace SWDProject_BE.Controllers
                 {
                     var notificationRequest = new NotificationModel
                     {
-                        Content = $"Your Post with ID {id} has been rejected"
+                        Content = $"Your Post has been rejected"
                     };
                     await _notificationService.AddNotificationAsync(notificationRequest, existingPost.UserId);
                 }
@@ -248,7 +248,7 @@ namespace SWDProject_BE.Controllers
 
                 var notificationRequest = new NotificationModel
                 {
-                    Content = $"Your Post with ID {id} has been approved"
+                    Content = $"Your Post has been approved"
                 };
 
                 await _notificationService.AddNotificationAsync(notificationRequest, existingPost.UserId);
