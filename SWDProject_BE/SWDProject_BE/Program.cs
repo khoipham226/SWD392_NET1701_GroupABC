@@ -85,21 +85,16 @@ options.AddPolicy("CorsPolicy",
     );
 });
 
-builder.Services.AddSignalR();
+var configuration = builder.Configuration;
+builder.Services.AddSignalR().AddAzureSignalR(options =>
+{
+    options.ConnectionString = configuration["Azure:SignalR:ConnectionString"];
+});
 
 var app = builder.Build();
 
-//ChatHyb
-app.MapHub<SWDProjectHub>("/chatHub", options =>
-{
-    // Lấy thông tin kết nối từ cấu hình
-    var configuration = app.Configuration;
-    var ConnectionString = configuration["SignalR:ConnectionString"];
-    var secondaryConnectionString = configuration["SignalR:secondaryConnectionString"];
-
-    // Thiết lập các tùy chọn cho Hub nếu cần thiết
-    options.Transports = HttpTransportType.WebSockets | HttpTransportType.LongPolling; // Cấu hình các loại transport
-});
+//ChatHub
+app.MapHub<SWDProjectHub>("/chatHub");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
