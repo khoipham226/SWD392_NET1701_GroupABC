@@ -138,21 +138,19 @@ namespace DataLayer.Model
 
                 entity.Property(e => e.PostId).HasColumnName("Post_Id");
 
-                entity.Property(e => e.StatusRating).HasDefaultValueSql("((1))");
-
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
 
                 entity.HasOne(d => d.Post)
                     .WithMany(p => p.Exchangeds)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__Post___0A9D95DB");
+                    .HasConstraintName("FK__Exchanged__Post___0D7A0286");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Exchangeds)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__User___09A971A2");
+                    .HasConstraintName("FK__Exchanged__User___0C85DE4D");
             });
 
             modelBuilder.Entity<ExchangedProduct>(entity =>
@@ -163,13 +161,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.ExchangedProducts)
                     .HasForeignKey(d => d.ExchangeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__Excha__0D7A0286");
+                    .HasConstraintName("FK__Exchanged__Excha__10566F31");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.ExchangedProducts)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Exchanged__Produ__0E6E26BF");
+                    .HasConstraintName("FK__Exchanged__Produ__114A936A");
             });
 
             modelBuilder.Entity<Group>(entity =>
@@ -184,13 +182,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Groups)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Group__PostId__14270015");
+                    .HasConstraintName("FK__Group__PostId__17F790F9");
 
                 entity.HasOne(d => d.UserExchange)
                     .WithMany(p => p.Groups)
                     .HasForeignKey(d => d.UserExchangeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Group__UserExcha__151B244E");
+                    .HasConstraintName("FK__Group__UserExcha__18EBB532");
             });
 
             modelBuilder.Entity<Message>(entity =>
@@ -205,13 +203,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Messages)
                     .HasForeignKey(d => d.GroupId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Message__GroupId__18EBB532");
+                    .HasConstraintName("FK__Message__GroupId__1CBC4616");
 
                 entity.HasOne(d => d.Sender)
                     .WithMany(p => p.Messages)
                     .HasForeignKey(d => d.SenderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Message__SenderI__17F790F9");
+                    .HasConstraintName("FK__Message__SenderI__1BC821DD");
             });
 
             modelBuilder.Entity<Notification>(entity =>
@@ -224,7 +222,7 @@ namespace DataLayer.Model
                     .WithMany(p => p.Notifications)
                     .HasForeignKey(d => d.ReceiverId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Notificat__Recei__3C34F16F");
+                    .HasConstraintName("FK__Notificat__Recei__7E37BEF6");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -242,13 +240,13 @@ namespace DataLayer.Model
                 entity.HasOne(d => d.Payment)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.PaymentId)
-                    .HasConstraintName("FK__Order__Payment_I__02FC7413");
+                    .HasConstraintName("FK__Order__Payment_I__05D8E0BE");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__User_Id__02084FDA");
+                    .HasConstraintName("FK__Order__User_Id__04E4BC85");
             });
 
             modelBuilder.Entity<OrderDetail>(entity =>
@@ -261,13 +259,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Order__06CD04F7");
+                    .HasConstraintName("FK__OrderDeta__Order__09A971A2");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Produ__05D8E0BE");
+                    .HasConstraintName("FK__OrderDeta__Produ__08B54D69");
             });
 
             modelBuilder.Entity<Payment>(entity =>
@@ -345,18 +343,21 @@ namespace DataLayer.Model
                     .HasColumnType("datetime")
                     .HasColumnName("DATE");
 
+                entity.Property(e => e.PostId).HasColumnName("Post_Id");
+
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
 
                 entity.HasOne(d => d.Post)
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.PostId)
-                    .HasConstraintName("FK_Rating_Post");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Rating__Post_Id__151B244E");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__User_Id__114A936A");
+                    .HasConstraintName("FK__Rating__User_Id__14270015");
             });
 
             modelBuilder.Entity<Report>(entity =>
@@ -373,13 +374,13 @@ namespace DataLayer.Model
                     .WithMany(p => p.Reports)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Report__Post_Id__7F2BE32F");
+                    .HasConstraintName("FK__Report__Post_Id__02084FDA");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reports)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Report__User_Id__7E37BEF6");
+                    .HasConstraintName("FK__Report__User_Id__01142BA1");
             });
 
             modelBuilder.Entity<Role>(entity =>
