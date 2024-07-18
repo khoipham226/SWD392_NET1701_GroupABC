@@ -1,11 +1,10 @@
 ﻿using BusinessLayer.RequestModels;
+using BusinessLayer.ResponseModels;
 using BusinessLayer.Services;
 using DataLayer.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
-using BusinessLayer.ResponseModels;
 
 namespace SWDProject_BE.Controllers
 {
@@ -215,6 +214,12 @@ namespace SWDProject_BE.Controllers
 
                 if(User.IsInRole("staff"))
                 {
+                    if (existingPost.PublicStatus  == true)
+                    {
+                        return BadRequest(new { message = "Post is already accepted." });
+                    }
+
+
                     var notificationRequest = new NotificationModel
                     {
                         Content = $"Your Post with ID {id} has been rejected"
@@ -258,7 +263,7 @@ namespace SWDProject_BE.Controllers
 
                 await _notificationService.AddNotificationAsync(notificationRequest, existingPost.UserId);
 
-                return Ok(new { message = "Post publish status updated to " + newStatus });
+                return StatusCode(200, new { message = "Post publish status updated to " + newStatus, status = 200 });
             }
             catch (Exception ex)
             {
