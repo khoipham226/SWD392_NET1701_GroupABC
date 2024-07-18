@@ -149,6 +149,11 @@ namespace SWDProject_BE.Controllers
                     return NotFound(new { message = "Post ID not found." });
                 }
 
+                if (existingPost.PublicStatus == true)
+                {
+                    return BadRequest(new { message = "Post is already published." });
+                }
+
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {
