@@ -274,11 +274,15 @@ namespace BusinessLayer.Services.Implements
             }
         }
 
-        async Task<Post> GetPostByProductId(int productId)
+         public async Task<Post> GetPostByProductId(int productId)
         {
             try
             {
-                var post = await _unitOfWork.Repository<Post>().FindAsync(p => p.ProductId == productId);
+                var post =  _unitOfWork.Repository<Post>().Find(p => p.ProductId == productId).FirstOrDefault();
+                if (post == null)
+                {
+                    return null;
+                }
                 return post;
             }
             catch (Exception ex)

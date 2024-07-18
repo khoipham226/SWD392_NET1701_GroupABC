@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\ipostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\ipostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\ratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\ratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\implements\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\implements\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\businesslayer\\services\\ipostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{710E630A-BF54-4C00-B6A8-41277E540D5A}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\ipostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -61,10 +65,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\appstarts\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\appstarts\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|solutionrelative:swdproject_be\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BC8C43A-D703-472D-8B2E-D980FE3C1F99}|SWDProject_BE\\SWDProject_BE.csproj|f:\\su24\\swd392\\main\\swd392_net1701_groupabc\\swdproject_be\\swdproject_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -158,37 +158,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IPostService.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IPostService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Services\\IPostService.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IPostService.cs",
-              "RelativeToolTip": "BusinessLayer\\Services\\IPostService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T03:11:46.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "PostService.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\PostService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\PostService.cs",
               "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\PostService.cs",
               "RelativeToolTip": "BusinessLayer\\Services\\Implements\\PostService.cs",
-              "ViewState": "AQIAAMkAAAAAAAAAAAAmwBsBAAAgAAAA",
+              "ViewState": "AQIAAAIBAAAAAAAAAAAqwBsBAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-18T03:08:27.802Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "swagger.json",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\bin\\Release\\net6.0\\swagger.json",
               "RelativeDocumentMoniker": "SWDProject_BE\\bin\\Release\\net6.0\\swagger.json",
@@ -200,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Program.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Program.cs",
@@ -208,12 +195,11 @@
               "RelativeToolTip": "SWDProject_BE\\Program.cs",
               "ViewState": "AQIAAEUAAAAAAAAAAAAgwGAAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T12:52:39.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T12:52:39.709Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "SWDProject_BE.xml",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SWDProject_BE.xml",
               "RelativeDocumentMoniker": "SWDProject_BE\\SWDProject_BE.xml",
@@ -225,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "DependencyInjectionContainers.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\AppStarts\\DependencyInjectionContainers.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\AppStarts\\DependencyInjectionContainers.cs",
@@ -237,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UsersController.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\UsersController.cs",
@@ -245,12 +231,11 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\UsersController.cs",
               "ViewState": "AQIAAHIAAAAAAAAAAAAmwEIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T14:02:46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T14:02:46Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "RatingService.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\RatingService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\RatingService.cs",
@@ -263,33 +248,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ProductService.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\Implements\\ProductService.cs",
               "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\Implements\\ProductService.cs",
               "RelativeToolTip": "BusinessLayer\\Services\\Implements\\ProductService.cs",
-              "ViewState": "AQIAALQAAAAAAAAAAAAYwLYAAAAAAAAA",
+              "ViewState": "AQIAAKUAAAAAAAAAAAAuwLcAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-08T16:40:32.147Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ProductController.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\ProductController.cs",
               "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\ProductController.cs",
               "RelativeToolTip": "SWDProject_BE\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAMAAAAAAAAAAAAAkwNkAAABWAAAA",
+              "ViewState": "AQIAALUAAAAAAAAAAAAYwNIAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-08T16:43:13.037Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 4,
+              "Title": "RatingController.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\RatingController.cs",
+              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\RatingController.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\RatingController.cs",
+              "RelativeToolTip": "SWDProject_BE\\Controllers\\RatingController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACIAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T18:45:10.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IPostService.cs",
+              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IPostService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Services\\IPostService.cs",
+              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\BusinessLayer\\Services\\IPostService.cs",
+              "RelativeToolTip": "BusinessLayer\\Services\\IPostService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T03:11:46.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\AppStarts\\MappingProfile.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\AppStarts\\MappingProfile.cs",
@@ -301,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "SWDProjectHub.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\SignalR\\SWDProjectHub.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\SignalR\\SWDProjectHub.cs",
@@ -309,24 +319,11 @@
               "RelativeToolTip": "SWDProject_BE\\SignalR\\SWDProjectHub.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T11:42:36.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T11:42:36.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "RatingController.cs",
-              "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\RatingController.cs",
-              "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\RatingController.cs",
-              "ToolTip": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\RatingController.cs",
-              "RelativeToolTip": "SWDProject_BE\\Controllers\\RatingController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACIAAABJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T18:45:10.669Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\appsettings.json",
               "RelativeDocumentMoniker": "SWDProject_BE\\appsettings.json",
@@ -334,12 +331,11 @@
               "RelativeToolTip": "SWDProject_BE\\appsettings.json",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABoAAACTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-15T12:52:26.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T12:52:26.339Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "AutoMapperConfig.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\AppStarts\\AutoMapperConfig.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\AppStarts\\AutoMapperConfig.cs",
@@ -351,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "test.cs",
               "DocumentMoniker": "F:\\SU24\\SWD392\\Main\\SWD392_NET1701_GroupABC\\SWDProject_BE\\SWDProject_BE\\Controllers\\test.cs",
               "RelativeDocumentMoniker": "SWDProject_BE\\Controllers\\test.cs",

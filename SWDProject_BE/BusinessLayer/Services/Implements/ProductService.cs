@@ -23,8 +23,9 @@ namespace BusinessLayer.Services
         private IPostService _postService;
         public IMapper _mapper;
 
-        public ProductService(IUnitOfWork unitOfWork, IMapper _mapper)
+        public ProductService(IUnitOfWork unitOfWork, IMapper _mapper, IPostService postService)
         {
+            _postService = postService;
             this.unitOfWork = unitOfWork;
             this._mapper = _mapper;
         }
@@ -177,12 +178,11 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var check = _postService.GetPostByProductId(id);
-                if (check == null)
+                var product = await unitOfWork.Repository<Product>().GetById(id);
+                if (product != null)
                 {
-
-                    var product = await unitOfWork.Repository<Product>().GetById(id);
-                    if (product != null)
+                    var check = await _postService.GetPostByProductId(id);
+                    if (check == null)
                     {
                         if (dto.CategoryId != 0)
                         {
@@ -216,10 +216,14 @@ namespace BusinessLayer.Services
                         await unitOfWork.CommitAsync();
                         return "Update Successfull";
                     }
+                    else
+                    {
+                        return "Products already in the post can not be edited!";
+                    }
                 }
                 else
                 {
-                    return null;
+                    return "Product not fount!";
                 }
             }
             catch(Exception ex)

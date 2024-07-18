@@ -209,13 +209,13 @@ namespace SWDProject_BE.Controllers
             try
             {
                 String message = await ProductService.updateProduct(id,dto);
-                if(message != null)
+                if (message.Equals("Update Successfull"))
                 {
                     return Ok(message);
                 }
                 else
                 {
-                    return NotFound("Products already in the post can not be edited");
+                    return BadRequest(message);    
                 }
             }
             catch (Exception ex)
