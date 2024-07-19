@@ -256,7 +256,7 @@ namespace BusinessLayer.Services.Implements
                                 .FirstOrDefaultAsync(p => p.Id == id);
 
 
-            if (post != null)
+            if (post != null && post.PublicStatus == false)
             {
                 var reports = post.Reports.ToList();
                 foreach (var report in reports)

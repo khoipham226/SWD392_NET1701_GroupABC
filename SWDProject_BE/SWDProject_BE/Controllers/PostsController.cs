@@ -253,7 +253,7 @@ namespace SWDProject_BE.Controllers
 
                 await _notificationService.AddNotificationAsync(notificationRequest, existingPost.UserId);
 
-                return Ok(new { message = "Post publish status updated to " + newStatus });
+                return StatusCode(200, new { message = "Post publish status updated to " + newStatus, status = 200 });
             }
             catch (Exception ex)
             {
