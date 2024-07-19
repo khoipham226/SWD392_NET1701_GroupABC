@@ -223,6 +223,11 @@ namespace SWDProject_BE.Controllers
                     return NotFound(new { message = "Exchanged is not found." });
                 }
 
+                if (existingExchanged.Status == true)
+                {
+                    return BadRequest(new { message = "Exchanged is already accepted." });
+                }
+
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {

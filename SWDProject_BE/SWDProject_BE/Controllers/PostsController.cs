@@ -1,11 +1,10 @@
 ﻿using BusinessLayer.RequestModels;
+using BusinessLayer.ResponseModels;
 using BusinessLayer.Services;
 using DataLayer.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
-using BusinessLayer.ResponseModels;
 
 namespace SWDProject_BE.Controllers
 {
@@ -149,6 +148,11 @@ namespace SWDProject_BE.Controllers
                     return NotFound(new { message = "Post ID not found." });
                 }
 
+                if (existingPost.PublicStatus == true)
+                {
+                    return BadRequest(new { message = "Post is already published." });
+                }
+
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                 if (userIdClaim == null)
                 {
@@ -210,6 +214,12 @@ namespace SWDProject_BE.Controllers
 
                 if(User.IsInRole("staff"))
                 {
+                    if (existingPost.PublicStatus  == true)
+                    {
+                        return BadRequest(new { message = "Post is already accepted." });
+                    }
+
+
                     var notificationRequest = new NotificationModel
                     {
                         Content = $"Your Post with ID {id} has been rejected"
