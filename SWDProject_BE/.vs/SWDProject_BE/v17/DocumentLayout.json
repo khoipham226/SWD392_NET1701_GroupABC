@@ -178,8 +178,7 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\AuthController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T18:13:25.699Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-18T18:13:25.699Z"
             },
             {
               "$type": "Document",
@@ -191,8 +190,7 @@
               "RelativeToolTip": "SWDProject_BE\\SignalR\\SWDProjectHub.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAAAsAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T11:42:36.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T11:42:36.839Z"
             },
             {
               "$type": "Document",
@@ -204,8 +202,7 @@
               "RelativeToolTip": "SWDProject_BE\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-15T12:52:26.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T12:52:26.339Z"
             },
             {
               "$type": "Document",
@@ -217,8 +214,7 @@
               "RelativeToolTip": "SWDProject_BE\\Program.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAAAFcAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T12:52:39.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T12:52:39.709Z"
             },
             {
               "$type": "Document",
@@ -230,8 +226,7 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\PostsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEBAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T14:04:51.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T14:04:51.242Z"
             },
             {
               "$type": "Document",
@@ -243,8 +238,7 @@
               "RelativeToolTip": "BusinessLayer\\Services\\Implements\\PostService.cs",
               "ViewState": "AQIAAO4AAAAAAAAAAAAiwAIBAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T03:08:27.802Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-18T03:08:27.802Z"
             },
             {
               "$type": "Document",
@@ -256,8 +250,7 @@
               "RelativeToolTip": "BusinessLayer\\Services\\IRatingService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:22:18.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T17:22:18.765Z"
             },
             {
               "$type": "Document",
@@ -269,8 +262,7 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\ProductController.cs",
               "ViewState": "AQIAANoAAAAAAAAAAAAswN8AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T16:43:13.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T16:43:13.037Z"
             },
             {
               "$type": "Document",
@@ -282,8 +274,7 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\OrderController.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAAmwBkAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T16:42:29.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T16:42:29.293Z"
             },
             {
               "$type": "Document",
@@ -308,8 +299,7 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\CommentController.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:23:14.758Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T17:23:14.758Z"
             },
             {
               "$type": "Document",
@@ -321,8 +311,7 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\test.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T13:33:53.821Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T13:33:53.821Z"
             },
             {
               "$type": "Document",
@@ -334,8 +323,7 @@
               "RelativeToolTip": "SWDProject_BE\\AppStarts\\AutoMapperConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:23:13.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T17:23:13.049Z"
             },
             {
               "$type": "Document",
@@ -347,8 +335,7 @@
               "RelativeToolTip": "SWDProject_BE\\AppStarts\\DependencyInjectionContainers.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:23:13.429Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T17:23:13.429Z"
             },
             {
               "$type": "Document",
@@ -360,8 +347,7 @@
               "RelativeToolTip": "SWDProject_BE\\Controllers\\UsersController.cs",
               "ViewState": "AQIAAHIAAAAAAAAAAAAmwEIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T14:02:46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T14:02:46Z"
             },
             {
               "$type": "Document",
@@ -373,8 +359,7 @@
               "RelativeToolTip": "SWDProject_BE\\SWDProject_BE.xml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2024-07-16T12:17:46.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T12:17:46.423Z"
             },
             {
               "$type": "Document",
@@ -386,8 +371,7 @@
               "RelativeToolTip": "SWDProject_BE\\AppStarts\\MappingProfile.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAQwCsAAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T16:06:16.076Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T16:06:16.076Z"
             },
             {
               "$type": "Document",
@@ -399,8 +383,7 @@
               "RelativeToolTip": "DataLayer\\Model\\Rating.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:21:10.24Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T17:21:10.24Z"
             },
             {
               "$type": "Document",
@@ -412,8 +395,7 @@
               "RelativeToolTip": "BusinessLayer\\Services\\Implements\\ProductService.cs",
               "ViewState": "AQIAALQAAAAAAAAAAAAAwOEAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T16:40:32.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T16:40:32.147Z"
             },
             {
               "$type": "Document",
@@ -425,8 +407,7 @@
               "RelativeToolTip": "BusinessLayer\\Services\\Implements\\RatingService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T17:23:20.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T17:23:20.208Z"
             },
             {
               "$type": "Document",
@@ -438,8 +419,7 @@
               "RelativeToolTip": "BusinessLayer\\Services\\IPostService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T03:11:46.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-18T03:11:46.88Z"
             },
             {
               "$type": "Document",
@@ -463,8 +443,7 @@
               "RelativeToolTip": "DataLayer\\UnitOfWork\\UnitOfWork.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T16:00:35.795Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-18T16:00:35.795Z"
             },
             {
               "$type": "Document",
